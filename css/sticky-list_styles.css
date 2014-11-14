@@ -1,0 +1,39 @@
+/* sticky-list styles */
+
+table.sticky-list th:last-child,
+table.sticky-list td:last-child  {
+	text-align: right;
+}
+
+table.sticky-list tr:nth-child(2n+3) {
+	background: #f7f7f7;
+}
+
+table.sticky-list,
+table.sticky-list * {
+	border: none;
+}
+
+table.sticky-list form,
+table.sticky-list button,
+table.sticky-list form input {
+	display: inline-block !important;
+}
+
+table.sticky-list button {
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;   
+    text-transform: none;
+    font-size: inherit;
+    color: inherit;
+    margin-right: 5px;
+    text-decoration: underline;
+}
+table.sticky-list form:last-child button {
+	margin-right: 0;
+}
+
