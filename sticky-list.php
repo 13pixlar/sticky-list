@@ -245,7 +245,9 @@ if (class_exists("GFForms")) {
                                             <input type='hidden' name='view_id' value='$entry_id'>
                                         </form>";
                                 }
-                                if($enable_edit) {
+
+                                // Only show edit link if current user is the creator 
+                                if($enable_edit && $entry["created_by"] == $current_user->ID) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
                                             <button class='submit'>Edit</button>
@@ -253,7 +255,8 @@ if (class_exists("GFForms")) {
                                             <input type='hidden' name='edit_id' value='$entry_id'>
                                         </form>";
                                 }
-                                if($enable_delete) {
+                                // Only show delete link if current user is the creator
+                                if($enable_delete && $entry["created_by"] == $current_user->ID) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
                                             <button class='submit'>Delete</button>
@@ -497,7 +500,7 @@ if (class_exists("GFForms")) {
                             )
                         ),
                         array(
-                            "label"   => "Embedd page",
+                            "label"   => "Embedd page/post",
                             "type"    => "select",
                             "name"    => "embedd_page",
                             "tooltip" => "The page/post where the form is embedded. This page will be used to view/edit the exntry",
