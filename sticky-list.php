@@ -8,6 +8,16 @@ Author: 13pixar
 Author URI: http://13pixlar.se
 */
 
+/* Todo
+ * Customized text for view, edit, delete and update buttons
+ * Table sorting
+ * Table search
+ * Conditional notifications
+ * Conditional confirmations
+ * Support for multi page forms
+ * Write plugin readme
+ * Make plugin homepage
+ */
 
 //------------------------------------------
 if (class_exists("GFForms")) {
@@ -503,7 +513,7 @@ if (class_exists("GFForms")) {
                             "label"   => "Embedd page/post",
                             "type"    => "select",
                             "name"    => "embedd_page",
-                            "tooltip" => "The page/post where the form is embedded. This page will be used to view/edit the exntry",
+                            "tooltip" => "The page/post where the form is embedded. This page will be used to view/edit the entry",
                             "choices" => $posts_array
                         ),
                         array(
