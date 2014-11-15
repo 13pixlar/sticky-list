@@ -11,29 +11,33 @@ Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" tar
 
 #### Features
 
-Display a list of entries at the front end
-Choose who can se the list; entry crator, all logged in users or anyone.
-Support for multiple lists in the same page
-Support for all gravity forms fields
-Conditional logic support
-Edit and re-save existing entries from the front-end
-Delete existing entries from the front end
-Custom column labels
-Uses new Gravity Forms API and the official Gravity Forms Add-on framework
-Fully customizable with dead simple styles to override
-Fully supported and maintained
-Completely free and open source
+* Display a list of entries at the front end
+* Choose who can se the list; entry crator, all logged in users or anyone.
+* Support for multiple lists in the same page
+* Support for all gravity forms fields
+* Conditional logic support
+* Edit and re-save existing entries from the front-end
+* Delete existing entries from the front end
+* Custom column labels
+* Uses new Gravity Forms API and the official Gravity Forms Add-on framework
+* Fully customizable with dead simple styles to override
+* Fully supported and maintained
+* Completely free and open source
 
 #### Panned features
 
-Customized text for view, edit, delete and update buttons
-Table sorting
-Table search
-Conditional notifications
-Conditional confirmations
-Support for multi page forms
+* Customized text for view, edit, delete and update buttons
+* Localization
+* Add date updated meta field
+* Table sorting and search (using list.js)
+* Ajax delete with confirmation
+* Conditional notifications
+* Conditional confirmations
+* Support for multi page forms
 
-#### List Gravity Form entries on the front end
+#### List and edit Gravity Form entries on the front end
+
+Front end editing of entries has allways been a problem in gravity forms. Solutions that exist are bugg and not very feature rich. Gravity Forms Sticky List aims to fill that gap and provida a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to diplay entries in a fancy way (excelent GravityViews allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and you can have as many lists as you want in a single page.
 
 #### Edit Gravity Form entries from front end
 
