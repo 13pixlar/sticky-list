@@ -2,7 +2,7 @@
 /*
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: 
-Description: List and edit submitted forms from the front end
+Description: List and edit submitted entries from the front end
 Version: 1.0 beta
 Author: 13pixar
 Author URI: http://13pixlar.se
@@ -570,6 +570,23 @@ if (class_exists("GFForms")) {
                     )
                 )
             );
+        }
+
+        public function scripts() {
+        $scripts = array(
+            array("handle" => "sticky_list_js",
+                "src" => $this->get_base_url() . "/js/sticky-list_scripts.js",
+                "version" => $this->_version,
+                "deps" => array("jquery"),
+                "enqueue" => array(
+                    array(
+                        "admin_page" => array("form_settings"),
+                        "tab" => "sticky-list"
+                        )
+                    )
+                ),
+            );
+            return array_merge(parent::scripts(), $scripts);
         }
     }
 
