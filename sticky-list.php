@@ -10,14 +10,15 @@ Author URI: http://13pixlar.se
 */
 
 /* Todo
+ * Better deletion of entries
  * Table sorting
  * Table search
- * Enable users to edit others entries
  * Conditional notifications
  * Conditional confirmations
- * Support for multi page forms
  * Write plugin readme
  * Make plugin homepage
+ * Enable users to edit others entries
+ * Support for multi page forms
  */
 
 //------------------------------------------
@@ -94,7 +95,7 @@ if (class_exists("GFForms")) {
                     <li class="list_setting">
                         Sticky List
                         <br>
-                        <input type="checkbox" id="field_list_value" onclick="SetFieldProperty('stickylistField', this.checked);" /><label class="inline" for="field_list_value">Show in list <?php gform_tooltip("form_field_list_value") ?></label>
+                        <input type="checkbox" id="field_list_value" onclick="SetFieldProperty('stickylistField', this.checked);" /><label class="inline" for="field_list_value"><?php _e('Show in list', 'sticky-list'); ?> <?php gform_tooltip("form_field_list_value") ?></label>
                         <br>
                         <label class="inline" for="field_list_text_value"><?php _e('Column label', 'sticky-list'); ?> <?php gform_tooltip("form_field_text_value") ?></label><br><input class="fieldwidth-3" type="text" id="field_list_text_value" onkeyup="SetFieldProperty('stickylistFieldLabel', this.value);" />  
                     </li>
