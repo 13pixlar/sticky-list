@@ -6,12 +6,13 @@ Description: List and edit submitted entries from the front end
 Version: 1.0 beta
 Author: 13pixar
 Author URI: http://13pixlar.se
+
 */
 
 /* Todo
- * Localization
  * Table sorting
  * Table search
+ * Enable users to edit others entries
  * Conditional notifications
  * Conditional confirmations
  * Support for multi page forms
@@ -35,6 +36,9 @@ if (class_exists("GFForms")) {
 
         public function init(){
             parent::init();
+
+            // Add localization
+            add_action( 'init', array($this, 'stickylist_localize') );   
             
             // Add setting to fields settings tab
             add_action("gform_field_standard_settings", array( $this, "stickylist_field_settings"), 10, 2);
@@ -57,6 +61,15 @@ if (class_exists("GFForms")) {
 
             // Delete entries
             $this->maybe_delete_entry();
+        }
+
+        
+        /**
+         * Sticky List localization function
+         *
+         */
+        function stickylist_localize() {
+            load_plugin_textdomain('sticky-list', false, basename( dirname( __FILE__ ) ) . '/languages' );
         }
         
         
@@ -83,7 +96,7 @@ if (class_exists("GFForms")) {
                         <br>
                         <input type="checkbox" id="field_list_value" onclick="SetFieldProperty('stickylistField', this.checked);" /><label class="inline" for="field_list_value">Show in list <?php gform_tooltip("form_field_list_value") ?></label>
                         <br>
-                        <label class="inline" for="field_list_text_value">Column label <?php gform_tooltip("form_field_text_value") ?></label><br><input class="fieldwidth-3" type="text" id="field_list_text_value" onkeyup="SetFieldProperty('stickylistFieldLabel', this.value);" />  
+                        <label class="inline" for="field_list_text_value"><?php _e('Column label', 'sticky-list'); ?> <?php gform_tooltip("form_field_text_value") ?></label><br><input class="fieldwidth-3" type="text" id="field_list_text_value" onkeyup="SetFieldProperty('stickylistFieldLabel', this.value);" />  
                     </li>
                     
                     <?php
@@ -114,8 +127,8 @@ if (class_exists("GFForms")) {
          *
          */   
         function add_stickylist_tooltips($tooltips){
-           $tooltips["form_field_list_value"] = "<h6>Show field in list</h6>Check this box to show this field in the list.";
-           $tooltips["form_field_text_value"] = "<h6>Header text</h6>Use this field to override the default text header.";
+           $tooltips["form_field_list_value"] = __('<h6>Show field in list</h6>Check this box to show this field in the list.','sticky-list');
+           $tooltips["form_field_text_value"] = __('<h6>Header text</h6>Use this field to override the default text header.','sticky-list');
            return $tooltips;
         }
 
@@ -449,9 +462,7 @@ if (class_exists("GFForms")) {
          *
          */
         public function plugin_page() {
-            ?>
-            Wellcome to the Sticky List beta. This page will contain info, usage instructions and more!
-        <?php
+            _e('Wellcome to the Sticky List beta. This page will contain info, usage instructions and more!','sticky-list');
         }
 
 
@@ -483,13 +494,13 @@ if (class_exists("GFForms")) {
             
             return array(
                 array(
-                    "title"  => "Sticky List Settings",
+                    "title"  => __('Sticky List Settings','sticky-list'),
                     "fields" => array(
                         array(
-                            "label"   => "Enable for this form",
+                            "label"   => __('Enable for this form','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_list",
-                            "tooltip" => "Check this box to enable Sticky List for this form",
+                            "tooltip" => __('Check this box to enable Sticky List for this form','sticky-list'),
                             "choices" => array(
                                 array(
                                     "label" => "",
@@ -498,116 +509,116 @@ if (class_exists("GFForms")) {
                             )
                         ),
                         array(
-                            "label"   => "Show entries in list to",
+                            "label"   => __('Show entries in list to','sticky-list'),
                             "type"    => "select",
                             "name"    => "show_entries_to",
-                            "tooltip" => "Who should be able to se the entries in the list?",
+                            "tooltip" => __('Who should be able to se the entries in the list?','sticky-list'),
                             "choices" => array(
                                 array(
-                                    "label" => "Entry creator",
+                                    "label" => __('Entry creator','sticky-list'),
                                     "value" => "creator"
                                 ),
                                 array(
-                                    "label" => "All logged in users",
+                                    "label" => __('All logged in users','sticky-list'),
                                     "value" => "loggedin"
                                 ),
                                 array(
-                                    "label" => "Everyone",
+                                    "label" => __('Everyone','sticky-list'),
                                     "value" => "everyone"
                                 )
                             )
                         ),
                         array(
-                            "label"   => "Embedd page/post",
+                            "label"   => __('Embedd page/post','sticky-list'),
                             "type"    => "select",
                             "name"    => "embedd_page",
-                            "tooltip" => "The page/post where the form is embedded. This page will be used to view/edit the entry",
+                            "tooltip" => __('The page/post where the form is embedded. This page will be used to view/edit the entry','sticky-list'),
                             "choices" => $posts_array
                         ),
                         array(
-                            "label"   => "View entries",
+                            "label"   => __('View entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_view",
-                            "tooltip" => "Check this box to enable users to view the complete submitted entry. A \"View\" link will appear in the list",
+                            "tooltip" => __('Check this box to enable users to view the complete submitted entry. A \"View\" link will appear in the list','sticky-list'),
                             "choices" => array(
                                 array(
-                                    "label" => "Enabled",
+                                    "label" => __('Enabled','sticky-list'),
                                     "name"  => "enable_view"
                                 )
                             )
                         ),
                         array(
-                            "label"   => "View label",
+                            "label"   => __('View label','sticky-list'),
                             "type"    => "text",
                             "name"    => "enable_view_label",
-                            "tooltip" => "Label for the view button",
+                            "tooltip" => __('Label for the view button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => "View"
+                            "default_value" => __('View','sticky-list')
                             
                         ),
                         array(
-                            "label"   => "Edit entries",
+                            "label"   => __('Edit entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_edit",
-                            "tooltip" => "Check this box to enable user to edit submitted entries. An \"Edit\" link will appear in the list",
+                            "tooltip" => __('Check this box to enable user to edit submitted entries. An \"Edit\" link will appear in the list','sticky-list'),
                             "choices" => array(
                                 array(
-                                    "label" => "Enabled",
+                                    "label" => __('Enabled','sticky-list'),
                                     "name"  => "enable_edit"
                                 )
                             )
                         ),
                         array(
-                            "label"   => "Edit label",
+                            "label"   => __('Edit label','sticky-list'),
                             "type"    => "text",
                             "name"    => "enable_edit_label",
-                            "tooltip" => "Label for the edit button",
+                            "tooltip" => __('Label for the edit button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => "Edit"
+                            "default_value" => __('Edit','sticky-list')
                             
                         ),
                          array(
-                            "label"   => "Update button text",
+                            "label"   => __('Update button text','sticky-list'),
                             "type"    => "text",
                             "name"    => "update_text",
-                            "tooltip" => "Text for the submit button that is displayed when editing a field",
+                            "tooltip" => __('Text for the submit button that is displayed when editing an entry','sticky-list'),
                             "class"   => "small",
-                            "default_value" => "Update"              
+                            "default_value" => __('Update','sticky-list')              
                         ),
                         array(
-                            "label"   => "Delete entries",
+                            "label"   => __('Delete entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_delete",
-                            "tooltip" => "Check this box to enable user to delete submitted entries. A \"Delete\" link will appear in the list",
+                            "tooltip" => __('Check this box to enable user to delete submitted entries. A \"Delete\" link will appear in the list','sticky-list'),
                             "choices" => array(
                                 array(
-                                    "label" => "Enabled",
+                                    "label" => __('Enabled','sticky-list'),
                                     "name"  => "enable_delete"
                                 )
                             )
                         ),
                         array(
-                            "label"   => "Delete label",
+                            "label"   => __('Delete label','sticky-list'),
                             "type"    => "text",
                             "name"    => "enable_delete_label",
-                            "tooltip" => "Label for the delete button",
+                            "tooltip" => __('Label for the delete button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => "Delete"
+                            "default_value" => __('Delete','sticky-list')
                             
                         ),
                         array(
-                            "label"   => "Action column header",
+                            "label"   => __('Action column header','sticky-list'),
                             "type"    => "text",
                             "name"    => "action_column_header",
-                            "tooltip" => "Text to show as header for the action column",
+                            "tooltip" => __('Text to show as header for the action column','sticky-list'),
                             "class"   => "medium"
                             
                         ),
                         array(
-                            "label"   => "Empty list text",
+                            "label"   => __('Empty list text','sticky-list'),
                             "type"    => "text",
                             "name"    => "empty_list_text",
-                            "tooltip" => "Text that is shown if the list is empty",
+                            "tooltip" => __('Text that is shown if the list is empty','sticky-list'),
                             "class"   => "medium"  
                         )
                     )
