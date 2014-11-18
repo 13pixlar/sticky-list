@@ -56,7 +56,7 @@ if (class_exists("GFForms")) {
             // Add css
             add_action("wp_enqueue_scripts", array( $this, "register_plugin_styles"));
 
-            // Add list.js
+            // Add scripts
             add_action("wp_enqueue_scripts", array( $this, "register_plugin_scripts"));
 
             // View or Edit entries
