@@ -23,7 +23,7 @@ Author URI: http://13pixlar.se
 if (class_exists("GFForms")) {
     GFForms::include_addon_framework();
 
-    class EditEntries extends GFAddOn {
+    class StickyList extends GFAddOn {
 
         protected $_version = "1.0 beta";
         protected $_min_gravityforms_version = "1.7.9999";
@@ -140,8 +140,11 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_list"])) $enable_list = $settings["enable_list"]; else $enable_list = "";
             if(isset($settings["show_entries_to"])) $show_entries_to = $settings["show_entries_to"]; else  $show_entries_to = "";
             if(isset($settings["enable_view"])) $enable_view = $settings["enable_view"]; else $enable_view = "";
+            if(isset($settings["enable_view_label"])) $enable_view_label = $settings["enable_view_label"]; else $enable_view_label = "";
             if(isset($settings["enable_edit"])) $enable_edit = $settings["enable_edit"]; else $enable_edit = "";
+            if(isset($settings["enable_edit_label"])) $enable_edit_label = $settings["enable_edit_label"]; else $enable_edit_label = "";
             if(isset($settings["enable_delete"])) $enable_delete = $settings["enable_delete"]; else $enable_delete = "";
+            if(isset($settings["enable_delete_label"])) $enable_delete_label = $settings["enable_delete_label"]; else $enable_delete_label = "";
             if(isset($settings["action_column_header"])) $action_column_header = $settings["action_column_header"]; else $action_column_header = "";
             if(isset($settings["embedd_page"])) $embedd_page = $settings["embedd_page"]; else $embedd_page = "";
             
@@ -156,22 +159,22 @@ if (class_exists("GFForms")) {
                 // Show only to creator
                 if($show_entries_to === "creator"){
 
-                    $search_criteria["field_filters"][] = array("key" => "status", value => "active");
-                    $search_criteria["field_filters"][] = array("key" => "created_by", value => $current_user_id);
+                    $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
+                    $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
                     $entries = GFAPI::get_entries($form_id, $search_criteria);
                 
                 // Show to all logged in users   
                 }elseif($show_entries_to === "loggedin"){
                     
                     if(is_user_logged_in()) {
-                        $search_criteria["field_filters"][] = array("key" => "status", value => "active");
+                        $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                         $entries = GFAPI::get_entries($form_id, $search_criteria);
                     }
                 
                 // Show to everyone
                 }else{
                 
-                    $search_criteria["field_filters"][] = array("key" => "status", value => "active");
+                    $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                     $entries = GFAPI::get_entries($form_id, $search_criteria);
                 }
 
@@ -187,10 +190,10 @@ if (class_exists("GFForms")) {
                     // Make table header
                     foreach ($fields as $field) {
 
-                        if($field["stickylistField"]) {
+                        if(isset($field["stickylistField"])) {
 
                             // If we have a custom field label we use that, if not we use the fields standard label
-                            if($field["stickylistFieldLabel"]) {                            
+                            if(isset($field["stickylistFieldLabel"])) {                            
                                 $label = $field["stickylistFieldLabel"];                                
                             }else{
                                 $label = $field["label"];
@@ -219,7 +222,7 @@ if (class_exists("GFForms")) {
                         foreach( $form['fields'] as $field ) {
 
                             // If the field is active 
-                            if ($field['stickylistField']) {
+                            if (isset($field['stickylistField'])) {
                                 
                                 // ...we get the value for it
                                 $field_value = RGFormsModel::get_lead_field_value( $entry, $field );
@@ -250,7 +253,7 @@ if (class_exists("GFForms")) {
                                 if($enable_view) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
-                                            <button class='submit'>View</button>
+                                            <button class='submit'>$enable_view_label</button>
                                             <input type='hidden' name='mode' value='view'>
                                             <input type='hidden' name='view_id' value='$entry_id'>
                                         </form>";
@@ -260,7 +263,7 @@ if (class_exists("GFForms")) {
                                 if($enable_edit && $entry["created_by"] == $current_user->ID) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
-                                            <button class='submit'>Edit</button>
+                                            <button class='submit'>$enable_edit_label</button>
                                             <input type='hidden' name='mode' value='edit'>
                                             <input type='hidden' name='edit_id' value='$entry_id'>
                                         </form>";
@@ -269,7 +272,7 @@ if (class_exists("GFForms")) {
                                 if($enable_delete && $entry["created_by"] == $current_user->ID) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
-                                            <button class='submit'>Delete</button>
+                                            <button class='submit'>$enable_delete_label</button>
                                             <input type='hidden' name='mode' value='delete'>
                                             <input type='hidden' name='delete_id' value='$entry_id'>
                                         </form>";
@@ -346,7 +349,7 @@ if (class_exists("GFForms")) {
          */
         public function pre_entry_action($form) {
             
-            if( ($_POST["mode"] == "edit" && $_POST["edit_id"]) || ($_POST["mode"] == "view" && $_POST["view_id"]) ) {
+            if( (isset($_POST["mode"]) == "edit" && $_POST["edit_id"]) || (isset($_POST["mode"]) == "view" && $_POST["view_id"]) ) {
 
                 if($_POST["mode"] == "edit") {
                     $edit_id = $_POST["edit_id"];
@@ -382,6 +385,12 @@ if (class_exists("GFForms")) {
                     $form_id = $form['id'];
                     $form_fields["is_submit_$form_id"] = "1";
 
+                    // Get the settings
+                    $settings = $this->get_form_settings($form);
+
+                    // Get update text
+                    if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = "";
+
                     // If we are in edit mode we insert two hidden fields with entry id and mode = edit
                     if($_POST["mode"] == "edit") { ?>
 
@@ -390,7 +399,7 @@ if (class_exists("GFForms")) {
                             var thisForm = $('#gform_<?php echo $form_id;?>')
                             thisForm.append('<input type="hidden" name="action" value="edit" />');
                             thisForm.append('<input type="hidden" name="original_entry_id" value="<?php echo $edit_id; ?>" />');
-                            $("#gform_submit_button_<?php echo $form_id;?>").val('Update');
+                            $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
                         });
                         </script>
 
@@ -423,7 +432,7 @@ if (class_exists("GFForms")) {
          */
         public function maybe_delete_entry() {
             
-            if($_POST["mode"] == "delete" && $_POST["delete_id"]) {
+            if(isset($_POST["mode"]) == "delete" && isset($_POST["delete_id"])) {
 
                 $delete_id = $_POST["delete_id"];                
                 $current_user = wp_get_current_user();
@@ -529,6 +538,15 @@ if (class_exists("GFForms")) {
                             )
                         ),
                         array(
+                            "label"   => "View label",
+                            "type"    => "text",
+                            "name"    => "enable_view_label",
+                            "tooltip" => "Label for the view button",
+                            "class"   => "small",
+                            "default_value" => "View"
+                            
+                        ),
+                        array(
                             "label"   => "Edit entries",
                             "type"    => "checkbox",
                             "name"    => "enable_edit",
@@ -541,6 +559,23 @@ if (class_exists("GFForms")) {
                             )
                         ),
                         array(
+                            "label"   => "Edit label",
+                            "type"    => "text",
+                            "name"    => "enable_edit_label",
+                            "tooltip" => "Label for the edit button",
+                            "class"   => "small",
+                            "default_value" => "Edit"
+                            
+                        ),
+                         array(
+                            "label"   => "Update button text",
+                            "type"    => "text",
+                            "name"    => "update_text",
+                            "tooltip" => "Text for the submit button that is displayed when editing a field",
+                            "class"   => "small",
+                            "default_value" => "Update"              
+                        ),
+                        array(
                             "label"   => "Delete entries",
                             "type"    => "checkbox",
                             "name"    => "enable_delete",
@@ -551,6 +586,15 @@ if (class_exists("GFForms")) {
                                     "name"  => "enable_delete"
                                 )
                             )
+                        ),
+                        array(
+                            "label"   => "Delete label",
+                            "type"    => "text",
+                            "name"    => "enable_delete_label",
+                            "tooltip" => "Label for the delete button",
+                            "class"   => "small",
+                            "default_value" => "Delete"
+                            
                         ),
                         array(
                             "label"   => "Action column header",
@@ -588,7 +632,23 @@ if (class_exists("GFForms")) {
             );
             return array_merge(parent::scripts(), $scripts);
         }
+
+        public function styles() {
+            $styles = array(
+                array("handle" => "sticky-list_admin_styles",
+                    "src" => $this->get_base_url() . "/css/sticky-list_admin_styles.css",
+                    "version" => $this->_version,
+                    "enqueue" => array(
+                    array(
+                        "admin_page" => array("form_settings"),
+                        "tab" => "sticky-list"
+                        )
+                    )
+                )
+            );
+            return array_merge(parent::styles(), $styles);
+        }
     }
 
-    new EditEntries();
+    new StickyList();
 }

@@ -1,0 +1,7 @@
+tr + tr {
+    display: none;
+}
+
+.show {
+    display: table-row;
+}
