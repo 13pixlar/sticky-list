@@ -1,4 +1,7 @@
 /* sticky-list styles */
+table.sticky-list th:not(:last-child) {
+    cursor: pointer;
+}
 
 table.sticky-list th:last-child,
 table.sticky-list td:last-child  {

@@ -56,6 +56,9 @@ if (class_exists("GFForms")) {
             // Add css
             add_action("wp_enqueue_scripts", array( $this, "register_plugin_styles"));
 
+            // Add list.js
+            add_action("wp_enqueue_scripts", array( $this, "register_plugin_scripts"));
+
             // View or Edit entries
             add_filter("gform_pre_render", array($this,"pre_entry_action"));
             add_action("gform_post_submission", array($this, "post_edit_entry"), 10, 2);
@@ -161,6 +164,7 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_delete_label"])) $enable_delete_label = $settings["enable_delete_label"]; else $enable_delete_label = "";
             if(isset($settings["action_column_header"])) $action_column_header = $settings["action_column_header"]; else $action_column_header = "";
             if(isset($settings["embedd_page"])) $embedd_page = $settings["embedd_page"]; else $embedd_page = "";
+            if(isset($settings["enable_search"])) $enable_search = $settings["enable_search"]; else $enable_search = "";
             
             // Only render list if Sticky List is enabled for this form
             if($enable_list){
@@ -196,10 +200,19 @@ if (class_exists("GFForms")) {
                 if($entries) {
                     
                     // This vaiable will hold all html for the form                
-                    $list_html = "<table class='sticky-list'><tr>";
+                    $list_html = "<div id='stickylist-wrapper'>";
+                            
+                    if($enable_search) {
+                        $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
+                    }
+
+                    $list_html .= "<table class='sticky-list'><tr>";
                     
                     // Get all fields
                     $fields = $form["fields"];
+
+                    // Make a counter for use in sorting
+                    $i = 0;
 
                     // Make table header
                     foreach ($fields as $field) {
@@ -213,7 +226,10 @@ if (class_exists("GFForms")) {
                                 $label = $field["label"];
                             }
                             
-                            $list_html .= "<th>$label</th>";
+                            $list_html .= "<th class='sort' data-sort='sort-$i'>$label</th>";
+
+                            // Increment sorting counter
+                            $i++;
                         }
                     }
 
@@ -223,7 +239,7 @@ if (class_exists("GFForms")) {
                         $list_html .= "<th>$action_column_header</th>";
                     }
 
-                    $list_html .= "</tr>";
+                    $list_html .= "</tr><tbody class='list'>";
 
                     // Make table rows
                     foreach ($entries as $entry) {
@@ -231,6 +247,9 @@ if (class_exists("GFForms")) {
                         $entry_id = $entry["id"];
 
                         $list_html .= "<tr>";
+
+                        // Recycle the sorting counter
+                        $i=0;
 
                         // Loop trough all the fields
                         foreach( $form['fields'] as $field ) {
@@ -251,11 +270,14 @@ if (class_exists("GFForms")) {
                                         $field_values .= $value . " ";
 
                                     }
-                                    $list_html .= "<td>$field_values</td>";
+                                    $list_html .= "<td class='sort-$i'>$field_values</td>";
 
                                 }else{ 
-                                    $list_html .= "<td>$field_value</td>";
+                                    $list_html .= "<td class='sort-$i'>$field_value</td>";
                                 }
+
+                                // Increment sorting counter
+                                $i++;
                             }
                         }
 
@@ -298,15 +320,19 @@ if (class_exists("GFForms")) {
                         $list_html .= "</tr>";
                     }
 
-                    
-
-                    $list_html .= "</table>";
+                    $list_html .= "</tbody></table></div>";
                 
                 // If we dont have any entries, show the "Empty list text" to the user
                 }else{
                     $list_html = $settings["empty_list_text"];
                 }
 
+                // Build and initialize list.js
+                for ($a=0; $a<$i; $a++) { 
+                    $sort_fileds .= "'sort-$a',"; 
+                }
+                $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('stickylist-wrapper', options);</script>";
+                    
                 return $list_html;
             }
         }
@@ -319,6 +345,17 @@ if (class_exists("GFForms")) {
         public function register_plugin_styles() {
             wp_register_style( 'stickylist', plugins_url( 'sticky-list/css/sticky-list_styles.css' ) );
             wp_enqueue_style( 'stickylist' );
+        }
+
+
+        /**
+         * Add Sticky List sortning js (using the excellent list.js)
+         *
+         */
+        public function register_plugin_scripts() {
+            wp_register_script( 'list-js', plugins_url( 'sticky-list/js/list.min.js' ) );
+            wp_enqueue_script( 'list-js' );
+
         }
 
 
@@ -621,6 +658,18 @@ if (class_exists("GFForms")) {
                             "name"    => "empty_list_text",
                             "tooltip" => __('Text that is shown if the list is empty','sticky-list'),
                             "class"   => "medium"  
+                        ),
+                        array(
+                            "label"   => __('List search','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_search",
+                            "tooltip" => __('Check this box to enable search for the list','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_search"
+                                )
+                            )
                         )
                     )
                 )
