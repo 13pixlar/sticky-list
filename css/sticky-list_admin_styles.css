@@ -1,7 +1,7 @@
 tr + tr {
     display: none;
 }
-
-.show {
+.show,
+tr:last-child { 
     display: table-row;
 }

@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
 
-	var siblings 			= $('#gaddon-setting-row-enable_list').siblings();
+	// Define some variables
+	var siblings 			= $('#gaddon-setting-row-enable_list').siblings('[id^=gaddon-setting-row]');
 	var active 				= $('#enable_list');
 	var enableView 			= $('#enable_view');
 	var enableViewLabel 	= $('#gaddon-setting-row-enable_view_label');
@@ -10,6 +11,11 @@ jQuery(document).ready(function($) {
 	var enableDelete		= $('#enable_delete');
 	var enableDeleteLabel 	= $('#gaddon-setting-row-enable_delete_label');
 
+	
+	/**
+     * Main function to toggle fields depending on checkboxes
+     *
+     */
 	function toggleActive() {
 
 		if(active.is(':checked')) {
@@ -38,8 +44,11 @@ jQuery(document).ready(function($) {
 	    }
 	}
 
+	// Run the function on page load
 	toggleActive();
 
+	// Toggle visibility on click
+	
 	active.click(function(event) {
 		toggleActive();
 	});
@@ -55,14 +64,5 @@ jQuery(document).ready(function($) {
 
     enableDelete.click(function(event) {
 		enableDeleteLabel.toggleClass('show');
-	});
-
-	
-
-	
-
-	
-
-	
-    
+	});	
 });

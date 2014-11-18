@@ -9,7 +9,6 @@ Author URI: http://13pixlar.se
 */
 
 /* Todo
- * Customized text for view, edit, delete and update buttons
  * Table sorting
  * Table search
  * Conditional notifications
@@ -349,7 +348,7 @@ if (class_exists("GFForms")) {
          */
         public function pre_entry_action($form) {
             
-            if( (isset($_POST["mode"]) == "edit" && $_POST["edit_id"]) || (isset($_POST["mode"]) == "view" && $_POST["view_id"]) ) {
+            if( (isset($_POST["mode"]) == "edit" && isset($_POST["edit_id"])) || (isset($_POST["mode"]) == "view" && isset($_POST["view_id"])) ) {
 
                 if($_POST["mode"] == "edit") {
                     $edit_id = $_POST["edit_id"];
@@ -361,7 +360,6 @@ if (class_exists("GFForms")) {
                     $form_fields = GFAPI::get_entry($view_id);
                 }
                 
-
                 // Get current user
                 $current_user = wp_get_current_user();
                
@@ -616,6 +614,11 @@ if (class_exists("GFForms")) {
             );
         }
 
+
+        /**
+         * Include admin scripts
+         *
+         */
         public function scripts() {
         $scripts = array(
             array("handle" => "sticky_list_js",
@@ -633,6 +636,11 @@ if (class_exists("GFForms")) {
             return array_merge(parent::scripts(), $scripts);
         }
 
+
+        /**
+         * Include admin css
+         *
+         */
         public function styles() {
             $styles = array(
                 array("handle" => "sticky-list_admin_styles",
