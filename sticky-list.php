@@ -9,6 +9,7 @@ Author URI: http://13pixlar.se
 */
 
 /* Todo
+ * Localization
  * Table sorting
  * Table search
  * Conditional notifications
