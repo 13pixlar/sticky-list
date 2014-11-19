@@ -241,7 +241,7 @@ if (class_exists("GFForms")) {
                     // If view, edit or delete is enabled we need an extra column
                     if($enable_view || $enable_edit || $enable_delete) {
 
-                        $list_html .= "<th>$action_column_header</th>";
+                        $list_html .= "<th class='sticky-action'>$action_column_header</th>";
                     }
 
                     $list_html .= "</tr><tbody class='list'>";
@@ -292,7 +292,7 @@ if (class_exists("GFForms")) {
                         // If view, edit or delete is enabled we need a cell with appropiate links
                         if($enable_view || $enable_edit || $enable_delete){
                             
-                            $list_html .= "<td>";
+                            $list_html .= "<td class='sticky-action'>";
 
                                 // Only show view link if view is enabled
                                 if($enable_view) {
@@ -422,7 +422,7 @@ if (class_exists("GFForms")) {
          */
         public function pre_entry_action($form) {
             
-            if( (isset($_POST["mode"]) == "edit" && isset($_POST["edit_id"])) || (isset($_POST["mode"]) == "view" && isset($_POST["view_id"])) ) {
+            if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" ) {
 
                 if($_POST["mode"] == "edit") {
                     $edit_id = $_POST["edit_id"];
@@ -441,7 +441,7 @@ if (class_exists("GFForms")) {
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
                     // ... and the current user is the creator OR has the capability to edit others posts
-                    if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
+                    if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
                         
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
