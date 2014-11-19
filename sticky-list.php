@@ -9,10 +9,15 @@ Author URI: http://13pixlar.se
 
 */
 
+/* COPYRIGHT NOTICE
+ * Since this shoftware is unreleased it is still copyrighted
+ * Copyright (C) 2014 - Adam Rehal - All rights reserved
+ * This software may not be redistributed without explicit
+ * authorization by the Author/Owner.
+ */
+
 /* Todo
  * Better deletion of entries
- * Table sorting
- * Table search
  * Conditional notifications
  * Conditional confirmations
  * Write plugin readme
@@ -200,7 +205,7 @@ if (class_exists("GFForms")) {
                 if($entries) {
                     
                     // This vaiable will hold all html for the form                
-                    $list_html = "<div id='stickylist-wrapper'>";
+                    $list_html = "<div id='sticky-list-wrapper'>";
                             
                     if($enable_search) {
                         $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
@@ -248,7 +253,7 @@ if (class_exists("GFForms")) {
 
                         $list_html .= "<tr>";
 
-                        // Recycle the sorting counter
+                        // Recycle the sorting counter we used above
                         $i=0;
 
                         // Loop trough all the fields
@@ -263,6 +268,9 @@ if (class_exists("GFForms")) {
                                 // If the value is an array (i.e. address field, name field, etc)
                                 if(is_array($field_value)) {
 
+                                    // Sort the array so that the fields are shown in the correct order
+                                    asort($field_value);
+                                   
                                     $field_values = "";
 
                                     // Concatenate field values into string separated by a space
@@ -286,6 +294,7 @@ if (class_exists("GFForms")) {
                             
                             $list_html .= "<td>";
 
+                                // Only show view link if view is enabled
                                 if($enable_view) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
@@ -295,23 +304,32 @@ if (class_exists("GFForms")) {
                                         </form>";
                                 }
 
-                                // Only show edit link if current user is the creator 
-                                if($enable_edit && $entry["created_by"] == $current_user->ID) {
-                                    $list_html .= "
-                                        <form action='$embedd_page' method='post'>
-                                            <button class='submit'>$enable_edit_label</button>
-                                            <input type='hidden' name='mode' value='edit'>
-                                            <input type='hidden' name='edit_id' value='$entry_id'>
-                                        </form>";
+                                // Only show edit link if edit is enabled
+                                if($enable_edit) {
+
+                                    // ...and current user is the creator OR has the capability to edit others posts
+                                    if($entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
+                                        $list_html .= "
+                                            <form action='$embedd_page' method='post'>
+                                                <button class='submit'>$enable_edit_label</button>
+                                                <input type='hidden' name='mode' value='edit'>
+                                                <input type='hidden' name='edit_id' value='$entry_id'>
+                                            </form>";
+                                    }
                                 }
-                                // Only show delete link if current user is the creator
-                                if($enable_delete && $entry["created_by"] == $current_user->ID) {
-                                    $list_html .= "
-                                        <form action='$embedd_page' method='post'>
-                                            <button class='submit'>$enable_delete_label</button>
-                                            <input type='hidden' name='mode' value='delete'>
-                                            <input type='hidden' name='delete_id' value='$entry_id'>
-                                        </form>";
+
+                                // Only show delete link if delete is enabled
+                                if($enable_delete) {
+
+                                    // ...and current user is the creator OR has the capability to delete others posts
+                                    if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts')) {
+                                        $list_html .= "
+                                            <form action='$embedd_page' method='post'>
+                                                <button class='submit'>$enable_delete_label</button>
+                                                <input type='hidden' name='mode' value='delete'>
+                                                <input type='hidden' name='delete_id' value='$entry_id'>
+                                            </form>";
+                                    }
                                 }
 
                             $list_html .= "</td>";
@@ -321,18 +339,18 @@ if (class_exists("GFForms")) {
                     }
 
                     $list_html .= "</tbody></table></div>";
+
+                    // Build and initialize list.js
+                    for ($a=0; $a<$i; $a++) { 
+                        $sort_fileds .= "'sort-$a',"; 
+                    }
+                    $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper', options);</script>";
                 
                 // If we dont have any entries, show the "Empty list text" to the user
                 }else{
                     $list_html = $settings["empty_list_text"];
                 }
-
-                // Build and initialize list.js
-                for ($a=0; $a<$i; $a++) { 
-                    $sort_fileds .= "'sort-$a',"; 
-                }
-                $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('stickylist-wrapper', options);</script>";
-                    
+                                    
                 return $list_html;
             }
         }
@@ -377,18 +395,22 @@ if (class_exists("GFForms")) {
                 // Get original entry
                 $original_entry =  GFAPI::get_entry($original_entry_id);
 
-                // If we have an original entry that is active and created by the current user
-                if($original_entry && $original_entry["created_by"] == $current_user->ID && $original_entry["status"] == "active") {
+                // If we have an original entry that is active 
+                if($original_entry && $original_entry["status"] == "active") {
 
-                    // Keep starred and red staus
-                    $entry["is_read"] = $original_entry["is_read"];
-                    $entry["is_starred"] = $original_entry["is_starred"];
+                    // ...and the current user is creator OR has the capability to edit others posts
+                    if($original_entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
 
-                    // Uppdate original entry with new fields
-                    $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
-                    
-                    // Delete newly created entry
-                    if($success_uppdate) $success_delete = GFAPI::delete_entry($entry["id"]);
+                        // Keep starred and red staus
+                        $entry["is_read"] = $original_entry["is_read"];
+                        $entry["is_starred"] = $original_entry["is_starred"];
+
+                        // Uppdate original entry with new fields
+                        $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
+                        
+                        // Delete newly created entry
+                        if($success_uppdate) $success_delete = GFAPI::delete_entry($entry["id"]);
+                    }
                 }
             }
         }
@@ -415,60 +437,63 @@ if (class_exists("GFForms")) {
                 // Get current user
                 $current_user = wp_get_current_user();
                
-                // If we have an entry that is active and created by the current user
-                if(!is_wp_error($form_fields) && $form_fields["created_by"] == $current_user->ID && $form_fields["status"] == "active") {
+                // If we have an entry that is active
+                if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
-                    // Loop trough all the fields
-                    foreach ($form_fields as $key => &$value) {
+                    // ... and the current user is the creator OR has the capability to edit others posts
+                    if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
+                        
+                        // Loop trough all the fields
+                        foreach ($form_fields as $key => &$value) {
 
-                        // If the key is numeric we need to change it from [X.X] to [input_X_X]
-                        if (is_numeric($key)) {
+                            // If the key is numeric we need to change it from [X.X] to [input_X_X]
+                            if (is_numeric($key)) {
 
-                            $new_key = str_replace(".", "_", "input_$key");
+                                $new_key = str_replace(".", "_", "input_$key");
 
-                            $form_fields[$new_key] = $form_fields[$key];
-                            unset($form_fields[$key]);                                                           
+                                $form_fields[$new_key] = $form_fields[$key];
+                                unset($form_fields[$key]);                                                           
+                            }
                         }
+                        
+                        // Add is_submit_id field
+                        $form_id = $form['id'];
+                        $form_fields["is_submit_$form_id"] = "1";
+
+                        // Get the settings
+                        $settings = $this->get_form_settings($form);
+
+                        // Get update text
+                        if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = "";
+
+                        // If we are in edit mode we insert two hidden fields with entry id and mode = edit
+                        if($_POST["mode"] == "edit") { ?>
+
+                            <script>
+                            jQuery(document).ready(function($) {
+                                var thisForm = $('#gform_<?php echo $form_id;?>')
+                                thisForm.append('<input type="hidden" name="action" value="edit" />');
+                                thisForm.append('<input type="hidden" name="original_entry_id" value="<?php echo $edit_id; ?>" />');
+                                $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
+                            });
+                            </script>
+
+                <?php   }
+
+                        // If we are in view mode we disable all inputs and hide the submit button        
+                        if($_POST["mode"] == "view") { ?>
+
+                            <script>
+                            jQuery(document).ready(function($) {
+                                $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
+                                $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
+                            });
+                            </script>
+                <?php   }
+
+                        // Add our manipulated fields to the $_POST variable
+                        $_POST = $form_fields;
                     }
-                    
-                    // Add is_submit_id field
-                    $form_id = $form['id'];
-                    $form_fields["is_submit_$form_id"] = "1";
-
-                    // Get the settings
-                    $settings = $this->get_form_settings($form);
-
-                    // Get update text
-                    if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = "";
-
-                    // If we are in edit mode we insert two hidden fields with entry id and mode = edit
-                    if($_POST["mode"] == "edit") { ?>
-
-                        <script>
-                        jQuery(document).ready(function($) {
-                            var thisForm = $('#gform_<?php echo $form_id;?>')
-                            thisForm.append('<input type="hidden" name="action" value="edit" />');
-                            thisForm.append('<input type="hidden" name="original_entry_id" value="<?php echo $edit_id; ?>" />');
-                            $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
-                        });
-                        </script>
-
-            <?php   }
-
-                    // If we are in view mode we disable all inputs and hide the submit button        
-                    if($_POST["mode"] == "view") { ?>
-
-                        <script>
-                        jQuery(document).ready(function($) {
-                            $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
-                            $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
-                        });
-                        </script>
-            <?php   }
-
-                    // Add our manipulated fields to the $_POST variable
-                    $_POST = $form_fields;
-
                 }
             }
 
@@ -488,8 +513,13 @@ if (class_exists("GFForms")) {
                 $current_user = wp_get_current_user();
                 $entry = GFAPI::get_entry($delete_id);
                 
-                if(!is_wp_error($entry) && $entry["created_by"] == $current_user->ID) {
-                    $success = GFAPI::delete_entry($delete_id);
+                // If we could get the entry
+                if(!is_wp_error($entry)) {
+
+                    // ...and the current user is the creator OR has the capability to delete others posts
+                    if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
+                        $success = GFAPI::delete_entry($delete_id);
+                    }
                 }
             }
         }
