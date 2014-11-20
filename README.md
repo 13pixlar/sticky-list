@@ -29,7 +29,6 @@ Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" tar
 #### Panned features
 
 * Add date updated meta field
-* Ajax delete with confirmation
 * Conditional notifications
 * Conditional confirmations
 * Support for multi page forms
@@ -38,7 +37,13 @@ Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" tar
 
 Front end editing of entries has allways been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to diplay entries in a fancy way (excelent <a href="https://gravityview.co/">GravityViews</a> allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and you can have as many lists as you want in a single page.
 
-#### Edit Gravity Form entries from front end
+#### Delete Gravity Form submissions from front end
+
+Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending och the per form settings. 
+
+#### Sort and search entries
+
+Sticky List uses the fast and light weight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is very fast and results are updated immediately. 
 
 #### Usage
 
@@ -47,6 +52,10 @@ Front end editing of entries has allways been a problem in Gravity Forms. Soluti
 3. Enable Sticky List for that form att choose your settings
 4. Go to the form editor and select what fields should be displayed in the list
 5. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
+
+#### Styling the list
+
+Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory.
 
 #### Developers
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome.
@@ -63,7 +72,7 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 <h5>Some fields do not get updated</h5>
 
-There is a bug in the Gravity Forms api that prevent fields from getting saved in the entry. This will supposedly get fixed in Gravity Forms 1.9. In the meantime, download an <a href="https://downloads.wordpress.org/plugin/gravity-forms-sticky-form.1.0.1.zip">earlier version</a> of this plugin, (that uses a different way to save the entries) or apply the patch manually to `plugins/gravityforms/includes/api.php`
+There is a bug in the Gravity Forms api that prevent fields from getting saved in the entry. This will supposedly get fixed in Gravity Forms 1.9. In the meantime you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
 ```PHP
