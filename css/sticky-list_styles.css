@@ -8,7 +8,7 @@ table.sticky-list td.sticky-action  {
 	text-align: right;
 }
 
-table.sticky-list tr:nth-child(2n+3) {
+table.sticky-list tr:nth-child(2n+2) {
 	background: #f7f7f7;
 }
 

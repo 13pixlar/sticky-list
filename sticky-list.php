@@ -17,12 +17,11 @@ Author URI: http://13pixlar.se
  */
 
 /* Todo
- * Better deletion of entries
  * Conditional notifications
  * Conditional confirmations
+ * Date updated -meta field
  * Write plugin readme
  * Make plugin homepage
- * Enable users to edit others entries
  * Support for multi page forms
  */
 
@@ -154,7 +153,7 @@ if (class_exists("GFForms")) {
             // Get the form ID from shortcode
             $form_id = $shortcode_id['id'];
 
-             // Get the form
+            // Get the form
             $form = GFAPI::get_form($form_id);
 
             // Get form settings
@@ -323,13 +322,15 @@ if (class_exists("GFForms")) {
 
                                     // ...and current user is the creator OR has the capability to delete others posts
                                     if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts')) {
+                                        
                                         $list_html .= "
-                                            <form action='$embedd_page' method='post'>
-                                                <button class='submit'>$enable_delete_label</button>
-                                                <input type='hidden' name='mode' value='delete'>
-                                                <input type='hidden' name='delete_id' value='$entry_id'>
-                                            </form>";
+                                            <button class='sticky-list-delete submit'>$enable_delete_label</button>
+                                            <input type='hidden' name='delete_id' class='sticky-list-delete-id' value='$entry_id'>
+                                        ";                                        
                                     }
+                                    ?>
+                                    
+                                    <?php
                                 }
 
                             $list_html .= "</td>";
@@ -345,6 +346,43 @@ if (class_exists("GFForms")) {
                         $sort_fileds .= "'sort-$a',"; 
                     }
                     $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper', options);</script>";
+
+                    // If we have entries to delete we need to insert the ajax to do this
+                    if($enable_delete) {
+
+                        // Set som variables to use in the ajax function
+                        $ajax_delete = plugin_dir_url( __FILE__ ) . 'ajax-delete.php';
+                        $ajax_spinner = plugin_dir_url( __FILE__ ) . 'img/ajax-spinner.gif';
+                        $delete_failed = __('Delete failed','sticky-list');
+
+                        $list_html .= "
+                            <script>
+                            jQuery(document).ready(function($) {
+                                $('.sticky-list-delete').click(function(event) {
+                                    
+                                    var delete_id = $(this).siblings('.sticky-list-delete-id').val();
+                                    var current_button = $(this);
+                                    var current_row = current_button.parent().parent();
+                                    current_button.html('<img src=\'$ajax_spinner\'>');
+                                    
+                                    $.post( '', { mode: 'delete', delete_id: delete_id, form_id: '$form_id' })
+                                    .done(function() {
+                                        current_button.html('');
+                                        current_row.css({   
+                                            background: '#fbdcdc',
+                                            color: '#fff'
+                                        });
+                                        current_row.hide('slow');
+                                    })
+                                    .fail(function() {
+                                        current_button.html('$delete_failed');
+                                    })
+
+                                });
+                            });
+                            </script>
+                        ";
+                    }
                 
                 // If we dont have any entries, show the "Empty list text" to the user
                 }else{
@@ -503,22 +541,38 @@ if (class_exists("GFForms")) {
 
         /**
          * Delete entries
-         * This is very basic and will be improved in future versions
+         * This function is used to delete entries with an ajax request
+         * Could use better (or at least some error handling)
          */
         public function maybe_delete_entry() {
             
-            if(isset($_POST["mode"]) == "delete" && isset($_POST["delete_id"])) {
+            // First we make sure that the delete mode is set and that we have the entry- and form id
+            if(isset($_POST["mode"]) == "delete" && isset($_POST["delete_id"]) && isset($_POST["form_id"])) {
 
-                $delete_id = $_POST["delete_id"];                
-                $current_user = wp_get_current_user();
-                $entry = GFAPI::get_entry($delete_id);
-                
-                // If we could get the entry
-                if(!is_wp_error($entry)) {
+                // Get form id
+                $form_id = $_POST["form_id"];
 
-                    // ...and the current user is the creator OR has the capability to delete others posts
-                    if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
-                        $success = GFAPI::delete_entry($delete_id);
+                // Get the form
+                $form = GFAPI::get_form($form_id);
+
+                // Get delete setting
+                $settings = $this->get_form_settings($form);
+                $enable_delete = $settings["enable_delete"];
+
+                // Make sure that delete is enabled
+                if($enable_delete) {
+
+                    $delete_id = $_POST["delete_id"];                
+                    $current_user = wp_get_current_user();
+                    $entry = GFAPI::get_entry($delete_id);
+                    
+                    // If we could get the entry
+                    if(!is_wp_error($entry)) {
+
+                        // ...and the current user is the creator OR has the capability to delete others posts
+                        if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
+                            $success = GFAPI::delete_entry($delete_id);
+                        }
                     }
                 }
             }
