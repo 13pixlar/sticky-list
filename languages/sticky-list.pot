@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2014-11-18 10:38+0100\n"
-"PO-Revision-Date: 2014-11-18 10:40+0100\n"
+"POT-Creation-Date: 2014-11-20 11:13+0100\n"
+"PO-Revision-Date: 2014-11-20 11:13+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,161 +14,172 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../sticky-list.php:93
+#: ../sticky-list.php:106
+msgid "Show in list"
+msgstr ""
+
+#: ../sticky-list.php:108
 msgid "Column label"
 msgstr ""
 
-#: ../sticky-list.php:124
+#: ../sticky-list.php:139
 msgid ""
 "<h6>Show field in list</h6>Check this box to show this field in the list."
 msgstr ""
 
-#: ../sticky-list.php:125
+#: ../sticky-list.php:140
 msgid "<h6>Header text</h6>Use this field to override the default text header."
 msgstr ""
 
-#: ../sticky-list.php:459
-msgid ""
-"Wellcome to the Sticky List beta. This page will contain info, usage "
-"instructions and more!"
+#: ../sticky-list.php:211
+msgid "Search"
 msgstr ""
 
-#: ../sticky-list.php:491
+#: ../sticky-list.php:556
 msgid "Sticky List Settings"
 msgstr ""
 
-#: ../sticky-list.php:494
+#: ../sticky-list.php:559
 msgid "Enable for this form"
 msgstr ""
 
-#: ../sticky-list.php:497
+#: ../sticky-list.php:562
 msgid "Check this box to enable Sticky List for this form"
 msgstr ""
 
-#: ../sticky-list.php:506
+#: ../sticky-list.php:571
 msgid "Show entries in list to"
 msgstr ""
 
-#: ../sticky-list.php:509
+#: ../sticky-list.php:574
 msgid "Who should be able to se the entries in the list?"
 msgstr ""
 
-#: ../sticky-list.php:512
+#: ../sticky-list.php:577
 msgid "Entry creator"
 msgstr ""
 
-#: ../sticky-list.php:516
+#: ../sticky-list.php:581
 msgid "All logged in users"
 msgstr ""
 
-#: ../sticky-list.php:520
+#: ../sticky-list.php:585
 msgid "Everyone"
 msgstr ""
 
-#: ../sticky-list.php:526
+#: ../sticky-list.php:591
 msgid "Embedd page/post"
 msgstr ""
 
-#: ../sticky-list.php:529
+#: ../sticky-list.php:594
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
 msgstr ""
 
-#: ../sticky-list.php:533
+#: ../sticky-list.php:598
 msgid "View entries"
 msgstr ""
 
-#: ../sticky-list.php:536
+#: ../sticky-list.php:601
 msgid ""
 "Check this box to enable users to view the complete submitted entry. A \\"
 "\"View\\\" link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:539 ../sticky-list.php:560 ../sticky-list.php:589
+#: ../sticky-list.php:604 ../sticky-list.php:625 ../sticky-list.php:654
+#: ../sticky-list.php:690
 msgid "Enabled"
 msgstr ""
 
-#: ../sticky-list.php:545
+#: ../sticky-list.php:610
 msgid "View label"
 msgstr ""
 
-#: ../sticky-list.php:548
+#: ../sticky-list.php:613
 msgid "Label for the view button"
 msgstr ""
 
-#: ../sticky-list.php:550
+#: ../sticky-list.php:615
 msgid "View"
 msgstr ""
 
-#: ../sticky-list.php:554
+#: ../sticky-list.php:619
 msgid "Edit entries"
 msgstr ""
 
-#: ../sticky-list.php:557
+#: ../sticky-list.php:622
 msgid ""
 "Check this box to enable user to edit submitted entries. An \\\"Edit\\\" "
 "link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:566
+#: ../sticky-list.php:631
 msgid "Edit label"
 msgstr ""
 
-#: ../sticky-list.php:569
+#: ../sticky-list.php:634
 msgid "Label for the edit button"
 msgstr ""
 
-#: ../sticky-list.php:571
+#: ../sticky-list.php:636
 msgid "Edit"
 msgstr ""
 
-#: ../sticky-list.php:575
+#: ../sticky-list.php:640
 msgid "Update button text"
 msgstr ""
 
-#: ../sticky-list.php:578
-msgid "Text for the submit button that is displayed when editing a field"
+#: ../sticky-list.php:643
+msgid "Text for the submit button that is displayed when editing an entry"
 msgstr ""
 
-#: ../sticky-list.php:580
+#: ../sticky-list.php:645
 msgid "Update"
 msgstr ""
 
-#: ../sticky-list.php:583
+#: ../sticky-list.php:648
 msgid "Delete entries"
 msgstr ""
 
-#: ../sticky-list.php:586
+#: ../sticky-list.php:651
 msgid ""
 "Check this box to enable user to delete submitted entries. A \\\"Delete\\\" "
 "link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:595
+#: ../sticky-list.php:660
 msgid "Delete label"
 msgstr ""
 
-#: ../sticky-list.php:598
+#: ../sticky-list.php:663
 msgid "Label for the delete button"
 msgstr ""
 
-#: ../sticky-list.php:600
+#: ../sticky-list.php:665
 msgid "Delete"
 msgstr ""
 
-#: ../sticky-list.php:604
+#: ../sticky-list.php:669
 msgid "Action column header"
 msgstr ""
 
-#: ../sticky-list.php:607
+#: ../sticky-list.php:672
 msgid "Text to show as header for the action column"
 msgstr ""
 
-#: ../sticky-list.php:612
+#: ../sticky-list.php:677
 msgid "Empty list text"
 msgstr ""
 
-#: ../sticky-list.php:615
+#: ../sticky-list.php:680
 msgid "Text that is shown if the list is empty"
+msgstr ""
+
+#: ../sticky-list.php:684
+msgid "List search"
+msgstr ""
+
+#: ../sticky-list.php:687
+msgid "Check this box to enable search for the list"
 msgstr ""

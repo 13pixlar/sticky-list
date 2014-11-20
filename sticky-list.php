@@ -526,15 +526,6 @@ if (class_exists("GFForms")) {
 
 
         /**
-         * This is the page for info and tutorials
-         *
-         */
-        public function plugin_page() {
-            _e('Wellcome to the Sticky List beta. This page will contain info, usage instructions and more!','sticky-list');
-        }
-
-
-        /**
          * Form settings page
          *
          */

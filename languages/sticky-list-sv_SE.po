@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2014-11-19 15:53+0100\n"
-"PO-Revision-Date: 2014-11-19 15:54+0100\n"
+"POT-Creation-Date: 2014-11-20 11:13+0100\n"
+"PO-Revision-Date: 2014-11-20 11:13+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -37,49 +37,43 @@ msgstr ""
 msgid "Search"
 msgstr "Sök"
 
-#: ../sticky-list.php:533
-msgid ""
-"Wellcome to the Sticky List beta. This page will contain info, usage "
-"instructions and more!"
-msgstr "Välkommen till Sticky List betan..."
-
-#: ../sticky-list.php:565
+#: ../sticky-list.php:556
 msgid "Sticky List Settings"
 msgstr "Sticky List inställningar"
 
-#: ../sticky-list.php:568
+#: ../sticky-list.php:559
 msgid "Enable for this form"
 msgstr "Aktivera för detta formulär"
 
-#: ../sticky-list.php:571
+#: ../sticky-list.php:562
 msgid "Check this box to enable Sticky List for this form"
 msgstr "Markera denna ruta för att aktivera Sticky List för detta formulär"
 
-#: ../sticky-list.php:580
+#: ../sticky-list.php:571
 msgid "Show entries in list to"
 msgstr "Visa inlägg i listan för"
 
-#: ../sticky-list.php:583
+#: ../sticky-list.php:574
 msgid "Who should be able to se the entries in the list?"
 msgstr "Vem skall kunna se inläggen i listan?"
 
-#: ../sticky-list.php:586
+#: ../sticky-list.php:577
 msgid "Entry creator"
 msgstr "Innläggsförfattaren"
 
-#: ../sticky-list.php:590
+#: ../sticky-list.php:581
 msgid "All logged in users"
 msgstr "Alla inloggade användare"
 
-#: ../sticky-list.php:594
+#: ../sticky-list.php:585
 msgid "Everyone"
 msgstr "Alla"
 
-#: ../sticky-list.php:600
+#: ../sticky-list.php:591
 msgid "Embedd page/post"
 msgstr "Inbäddnings-sida/inlägg"
 
-#: ../sticky-list.php:603
+#: ../sticky-list.php:594
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
@@ -87,11 +81,11 @@ msgstr ""
 "Sidan eller inlägget där formuläret än inbäddat. Denna sida används för att "
 "visa/redigera inlägget"
 
-#: ../sticky-list.php:607
+#: ../sticky-list.php:598
 msgid "View entries"
 msgstr "Visa inlägg"
 
-#: ../sticky-list.php:610
+#: ../sticky-list.php:601
 msgid ""
 "Check this box to enable users to view the complete submitted entry. A \\"
 "\"View\\\" link will appear in the list"
@@ -99,28 +93,28 @@ msgstr ""
 "Markera denna ruta för att låta användare visa inlägget. En \"Visa\"-länk "
 "visas i listan"
 
-#: ../sticky-list.php:613 ../sticky-list.php:634 ../sticky-list.php:663
-#: ../sticky-list.php:699
+#: ../sticky-list.php:604 ../sticky-list.php:625 ../sticky-list.php:654
+#: ../sticky-list.php:690
 msgid "Enabled"
 msgstr "Aktivera"
 
-#: ../sticky-list.php:619
+#: ../sticky-list.php:610
 msgid "View label"
 msgstr "Visa-text"
 
-#: ../sticky-list.php:622
+#: ../sticky-list.php:613
 msgid "Label for the view button"
 msgstr "Text för visa-knappen"
 
-#: ../sticky-list.php:624
+#: ../sticky-list.php:615
 msgid "View"
 msgstr "Visa"
 
-#: ../sticky-list.php:628
+#: ../sticky-list.php:619
 msgid "Edit entries"
 msgstr "Redigera inlägg"
 
-#: ../sticky-list.php:631
+#: ../sticky-list.php:622
 msgid ""
 "Check this box to enable user to edit submitted entries. An \\\"Edit\\\" "
 "link will appear in the list"
@@ -128,35 +122,35 @@ msgstr ""
 "Markera denna ruta för att låta användare redigera inlägget. En \"Redigera\"-"
 "länk visas i listan"
 
-#: ../sticky-list.php:640
+#: ../sticky-list.php:631
 msgid "Edit label"
 msgstr "Redigera-text"
 
-#: ../sticky-list.php:643
+#: ../sticky-list.php:634
 msgid "Label for the edit button"
 msgstr "Text för redigera-knappen"
 
-#: ../sticky-list.php:645
+#: ../sticky-list.php:636
 msgid "Edit"
 msgstr "Redigera"
 
-#: ../sticky-list.php:649
+#: ../sticky-list.php:640
 msgid "Update button text"
 msgstr "Uppdatera-knappens text"
 
-#: ../sticky-list.php:652
+#: ../sticky-list.php:643
 msgid "Text for the submit button that is displayed when editing an entry"
 msgstr "Text för knappen som visas när ett inlägg redigeras"
 
-#: ../sticky-list.php:654
+#: ../sticky-list.php:645
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../sticky-list.php:657
+#: ../sticky-list.php:648
 msgid "Delete entries"
 msgstr "Ta bort inlägg"
 
-#: ../sticky-list.php:660
+#: ../sticky-list.php:651
 msgid ""
 "Check this box to enable user to delete submitted entries. A \\\"Delete\\\" "
 "link will appear in the list"
@@ -164,40 +158,45 @@ msgstr ""
 "Markera denna ruta för att låta användare ta bort inlägget. En \"Ta bort\"-"
 "länk visas i listan"
 
-#: ../sticky-list.php:669
+#: ../sticky-list.php:660
 msgid "Delete label"
 msgstr "Ta bort-text"
 
-#: ../sticky-list.php:672
+#: ../sticky-list.php:663
 msgid "Label for the delete button"
 msgstr "Text för ta bort-knappen"
 
-#: ../sticky-list.php:674
+#: ../sticky-list.php:665
 msgid "Delete"
 msgstr "Ta bort"
 
-#: ../sticky-list.php:678
+#: ../sticky-list.php:669
 msgid "Action column header"
 msgstr "Text för sista kolumnen"
 
-#: ../sticky-list.php:681
+#: ../sticky-list.php:672
 msgid "Text to show as header for the action column"
 msgstr ""
 "Text att visa som rubrik i den sista kolumnen som innehåller Visa-, "
 "Redigera- och Ta bort-knapparna"
 
-#: ../sticky-list.php:686
+#: ../sticky-list.php:677
 msgid "Empty list text"
 msgstr "Text för tom lista"
 
-#: ../sticky-list.php:689
+#: ../sticky-list.php:680
 msgid "Text that is shown if the list is empty"
 msgstr "Text som visas när listan är tom"
 
-#: ../sticky-list.php:693
+#: ../sticky-list.php:684
 msgid "List search"
 msgstr "Sökning i listan"
 
-#: ../sticky-list.php:696
+#: ../sticky-list.php:687
 msgid "Check this box to enable search for the list"
 msgstr "Markera denna ruta för att aktivera sökning i listan"
+
+#~ msgid ""
+#~ "Wellcome to the Sticky List beta. This page will contain info, usage "
+#~ "instructions and more!"
+#~ msgstr "Välkommen till Sticky List betan..."
