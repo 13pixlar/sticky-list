@@ -12,9 +12,9 @@ Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" tar
 #### Features
 
 * Display a list of entries at the front end
-* Choose who can se the list; entry crator, all logged in users or anyone.
+* Choose who can se the list; entry creator, all logged in users or anyone.
 * Support for multiple lists in the same page
-* Support for all gravity forms fields
+* Support for all Gravity Forms fields
 * Conditional logic support
 * Edit and re-save existing entries from the front-end
 * Delete existing entries from the front end
@@ -28,7 +28,6 @@ Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" tar
 
 #### Panned features
 
-* Customized text for view, edit, delete and update buttons
 * Add date updated meta field
 * Ajax delete with confirmation
 * Conditional notifications
