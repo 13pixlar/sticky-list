@@ -1,11 +1,11 @@
 <h1>Gravity Forms Sticky List</h1>
 
-Sticky List is a Gravity Forms (for wordpress) add-on that lets you list and **edit entries** from the front end.
+Sticky List is a Gravity Forms add-on that lets you list and **edit entries** from the front end.
 
 <h2>Description</h2>
 
 #### Sticky List
-Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries. 
+Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries. 
 
 **Note:** There is a bug in the Gravity Forms API that prevents Sticky List from working correctly. More information and fix, please see the FAQ section of this readme.
 
@@ -26,7 +26,7 @@ Sticky List is a WordPress plugin for <a href="http://www.gravityforms.com/" tar
 * Fully supported and maintained
 * Completely free and open source
 
-#### Panned features
+#### Planned features
 
 * Add date updated meta field
 * Conditional notifications
