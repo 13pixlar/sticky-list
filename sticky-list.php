@@ -342,6 +342,7 @@ if (class_exists("GFForms")) {
                     $list_html .= "</tbody></table></div>";
 
                     // Build and initialize list.js
+                    $sort_fileds = "";
                     for ($a=0; $a<$i; $a++) { 
                         $sort_fileds .= "'sort-$a',"; 
                     }
@@ -421,8 +422,8 @@ if (class_exists("GFForms")) {
          */ 
         public function post_edit_entry($entry, $form) {
             
-            // Fi we are in edit mode
-            if($_POST["action"] == "edit") {
+            // If we are in edit mode
+            if(isset($_POST["action"]) == "edit") {
 
                 // Get original entry id
                 $original_entry_id = $_POST["original_entry_id"];
