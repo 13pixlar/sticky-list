@@ -28,7 +28,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### Planned features
 
-* Add date updated meta field
 * Conditional notifications
 * Conditional confirmations
 * Support for multi page forms
@@ -43,7 +42,7 @@ Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Delet
 
 #### Sort and search entries
 
-Sticky List uses the fast and light weight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is very fast and results are updated immediately. 
+Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately. 
 
 #### Usage
 
