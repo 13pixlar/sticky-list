@@ -53,7 +53,7 @@ if (class_exists("GFForms")) {
             // Add supporting scripts to field settings page
             add_action("gform_editor_js", array($this, "editor_script"));
 
-            // Add all our tooltips
+            // Add field settings page tooltips
             add_filter("gform_tooltips", array( $this, "add_stickylist_tooltips"));
 
             // Add css
@@ -96,8 +96,8 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
                 
                 // Show below everything else
-                if($position == -1){
-                    ?>
+                if($position == -1){ ?>
+                    
                     <li class="list_setting">
                         Sticky List
                         <br>
@@ -113,7 +113,7 @@ if (class_exists("GFForms")) {
 
         
         /**
-         * Sticky List field settings jquery function
+         * Sticky List field settings JQuery function
          *
          */
         function editor_script(){
@@ -130,7 +130,7 @@ if (class_exists("GFForms")) {
 
        
         /**
-         * Sticky List tooltips function
+         * Sticky List field settings tooltips function
          *
          */   
         function add_stickylist_tooltips($tooltips){
@@ -155,7 +155,7 @@ if (class_exists("GFForms")) {
             // Get the form
             $form = GFAPI::get_form($form_id);
 
-            // Get form settings
+            // Get form settings (if someone know of a better way of doing this, do tell)
             $settings = $this->get_form_settings($form);
             if(isset($settings["enable_list"])) $enable_list = $settings["enable_list"]; else $enable_list = "";
             if(isset($settings["show_entries_to"])) $show_entries_to = $settings["show_entries_to"]; else  $show_entries_to = "";
@@ -354,7 +354,7 @@ if (class_exists("GFForms")) {
                     }
 
 
-                    // If we have entries to delete we need to insert the ajax to do this
+                    // If delete is enabled we need to insert ajax scripts to help with deletion
                     if($enable_delete) {
 
                         // Set som variables to use in the ajax function
@@ -391,7 +391,7 @@ if (class_exists("GFForms")) {
                         ";
                     }
                 
-                // If we dont have any entries, show the "Empty list text" to the user
+                // If we dont have any entries, show the "Empty list" text to the user
                 }else{
                     $list_html = $settings["empty_list_text"];
                 }
@@ -412,7 +412,7 @@ if (class_exists("GFForms")) {
 
 
         /**
-         * Add Sticky List sortning js (using the excellent list.js)
+         * Add Sticky List sortning js (using list.js)
          *
          */
         public function register_plugin_scripts() {
@@ -446,7 +446,7 @@ if (class_exists("GFForms")) {
                     // ...and the current user is creator OR has the capability to edit others posts
                     if($original_entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
 
-                        // Keep starred and red staus
+                        // Keep starred and read status
                         $entry["is_read"] = $original_entry["is_read"];
                         $entry["is_starred"] = $original_entry["is_starred"];
 
@@ -485,7 +485,7 @@ if (class_exists("GFForms")) {
                 // If we have an entry that is active
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
-                    // ... and the current user is the creator OR has the capability to edit others posts
+                    // ... and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
                     if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
                         
                         // Loop trough all the fields
@@ -495,7 +495,6 @@ if (class_exists("GFForms")) {
                             if (is_numeric($key)) {
 
                                 $new_key = str_replace(".", "_", "input_$key");
-
                                 $form_fields[$new_key] = $form_fields[$key];
                                 unset($form_fields[$key]);                                                           
                             }
@@ -505,7 +504,7 @@ if (class_exists("GFForms")) {
                         $form_id = $form['id'];
                         $form_fields["is_submit_$form_id"] = "1";
 
-                        // Get the settings
+                        // Get current form settings
                         $settings = $this->get_form_settings($form);
 
                         // Get update text
@@ -549,11 +548,11 @@ if (class_exists("GFForms")) {
         /**
          * Delete entries
          * This function is used to delete entries with an ajax request
-         * Could use better (or at least some error handling)
+         * Could use better (or at least some) error handling
          */
         public function maybe_delete_entry() {
             
-            // First we make sure that the delete mode is set and that we have the entry- and form id
+            // First we make sure that delete mode is set and that we have the entry id and form id
             if(isset($_POST["mode"]) == "delete" && isset($_POST["delete_id"]) && isset($_POST["form_id"])) {
 
                 // Get form id
@@ -574,17 +573,19 @@ if (class_exists("GFForms")) {
                     $current_user = wp_get_current_user();
                     $entry = GFAPI::get_entry($delete_id);
                     
-                    // If we could get the entry
+                    // If we were able to retrieve the entry
                     if(!is_wp_error($entry)) {
 
                         // ...and the current user is the creator OR has the capability to delete others posts
                         if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
                            
-                           if($delete_type == "trash") { 
+                            // Move to trash
+                            if($delete_type == "trash") { 
                                 $entry["status"] = "trash";
                                 $success = GFAPI::update_entry($entry, $delete_id);
                             }
 
+                            // Delete permanently
                             if($delete_type == "permanent") {
                                 $success = GFAPI::delete_entry($delete_id);
                             }
@@ -600,7 +601,6 @@ if (class_exists("GFForms")) {
          *
          */
         public function form_settings_fields($form) {
-
             ?>
             <script>
             // Instert headers into the settings page. Since we need the headers to be translatable we set them here
@@ -850,5 +850,6 @@ if (class_exists("GFForms")) {
         }
     }
 
+    // Phew, thats it. Lets initialize the class
     new StickyList();
 }

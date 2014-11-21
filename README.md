@@ -7,22 +7,21 @@ Sticky List is a Gravity Forms add-on that lets you list and **edit entries** fr
 #### Sticky List
 Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries. 
 
-**Note:** There is a bug in the Gravity Forms API that prevents Sticky List from working correctly. More information and fix, please see the FAQ section of this readme.
+**Note:** There is a bug in the Gravity Forms API that prevents Sticky List from working correctly. For more information and fix, please see the FAQ section of this readme.
 
 #### Features
 
-* Display a list of entries at the front end
+* Display a list of entries on the front end
 * Choose who can se the list; entry creator, all logged in users or anyone.
 * Support for multiple lists in the same page
 * Support for all Gravity Forms fields
 * Conditional logic support
-* Edit and re-save existing entries from the front-end
-* Delete existing entries from the front end
-* Table sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
+* View, edit and delete existing entries from the front-end
+* List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
 * Custom column labels
-* Uses new Gravity Forms API and the official Gravity Forms Add-on framework
+* Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</>
 * Fully customizable with dead simple styles to override
-* Fully localized (<a href="#">add your translation</a>)
+* Fully localized. You can <a href="#">add your translation</a>
 * Fully supported and maintained
 * Completely free and open source
 
@@ -34,11 +33,11 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### List and edit Gravity Form entries on the front end
 
-Front end editing of entries has allways been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to diplay entries in a fancy way (excelent <a href="https://gravityview.co/">GravityViews</a> allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and you can have as many lists as you want in a single page.
+Front end editing of entries has allways been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (excelent <a href="https://gravityview.co/">GravityViews</a> allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and you can have as many lists as you want in a single page.
 
 #### Delete Gravity Form submissions from front end
 
-Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending och the per form settings. 
+Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending on the per form settings. 
 
 #### Sort and search entries
 
@@ -57,7 +56,7 @@ Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.
 Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory.
 
 #### Developers
-This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome.
+This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> is required for this plugin.
 
