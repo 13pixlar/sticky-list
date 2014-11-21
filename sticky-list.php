@@ -19,7 +19,6 @@ Author URI: http://13pixlar.se
 /* Todo
  * Conditional notifications
  * Conditional confirmations
- * Date updated -meta field
  * Write plugin readme
  * Make plugin homepage
  * Support for multi page forms
@@ -168,6 +167,7 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_delete_label"])) $enable_delete_label = $settings["enable_delete_label"]; else $enable_delete_label = "";
             if(isset($settings["action_column_header"])) $action_column_header = $settings["action_column_header"]; else $action_column_header = "";
             if(isset($settings["embedd_page"])) $embedd_page = $settings["embedd_page"]; else $embedd_page = "";
+            if(isset($settings["enable_sort"])) $enable_sort = $settings["enable_sort"]; else $enable_sort = "";
             if(isset($settings["enable_search"])) $enable_search = $settings["enable_search"]; else $enable_search = "";
             
             // Only render list if Sticky List is enabled for this form
@@ -205,8 +205,9 @@ if (class_exists("GFForms")) {
                     
                     // This vaiable will hold all html for the form                
                     $list_html = "<div id='sticky-list-wrapper'>";
-                            
-                    if($enable_search) {
+                    
+                    // If sorting and searching is enabled, show search box        
+                    if($enable_sort && $enable_search) {
                         $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
                     }
 
@@ -341,12 +342,17 @@ if (class_exists("GFForms")) {
 
                     $list_html .= "</tbody></table></div>";
 
-                    // Build and initialize list.js
-                    $sort_fileds = "";
-                    for ($a=0; $a<$i; $a++) { 
-                        $sort_fileds .= "'sort-$a',"; 
+                    // If list sorting is enabled
+                    if($enable_sort) {
+
+                        // Build and initialize list.js
+                        $sort_fileds = "";
+                        for ($a=0; $a<$i; $a++) { 
+                            $sort_fileds .= "'sort-$a',"; 
+                        }
+                        $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper', options);</script><br><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
                     }
-                    $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper', options);</script>";
+
 
                     // If we have entries to delete we need to insert the ajax to do this
                     if($enable_delete) {
@@ -556,9 +562,10 @@ if (class_exists("GFForms")) {
                 // Get the form
                 $form = GFAPI::get_form($form_id);
 
-                // Get delete setting
+                // Get delete settings
                 $settings = $this->get_form_settings($form);
                 $enable_delete = $settings["enable_delete"];
+                $delete_type = $settings["delete_type"];
 
                 // Make sure that delete is enabled
                 if($enable_delete) {
@@ -572,7 +579,15 @@ if (class_exists("GFForms")) {
 
                         // ...and the current user is the creator OR has the capability to delete others posts
                         if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
-                            $success = GFAPI::delete_entry($delete_id);
+                           
+                           if($delete_type == "trash") { 
+                                $entry["status"] = "trash";
+                                $success = GFAPI::update_entry($entry, $delete_id);
+                            }
+
+                            if($delete_type == "permanent") {
+                                $success = GFAPI::delete_entry($delete_id);
+                            }
                         }
                     }
                 }
@@ -585,6 +600,18 @@ if (class_exists("GFForms")) {
          *
          */
         public function form_settings_fields($form) {
+
+            ?>
+            <script>
+            // Instert headers into the settings page. Since we need the headers to be translatable we set them here
+            jQuery(document).ready(function($) { 
+                $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit & delete","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
+             });
+            </script>
+            <?php
 
             // Build an array of all post to allow for selection in "embedd page" dropdown
             $args = array( 'post_type' => 'any','post_status' => 'any'); 
@@ -718,7 +745,22 @@ if (class_exists("GFForms")) {
                             "tooltip" => __('Label for the delete button','sticky-list'),
                             "class"   => "small",
                             "default_value" => __('Delete','sticky-list')
-                            
+                        ),
+                        array(
+                            "label"   => __('On delete','sticky-list'),
+                            "type"    => "select",
+                            "name"    => "delete_type",
+                            "tooltip" => __('Move deleted entries to trash or delete permanently?','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Move to trash','sticky-list'),
+                                    "value" => "trash"
+                                ),
+                                array(
+                                    "label" => __('Delete permanently','sticky-list'),
+                                    "value" => "permanent"
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('Action column header','sticky-list'),
@@ -734,6 +776,18 @@ if (class_exists("GFForms")) {
                             "name"    => "empty_list_text",
                             "tooltip" => __('Text that is shown if the list is empty','sticky-list'),
                             "class"   => "medium"  
+                        ),
+                        array(
+                            "label"   => __('List sort','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_sort",
+                            "tooltip" => __('Check this box to enable sorting for the list','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_sort"
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('List search','sticky-list'),

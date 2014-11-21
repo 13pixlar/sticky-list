@@ -1,7 +1,4 @@
 /* sticky-list styles */
-table.sticky-list th:not(.sticky-action) {
-    cursor: pointer;
-}
 
 table.sticky-list th.sticky-action,
 table.sticky-list td.sticky-action  {
