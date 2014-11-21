@@ -19,7 +19,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * View, edit and delete existing entries from the front-end
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
 * Custom column labels
-* Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</>
+* Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
 * Fully customizable with dead simple styles to override
 * Fully localized. You can <a href="#">add your translation</a>
 * Fully supported and maintained
