@@ -17,6 +17,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Support for all Gravity Forms fields
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
+* Conditional notifications
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
 * Custom column labels
 * Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
@@ -27,7 +28,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### Planned features
 
-* Conditional notifications
 * Conditional confirmations
 * Support for multi page forms
 
@@ -70,7 +70,7 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 <h5>Some fields do not get updated</h5>
 
-There is a bug in the Gravity Forms api that prevent fields from getting saved in the entry. This will supposedly get fixed in Gravity Forms 1.9. In the meantime you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
+There is a bug in the Gravity Forms api that prevent fields from getting saved in the entry. This will get fixed in Gravity Forms 1.9. In the meantime you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
 ```PHP

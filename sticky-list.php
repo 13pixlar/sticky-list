@@ -17,7 +17,6 @@ Author URI: http://13pixlar.se
  */
 
 /* Todo
- * Conditional notifications
  * Conditional confirmations
  * Write plugin readme
  * Make plugin homepage
@@ -68,6 +67,11 @@ if (class_exists("GFForms")) {
 
             // Delete entries
             $this->maybe_delete_entry();
+
+            // Add notification options
+            add_action("gform_notification_ui_settings", array($this, "stickylist_gform_notification_ui_settings"), 10, 3 );
+            add_action("gform_pre_notification_save", array($this, "stickylist_gform_pre_notification_save"), 10, 2 );
+            add_filter("gform_disable_notification", array($this, "stickylist_gform_disable_notification" ), 10, 4 );
         }
 
         
@@ -540,7 +544,7 @@ if (class_exists("GFForms")) {
                     }
                 }
             }
-
+            
             return $form;
         }
 
@@ -589,6 +593,30 @@ if (class_exists("GFForms")) {
                             if($delete_type == "permanent") {
                                 $success = GFAPI::delete_entry($delete_id);
                             }
+
+                            // If delete (regardles of type) was successful, we send the notification (if any)
+                            if($success) {
+
+                                // Get all notifications for current form
+                                $notifications = $form["notifications"];
+                                $notification_ids = array();
+                                
+                                // Loop trough the notifications 
+                                foreach ($notifications as $notification) {
+
+                                    // Gett current notification type
+                                    $notification_type = $notification["stickylist_notification_type"];
+
+                                    // Collect ids from notifications that are set to "all" or "delete"
+                                    if($notification_type == "delete" || $notification_type == "all") {
+                                        $id = $notification["id"];
+                                        array_push($notification_ids, $id);        
+                                    }
+                                }
+                                
+                                // Send the notification(s)
+                                GFCommon::send_notifications($notification_ids, $form, $entry);
+                            }          
                         }
                     }
                 }
@@ -847,6 +875,94 @@ if (class_exists("GFForms")) {
                 )
             );
             return array_merge(parent::styles(), $styles);
+        }
+
+
+        /**
+         * Add new notification settings
+         */
+        function stickylist_gform_notification_ui_settings( $ui_settings, $notification, $form ) {
+
+            $settings = $this->get_form_settings($form);
+
+            if (isset($settings["enable_list"])) {
+
+                // Add new notification options    
+                $type = rgar( $notification, 'stickylist_notification_type' );
+                $options = array(
+                    'all' => __( "Always", 'sticky-list' ),
+                    'new' => __( "When a new entry is submitted", 'sticky-list' ),
+                    'edit' => __( "When an entry is updated", 'sticky-list' ),
+                    'delete' => __( "When an entry is deleted", 'sticky-list' )
+                );
+
+                // Loop trough the options 
+                foreach ( $options as $key => $value ) {
+                    
+                    $selected = '';
+                    if ( $type == $key ) $selected = ' selected="selected"';
+                    $option .= "<option value=\"{$key}\" {$selected}>{$value}</option>\n";
+                }
+
+                $ui_settings['sticky-list_notification_setting'] = '
+                <tr>
+                    <th><label for="stickylist_notification_type">' . __( "Send this notification", 'sticky-list' ) . '</label></th>
+                    <td><select name="stickylist_notification_type" value="' . $type . '">' . $option . '</select></td>
+                </tr>';
+
+
+                return ( $ui_settings );              
+            }  
+        }
+
+
+        /**
+         * Save the notification settings
+         *
+         */
+        function stickylist_gform_pre_notification_save($notification, $form) {
+
+            $notification['stickylist_notification_type'] = rgpost( 'stickylist_notification_type' );
+            return ( $notification );
+        }
+
+
+        /**
+         * Send selected notification type
+         *
+         */
+        function stickylist_gform_disable_notification( $is_disabled, $notification, $form, $entry ) {
+
+            // Get form settings
+            $settings = $this->get_form_settings($form);
+
+            // Only show if Sticky List is enabled for the current form
+            if(isset($settings["enable_list"])) {
+                
+                if($notification["stickylist_notification_type"]) {
+
+                    $is_disabled = true;
+
+                    // If we are in edit mode
+                    if($_POST["action"] == "edit") {
+                        
+                        // ...and the current notification has the "edit" or "all" setting
+                        if($notification["stickylist_notification_type"] == "edit" || $notification["stickylist_notification_type"] == "all") {
+                            $is_disabled = false;
+                        }
+
+                    // Or if this is a new entry    
+                    }else{
+                        
+                        // ...and the current notification has the "new" or "all" setting
+                        if ( $notification["stickylist_notification_type"] == "new" || $notification["stickylist_notification_type"] == "all" ) {
+                            $is_disabled = false;
+                        }
+                    }
+                }           
+            }
+
+            return ( $is_disabled );
         }
     }
 
