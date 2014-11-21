@@ -226,10 +226,10 @@ if (class_exists("GFForms")) {
                     // Make table header
                     foreach ($fields as $field) {
 
-                        if(isset($field["stickylistField"])) {
+                        if(isset($field["stickylistField"]) && $field["stickylistField"] != "") {
 
                             // If we have a custom field label we use that, if not we use the fields standard label
-                            if(isset($field["stickylistFieldLabel"])) {                            
+                            if(isset($field["stickylistFieldLabel"]) && $field["stickylistFieldLabel"] != "") {                            
                                 $label = $field["stickylistFieldLabel"];                                
                             }else{
                                 $label = $field["label"];
@@ -261,10 +261,10 @@ if (class_exists("GFForms")) {
                         $i=0;
 
                         // Loop trough all the fields
-                        foreach( $form['fields'] as $field ) {
+                        foreach( $form["fields"] as $field ) {
 
                             // If the field is active 
-                            if (isset($field['stickylistField'])) {
+                            if (isset($field["stickylistField"]) && $field["stickylistField"] != "") {
                                 
                                 // ...we get the value for it
                                 $field_value = RGFormsModel::get_lead_field_value( $entry, $field );
@@ -433,7 +433,7 @@ if (class_exists("GFForms")) {
         public function post_edit_entry($entry, $form) {
             
             // If we are in edit mode
-            if(isset($_POST["action"]) == "edit") {
+            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
 
                 // Get original entry id
                 $original_entry_id = $_POST["original_entry_id"];
@@ -556,8 +556,8 @@ if (class_exists("GFForms")) {
          */
         public function maybe_delete_entry() {
             
-            // First we make sure that delete mode is set and that we have the entry id and form id
-            if(isset($_POST["mode"]) == "delete" && isset($_POST["delete_id"]) && isset($_POST["form_id"])) {
+            // First we make sure that delete mode is set to "delete" and that we have the entry id and form id
+            if(isset($_POST["mode"]) && $_POST["mode"] == "delete" && isset($_POST["delete_id"]) && isset($_POST["form_id"])) {
 
                 // Get form id
                 $form_id = $_POST["form_id"];
