@@ -7,7 +7,7 @@ Sticky List is a Gravity Forms add-on that lets you list and **edit entries** fr
 #### Sticky List
 Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries. 
 
-**Note:** There is a bug in the Gravity Forms API that prevents Sticky List from working correctly. For more information and fix, please see the FAQ section of this readme.
+**Note:** There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
 
 #### Features
 
@@ -70,7 +70,7 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 <h5>Some fields do not get updated</h5>
 
-There is a bug in the Gravity Forms api that prevent fields from getting saved in the entry. This will get fixed in Gravity Forms 1.9. In the meantime you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
+There was a bug in the Gravity Forms api that prevented fields from getting saved in the entry. The bug was fixed in the latest version of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
 ```PHP
