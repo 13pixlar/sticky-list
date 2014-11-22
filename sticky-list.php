@@ -30,7 +30,7 @@ if (class_exists("GFForms")) {
     class StickyList extends GFAddOn {
 
         protected $_version = "1.0 beta";
-        protected $_min_gravityforms_version = "1.7.9999";
+        protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "sticky-list/sticky-list.php";
         protected $_full_path = __FILE__;
