@@ -18,6 +18,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
 * Conditional notifications
+* Conditional confirmations
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
 * Custom column labels
 * Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
@@ -28,7 +29,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### Planned features
 
-* Conditional confirmations
 * Support for multi page forms
 
 #### List and edit Gravity Form entries on the front end
@@ -43,6 +43,14 @@ Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Delet
 
 Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately. 
 
+#### Conditional confirmations and notifications
+
+Gravity Forms Sticky List adds conditional confirmations and notifications so that different confirmations messages can be shown depending on if a new entry was submitted or if an existiong entry was updated, and diffrent email notifications can be sent if an entry was added, updated or deleted.
+
+#### Styling the list
+
+Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory.
+
 #### Usage
 
 1. Upload and activate the plugin
@@ -51,14 +59,10 @@ Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.
 4. Go to the form editor and select what fields should be displayed in the list
 5. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
 
-#### Styling the list
-
-Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory.
-
 #### Developers
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
 
-**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> is required for this plugin.
+**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
 <h3>Installation</h3>
 
