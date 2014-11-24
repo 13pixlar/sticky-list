@@ -1,24 +1,15 @@
 <?php
 /*
 Plugin Name: Gravity Forms Sticky List
-Plugin URI: 
+Plugin URI: http://13pixlar.se
 Description: List and edit submitted entries from the front end
-Version: 1.0 beta
+Version: 1.0
 Author: 13pixar
 Author URI: http://13pixlar.se
-
 */
 
-/* COPYRIGHT NOTICE
- * Since this shoftware is unreleased it is still copyrighted
- * Copyright (C) 2014 - Adam Rehal - All rights reserved
- * This software may not be redistributed without explicit
- * authorization by the Author/Owner.
- */
 
 /* Todo
- * Write plugin readme
- * Make plugin homepage
  * Support for multi page forms
  */
 
