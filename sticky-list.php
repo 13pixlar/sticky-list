@@ -911,6 +911,7 @@ if (class_exists("GFForms")) {
                     $option .= "<option value=\"{$key}\" {$selected}>{$value}</option>\n";
                 }
 
+                // Oputput the new setting
                 $ui_settings['sticky-list_notification_setting'] = '
                 <tr>
                     <th><label for="stickylist_notification_type">' . __( "Send this notification", 'sticky-list' ) . '</label></th>
@@ -989,10 +990,8 @@ if (class_exists("GFForms")) {
                 $type = rgar( $confirmation, 'stickylist_confirmation_type' );
                
                 $options = array(
-                    'all' => __( "Always", 'sticky-list' ),
                     'new' => __( "When a new entry is submitted", 'sticky-list' ),
                     'edit' => __( "When an entry is updated", 'sticky-list' ),
-                    'delete' => __( "When an entry is deleted", 'sticky-list' )
                 );
 
                 $option = '';
@@ -1005,12 +1004,12 @@ if (class_exists("GFForms")) {
                     $option .= "<option value=\"{$key}\" {$selected}>{$value}</option>\n";
                 }
 
+                // Oputput the new setting
                 $ui_settings['sticky-list_confirmation_setting'] = '
                 <tr>
                     <th><label for="stickylist_confirmation_type">' . __( "Display this confirmation", 'sticky-list' ) . '</label></th>
                     <td><select name="stickylist_confirmation_type" value="' . $type . '">' . $option . '</select></td>
                 </tr>';
-
 
                 return ( $ui_settings );              
             }  
@@ -1027,11 +1026,35 @@ if (class_exists("GFForms")) {
             return ( $confirmation );
         }
 
+
+        /**
+         * Show confirmations
+         *
+         */
         function custom_confirmation($confirmation, $form, $lead, $ajax){
-            var_dump($confirmation);
-            return $confirmation;
+            
+            // Get all confirmations for the current form
+            $confirmations = $form["confirmations"];
+            $send_confirmation = "";
+            
+            // Is the action variable is not set we assume that a new entry is beeing created
+            if(!isset($_POST["action"])) {
+                $_POST["action"] = "new";
+            }
+
+            // Loop trough all confirmations
+            foreach ($confirmations as $confirmation) {
+
+                // Show matching confirmations
+                if($confirmation["stickylist_confirmation_type"] == $_POST["action"] || $confirmation["stickylist_confirmation_type"] == "all") {
+                    $send_confirmation .= $confirmation["message"] . " ";
+                }                
+            }
+            
+            return $send_confirmation;
         }
     }
+    
 
     // Phew, thats it. Lets initialize the class
     new StickyList();
