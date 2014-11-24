@@ -72,6 +72,10 @@ if (class_exists("GFForms")) {
             add_action("gform_notification_ui_settings", array($this, "stickylist_gform_notification_ui_settings"), 10, 3 );
             add_action("gform_pre_notification_save", array($this, "stickylist_gform_pre_notification_save"), 10, 2 );
             add_filter("gform_disable_notification", array($this, "stickylist_gform_disable_notification" ), 10, 4 );
+
+            add_action("gform_confirmation_ui_settings", array($this, "stickylist_gform_confirmation_ui_settings"), 10, 3 );
+            add_action("gform_pre_confirmation_save", array($this, "stickylist_gform_pre_confirmation_save"), 10, 2 );
+            add_filter("gform_confirmation", array($this, "custom_confirmation"), 10, 4);
         }
 
         
@@ -880,6 +884,7 @@ if (class_exists("GFForms")) {
 
         /**
          * Add new notification settings
+         *
          */
         function stickylist_gform_notification_ui_settings( $ui_settings, $notification, $form ) {
 
@@ -896,7 +901,9 @@ if (class_exists("GFForms")) {
                     'delete' => __( "When an entry is deleted", 'sticky-list' )
                 );
 
-                // Loop trough the options 
+                $option = '';
+
+                // Loop trough the options
                 foreach ( $options as $key => $value ) {
                     
                     $selected = '';
@@ -963,6 +970,66 @@ if (class_exists("GFForms")) {
             }
 
             return ( $is_disabled );
+        }
+
+
+
+
+        /**
+         * Add new confirmation settings
+         *
+         */
+        function stickylist_gform_confirmation_ui_settings( $ui_settings, $confirmation, $form ) {
+
+            $settings = $this->get_form_settings($form);
+
+            if (isset($settings["enable_list"])) {
+
+                // Add new confirmation options    
+                $type = rgar( $confirmation, 'stickylist_confirmation_type' );
+               
+                $options = array(
+                    'all' => __( "Always", 'sticky-list' ),
+                    'new' => __( "When a new entry is submitted", 'sticky-list' ),
+                    'edit' => __( "When an entry is updated", 'sticky-list' ),
+                    'delete' => __( "When an entry is deleted", 'sticky-list' )
+                );
+
+                $option = '';
+
+                // Loop trough the options 
+                foreach ( $options as $key => $value ) {
+                    
+                    $selected = '';
+                    if ( $type == $key ) $selected = ' selected="selected"';
+                    $option .= "<option value=\"{$key}\" {$selected}>{$value}</option>\n";
+                }
+
+                $ui_settings['sticky-list_confirmation_setting'] = '
+                <tr>
+                    <th><label for="stickylist_confirmation_type">' . __( "Display this confirmation", 'sticky-list' ) . '</label></th>
+                    <td><select name="stickylist_confirmation_type" value="' . $type . '">' . $option . '</select></td>
+                </tr>';
+
+
+                return ( $ui_settings );              
+            }  
+        }
+
+
+        /**
+         * Save the confirmation settings
+         *
+         */
+        function stickylist_gform_pre_confirmation_save($confirmation, $form) {
+
+            $confirmation['stickylist_confirmation_type'] = rgpost( 'stickylist_confirmation_type' );
+            return ( $confirmation );
+        }
+
+        function custom_confirmation($confirmation, $form, $lead, $ajax){
+            var_dump($confirmation);
+            return $confirmation;
         }
     }
 
