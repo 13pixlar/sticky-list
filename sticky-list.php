@@ -945,7 +945,7 @@ if (class_exists("GFForms")) {
             // Only show if Sticky List is enabled for the current form
             if(isset($settings["enable_list"])) {
                 
-                if($notification["stickylist_notification_type"]) {
+                if(isset($notification["stickylist_notification_type"]) && $notification["stickylist_notification_type"] != "") {
 
                     $is_disabled = true;
 
