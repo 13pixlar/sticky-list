@@ -486,11 +486,19 @@ if (class_exists("GFForms")) {
                     // ... and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
                     if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
                         
+                       
+                     
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
 
                             // If the key is numeric we need to change it from [X.X] to [input_X_X]
                             if (is_numeric($key)) {
+
+                                // If the current field is a list field we need to unserialize it
+                                if(is_array(maybe_unserialize( $value ))) {
+                                    $list = maybe_unserialize( $value );
+                                    $value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
+                                }
 
                                 $new_key = str_replace(".", "_", "input_$key");
                                 $form_fields[$new_key] = $form_fields[$key];
