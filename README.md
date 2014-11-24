@@ -33,8 +33,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 Front end editing of entries has allways been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (excelent <a href="https://gravityview.co/">GravityViews</a> allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and you can have as many lists as you want in a single page.
 
-**Note:** There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
-
 #### Delete Gravity Form submissions from front end
 
 Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending on the per form settings. 
@@ -64,7 +62,18 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
-<h3>Installation</h3>
+#### Known bugs
+
+**Some fields are not updated**
+There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
+
+**List field does not work correctly**
+This will be fixed in future versions of Sticky List
+
+**File field does display uploaded file when viewed or edited**
+This will be addressed in a future version of Sticky List.
+
+#### Installation
 
 1. Upload extracted folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
