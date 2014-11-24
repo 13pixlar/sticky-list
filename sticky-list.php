@@ -17,7 +17,6 @@ Author URI: http://13pixlar.se
  */
 
 /* Todo
- * Conditional confirmations
  * Write plugin readme
  * Make plugin homepage
  * Support for multi page forms
