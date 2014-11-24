@@ -7,8 +7,6 @@ Sticky List is a Gravity Forms add-on that lets you list and **edit entries** fr
 #### Sticky List
 Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries. 
 
-**Note:** There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
-
 #### Features
 
 * Display a list of entries on the front end
@@ -34,6 +32,8 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 #### List and edit Gravity Form entries on the front end
 
 Front end editing of entries has allways been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (excelent <a href="https://gravityview.co/">GravityViews</a> allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and you can have as many lists as you want in a single page.
+
+**Note:** There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
 
 #### Delete Gravity Form submissions from front end
 
@@ -74,7 +74,7 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 <h5>Some fields do not get updated</h5>
 
-There was a bug in the Gravity Forms api that prevented fields from getting saved in the entry. The bug was fixed in the latest version of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
+There was a bug in the Gravity Forms api that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
 ```PHP
