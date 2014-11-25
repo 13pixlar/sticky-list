@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2014-11-24 13:25+0100\n"
-"PO-Revision-Date: 2014-11-24 13:25+0100\n"
+"POT-Creation-Date: 2014-11-25 11:42+0100\n"
+"PO-Revision-Date: 2014-11-25 11:42+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,238 +14,242 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../sticky-list.php:112
+#: ../sticky-list.php:102
 msgid "Show in list"
 msgstr ""
 
-#: ../sticky-list.php:114
+#: ../sticky-list.php:104
 msgid "Column label"
 msgstr ""
 
-#: ../sticky-list.php:145
+#: ../sticky-list.php:135
 msgid ""
 "<h6>Show field in list</h6>Check this box to show this field in the list."
 msgstr ""
 
-#: ../sticky-list.php:146
+#: ../sticky-list.php:136
 msgid "<h6>Header text</h6>Use this field to override the default text header."
 msgstr ""
 
-#: ../sticky-list.php:219
+#: ../sticky-list.php:209
 msgid "Search"
 msgstr ""
 
-#: ../sticky-list.php:371
+#: ../sticky-list.php:361
 msgid "Delete failed"
 msgstr ""
 
-#: ../sticky-list.php:640
+#: ../sticky-list.php:638
 msgid "General settings"
 msgstr ""
 
-#: ../sticky-list.php:641
+#: ../sticky-list.php:639
 msgid "View, edit & delete"
 msgstr ""
 
-#: ../sticky-list.php:642
+#: ../sticky-list.php:640
 msgid "Labels"
 msgstr ""
 
-#: ../sticky-list.php:643
+#: ../sticky-list.php:641
 msgid "Sort & search"
 msgstr ""
 
-#: ../sticky-list.php:670
+#: ../sticky-list.php:668
 msgid "Sticky List Settings"
 msgstr ""
 
-#: ../sticky-list.php:673
+#: ../sticky-list.php:671
 msgid "Enable for this form"
 msgstr ""
 
-#: ../sticky-list.php:676
+#: ../sticky-list.php:674
 msgid "Check this box to enable Sticky List for this form"
 msgstr ""
 
-#: ../sticky-list.php:685
+#: ../sticky-list.php:683
 msgid "Show entries in list to"
 msgstr ""
 
-#: ../sticky-list.php:688
+#: ../sticky-list.php:686
 msgid "Who should be able to se the entries in the list?"
 msgstr ""
 
-#: ../sticky-list.php:691
+#: ../sticky-list.php:689
 msgid "Entry creator"
 msgstr ""
 
-#: ../sticky-list.php:695
+#: ../sticky-list.php:693
 msgid "All logged in users"
 msgstr ""
 
-#: ../sticky-list.php:699
+#: ../sticky-list.php:697
 msgid "Everyone"
 msgstr ""
 
-#: ../sticky-list.php:705
+#: ../sticky-list.php:703
 msgid "Embedd page/post"
 msgstr ""
 
-#: ../sticky-list.php:708
+#: ../sticky-list.php:706
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
 msgstr ""
 
-#: ../sticky-list.php:712
+#: ../sticky-list.php:710
 msgid "View entries"
 msgstr ""
 
-#: ../sticky-list.php:715
+#: ../sticky-list.php:713
 msgid ""
 "Check this box to enable users to view the complete submitted entry. A \\"
 "\"View\\\" link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:718 ../sticky-list.php:739 ../sticky-list.php:768
-#: ../sticky-list.php:819 ../sticky-list.php:831
+#: ../sticky-list.php:716 ../sticky-list.php:737 ../sticky-list.php:766
+#: ../sticky-list.php:817 ../sticky-list.php:829
 msgid "Enabled"
 msgstr ""
 
-#: ../sticky-list.php:724
+#: ../sticky-list.php:722
 msgid "View label"
 msgstr ""
 
-#: ../sticky-list.php:727
+#: ../sticky-list.php:725
 msgid "Label for the view button"
 msgstr ""
 
-#: ../sticky-list.php:729
+#: ../sticky-list.php:727
 msgid "View"
 msgstr ""
 
-#: ../sticky-list.php:733
+#: ../sticky-list.php:731
 msgid "Edit entries"
 msgstr ""
 
-#: ../sticky-list.php:736
+#: ../sticky-list.php:734
 msgid ""
 "Check this box to enable user to edit submitted entries. An \\\"Edit\\\" "
 "link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:745
+#: ../sticky-list.php:743
 msgid "Edit label"
 msgstr ""
 
-#: ../sticky-list.php:748
+#: ../sticky-list.php:746
 msgid "Label for the edit button"
 msgstr ""
 
-#: ../sticky-list.php:750
+#: ../sticky-list.php:748
 msgid "Edit"
 msgstr ""
 
-#: ../sticky-list.php:754
+#: ../sticky-list.php:752
 msgid "Update button text"
 msgstr ""
 
-#: ../sticky-list.php:757
+#: ../sticky-list.php:755
 msgid "Text for the submit button that is displayed when editing an entry"
 msgstr ""
 
-#: ../sticky-list.php:759
+#: ../sticky-list.php:757
 msgid "Update"
 msgstr ""
 
-#: ../sticky-list.php:762
+#: ../sticky-list.php:760
 msgid "Delete entries"
 msgstr ""
 
-#: ../sticky-list.php:765
+#: ../sticky-list.php:763
 msgid ""
 "Check this box to enable user to delete submitted entries. A \\\"Delete\\\" "
 "link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:774
+#: ../sticky-list.php:772
 msgid "Delete label"
 msgstr ""
 
-#: ../sticky-list.php:777
+#: ../sticky-list.php:775
 msgid "Label for the delete button"
 msgstr ""
 
-#: ../sticky-list.php:779
+#: ../sticky-list.php:777
 msgid "Delete"
 msgstr ""
 
-#: ../sticky-list.php:782
+#: ../sticky-list.php:780
 msgid "On delete"
 msgstr ""
 
-#: ../sticky-list.php:785
+#: ../sticky-list.php:783
 msgid "Move deleted entries to trash or delete permanently?"
 msgstr ""
 
-#: ../sticky-list.php:788
+#: ../sticky-list.php:786
 msgid "Move to trash"
 msgstr ""
 
-#: ../sticky-list.php:792
+#: ../sticky-list.php:790
 msgid "Delete permanently"
 msgstr ""
 
-#: ../sticky-list.php:798
+#: ../sticky-list.php:796
 msgid "Action column header"
 msgstr ""
 
-#: ../sticky-list.php:801
+#: ../sticky-list.php:799
 msgid "Text to show as header for the action column"
 msgstr ""
 
-#: ../sticky-list.php:806
+#: ../sticky-list.php:804
 msgid "Empty list text"
 msgstr ""
 
-#: ../sticky-list.php:809
+#: ../sticky-list.php:807
 msgid "Text that is shown if the list is empty"
 msgstr ""
 
-#: ../sticky-list.php:813
+#: ../sticky-list.php:811
 msgid "List sort"
 msgstr ""
 
-#: ../sticky-list.php:816
+#: ../sticky-list.php:814
 msgid "Check this box to enable sorting for the list"
 msgstr ""
 
-#: ../sticky-list.php:825
+#: ../sticky-list.php:823
 msgid "List search"
 msgstr ""
 
-#: ../sticky-list.php:828
+#: ../sticky-list.php:826
 msgid "Check this box to enable search for the list"
 msgstr ""
 
-#: ../sticky-list.php:898
+#: ../sticky-list.php:896 ../sticky-list.php:991
 msgid "Always"
 msgstr ""
 
-#: ../sticky-list.php:899 ../sticky-list.php:993
+#: ../sticky-list.php:897 ../sticky-list.php:993
 msgid "When a new entry is submitted"
 msgstr ""
 
-#: ../sticky-list.php:900 ../sticky-list.php:994
+#: ../sticky-list.php:898 ../sticky-list.php:994
 msgid "When an entry is updated"
 msgstr ""
 
-#: ../sticky-list.php:901
+#: ../sticky-list.php:899
 msgid "When an entry is deleted"
 msgstr ""
 
-#: ../sticky-list.php:917
+#: ../sticky-list.php:915
 msgid "Send this notification"
+msgstr ""
+
+#: ../sticky-list.php:992
+msgid "Never"
 msgstr ""
 
 #: ../sticky-list.php:1010

@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.0 beta";
+        protected $_version = "1.0";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "sticky-list/sticky-list.php";
@@ -63,9 +63,10 @@ if (class_exists("GFForms")) {
             add_action("gform_pre_notification_save", array($this, "stickylist_gform_pre_notification_save"), 10, 2 );
             add_filter("gform_disable_notification", array($this, "stickylist_gform_disable_notification" ), 10, 4 );
 
+            // Add confirmation options
             add_action("gform_confirmation_ui_settings", array($this, "stickylist_gform_confirmation_ui_settings"), 10, 3 );
             add_action("gform_pre_confirmation_save", array($this, "stickylist_gform_pre_confirmation_save"), 10, 2 );
-            add_filter("gform_confirmation", array($this, "custom_confirmation"), 10, 4);
+            add_filter("gform_confirmation", array($this, "stickylist_gform_confirmation"), 10, 4);
         }
 
         
@@ -494,9 +495,9 @@ if (class_exists("GFForms")) {
                             // If the key is numeric we need to change it from [X.X] to [input_X_X]
                             if (is_numeric($key)) {
 
-                                // If the current field is a list field we need to unserialize it
-                                if(is_array(maybe_unserialize( $value ))) {
-                                    $list = maybe_unserialize( $value );
+                                // If the current field is a list field we need to unserialize it and flatten the array
+                                if(is_array(maybe_unserialize($value))) {
+                                    $list = maybe_unserialize($value);
                                     $value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
                                 }
 
@@ -988,6 +989,8 @@ if (class_exists("GFForms")) {
                 $type = rgar( $confirmation, 'stickylist_confirmation_type' );
                
                 $options = array(
+                    'all' => __( "Always", 'sticky-list' ),
+                    'never' => __( "Never", 'sticky-list' ),
                     'new' => __( "When a new entry is submitted", 'sticky-list' ),
                     'edit' => __( "When an entry is updated", 'sticky-list' ),
                 );
@@ -1029,30 +1032,42 @@ if (class_exists("GFForms")) {
          * Show confirmations
          *
          */
-        function custom_confirmation($confirmation, $form, $lead, $ajax){
+        function stickylist_gform_confirmation($original_confirmation, $form, $lead, $ajax){
             
             // Get all confirmations for the current form
             $confirmations = $form["confirmations"];
-            $send_confirmation = "";
-            
-            // Is the action variable is not set we assume that a new entry is beeing created
-            if(!isset($_POST["action"])) {
+            $new_confirmation = "";
+
+            // If action is not set we assume its a new entry
+            if($_POST["action"] == NULL) {
                 $_POST["action"] = "new";
             }
-
+            
             // Loop trough all confirmations
             foreach ($confirmations as $confirmation) {
 
                 // Show matching confirmations
-                if($confirmation["stickylist_confirmation_type"] == $_POST["action"] || $confirmation["stickylist_confirmation_type"] == "all") {
-                    $send_confirmation .= $confirmation["message"] . " ";
+                if( $confirmation["stickylist_confirmation_type"] == $_POST["action"] || $confirmation["stickylist_confirmation_type"] == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
+                    
+                    // If the confirmation is a message we add that message to the output sting
+                    if($confirmation["type"] == "message") {
+                        $new_confirmation .= $confirmation["message"] . " ";
+
+                    // If not, we set the redirect variable to true    
+                    }else{
+                        $redirect = true;
+                    }
                 }                
             }
             
-            return $send_confirmation;
+            // If the confirmation is not a redirect we return it, else we return the redirect confirmation
+            if($redirect != true) { 
+                return $new_confirmation;
+            }else{
+                return $original_confirmation;
+            }
         }
     }
-    
 
     // Phew, thats it. Lets initialize the class
     new StickyList();
