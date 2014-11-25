@@ -75,9 +75,6 @@ There is a fully documented version of the plugin on the <a href="https://github
 **Some fields are not updated**<br>
 There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
 
-**List field does not work correctly**<br>
-This will be fixed in future versions of Sticky List
-
 **File field does display uploaded file when viewed or edited**<br>
 This will be addressed in a future version of Sticky List.
 
