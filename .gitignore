@@ -42,17 +42,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-.svn/entries
-.svn/format
-.svn/wc.db
-trunk/css/sticky-list_admin_styles.css
-trunk/css/sticky-list_styles.css
-trunk/img/ajax-spinner.gif
-trunk/js/list.min.js
-trunk/js/sticky-list_scripts.js
-trunk/languages/sticky-list-sv_SE.mo
-trunk/languages/sticky-list-sv_SE.po
-trunk/languages/sticky-list.mo
-trunk/languages/sticky-list.pot
-trunk/sticky-list.php
-trunk/readme.txt
+.svn/
+trunk/
+assets/
+branches/
+tags/
