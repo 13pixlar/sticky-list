@@ -102,7 +102,7 @@ In `plugins/gravity-forms-sticky-list/sticky-list.php` on line `23` change
 ```PHP
 protected $_min_gravityforms_version = "1.8.19.2";
 ```
-to you version of Gravity Forms
+to you version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 <h3>Changelog</h3>
 
