@@ -22,7 +22,7 @@ if (class_exists("GFForms")) {
         protected $_version = "1.0";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
-        protected $_path = "sticky-list/sticky-list.php";
+        protected $_path = "gravity-forms-sticky-list/sticky-list.php";
         protected $_full_path = __FILE__;
         protected $_title = "Gravity Forms Sticky List";
         protected $_short_title = "Sticky List";
@@ -405,7 +405,7 @@ if (class_exists("GFForms")) {
          *
          */
         public function register_plugin_styles() {
-            wp_register_style( 'stickylist', plugins_url( 'sticky-list/css/sticky-list_styles.css' ) );
+            wp_register_style( 'stickylist', plugins_url( 'gravity-forms-sticky-list/css/sticky-list_styles.css' ) );
             wp_enqueue_style( 'stickylist' );
         }
 
@@ -415,7 +415,7 @@ if (class_exists("GFForms")) {
          *
          */
         public function register_plugin_scripts() {
-            wp_register_script( 'list-js', plugins_url( 'sticky-list/js/list.min.js' ) );
+            wp_register_script( 'list-js', plugins_url( 'gravity-forms-sticky-list/js/list.min.js' ) );
             wp_enqueue_script( 'list-js' );
 
         }
