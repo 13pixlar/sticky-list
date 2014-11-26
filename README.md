@@ -96,6 +96,14 @@ if (empty($entry_id)) {
 }
 ```
 
+You may also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
+
+In `plugins/gravity-forms-sticky-list/sticky-list.php` on line `23` change 
+```PHP
+protected $_min_gravityforms_version = "1.8.19.2";
+```
+to you version of Gravity Forms
+
 <h3>Changelog</h3>
 
 **1.0**
