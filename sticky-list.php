@@ -31,7 +31,7 @@ if (class_exists("GFForms")) {
             parent::init();
 
             // Add localization
-            add_action( 'init', array($this, 'stickylist_localize') );   
+            $this->stickylist_localize();
             
             // Add setting to fields settings tab
             add_action("gform_field_standard_settings", array( $this, "stickylist_field_settings"), 10, 2);
