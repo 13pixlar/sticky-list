@@ -10,6 +10,10 @@ jQuery(document).ready(function($) {
     $('#gaddon-setting-row-action_column_header').before(settingsHeader('2',''));
     $('#gaddon-setting-row-enable_sort').before(settingsHeader('3',''));
 
+    // Add donate info
+    $('#gaddon-setting-row-enable_search').after(settingsHeader('4',''));
+    $('#gaddon-setting-row-header-4').after('<tr id="gaddon-setting-row-donate" class="show"><td class="donate-text" colspan="2"></td></tr>');
+
 	// Define some variables
 	var siblings 			= $('#gaddon-setting-row-enable_list').siblings('[id^=gaddon-setting-row]');
 	var active 				= $('#enable_list');

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Gravity Forms Sticky List
-Plugin URI: http://13pixlar.se
+Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
 Version: 1.0
 Author: 13pixar
@@ -640,12 +640,14 @@ if (class_exists("GFForms")) {
                 $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit & delete","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-4 h4').html('<?php _e("Donate","sticky-list"); ?>')
+                $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
              });
             </script>
             <?php
 
             // Build an array of all post to allow for selection in "embedd page" dropdown
-            $args = array( 'post_type' => 'any','post_status' => 'any'); 
+            $args = array( 'posts_per_page' => 999, 'post_type' => 'any','post_status' => 'any'); 
             $posts = get_posts( $args );
             $posts_array = array();
             foreach ($posts as $post) {
