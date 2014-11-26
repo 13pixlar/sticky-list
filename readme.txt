@@ -63,7 +63,7 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 2. Go to the settings page of a form and click the Sticky List settings tab
 3. Enable Sticky List for that form att choose your settings
 4. Go to the form editor and select what fields should be displayed in the list
-5. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
+5. Put the shortcode in a page/post with the corresponding form id, i.e: <br>`[stickylist id="1"]`
 
 #### Developers
 There is a fully documented version of the plugin on the <a href="https://github.com/13pixlar/sticky-list">Github project page</a>. This plugin is Open Source and pull requests are welcome.
@@ -91,18 +91,18 @@ This will be addressed in a future version of Sticky List.
 There was a bug in the Gravity Forms api that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
-```PHP
+`
 if (empty($entry_id))
     $entry_id = $entry["id"];
-```
+`
 and replace with
-```PHP
+`
 if (empty($entry_id)) {
     $entry_id = $entry["id"];
 }else{
     $entry["id"] = $entry_id;
 }
-```
+`
 
 == Changelog ==
 
