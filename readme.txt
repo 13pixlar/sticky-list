@@ -114,5 +114,9 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed an issue where only the first 20 entries in the list were shown
+* Fixed a bug where translation would not get loaded
+
 = 1.0 =
 * Initial release
