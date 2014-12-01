@@ -175,6 +175,11 @@ if (class_exists("GFForms")) {
                 // Get current user
                 $current_user = wp_get_current_user();
                 $current_user_id = $current_user->ID;
+
+                // Set sorting and paging variables
+                $sorting = array();
+                $paging = array('offset' => 0, 'page_size' => 9999 );
+
                    
                 // Get entries to show depending on settings
                 // Show only to creator
@@ -182,21 +187,22 @@ if (class_exists("GFForms")) {
 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                     $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
-                    $entries = GFAPI::get_entries($form_id, $search_criteria);
+
+                    $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
                 
                 // Show to all logged in users   
                 }elseif($show_entries_to === "loggedin"){
                     
                     if(is_user_logged_in()) {
                         $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
-                        $entries = GFAPI::get_entries($form_id, $search_criteria);
+                        $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
                     }
                 
                 // Show to everyone
                 }else{
                 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
-                    $entries = GFAPI::get_entries($form_id, $search_criteria);
+                    $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
                 }
 
                 // If we have some entries, lets loop trough them and start building the output html
