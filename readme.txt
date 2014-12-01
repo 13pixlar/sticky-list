@@ -87,9 +87,9 @@ This will be addressed in a future version of Sticky List.
 
 You need to check "Show in list" on the fields that you would like to appear in the list. This is done in the form editor when edtiting a field.
 
-= The View and Edit links don't anything =
+= The View and Edit links don't do anything =
 
-Make sure that you select the page/post where the FORM is embedded, in Sticky List settings for that form. The actual form is then used to view and/or edit the entries. 
+In Sticky List settings for that form: make sure that you select the page/post where the FORM is embedded. The actual form is then used to view and/or edit the entries.
 
 = Where are the Sticky List settings? =
 
