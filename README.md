@@ -78,9 +78,23 @@ This will be addressed in a future version of Sticky List.
 
 <h3>Frequently Asked Questions</h3>
 
-<h5>Some fields do not get updated</h5>
+<h5>The list is empty, why?</h5>
 
-There was a bug in the Gravity Forms api that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
+You need to check "Show in list" on the fields that you would like to appear in the list. This is done in the form editor when edtiting a field.
+
+<h5>The View and Edit links don't anything</h5>
+
+Make sure that you select the page/post where the FORM is embedded, in Sticky List settings for that form. The actual form is then used to view and/or edit the entries. 
+
+<h5>Where are the Sticky List settings?</h5>
+
+Sticky List is activated on a per form basis. The settings are located in the individual form settings, right under Notifications.
+
+<h5>I still cant find any sticky list settings</h5>
+
+Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
+
+There is a bug in the Gravity Forms API in pervious versions that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
 ```PHP
@@ -96,7 +110,7 @@ if (empty($entry_id)) {
 }
 ```
 
-You may also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
+In that case, you also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
 
 In `plugins/gravity-forms-sticky-list/sticky-list.php` on line `23` change 
 ```PHP

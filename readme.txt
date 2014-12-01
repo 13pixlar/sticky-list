@@ -72,10 +72,7 @@ There is a fully documented version of the plugin on the <a href="https://github
 
 #### Known bugs
 
-**Some fields are not updated**<br>
-There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
-
-**File field does display uploaded file when viewed or edited**<br>
+**File field does not display uploaded file when viewed or edited**<br>
 This will be addressed in a future version of Sticky List.
 
 == Installation ==
@@ -86,9 +83,23 @@ This will be addressed in a future version of Sticky List.
 
 == Frequently Asked Questions ==
 
-= Some fields do not get updated =
+= The list is empty, why? =
 
-There was a bug in the Gravity Forms api that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
+You need to check "Show in list" on the fields that you would like to appear in the list. This is done in the form editor when edtiting a field.
+
+= The View and Edit links don't anything =
+
+Make sure that you select the page/post where the FORM is embedded, in Sticky List settings for that form. The actual form is then used to view and/or edit the entries. 
+
+= Where are the Sticky List settings? =
+
+Sticky List is activated on a per form basis. The settings are located in the individual form settings, right under Notifications.
+
+= I still cant find any sticky list settings =
+
+Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
+
+There is a bug in the Gravity Forms API in pervious versions that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
 
 On line `510`, remove 
 `
@@ -104,7 +115,7 @@ if (empty($entry_id)) {
 }
 `
 
-You may also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
+You also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
 
 In `plugins/gravity-forms-sticky-list/sticky-list.php` on line `23` change 
 `
