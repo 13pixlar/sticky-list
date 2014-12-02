@@ -120,6 +120,8 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 
 <h3>Changelog</h3>
 
+**1.0.2**
+* Fixed a problem where dependencies would not get included
 
 **1.0.1**
 * Fixed an issue where only the first 20 entries in the list were shown
