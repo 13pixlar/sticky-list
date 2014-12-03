@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.0.2
+Version: 1.0.4
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.0.2";
+        protected $_version = "1.0.4";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -166,6 +166,9 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_delete_label"])) $enable_delete_label = $settings["enable_delete_label"]; else $enable_delete_label = "";
             if(isset($settings["action_column_header"])) $action_column_header = $settings["action_column_header"]; else $action_column_header = "";
             if(isset($settings["embedd_page"])) $embedd_page = $settings["embedd_page"]; else $embedd_page = "";
+
+            // If a Custom embed url is set we override the selected embedd page
+            if(isset($settings["custom_embedd_page"]) && $settings["custom_embedd_page"] != "") $embedd_page = $settings["custom_embedd_page"];
             if(isset($settings["enable_sort"])) $enable_sort = $settings["enable_sort"]; else $enable_sort = "";
             if(isset($settings["enable_search"])) $enable_search = $settings["enable_search"]; else $enable_search = "";
             
@@ -206,7 +209,7 @@ if (class_exists("GFForms")) {
                 }
 
                 // If we have some entries, lets loop trough them and start building the output html
-                if($entries) {
+                if(isset($entries)) {
                     
                     // This vaiable will hold all html for the form                
                     $list_html = "<div id='sticky-list-wrapper'>";
@@ -273,8 +276,8 @@ if (class_exists("GFForms")) {
                                 // If the value is an array (i.e. address field, name field, etc)
                                 if(is_array($field_value)) {
 
-                                    // Sort the array so that the fields are shown in the correct order
-                                    asort($field_value);
+                                    // Sort the array by key so that the fields are shown in the correct order
+                                    ksort($field_value);
                                    
                                     $field_values = "";
 
@@ -653,7 +656,7 @@ if (class_exists("GFForms")) {
             <?php
 
             // Build an array of all post to allow for selection in "embedd page" dropdown
-            $args = array( 'posts_per_page' => 999, 'post_type' => 'any','post_status' => 'any'); 
+            $args = array( 'posts_per_page' => 999999, 'post_type' => 'any', 'post_status' => 'any', 'orderby' => 'title'); 
             $posts = get_posts( $args );
             $posts_array = array();
             foreach ($posts as $post) {
@@ -714,6 +717,13 @@ if (class_exists("GFForms")) {
                             "name"    => "embedd_page",
                             "tooltip" => __('The page/post where the form is embedded. This page will be used to view/edit the entry','sticky-list'),
                             "choices" => $posts_array
+                        ),
+                        array(
+                            "label"   => __('Custom url','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "custom_embedd_page",
+                            "tooltip" => __('Manually input the url of the form. This overrides the selection made in the dropdown above. Use this if you cannot find the page/post in the list.','sticky-list'),
+                            "class"   => "medium"
                         ),
                         array(
                             "label"   => __('View entries','sticky-list'),
@@ -981,8 +991,6 @@ if (class_exists("GFForms")) {
         }
 
 
-
-
         /**
          * Add new confirmation settings
          *
@@ -1047,10 +1055,10 @@ if (class_exists("GFForms")) {
             $new_confirmation = "";
 
             // If action is not set we assume its a new entry
-            if($_POST["action"] == NULL) {
+            if(!isset($_POST["action"])) {
                 $_POST["action"] = "new";
             }
-            
+
             // Loop trough all confirmations
             foreach ($confirmations as $confirmation) {
 
@@ -1063,17 +1071,17 @@ if (class_exists("GFForms")) {
 
                     // If not, we set the redirect variable to true    
                     }else{
-                        $redirect = true;
+                        $new_confirmation = $original_confirmation;
+                        break;
                     }
-                }                
+                }             
             }
-            
-            // If the confirmation is not a redirect we return it, else we return the redirect confirmation
-            if($redirect != true) { 
-                return $new_confirmation;
-            }else{
-                return $original_confirmation;
+
+            if($new_confirmation == "") {
+                $new_confirmation = $original_confirmation;
             }
+
+            return $new_confirmation;
         }
     }
 

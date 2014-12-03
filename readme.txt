@@ -4,7 +4,7 @@ Donate link: http://13pixlar.se/
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.0.1
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,16 @@ protected $_min_gravityforms_version = "1.8.19.2";
 to you version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 == Changelog ==
+
+= 1.0.4 =
+* Update: Added alphabetic sorting of pages/posts in embedd dropdown
+* Update: Increased number of visible pages/posts in embedd dropdown
+* Feature: Added the option to manually input am embedd url
+
+= 1.0.3 =
+* Fixed an issue where last name was displayed before first name in the list
+* Fixed an issue that prevented some confirmations from displaying
+* Fixed som undefined index warnings
 
 = 1.0.2 =
 * Fixed a problem where dependencies would not get included

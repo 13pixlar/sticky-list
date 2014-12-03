@@ -120,6 +120,16 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 
 <h3>Changelog</h3>
 
+**1.0.4**
+* Update: Added alphabetic sorting of pages/posts in embedd dropdown
+* Update: Increased number of visible pages/posts in embedd dropdown
+* Feature: Added the option to manually input am embedd url
+
+**1.0.3**
+* Fixed an issue where last name was displayed befor first name in the list
+* Fixed an issue that prevented some confirmations from displaying
+* Fixed som undefined index warnings
+
 **1.0.2**
 * Fixed a problem where dependencies would not get included
 
