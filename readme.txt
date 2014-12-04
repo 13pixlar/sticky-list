@@ -123,6 +123,16 @@ protected $_min_gravityforms_version = "1.8.19.2";
 `
 to you version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
+== Screenshots ==
+
+1. Sticky List settings page 
+
+2. Sticky List settings page 
+
+3. Sticky List field settings
+
+4. Front end list 
+
 == Changelog ==
 
 = 1.0.4 =
