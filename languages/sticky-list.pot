@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2014-11-26 11:17+0100\n"
-"PO-Revision-Date: 2014-11-26 11:17+0100\n"
+"POT-Creation-Date: 2014-12-04 12:22+0100\n"
+"PO-Revision-Date: 2014-12-04 12:22+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,255 +14,468 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../sticky-list.php:103
+#: ../sticky-list.php:103 ../tags/1.0/sticky-list.php:103
+#: ../tags/1.0.1/sticky-list.php:103 ../tags/1.0.2/sticky-list.php:103
+#: ../tags/1.0.3/sticky-list.php:103 ../tags/1.0.4/sticky-list.php:103
+#: ../trunk/sticky-list.php:103
 msgid "Show in list"
 msgstr ""
 
-#: ../sticky-list.php:105
+#: ../sticky-list.php:105 ../tags/1.0/sticky-list.php:105
+#: ../tags/1.0.1/sticky-list.php:105 ../tags/1.0.2/sticky-list.php:105
+#: ../tags/1.0.3/sticky-list.php:105 ../tags/1.0.4/sticky-list.php:105
+#: ../trunk/sticky-list.php:105
 msgid "Column label"
 msgstr ""
 
-#: ../sticky-list.php:136
+#: ../sticky-list.php:136 ../tags/1.0/sticky-list.php:136
+#: ../tags/1.0.1/sticky-list.php:136 ../tags/1.0.2/sticky-list.php:136
+#: ../tags/1.0.3/sticky-list.php:136 ../tags/1.0.4/sticky-list.php:136
+#: ../trunk/sticky-list.php:136
 msgid ""
 "<h6>Show field in list</h6>Check this box to show this field in the list."
 msgstr ""
 
-#: ../sticky-list.php:137
+#: ../sticky-list.php:137 ../tags/1.0/sticky-list.php:137
+#: ../tags/1.0.1/sticky-list.php:137 ../tags/1.0.2/sticky-list.php:137
+#: ../tags/1.0.3/sticky-list.php:137 ../tags/1.0.4/sticky-list.php:137
+#: ../trunk/sticky-list.php:137
 msgid "<h6>Header text</h6>Use this field to override the default text header."
 msgstr ""
 
-#: ../sticky-list.php:210
+#: ../sticky-list.php:219 ../tags/1.0/sticky-list.php:212
+#: ../tags/1.0.1/sticky-list.php:216 ../tags/1.0.2/sticky-list.php:216
+#: ../tags/1.0.3/sticky-list.php:216 ../tags/1.0.4/sticky-list.php:219
+#: ../trunk/sticky-list.php:219
 msgid "Search"
 msgstr ""
 
-#: ../sticky-list.php:362
+#: ../sticky-list.php:371 ../tags/1.0/sticky-list.php:364
+#: ../tags/1.0.1/sticky-list.php:368 ../tags/1.0.2/sticky-list.php:368
+#: ../tags/1.0.3/sticky-list.php:368 ../tags/1.0.4/sticky-list.php:371
+#: ../trunk/sticky-list.php:371
 msgid "Delete failed"
 msgstr ""
 
-#: ../sticky-list.php:639
+#: ../sticky-list.php:648 ../tags/1.0/sticky-list.php:641
+#: ../tags/1.0.1/sticky-list.php:645 ../tags/1.0.2/sticky-list.php:645
+#: ../tags/1.0.3/sticky-list.php:645 ../tags/1.0.4/sticky-list.php:648
+#: ../trunk/sticky-list.php:648
 msgid "General settings"
 msgstr ""
 
-#: ../sticky-list.php:640
+#: ../sticky-list.php:649 ../tags/1.0/sticky-list.php:642
+#: ../tags/1.0.1/sticky-list.php:646 ../tags/1.0.2/sticky-list.php:646
+#: ../tags/1.0.3/sticky-list.php:646 ../tags/1.0.4/sticky-list.php:649
+#: ../trunk/sticky-list.php:649
 msgid "View, edit & delete"
 msgstr ""
 
-#: ../sticky-list.php:641
+#: ../sticky-list.php:650 ../tags/1.0/sticky-list.php:643
+#: ../tags/1.0.1/sticky-list.php:647 ../tags/1.0.2/sticky-list.php:647
+#: ../tags/1.0.3/sticky-list.php:647 ../tags/1.0.4/sticky-list.php:650
+#: ../trunk/sticky-list.php:650
 msgid "Labels"
 msgstr ""
 
-#: ../sticky-list.php:642
+#: ../sticky-list.php:651 ../tags/1.0/sticky-list.php:644
+#: ../tags/1.0.1/sticky-list.php:648 ../tags/1.0.2/sticky-list.php:648
+#: ../tags/1.0.3/sticky-list.php:648 ../tags/1.0.4/sticky-list.php:651
+#: ../trunk/sticky-list.php:651
 msgid "Sort & search"
 msgstr ""
 
-#: ../sticky-list.php:643
+#: ../sticky-list.php:652 ../tags/1.0/sticky-list.php:645
+#: ../tags/1.0.1/sticky-list.php:649 ../tags/1.0.2/sticky-list.php:649
+#: ../tags/1.0.3/sticky-list.php:649 ../tags/1.0.4/sticky-list.php:652
+#: ../trunk/sticky-list.php:652
 msgid "Donate"
 msgstr ""
 
-#: ../sticky-list.php:644
+#: ../sticky-list.php:653 ../tags/1.0/sticky-list.php:646
+#: ../tags/1.0.1/sticky-list.php:650 ../tags/1.0.2/sticky-list.php:650
+#: ../tags/1.0.3/sticky-list.php:650 ../tags/1.0.4/sticky-list.php:653
+#: ../trunk/sticky-list.php:653
 msgid ""
 "Sticky List is completely free. But if you like, you can always <a target="
 "\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
 "xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks."
 msgstr ""
 
-#: ../sticky-list.php:671
+#: ../sticky-list.php:680 ../tags/1.0/sticky-list.php:673
+#: ../tags/1.0.1/sticky-list.php:677 ../tags/1.0.2/sticky-list.php:677
+#: ../tags/1.0.3/sticky-list.php:677 ../tags/1.0.4/sticky-list.php:680
+#: ../trunk/sticky-list.php:680
 msgid "Sticky List Settings"
 msgstr ""
 
-#: ../sticky-list.php:674
+#: ../sticky-list.php:683 ../tags/1.0/sticky-list.php:676
+#: ../tags/1.0.1/sticky-list.php:680 ../tags/1.0.2/sticky-list.php:680
+#: ../tags/1.0.3/sticky-list.php:680 ../tags/1.0.4/sticky-list.php:683
+#: ../trunk/sticky-list.php:683
 msgid "Enable for this form"
 msgstr ""
 
-#: ../sticky-list.php:677
+#: ../sticky-list.php:686 ../tags/1.0/sticky-list.php:679
+#: ../tags/1.0.1/sticky-list.php:683 ../tags/1.0.2/sticky-list.php:683
+#: ../tags/1.0.3/sticky-list.php:683 ../tags/1.0.4/sticky-list.php:686
+#: ../trunk/sticky-list.php:686
 msgid "Check this box to enable Sticky List for this form"
 msgstr ""
 
-#: ../sticky-list.php:686
+#: ../sticky-list.php:695 ../tags/1.0/sticky-list.php:688
+#: ../tags/1.0.1/sticky-list.php:692 ../tags/1.0.2/sticky-list.php:692
+#: ../tags/1.0.3/sticky-list.php:692 ../tags/1.0.4/sticky-list.php:695
+#: ../trunk/sticky-list.php:695
 msgid "Show entries in list to"
 msgstr ""
 
-#: ../sticky-list.php:689
+#: ../sticky-list.php:698 ../tags/1.0/sticky-list.php:691
+#: ../tags/1.0.1/sticky-list.php:695 ../tags/1.0.2/sticky-list.php:695
+#: ../tags/1.0.3/sticky-list.php:695 ../tags/1.0.4/sticky-list.php:698
+#: ../trunk/sticky-list.php:698
 msgid "Who should be able to se the entries in the list?"
 msgstr ""
 
-#: ../sticky-list.php:692
+#: ../sticky-list.php:701 ../tags/1.0/sticky-list.php:694
+#: ../tags/1.0.1/sticky-list.php:698 ../tags/1.0.2/sticky-list.php:698
+#: ../tags/1.0.3/sticky-list.php:698 ../tags/1.0.4/sticky-list.php:701
+#: ../trunk/sticky-list.php:701
 msgid "Entry creator"
 msgstr ""
 
-#: ../sticky-list.php:696
+#: ../sticky-list.php:705 ../tags/1.0/sticky-list.php:698
+#: ../tags/1.0.1/sticky-list.php:702 ../tags/1.0.2/sticky-list.php:702
+#: ../tags/1.0.3/sticky-list.php:702 ../tags/1.0.4/sticky-list.php:705
+#: ../trunk/sticky-list.php:705
 msgid "All logged in users"
 msgstr ""
 
-#: ../sticky-list.php:700
+#: ../sticky-list.php:709 ../tags/1.0/sticky-list.php:702
+#: ../tags/1.0.1/sticky-list.php:706 ../tags/1.0.2/sticky-list.php:706
+#: ../tags/1.0.3/sticky-list.php:706 ../tags/1.0.4/sticky-list.php:709
+#: ../trunk/sticky-list.php:709
 msgid "Everyone"
 msgstr ""
 
-#: ../sticky-list.php:706
+#: ../sticky-list.php:715 ../tags/1.0/sticky-list.php:708
+#: ../tags/1.0.1/sticky-list.php:712 ../tags/1.0.2/sticky-list.php:712
+#: ../tags/1.0.3/sticky-list.php:712 ../tags/1.0.4/sticky-list.php:715
+#: ../trunk/sticky-list.php:715
 msgid "Embedd page/post"
 msgstr ""
 
-#: ../sticky-list.php:709
+#: ../sticky-list.php:718 ../tags/1.0/sticky-list.php:711
+#: ../tags/1.0.1/sticky-list.php:715 ../tags/1.0.2/sticky-list.php:715
+#: ../tags/1.0.3/sticky-list.php:715 ../tags/1.0.4/sticky-list.php:718
+#: ../trunk/sticky-list.php:718
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
 msgstr ""
 
-#: ../sticky-list.php:713
+#: ../sticky-list.php:722 ../tags/1.0.4/sticky-list.php:722
+#: ../trunk/sticky-list.php:722
+msgid "Custom url"
+msgstr ""
+
+#: ../sticky-list.php:725 ../tags/1.0.4/sticky-list.php:725
+#: ../trunk/sticky-list.php:725
+msgid ""
+"Manually input the url of the form. This overrides the selection made in the "
+"dropdown above. Use this if you cannot find the page/post in the list."
+msgstr ""
+
+#: ../sticky-list.php:729 ../tags/1.0/sticky-list.php:715
+#: ../tags/1.0.1/sticky-list.php:719 ../tags/1.0.2/sticky-list.php:719
+#: ../tags/1.0.3/sticky-list.php:719 ../tags/1.0.4/sticky-list.php:729
+#: ../trunk/sticky-list.php:729
 msgid "View entries"
 msgstr ""
 
-#: ../sticky-list.php:716
+#: ../sticky-list.php:732 ../tags/1.0/sticky-list.php:718
+#: ../tags/1.0.1/sticky-list.php:722 ../tags/1.0.2/sticky-list.php:722
+#: ../tags/1.0.3/sticky-list.php:722 ../tags/1.0.4/sticky-list.php:732
+#: ../trunk/sticky-list.php:732
 msgid ""
 "Check this box to enable users to view the complete submitted entry. A \\"
 "\"View\\\" link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:719 ../sticky-list.php:740 ../sticky-list.php:769
-#: ../sticky-list.php:820 ../sticky-list.php:832
+#: ../sticky-list.php:735 ../sticky-list.php:756 ../sticky-list.php:785
+#: ../sticky-list.php:836 ../sticky-list.php:848
+#: ../tags/1.0/sticky-list.php:721 ../tags/1.0/sticky-list.php:742
+#: ../tags/1.0/sticky-list.php:771 ../tags/1.0/sticky-list.php:822
+#: ../tags/1.0/sticky-list.php:834 ../tags/1.0.1/sticky-list.php:725
+#: ../tags/1.0.1/sticky-list.php:746 ../tags/1.0.1/sticky-list.php:775
+#: ../tags/1.0.1/sticky-list.php:826 ../tags/1.0.1/sticky-list.php:838
+#: ../tags/1.0.2/sticky-list.php:725 ../tags/1.0.2/sticky-list.php:746
+#: ../tags/1.0.2/sticky-list.php:775 ../tags/1.0.2/sticky-list.php:826
+#: ../tags/1.0.2/sticky-list.php:838 ../tags/1.0.3/sticky-list.php:725
+#: ../tags/1.0.3/sticky-list.php:746 ../tags/1.0.3/sticky-list.php:775
+#: ../tags/1.0.3/sticky-list.php:826 ../tags/1.0.3/sticky-list.php:838
+#: ../tags/1.0.4/sticky-list.php:735 ../tags/1.0.4/sticky-list.php:756
+#: ../tags/1.0.4/sticky-list.php:785 ../tags/1.0.4/sticky-list.php:836
+#: ../tags/1.0.4/sticky-list.php:848 ../trunk/sticky-list.php:735
+#: ../trunk/sticky-list.php:756 ../trunk/sticky-list.php:785
+#: ../trunk/sticky-list.php:836 ../trunk/sticky-list.php:848
 msgid "Enabled"
 msgstr ""
 
-#: ../sticky-list.php:725
+#: ../sticky-list.php:741 ../tags/1.0/sticky-list.php:727
+#: ../tags/1.0.1/sticky-list.php:731 ../tags/1.0.2/sticky-list.php:731
+#: ../tags/1.0.3/sticky-list.php:731 ../tags/1.0.4/sticky-list.php:741
+#: ../trunk/sticky-list.php:741
 msgid "View label"
 msgstr ""
 
-#: ../sticky-list.php:728
+#: ../sticky-list.php:744 ../tags/1.0/sticky-list.php:730
+#: ../tags/1.0.1/sticky-list.php:734 ../tags/1.0.2/sticky-list.php:734
+#: ../tags/1.0.3/sticky-list.php:734 ../tags/1.0.4/sticky-list.php:744
+#: ../trunk/sticky-list.php:744
 msgid "Label for the view button"
 msgstr ""
 
-#: ../sticky-list.php:730
+#: ../sticky-list.php:746 ../tags/1.0/sticky-list.php:732
+#: ../tags/1.0.1/sticky-list.php:736 ../tags/1.0.2/sticky-list.php:736
+#: ../tags/1.0.3/sticky-list.php:736 ../tags/1.0.4/sticky-list.php:746
+#: ../trunk/sticky-list.php:746
 msgid "View"
 msgstr ""
 
-#: ../sticky-list.php:734
+#: ../sticky-list.php:750 ../tags/1.0/sticky-list.php:736
+#: ../tags/1.0.1/sticky-list.php:740 ../tags/1.0.2/sticky-list.php:740
+#: ../tags/1.0.3/sticky-list.php:740 ../tags/1.0.4/sticky-list.php:750
+#: ../trunk/sticky-list.php:750
 msgid "Edit entries"
 msgstr ""
 
-#: ../sticky-list.php:737
+#: ../sticky-list.php:753 ../tags/1.0/sticky-list.php:739
+#: ../tags/1.0.1/sticky-list.php:743 ../tags/1.0.2/sticky-list.php:743
+#: ../tags/1.0.3/sticky-list.php:743 ../tags/1.0.4/sticky-list.php:753
+#: ../trunk/sticky-list.php:753
 msgid ""
 "Check this box to enable user to edit submitted entries. An \\\"Edit\\\" "
 "link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:746
+#: ../sticky-list.php:762 ../tags/1.0/sticky-list.php:748
+#: ../tags/1.0.1/sticky-list.php:752 ../tags/1.0.2/sticky-list.php:752
+#: ../tags/1.0.3/sticky-list.php:752 ../tags/1.0.4/sticky-list.php:762
+#: ../trunk/sticky-list.php:762
 msgid "Edit label"
 msgstr ""
 
-#: ../sticky-list.php:749
+#: ../sticky-list.php:765 ../tags/1.0/sticky-list.php:751
+#: ../tags/1.0.1/sticky-list.php:755 ../tags/1.0.2/sticky-list.php:755
+#: ../tags/1.0.3/sticky-list.php:755 ../tags/1.0.4/sticky-list.php:765
+#: ../trunk/sticky-list.php:765
 msgid "Label for the edit button"
 msgstr ""
 
-#: ../sticky-list.php:751
+#: ../sticky-list.php:767 ../tags/1.0/sticky-list.php:753
+#: ../tags/1.0.1/sticky-list.php:757 ../tags/1.0.2/sticky-list.php:757
+#: ../tags/1.0.3/sticky-list.php:757 ../tags/1.0.4/sticky-list.php:767
+#: ../trunk/sticky-list.php:767
 msgid "Edit"
 msgstr ""
 
-#: ../sticky-list.php:755
+#: ../sticky-list.php:771 ../tags/1.0/sticky-list.php:757
+#: ../tags/1.0.1/sticky-list.php:761 ../tags/1.0.2/sticky-list.php:761
+#: ../tags/1.0.3/sticky-list.php:761 ../tags/1.0.4/sticky-list.php:771
+#: ../trunk/sticky-list.php:771
 msgid "Update button text"
 msgstr ""
 
-#: ../sticky-list.php:758
+#: ../sticky-list.php:774 ../tags/1.0/sticky-list.php:760
+#: ../tags/1.0.1/sticky-list.php:764 ../tags/1.0.2/sticky-list.php:764
+#: ../tags/1.0.3/sticky-list.php:764 ../tags/1.0.4/sticky-list.php:774
+#: ../trunk/sticky-list.php:774
 msgid "Text for the submit button that is displayed when editing an entry"
 msgstr ""
 
-#: ../sticky-list.php:760
+#: ../sticky-list.php:776 ../tags/1.0/sticky-list.php:762
+#: ../tags/1.0.1/sticky-list.php:766 ../tags/1.0.2/sticky-list.php:766
+#: ../tags/1.0.3/sticky-list.php:766 ../tags/1.0.4/sticky-list.php:776
+#: ../trunk/sticky-list.php:776
 msgid "Update"
 msgstr ""
 
-#: ../sticky-list.php:763
+#: ../sticky-list.php:779 ../tags/1.0/sticky-list.php:765
+#: ../tags/1.0.1/sticky-list.php:769 ../tags/1.0.2/sticky-list.php:769
+#: ../tags/1.0.3/sticky-list.php:769 ../tags/1.0.4/sticky-list.php:779
+#: ../trunk/sticky-list.php:779
 msgid "Delete entries"
 msgstr ""
 
-#: ../sticky-list.php:766
+#: ../sticky-list.php:782 ../tags/1.0/sticky-list.php:768
+#: ../tags/1.0.1/sticky-list.php:772 ../tags/1.0.2/sticky-list.php:772
+#: ../tags/1.0.3/sticky-list.php:772 ../tags/1.0.4/sticky-list.php:782
+#: ../trunk/sticky-list.php:782
 msgid ""
 "Check this box to enable user to delete submitted entries. A \\\"Delete\\\" "
 "link will appear in the list"
 msgstr ""
 
-#: ../sticky-list.php:775
+#: ../sticky-list.php:791 ../tags/1.0/sticky-list.php:777
+#: ../tags/1.0.1/sticky-list.php:781 ../tags/1.0.2/sticky-list.php:781
+#: ../tags/1.0.3/sticky-list.php:781 ../tags/1.0.4/sticky-list.php:791
+#: ../trunk/sticky-list.php:791
 msgid "Delete label"
 msgstr ""
 
-#: ../sticky-list.php:778
+#: ../sticky-list.php:794 ../tags/1.0/sticky-list.php:780
+#: ../tags/1.0.1/sticky-list.php:784 ../tags/1.0.2/sticky-list.php:784
+#: ../tags/1.0.3/sticky-list.php:784 ../tags/1.0.4/sticky-list.php:794
+#: ../trunk/sticky-list.php:794
 msgid "Label for the delete button"
 msgstr ""
 
-#: ../sticky-list.php:780
+#: ../sticky-list.php:796 ../tags/1.0/sticky-list.php:782
+#: ../tags/1.0.1/sticky-list.php:786 ../tags/1.0.2/sticky-list.php:786
+#: ../tags/1.0.3/sticky-list.php:786 ../tags/1.0.4/sticky-list.php:796
+#: ../trunk/sticky-list.php:796
 msgid "Delete"
 msgstr ""
 
-#: ../sticky-list.php:783
+#: ../sticky-list.php:799 ../tags/1.0/sticky-list.php:785
+#: ../tags/1.0.1/sticky-list.php:789 ../tags/1.0.2/sticky-list.php:789
+#: ../tags/1.0.3/sticky-list.php:789 ../tags/1.0.4/sticky-list.php:799
+#: ../trunk/sticky-list.php:799
 msgid "On delete"
 msgstr ""
 
-#: ../sticky-list.php:786
+#: ../sticky-list.php:802 ../tags/1.0/sticky-list.php:788
+#: ../tags/1.0.1/sticky-list.php:792 ../tags/1.0.2/sticky-list.php:792
+#: ../tags/1.0.3/sticky-list.php:792 ../tags/1.0.4/sticky-list.php:802
+#: ../trunk/sticky-list.php:802
 msgid "Move deleted entries to trash or delete permanently?"
 msgstr ""
 
-#: ../sticky-list.php:789
+#: ../sticky-list.php:805 ../tags/1.0/sticky-list.php:791
+#: ../tags/1.0.1/sticky-list.php:795 ../tags/1.0.2/sticky-list.php:795
+#: ../tags/1.0.3/sticky-list.php:795 ../tags/1.0.4/sticky-list.php:805
+#: ../trunk/sticky-list.php:805
 msgid "Move to trash"
 msgstr ""
 
-#: ../sticky-list.php:793
+#: ../sticky-list.php:809 ../tags/1.0/sticky-list.php:795
+#: ../tags/1.0.1/sticky-list.php:799 ../tags/1.0.2/sticky-list.php:799
+#: ../tags/1.0.3/sticky-list.php:799 ../tags/1.0.4/sticky-list.php:809
+#: ../trunk/sticky-list.php:809
 msgid "Delete permanently"
 msgstr ""
 
-#: ../sticky-list.php:799
+#: ../sticky-list.php:815 ../tags/1.0/sticky-list.php:801
+#: ../tags/1.0.1/sticky-list.php:805 ../tags/1.0.2/sticky-list.php:805
+#: ../tags/1.0.3/sticky-list.php:805 ../tags/1.0.4/sticky-list.php:815
+#: ../trunk/sticky-list.php:815
 msgid "Action column header"
 msgstr ""
 
-#: ../sticky-list.php:802
+#: ../sticky-list.php:818 ../tags/1.0/sticky-list.php:804
+#: ../tags/1.0.1/sticky-list.php:808 ../tags/1.0.2/sticky-list.php:808
+#: ../tags/1.0.3/sticky-list.php:808 ../tags/1.0.4/sticky-list.php:818
+#: ../trunk/sticky-list.php:818
 msgid "Text to show as header for the action column"
 msgstr ""
 
-#: ../sticky-list.php:807
+#: ../sticky-list.php:823 ../tags/1.0/sticky-list.php:809
+#: ../tags/1.0.1/sticky-list.php:813 ../tags/1.0.2/sticky-list.php:813
+#: ../tags/1.0.3/sticky-list.php:813 ../tags/1.0.4/sticky-list.php:823
+#: ../trunk/sticky-list.php:823
 msgid "Empty list text"
 msgstr ""
 
-#: ../sticky-list.php:810
+#: ../sticky-list.php:826 ../tags/1.0/sticky-list.php:812
+#: ../tags/1.0.1/sticky-list.php:816 ../tags/1.0.2/sticky-list.php:816
+#: ../tags/1.0.3/sticky-list.php:816 ../tags/1.0.4/sticky-list.php:826
+#: ../trunk/sticky-list.php:826
 msgid "Text that is shown if the list is empty"
 msgstr ""
 
-#: ../sticky-list.php:814
+#: ../sticky-list.php:830 ../tags/1.0/sticky-list.php:816
+#: ../tags/1.0.1/sticky-list.php:820 ../tags/1.0.2/sticky-list.php:820
+#: ../tags/1.0.3/sticky-list.php:820 ../tags/1.0.4/sticky-list.php:830
+#: ../trunk/sticky-list.php:830
 msgid "List sort"
 msgstr ""
 
-#: ../sticky-list.php:817
+#: ../sticky-list.php:833 ../tags/1.0/sticky-list.php:819
+#: ../tags/1.0.1/sticky-list.php:823 ../tags/1.0.2/sticky-list.php:823
+#: ../tags/1.0.3/sticky-list.php:823 ../tags/1.0.4/sticky-list.php:833
+#: ../trunk/sticky-list.php:833
 msgid "Check this box to enable sorting for the list"
 msgstr ""
 
-#: ../sticky-list.php:826
+#: ../sticky-list.php:842 ../tags/1.0/sticky-list.php:828
+#: ../tags/1.0.1/sticky-list.php:832 ../tags/1.0.2/sticky-list.php:832
+#: ../tags/1.0.3/sticky-list.php:832 ../tags/1.0.4/sticky-list.php:842
+#: ../trunk/sticky-list.php:842
 msgid "List search"
 msgstr ""
 
-#: ../sticky-list.php:829
+#: ../sticky-list.php:845 ../tags/1.0/sticky-list.php:831
+#: ../tags/1.0.1/sticky-list.php:835 ../tags/1.0.2/sticky-list.php:835
+#: ../tags/1.0.3/sticky-list.php:835 ../tags/1.0.4/sticky-list.php:845
+#: ../trunk/sticky-list.php:845
 msgid "Check this box to enable search for the list"
 msgstr ""
 
-#: ../sticky-list.php:899 ../sticky-list.php:994
+#: ../sticky-list.php:915 ../sticky-list.php:1008
+#: ../tags/1.0/sticky-list.php:901 ../tags/1.0/sticky-list.php:996
+#: ../tags/1.0.1/sticky-list.php:905 ../tags/1.0.1/sticky-list.php:1000
+#: ../tags/1.0.2/sticky-list.php:905 ../tags/1.0.2/sticky-list.php:1000
+#: ../tags/1.0.3/sticky-list.php:905 ../tags/1.0.3/sticky-list.php:998
+#: ../tags/1.0.4/sticky-list.php:915 ../tags/1.0.4/sticky-list.php:1008
+#: ../trunk/sticky-list.php:915 ../trunk/sticky-list.php:1008
 msgid "Always"
 msgstr ""
 
-#: ../sticky-list.php:900 ../sticky-list.php:996
+#: ../sticky-list.php:916 ../sticky-list.php:1010
+#: ../tags/1.0/sticky-list.php:902 ../tags/1.0/sticky-list.php:998
+#: ../tags/1.0.1/sticky-list.php:906 ../tags/1.0.1/sticky-list.php:1002
+#: ../tags/1.0.2/sticky-list.php:906 ../tags/1.0.2/sticky-list.php:1002
+#: ../tags/1.0.3/sticky-list.php:906 ../tags/1.0.3/sticky-list.php:1000
+#: ../tags/1.0.4/sticky-list.php:916 ../tags/1.0.4/sticky-list.php:1010
+#: ../trunk/sticky-list.php:916 ../trunk/sticky-list.php:1010
 msgid "When a new entry is submitted"
 msgstr ""
 
-#: ../sticky-list.php:901 ../sticky-list.php:997
+#: ../sticky-list.php:917 ../sticky-list.php:1011
+#: ../tags/1.0/sticky-list.php:903 ../tags/1.0/sticky-list.php:999
+#: ../tags/1.0.1/sticky-list.php:907 ../tags/1.0.1/sticky-list.php:1003
+#: ../tags/1.0.2/sticky-list.php:907 ../tags/1.0.2/sticky-list.php:1003
+#: ../tags/1.0.3/sticky-list.php:907 ../tags/1.0.3/sticky-list.php:1001
+#: ../tags/1.0.4/sticky-list.php:917 ../tags/1.0.4/sticky-list.php:1011
+#: ../trunk/sticky-list.php:917 ../trunk/sticky-list.php:1011
 msgid "When an entry is updated"
 msgstr ""
 
-#: ../sticky-list.php:902
+#: ../sticky-list.php:918 ../tags/1.0/sticky-list.php:904
+#: ../tags/1.0.1/sticky-list.php:908 ../tags/1.0.2/sticky-list.php:908
+#: ../tags/1.0.3/sticky-list.php:908 ../tags/1.0.4/sticky-list.php:918
+#: ../trunk/sticky-list.php:918
 msgid "When an entry is deleted"
 msgstr ""
 
-#: ../sticky-list.php:918
+#: ../sticky-list.php:934 ../tags/1.0/sticky-list.php:920
+#: ../tags/1.0.1/sticky-list.php:924 ../tags/1.0.2/sticky-list.php:924
+#: ../tags/1.0.3/sticky-list.php:924 ../tags/1.0.4/sticky-list.php:934
+#: ../trunk/sticky-list.php:934
 msgid "Send this notification"
 msgstr ""
 
-#: ../sticky-list.php:995
+#: ../sticky-list.php:1009 ../tags/1.0/sticky-list.php:997
+#: ../tags/1.0.1/sticky-list.php:1001 ../tags/1.0.2/sticky-list.php:1001
+#: ../tags/1.0.3/sticky-list.php:999 ../tags/1.0.4/sticky-list.php:1009
+#: ../trunk/sticky-list.php:1009
 msgid "Never"
 msgstr ""
 
-#: ../sticky-list.php:1013
+#: ../sticky-list.php:1027 ../tags/1.0/sticky-list.php:1015
+#: ../tags/1.0.1/sticky-list.php:1019 ../tags/1.0.2/sticky-list.php:1019
+#: ../tags/1.0.3/sticky-list.php:1017 ../tags/1.0.4/sticky-list.php:1027
+#: ../trunk/sticky-list.php:1027
 msgid "Display this confirmation"
 msgstr ""
