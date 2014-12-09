@@ -10,7 +10,10 @@ Author URI: http://13pixlar.se
 
 
 /* Todo
- * Support for multi page forms
+ * Fix: Template tags in confirmations
+ * New: Support for edit posts
+ * New: Support for file uploads
+ * New: Support for multi page forms
  */
 
 //------------------------------------------
