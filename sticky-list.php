@@ -404,7 +404,7 @@ if (class_exists("GFForms")) {
                 
                 // If we dont have any entries, show the "Empty list" text to the user
                 }else{
-                    $list_html = $settings["empty_list_text"];
+                    $list_html = $settings["empty_list_text"] . "<br>";
                 }
                                     
                 return $list_html;
