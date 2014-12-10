@@ -212,7 +212,7 @@ if (class_exists("GFForms")) {
                 }
 
                 // If we have some entries, lets loop trough them and start building the output html
-                if(isset($entries)) {
+                if(!empty($entries)) {
                     
                     // This vaiable will hold all html for the form                
                     $list_html = "<div id='sticky-list-wrapper'>";
