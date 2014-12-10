@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.0.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -134,6 +134,9 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 4. Front end list 
 
 == Changelog ==
+
+= 1.0.5 =
+* Fixed a nasty bug that prevented confirmation and notification settings from being displayed if Stickly List was active but not enabled for a form.
 
 = 1.0.4 =
 * Update: Added alphabetic sorting of pages/posts in embedd dropdown

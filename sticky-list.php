@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.0.4
+Version: 1.0.5
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -936,11 +936,10 @@ if (class_exists("GFForms")) {
                 <tr>
                     <th><label for="stickylist_notification_type">' . __( "Send this notification", 'sticky-list' ) . '</label></th>
                     <td><select name="stickylist_notification_type" value="' . $type . '">' . $option . '</select></td>
-                </tr>';
-
-
-                return ( $ui_settings );              
+                </tr>';              
             }  
+
+            return ( $ui_settings );
         }
 
 
@@ -1029,10 +1028,10 @@ if (class_exists("GFForms")) {
                 <tr>
                     <th><label for="stickylist_confirmation_type">' . __( "Display this confirmation", 'sticky-list' ) . '</label></th>
                     <td><select name="stickylist_confirmation_type" value="' . $type . '">' . $option . '</select></td>
-                </tr>';
+                </tr>';  
+            }
 
-                return ( $ui_settings );              
-            }  
+            return ( $ui_settings );  
         }
 
 

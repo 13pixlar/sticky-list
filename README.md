@@ -120,6 +120,9 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 
 <h3>Changelog</h3>
 
+**1.0.5**
+* Fixed a nasty bug that prevented confirmation and notification settings from being displayed if Stickly List was active but not enabled for a form.
+
 **1.0.4**
 * Update: Added alphabetic sorting of pages/posts in embedd dropdown
 * Update: Increased number of visible pages/posts in embedd dropdown
