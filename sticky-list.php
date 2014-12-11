@@ -386,6 +386,7 @@ if (class_exists("GFForms")) {
                         $delete_failed = __('Delete failed','sticky-list');
 
                         $list_html .= "
+                            <img src='$ajax_spinner' style='display: none;'>
                             <script>
                             jQuery(document).ready(function($) {
                                 $('.sticky-list-delete').click(function(event) {
@@ -1100,7 +1101,7 @@ if (class_exists("GFForms")) {
                 return $new_confirmation;
             }else{
                 return $original_confirmation;    
-            }        
+            }
         }
     }
 
