@@ -884,7 +884,8 @@ if (class_exists("GFForms")) {
                             "type"    => "text",
                             "name"    => "empty_list_text",
                             "tooltip" => __('Text that is shown if the list is empty','sticky-list'),
-                            "class"   => "medium"
+                            "class"   => "medium",
+                            "default_value" => __('The list is empty. You can edit or remove this text in settings','sticky-list')
                         ),
                         array(
                             "label"   => __('List sort','sticky-list'),
