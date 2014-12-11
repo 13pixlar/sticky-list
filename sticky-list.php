@@ -75,8 +75,8 @@ if (class_exists("GFForms")) {
         }
 
         function stickylist_gform_post_data( $post_data, $form, $entry ) {
-        
-            var_dump($post_data);
+
+            $post_data['ID'] = $_POST["post_id"];
 
             return ( $post_data );
         }
@@ -360,7 +360,13 @@ if (class_exists("GFForms")) {
                                         $list_html .= "
                                             <button class='sticky-list-delete submit'>$enable_delete_label</button>
                                             <input type='hidden' name='delete_id' class='sticky-list-delete-id' value='$entry_id'>
-                                        ";                                        
+                                        ";
+
+                                        // If the entry is connected to a post we add a hidden field with the post ID
+                                        if($entry["post_id"] != null ) {
+                                            $delete_post_id = $entry["post_id"];
+                                            $list_html .= "<input type='hidden' name='delete_post_id' class='sticky-list-delete-post-id' value='$delete_post_id'>";
+                                        }
                                     }
                                     ?>
                                     
@@ -402,11 +408,12 @@ if (class_exists("GFForms")) {
                                 $('.sticky-list-delete').click(function(event) {
                                     
                                     var delete_id = $(this).siblings('.sticky-list-delete-id').val();
+                                    var delete_post_id = $(this).siblings('.sticky-list-delete-post-id').val();
                                     var current_button = $(this);
                                     var current_row = current_button.parent().parent();
                                     current_button.html('<img src=\'$ajax_spinner\'>');
                                     
-                                    $.post( '', { mode: 'delete', delete_id: delete_id, form_id: '$form_id' })
+                                    $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$form_id' })
                                     .done(function() {
                                         current_button.html('');
                                         current_row.css({   
@@ -521,8 +528,6 @@ if (class_exists("GFForms")) {
                     
                     // ... and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
                     if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
-                        
-                       
                      
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
@@ -577,6 +582,18 @@ if (class_exists("GFForms")) {
                             </script>
                 <?php   }
 
+                        // If we have a post ID it means that there is a post field present. We then insert a hidden field with the post ID for use later
+                        if($form_fields["post_id"] != null ) { ?>
+
+                             <script>
+                            jQuery(document).ready(function($) {
+                                var thisForm = $('#gform_<?php echo $form_id;?>')
+                                thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
+                            });
+                            </script>
+
+                <?php   }
+
                         // Add our manipulated fields to the $_POST variable
                         $_POST = $form_fields;
                     }
@@ -620,16 +637,33 @@ if (class_exists("GFForms")) {
 
                         // ...and the current user is the creator OR has the capability to delete others posts
                         if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
+
+                            // If we have a connected post, we get the post ID
+                            if($_POST["delete_post_id"] != null) {
+                                $delete_post_id = $_POST["delete_post_id"];
+                            }else{
+                                $delete_post_id = "";
+                            }
                            
                             // Move to trash
                             if($delete_type == "trash") { 
                                 $entry["status"] = "trash";
                                 $success = GFAPI::update_entry($entry, $delete_id);
+
+                                // If we have a connected post, we move it to trash
+                                if($delete_post_id != "") {
+                                    wp_delete_post( $delete_post_id, false );
+                                }
                             }
 
                             // Delete permanently
                             if($delete_type == "permanent") {
                                 $success = GFAPI::delete_entry($delete_id);
+
+                                // if we have a connected post, we delete it permanently
+                                if($delete_post_id != "") {
+                                     wp_delete_post( $delete_post_id, true );
+                                }
                             }
 
                             // If delete (regardles of type) was successful, we send the notification (if any)
@@ -850,7 +884,7 @@ if (class_exists("GFForms")) {
                             "type"    => "text",
                             "name"    => "empty_list_text",
                             "tooltip" => __('Text that is shown if the list is empty','sticky-list'),
-                            "class"   => "medium"  
+                            "class"   => "medium"
                         ),
                         array(
                             "label"   => __('List sort','sticky-list'),
