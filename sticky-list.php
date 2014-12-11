@@ -157,23 +157,35 @@ if (class_exists("GFForms")) {
             // Get the form
             $form = GFAPI::get_form($form_id);
 
-            // Get form settings (if someone know of a better way of doing this, do tell)
+            // Helper function to get and set settings
+            function get_sticky_setting($setting_key, $settings) {
+                if(isset($settings[$setting_key])) {
+                    $setting = $settings[$setting_key];
+                }else{
+                    $setting = "";
+                }
+                return $setting;
+            }
+
+            // Get form settings
             $settings = $this->get_form_settings($form);
-            if(isset($settings["enable_list"])) $enable_list = $settings["enable_list"]; else $enable_list = "";
-            if(isset($settings["show_entries_to"])) $show_entries_to = $settings["show_entries_to"]; else  $show_entries_to = "";
-            if(isset($settings["enable_view"])) $enable_view = $settings["enable_view"]; else $enable_view = "";
-            if(isset($settings["enable_view_label"])) $enable_view_label = $settings["enable_view_label"]; else $enable_view_label = "";
-            if(isset($settings["enable_edit"])) $enable_edit = $settings["enable_edit"]; else $enable_edit = "";
-            if(isset($settings["enable_edit_label"])) $enable_edit_label = $settings["enable_edit_label"]; else $enable_edit_label = "";
-            if(isset($settings["enable_delete"])) $enable_delete = $settings["enable_delete"]; else $enable_delete = "";
-            if(isset($settings["enable_delete_label"])) $enable_delete_label = $settings["enable_delete_label"]; else $enable_delete_label = "";
-            if(isset($settings["action_column_header"])) $action_column_header = $settings["action_column_header"]; else $action_column_header = "";
-            if(isset($settings["embedd_page"])) $embedd_page = $settings["embedd_page"]; else $embedd_page = "";
+
+            // Setting variables
+            $enable_list            = get_sticky_setting("enable_list", $settings);
+            $show_entries_to        = get_sticky_setting("show_entries_to", $settings);
+            $enable_view            = get_sticky_setting("enable_view", $settings);
+            $enable_view_label      = get_sticky_setting("enable_view_label", $settings);
+            $enable_edit            = get_sticky_setting("enable_edit", $settings);
+            $enable_edit_label      = get_sticky_setting("enable_edit_label", $settings);
+            $enable_delete          = get_sticky_setting("enable_delete", $settings);
+            $enable_delete_label    = get_sticky_setting("enable_delete_label", $settings);
+            $action_column_header   = get_sticky_setting("action_column_header", $settings);
+            $enable_sort            = get_sticky_setting("enable_sort", $settings);
+            $enable_search          = get_sticky_setting("enable_search", $settings);
+            $embedd_page            = get_sticky_setting("embedd_page", $settings);
 
             // If a Custom embed url is set we override the selected embedd page
             if(isset($settings["custom_embedd_page"]) && $settings["custom_embedd_page"] != "") $embedd_page = $settings["custom_embedd_page"];
-            if(isset($settings["enable_sort"])) $enable_sort = $settings["enable_sort"]; else $enable_sort = "";
-            if(isset($settings["enable_search"])) $enable_search = $settings["enable_search"]; else $enable_search = "";
             
             // Only render list if Sticky List is enabled for this form
             if($enable_list){
@@ -1083,7 +1095,12 @@ if (class_exists("GFForms")) {
                 $new_confirmation = $original_confirmation;
             }
 
-            return $new_confirmation;
+            // Do not apply Sticky List confirmations to forms submitted in preview mode
+            if(strpos($_SERVER['REQUEST_URI'],'preview') == false) {
+                return $new_confirmation;
+            }else{
+                return $original_confirmation;    
+            }        
         }
     }
 
