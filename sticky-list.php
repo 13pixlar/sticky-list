@@ -1092,16 +1092,10 @@ if (class_exists("GFForms")) {
                 }             
             }
 
-            if($new_confirmation == "") {
-                $new_confirmation = $original_confirmation;
-            }
+            // Apply merge tags to the confirmation message
+            $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
 
-            // Do not apply Sticky List confirmations to forms submitted in preview mode
-            if(strpos($_SERVER['REQUEST_URI'],'preview') == false) {
-                return $new_confirmation;
-            }else{
-                return $original_confirmation;    
-            }
+            return $new_confirmation;
         }
     }
 
