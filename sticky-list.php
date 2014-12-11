@@ -69,7 +69,18 @@ if (class_exists("GFForms")) {
             add_action("gform_confirmation_ui_settings", array($this, "stickylist_gform_confirmation_ui_settings"), 10, 3 );
             add_action("gform_pre_confirmation_save", array($this, "stickylist_gform_pre_confirmation_save"), 10, 2 );
             add_filter("gform_confirmation", array($this, "stickylist_gform_confirmation"), 10, 4);
+
+            // Posts
+            add_filter("gform_post_data", array( $this, "stickylist_gform_post_data" ), 10, 3 );
         }
+
+        function stickylist_gform_post_data( $post_data, $form, $entry ) {
+        
+            var_dump($post_data);
+
+            return ( $post_data );
+        }
+        
 
         
         /**
@@ -501,7 +512,7 @@ if (class_exists("GFForms")) {
                     $view_id = $_POST["view_id"];
                     $form_fields = GFAPI::get_entry($view_id);
                 }
-                
+        
                 // Get current user
                 $current_user = wp_get_current_user();
                
