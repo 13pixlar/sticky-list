@@ -3,14 +3,13 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.0.5
+Version: 1.0.6
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
 
 
 /* Todo
- * Fix: Template tags in confirmations
  * New: Support for edit posts
  * New: Support for file uploads
  * New: Support for multi page forms
@@ -22,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.0.4";
+        protected $_version = "1.0.6";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
