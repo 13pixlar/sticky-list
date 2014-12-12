@@ -468,45 +468,6 @@ if (class_exists("GFForms")) {
 
 
         /**
-         *  Editing entries
-         *
-         */ 
-        public function post_edit_entry($entry, $form) {
-            
-            // If we are in edit mode
-            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
-
-                // Get original entry id
-                $original_entry_id = $_POST["original_entry_id"];
-
-                // Get current user
-                $current_user = wp_get_current_user();
-                
-                // Get original entry
-                $original_entry =  GFAPI::get_entry($original_entry_id);
-
-                // If we have an original entry that is active 
-                if($original_entry && $original_entry["status"] == "active") {
-
-                    // ...and the current user is creator OR has the capability to edit others posts
-                    if($original_entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
-
-                        // Keep starred and read status
-                        $entry["is_read"] = $original_entry["is_read"];
-                        $entry["is_starred"] = $original_entry["is_starred"];
-
-                        // Uppdate original entry with new fields
-                        $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
-                        
-                        // Delete newly created entry
-                        if($success_uppdate) $success_delete = GFAPI::delete_entry($entry["id"]);
-                    }
-                }
-            }
-        }
-
-
-        /**
          * Performs actions when entrys are clicked in the list
          *
          */
@@ -594,11 +555,56 @@ if (class_exists("GFForms")) {
 
                 <?php   // Add our manipulated fields to the $_POST variable
                         $_POST = $form_fields;
+
+                        echo "on load:";
+                        var_dump($_POST);
                     }
                 }
             }
             
             return $form;
+        }
+
+
+        /**
+         *  Editing entries
+         *
+         */ 
+        public function post_edit_entry($entry, $form) {
+            
+            // If we are in edit mode
+            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+
+                // Get original entry id
+                $original_entry_id = $_POST["original_entry_id"];
+
+                // Get current user
+                $current_user = wp_get_current_user();
+                
+                // Get original entry
+                $original_entry =  GFAPI::get_entry($original_entry_id);
+
+                // If we have an original entry that is active 
+                if($original_entry && $original_entry["status"] == "active") {
+
+                    // ...and the current user is creator OR has the capability to edit others posts
+                    if($original_entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
+
+                        // Keep starred and read status
+                        $entry["is_read"] = $original_entry["is_read"];
+                        $entry["is_starred"] = $original_entry["is_starred"];
+
+                        // Uppdate original entry with new fields
+                        $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
+                        
+                        // Delete newly created entry
+                        if($success_uppdate) $success_delete = GFAPI::delete_entry($entry["id"]);
+
+                        echo "On save:";
+                        var_dump($entry);
+                    }
+                }
+            }
         }
 
 
