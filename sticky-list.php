@@ -70,17 +70,21 @@ if (class_exists("GFForms")) {
             add_action("gform_pre_confirmation_save", array($this, "stickylist_gform_pre_confirmation_save"), 10, 2 );
             add_filter("gform_confirmation", array($this, "stickylist_gform_confirmation"), 10, 4);
 
-            // Posts
+            // Update connected Wordpress post if exsists
             add_filter("gform_post_data", array( $this, "stickylist_gform_post_data" ), 10, 3 );
         }
 
+
+        /**
+         * Sticky List update Wordpress post
+         *
+         */
         function stickylist_gform_post_data( $post_data, $form, $entry ) {
 
-            $post_data['ID'] = $_POST["post_id"];
-
+            // If post ID is set we need to update the post
+            if (isset($_POST["post_id"])) $post_data['ID'] = $_POST["post_id"];
             return ( $post_data );
         }
-        
 
         
         /**
@@ -555,46 +559,40 @@ if (class_exists("GFForms")) {
                         $settings = $this->get_form_settings($form);
 
                         // Get update text
-                        if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = "";
+                        if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = ""; ?>
 
-                        // If we are in edit mode we insert two hidden fields with entry id and mode = edit
+                        <!-- Add JQuery to help with view/update/delete -->
+                        <script>
+                        jQuery(document).ready(function($) {
+                            var thisForm = $('#gform_<?php echo $form_id;?>')
+
+                <?php   // If we are in edit mode we insert two hidden fields with entry id and mode = edit
                         if($_POST["mode"] == "edit") { ?>
 
-                            <script>
-                            jQuery(document).ready(function($) {
-                                var thisForm = $('#gform_<?php echo $form_id;?>')
-                                thisForm.append('<input type="hidden" name="action" value="edit" />');
-                                thisForm.append('<input type="hidden" name="original_entry_id" value="<?php echo $edit_id; ?>" />');
-                                $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
-                            });
-                            </script>
+                            thisForm.append('<input type="hidden" name="action" value="edit" />');
+                            thisForm.append('<input type="hidden" name="original_entry_id" value="<?php echo $edit_id; ?>" />');
+                            $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
 
                 <?php   }
 
                         // If we are in view mode we disable all inputs and hide the submit button        
                         if($_POST["mode"] == "view") { ?>
 
-                            <script>
-                            jQuery(document).ready(function($) {
-                                $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
-                                $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
-                            });
-                            </script>
+                            $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
+                            $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
                 <?php   }
 
                         // If we have a post ID it means that there is a post field present. We then insert a hidden field with the post ID for use later
                         if($form_fields["post_id"] != null ) { ?>
 
-                             <script>
-                            jQuery(document).ready(function($) {
-                                var thisForm = $('#gform_<?php echo $form_id;?>')
-                                thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
-                            });
-                            </script>
+                            thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
+                <?php   } ?>
 
-                <?php   }
+                        });
+                        </script>
+                        <!-- End JQuery -->
 
-                        // Add our manipulated fields to the $_POST variable
+                <?php   // Add our manipulated fields to the $_POST variable
                         $_POST = $form_fields;
                     }
                 }
@@ -1122,8 +1120,15 @@ if (class_exists("GFForms")) {
             // Loop trough all confirmations
             foreach ($confirmations as $confirmation) {
 
+                // Get and set the confirmation type
+                if (isset($confirmation["stickylist_confirmation_type"])) {
+                    $confirmation_type = $confirmation["stickylist_confirmation_type"];
+                }else{
+                    $confirmation_type = "";
+                }
+
                 // Show matching confirmations
-                if( $confirmation["stickylist_confirmation_type"] == $_POST["action"] || $confirmation["stickylist_confirmation_type"] == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
+                if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
                     
                     // If the confirmation is a message we add that message to the output sting
                     if($confirmation["type"] == "message") {
