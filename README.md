@@ -38,6 +38,10 @@ Front end editing of entries has allways been a problem in Gravity Forms. Soluti
 
 Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending on the per form settings. 
 
+#### Create, edit and delete Wordpress posts on the front end
+
+If you attach a Post Field to your form you can use Sticky List to let your users create, edit and delete Wordpress posts from the front end. This makes Gravity Forms more powerful and allows you to create all sorts of features for your users.
+
 #### Sort and search entries
 
 Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately. 
