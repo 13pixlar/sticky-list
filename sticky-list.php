@@ -3,16 +3,16 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.0.6
+Version: 1.0.7
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
 
 
 /* Todo
- * New: Support for edit posts
- * New: Support for file uploads
- * New: Support for multi page forms
+ * Support for file uploads
+ * Support for GF 1.9 "Save and Continue" functionallity
+ * Support for multi page forms
  */
 
 //------------------------------------------
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.0.6";
+        protected $_version = "1.0.7";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -555,9 +555,6 @@ if (class_exists("GFForms")) {
 
                 <?php   // Add our manipulated fields to the $_POST variable
                         $_POST = $form_fields;
-
-                        echo "on load:";
-                        var_dump($_POST);
                     }
                 }
             }
@@ -599,9 +596,6 @@ if (class_exists("GFForms")) {
                         
                         // Delete newly created entry
                         if($success_uppdate) $success_delete = GFAPI::delete_entry($entry["id"]);
-
-                        echo "On save:";
-                        var_dump($entry);
                     }
                 }
             }
@@ -1025,7 +1019,7 @@ if (class_exists("GFForms")) {
             // Get form settings
             $settings = $this->get_form_settings($form);
 
-            // Only show if Sticky List is enabled for the current form
+            // Only send notifications if Sticky List is enabled for the current form
             if(isset($settings["enable_list"])) {
                 
                 if(isset($notification["stickylist_notification_type"]) && $notification["stickylist_notification_type"] != "") {
@@ -1113,45 +1107,58 @@ if (class_exists("GFForms")) {
          *
          */
         function stickylist_gform_confirmation($original_confirmation, $form, $lead, $ajax){
+
+            // Get form settings
+            $settings = $this->get_form_settings($form);
+
+            // Only show confirmations if Sticky List is enabled for the current form
+            if(isset($settings["enable_list"])) {
             
-            // Get all confirmations for the current form
-            $confirmations = $form["confirmations"];
-            $new_confirmation = "";
+                // Get all confirmations for the current form
+                $confirmations = $form["confirmations"];
+                $new_confirmation = "";
 
-            // If action is not set we assume its a new entry
-            if(!isset($_POST["action"])) {
-                $_POST["action"] = "new";
-            }
-
-            // Loop trough all confirmations
-            foreach ($confirmations as $confirmation) {
-
-                // Get and set the confirmation type
-                if (isset($confirmation["stickylist_confirmation_type"])) {
-                    $confirmation_type = $confirmation["stickylist_confirmation_type"];
-                }else{
-                    $confirmation_type = "";
+                // If action is not set we assume its a new entry
+                if(!isset($_POST["action"])) {
+                    $_POST["action"] = "new";
                 }
 
-                // Show matching confirmations
-                if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
-                    
-                    // If the confirmation is a message we add that message to the output sting
-                    if($confirmation["type"] == "message") {
-                        $new_confirmation .= $confirmation["message"] . " ";
+                // Loop trough all confirmations
+                foreach ($confirmations as $confirmation) {
 
-                    // If not, we set the redirect variable to true    
+                    // Get and set the confirmation type
+                    if (isset($confirmation["stickylist_confirmation_type"])) {
+                        $confirmation_type = $confirmation["stickylist_confirmation_type"];
                     }else{
-                        $new_confirmation = $original_confirmation;
-                        break;
+                        $confirmation_type = "";
                     }
-                }             
+
+                    // Show matching confirmations
+                    if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
+                        
+                        // If the confirmation is a message we add that message to the output sting
+                        if($confirmation["type"] == "message") {
+                            $new_confirmation .= $confirmation["message"] . " ";
+
+                        // If not, we set the redirect variable to true    
+                        }else{
+                            $new_confirmation = $original_confirmation;
+                            break;
+                        }
+                    }             
+                }
+
+                // Apply merge tags to the confirmation message
+                $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
+
+                return $new_confirmation;
+
+            }else{
+
+                // If Sticky List is not enabled for the current form
+                return $original_confirmation;
             }
 
-            // Apply merge tags to the confirmation message
-            $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
-
-            return $new_confirmation;
         }
     }
 
