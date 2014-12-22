@@ -493,16 +493,7 @@ if (class_exists("GFForms")) {
                     
                     // ... and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
                     if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
-
-                        
-                        ##### Loop trough the form fields and check for upload fields
-                        foreach ($form["fields"] as $fkey => $fvalue) {
-                            if($fvalue["type"] == 'fileupload') {
-                                $uploads[] = $fvalue["id"];
-                            }
-                        }
-
-
+                     
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
 
@@ -517,16 +508,10 @@ if (class_exists("GFForms")) {
 
                                 $new_key = str_replace(".", "_", "input_$key");
                                 $form_fields[$new_key] = $form_fields[$key];
-                                unset($form_fields[$key]);
-
-                                #####
-                                $form_id = $form["id"];
-                                if ( in_array( $key, $uploads ) ) {
-                                    $upload_inputs .= "$('input[name=\"$new_key\"]').after('<input name=\"file_$key\" type=\"text\" value=\"$value\">');";
-                                }
+                                unset($form_fields[$key]);                                                           
                             }
                         }
-
+                        
                         // Add is_submit_id field
                         $form_id = $form['id'];
                         $form_fields["is_submit_$form_id"] = "1";
@@ -562,12 +547,7 @@ if (class_exists("GFForms")) {
                         if($form_fields["post_id"] != null ) { ?>
 
                             thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
-                <?php   } 
-
-                        ##### If we have one ore more upload fields
-                        if($upload_inputs != "") {
-                            echo $upload_inputs;
-                        } ?>
+                <?php   } ?>
 
                         });
                         </script>
@@ -610,13 +590,6 @@ if (class_exists("GFForms")) {
                         // Keep starred and read status
                         $entry["is_read"] = $original_entry["is_read"];
                         $entry["is_starred"] = $original_entry["is_starred"];
-
-                        #####
-                        foreach ($_POST as $key => $value) {
-                            if (strpos($key, "file_") !== false) {
-                                echo "key: $key, value: $value";
-                            }     
-                        }
 
                         // Uppdate original entry with new fields
                         $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
