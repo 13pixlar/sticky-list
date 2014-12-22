@@ -239,6 +239,9 @@ if (class_exists("GFForms")) {
 
                 // If we have some entries, lets loop trough them and start building the output html
                 if(!empty($entries)) {
+
+                    // Allow for entries filtering
+                    $entries = apply_filters( 'filter_entries', $entries );
                     
                     // This vaiable will hold all html for the form                
                     $list_html = "<div id='sticky-list-wrapper'>";
