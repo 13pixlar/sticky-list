@@ -73,7 +73,7 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 #### Developers
 
 **Avalible filters**
-`filter_entries`
+'filter_entries'
 Allows for filtering of the entries in the list.
 Paramters: $entries (array of entriy objects)
 
