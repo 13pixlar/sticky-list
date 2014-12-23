@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.0.7
+Version: 1.0.8
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.0.7";
+        protected $_version = "1.0.8";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -187,6 +187,7 @@ if (class_exists("GFForms")) {
             // Setting variables
             $enable_list            = get_sticky_setting("enable_list", $settings);
             $show_entries_to        = get_sticky_setting("show_entries_to", $settings);
+            $max_entries            = get_sticky_setting("max_entries", $settings);
             $enable_view            = get_sticky_setting("enable_view", $settings);
             $enable_view_label      = get_sticky_setting("enable_view_label", $settings);
             $enable_edit            = get_sticky_setting("enable_edit", $settings);
@@ -208,9 +209,12 @@ if (class_exists("GFForms")) {
                 $current_user = wp_get_current_user();
                 $current_user_id = $current_user->ID;
 
+                //Set max nr of entries to be shown
+                if($max_entries == "") { $max_entries = 999999; }
+
                 // Set sorting and paging variables
                 $sorting = array();
-                $paging = array('offset' => 0, 'page_size' => 9999 );
+                $paging = array('offset' => 0, 'page_size' => $max_entries );
 
                    
                 // Get entries to show depending on settings
@@ -785,6 +789,13 @@ if (class_exists("GFForms")) {
                             "name"    => "custom_embedd_page",
                             "tooltip" => __('Manually input the url of the form. This overrides the selection made in the dropdown above. Use this if you cannot find the page/post in the list.','sticky-list'),
                             "class"   => "medium"
+                        ),
+                        array(
+                            "label"   => __('Max nr of entries','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "max_entries",
+                            "tooltip" => __('Maximum number of entries to be shown in the list.','sticky-list'),
+                            "class"   => "small"
                         ),
                         array(
                             "label"   => __('View entries','sticky-list'),

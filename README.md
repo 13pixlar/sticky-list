@@ -65,6 +65,11 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 #### Developers
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
 
+**Avalible filters**
+`filter_entries`
+Allows for filtering of the entries in the list.
+Paramters: $entries (array of entriy objects)
+
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
 #### Known bugs
@@ -124,6 +129,10 @@ protected $_min_gravityforms_version = "1.8.19.2";
 to you version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 <h3>Changelog</h3>
+
+**1.0.8**
+* Added a filter for entries that are shown in the list
+* Added setting for maximum number of entries to be shown in the list
 
 **1.0.7**
 * Added support for Post fields (create/edit/delete Wordpress posts).

@@ -3,8 +3,8 @@ Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
-Tested up to: 4.0.1
-Stable tag: 1.0.7
+Tested up to: 4.1
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,13 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 5. Put the shortcode in a page/post with the corresponding form id, i.e: <br>`[stickylist id="1"]`
 
 #### Developers
+
+**Avalible filters**
+`filter_entries`
+Allows for filtering of the entries in the list.
+Paramters: $entries (array of entriy objects)
+
+**Documentation**
 There is a fully documented version of the plugin on the <a href="https://github.com/13pixlar/sticky-list">Github project page</a>. This plugin is Open Source and pull requests are welcome.
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
@@ -139,6 +146,10 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 4. Front end list 
 
 == Changelog ==
+
+= 1.0.8 =
+* Added a filter for entries that are shown in the list
+* Added setting for maximum number of entries to be shown in the list
 
 = 1.0.7 =
 * Added support for Post fields (create/edit/delete Wordpress posts).
