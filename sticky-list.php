@@ -107,6 +107,8 @@ if (class_exists("GFForms")) {
                         <br>
                         <input type="checkbox" id="field_list_value" onclick="SetFieldProperty('stickylistField', this.checked);" /><label class="inline" for="field_list_value"><?php _e('Show in list', 'sticky-list'); ?> <?php gform_tooltip("form_field_list_value") ?></label>
                         <br>
+                        <input type="checkbox" id="field_nowrap_value" onclick="SetFieldProperty('stickylistFieldNoWrap', this.checked);" /><label class="inline" for="field_nowrap_value"><?php _e('Dont wrap text from this field', 'sticky-list'); ?> <?php gform_tooltip("form_field_nowrap_value") ?></label>
+                        <br>
                         <label class="inline" for="field_list_text_value"><?php _e('Column label', 'sticky-list'); ?> <?php gform_tooltip("form_field_text_value") ?></label><br><input class="fieldwidth-3" type="text" id="field_list_text_value" onkeyup="SetFieldProperty('stickylistFieldLabel', this.value);" />  
                     </li>
                     
@@ -126,6 +128,7 @@ if (class_exists("GFForms")) {
                 // Bind to the load field settings event to initialize the inputs
                 jQuery(document).bind("gform_load_field_settings", function(event, field, form){
                     jQuery("#field_list_value").attr("checked", field["stickylistField"] == true);
+                    jQuery("#field_nowrap_value").attr("checked", field["stickylistFieldNoWrap"] == true);
                     jQuery("#field_list_text_value").val(field["stickylistFieldLabel"]);
                 });
             </script>
@@ -139,6 +142,7 @@ if (class_exists("GFForms")) {
          */   
         function add_stickylist_tooltips($tooltips){
            $tooltips["form_field_list_value"] = __('<h6>Show field in list</h6>Check this box to show this field in the list.','sticky-list');
+           $tooltips["form_field_nowrap_value"] = __('<h6>Dont wrap whitespace</h6>Check this box to prevent wraping of text from this field','sticky-list');
            $tooltips["form_field_text_value"] = __('<h6>Header text</h6>Use this field to override the default text header.','sticky-list');
            return $tooltips;
         }
@@ -297,6 +301,12 @@ if (class_exists("GFForms")) {
                                 // ...we get the value for it
                                 $field_value = RGFormsModel::get_lead_field_value( $entry, $field );
 
+                                // If nowrap is set for this field we add a class to it
+                                $nowrap = "";
+                                if(isset($field["stickylistFieldNoWrap"]) && $field["stickylistFieldNoWrap"] != "") {
+                                    $nowrap = " sticky-nowrap";
+                                }
+
                                 // If the value is an array (i.e. address field, name field, etc)
                                 if(is_array($field_value)) {
 
@@ -308,18 +318,18 @@ if (class_exists("GFForms")) {
                                     foreach ($field_value as $field => $value) {
                                         $field_values .= $value . " ";
                                     }
-                                    $list_html .= "<td class='sort-$i'>$field_values</td>";
+                                    $list_html .= "<td class='sort-$i $nowrap'>$field_values</td>";
                                 }
 
                                 // If the field is a file field
                                 elseif ($field["type"] == "fileupload") {
                                     $file_name = basename($field_value);
-                                    $list_html .= "<td class='sort-$i'><a href='$field_value'>$file_name</a></td>";
+                                    $list_html .= "<td class='sort-$i $nowrap'><a href='$field_value'>$file_name</a></td>";
                                 }
 
                                 // All other fields
                                 else{ 
-                                    $list_html .= "<td class='sort-$i'>$field_value</td>";
+                                    $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
                                 }
 
                                 // Increment sorting counter

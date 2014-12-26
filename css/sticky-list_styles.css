@@ -6,7 +6,8 @@ table.sticky-list td.sticky-action  {
 	text-align: right;
     white-space:nowrap;
 }
-table.sticky-list th {
+table.sticky-list th,
+table.sticky-list .sticky-nowrap {
     white-space:nowrap;
 }
 
