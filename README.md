@@ -68,7 +68,7 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 #### Developers
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
 
-**Avalible filters**
+**Avalible filters**<br>
 The filter `filter_entries` allows for filtering of the entries in the list.<br>
 Paramters: $entries (array of entriy objects)<br>
 
