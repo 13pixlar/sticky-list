@@ -76,25 +76,13 @@ if (class_exists("GFForms")) {
 
 
         /**
-         * Sticky List update Wordpress post
-         *
-         */
-        function stickylist_gform_post_data( $post_data, $form, $entry ) {
-
-            // If post ID is set we need to update the post
-            if (isset($_POST["post_id"])) $post_data['ID'] = $_POST["post_id"];
-            return ( $post_data );
-        }
-
-        
-        /**
          * Sticky List localization function
          *
          */
         function stickylist_localize() {
             load_plugin_textdomain('sticky-list', false, basename( dirname( __FILE__ ) ) . '/languages' );
         }
-        
+
         
         /**
          * Sticky List field settings function
@@ -314,17 +302,23 @@ if (class_exists("GFForms")) {
 
                                     // Sort the array by key so that the fields are shown in the correct order
                                     ksort($field_value);
-                                   
                                     $field_values = "";
 
                                     // Concatenate field values into string separated by a space
                                     foreach ($field_value as $field => $value) {
                                         $field_values .= $value . " ";
-
                                     }
                                     $list_html .= "<td class='sort-$i'>$field_values</td>";
+                                }
 
-                                }else{ 
+                                // If the field is a file field
+                                elseif ($field["type"] == "fileupload") {
+                                    $file_name = basename($field_value);
+                                    $list_html .= "<td class='sort-$i'><a href='$field_value'>$file_name</a></td>";
+                                }
+
+                                // All other fields
+                                else{ 
                                     $list_html .= "<td class='sort-$i'>$field_value</td>";
                                 }
 
@@ -498,8 +492,15 @@ if (class_exists("GFForms")) {
                 // If we have an entry that is active
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
-                    // ... and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
+                    // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
                     if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
+
+                        // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
+                        foreach ($form["fields"] as $fkey => $fvalue) {
+                            if($fvalue["type"] == 'fileupload') {
+                                $uploads[] = $fvalue["id"];
+                            }
+                        }
                      
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
@@ -513,9 +514,23 @@ if (class_exists("GFForms")) {
                                     $value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
                                 }
 
+                                // Format the key
                                 $new_key = str_replace(".", "_", "input_$key");
                                 $form_fields[$new_key] = $form_fields[$key];
-                                unset($form_fields[$key]);                                                           
+
+                                // If the current field is an upload field we build the html do display it
+                                $form_id = $form["id"];
+                                if ( in_array( $key, $uploads ) ) {
+                                    if ($value != "") {
+                                        $path = $value;
+                                        $file = basename($path);
+                                        $delete_icon = plugin_dir_url( __FILE__ ) . 'img/delete.png';
+                                        $upload_inputs .= "$('input[name=\"$new_key\"]').before('<div class=\"file_$key\"><a href=\"$path\">$file</a> <a title=\"" . __("Remove","sticky-list") . "\" class=\"remove-entry\"><img alt=\"" . __("Remove","sticky-list") . "\" src=\"$delete_icon\"></a><input name=\"file_$key\" type=\"hidden\" value=\"$value\"></div>');";
+                                    }
+                                }
+
+                                // Unset old key
+                                unset($form_fields[$key]);                    
                             }
                         }
                         
@@ -554,7 +569,13 @@ if (class_exists("GFForms")) {
                         if($form_fields["post_id"] != null ) { ?>
 
                             thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
-                <?php   } ?>
+                <?php   } 
+
+                        // If we have one ore more upload fields we output the html to help with editing
+                        if($upload_inputs != "") {
+                            $upload_inputs .= "$('div[class^=\"file_\"] .remove-entry').click( function(event){ event.preventDefault; $(this).parent().remove();});";
+                            echo $upload_inputs;
+                        } ?>
 
                         });
                         </script>
@@ -598,14 +619,45 @@ if (class_exists("GFForms")) {
                         $entry["is_read"] = $original_entry["is_read"];
                         $entry["is_starred"] = $original_entry["is_starred"];
 
+                        // Look for existing file uploads and use them to keep the files
+                        foreach ($_POST as $key => &$value) {
+                            if (strpos($key, "file_") !== false) {
+                                $entry[str_replace("file_", "", $key)] = $value;
+                            }     
+                        }
+
                         // Uppdate original entry with new fields
                         $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
+
+                        // Empty the newly created entry before deletion (to keep attached files)
+                        foreach ($entry as $key => &$value) {
+                            
+                            // Dont empty the ID or we wont be able to update and remove the entry
+                            if ($key != "id") {
+                                $entry[$key] = "";
+                            }
+                        }
                         
                         // Delete newly created entry
-                        if($success_uppdate) $success_delete = GFAPI::delete_entry($entry["id"]);
+                        if($success_uppdate) {
+                            $empty_the_entry = GFAPI::update_entry($entry, $entry["id"]);
+                            $success_delete = GFAPI::delete_entry($entry["id"]);
+                        } 
                     }
                 }
             }
+        }
+
+
+        /**
+         * Sticky List update Wordpress post
+         *
+         */
+        function stickylist_gform_post_data( $post_data, $form, $entry ) {
+
+            // If post ID is set we need to update the post
+            if (isset($_POST["post_id"])) $post_data['ID'] = $_POST["post_id"];
+            return ( $post_data );
         }
 
 

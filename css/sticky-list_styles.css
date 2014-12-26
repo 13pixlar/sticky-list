@@ -1,8 +1,13 @@
 /* sticky-list styles */
 
+/* Table styles */
 table.sticky-list th.sticky-action,
 table.sticky-list td.sticky-action  {
 	text-align: right;
+    white-space:nowrap;
+}
+table.sticky-list th {
+    white-space:nowrap;
 }
 
 table.sticky-list tr:nth-child(2n+2) {
@@ -36,4 +41,13 @@ table.sticky-list button {
 table.sticky-list form:last-child button {
 	margin-right: 0;
 }
+
+/* Upload field styles */
+div[class^="file_"] {
+    cursor: pointer;
+}
+div[class^="file_"] + input[type="file"] {
+    display: none;
+}
+
 
