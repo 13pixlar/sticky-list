@@ -69,9 +69,8 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
 
 **Avalible filters**
-`filter_entries`
-Allows for filtering of the entries in the list.
-Paramters: $entries (array of entriy objects)
+The filter `filter_entries` allows for filtering of the entries in the list.<br>
+Paramters: $entries (array of entriy objects)<br>
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 

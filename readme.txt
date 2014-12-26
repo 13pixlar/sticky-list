@@ -76,9 +76,8 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 #### Developers
 
 **Avalible filters**
-'filter_entries'
-Allows for filtering of the entries in the list.
-Paramters: $entries (array of entriy objects)
+The filter `filter_entries` allows for filtering of the entries in the list.<br>
+Paramters: $entries (array of entriy objects)<br>
 
 **Documentation**
 There is a fully documented version of the plugin on the <a href="https://github.com/13pixlar/sticky-list">Github project page</a>. This plugin is Open Source and pull requests are welcome.
