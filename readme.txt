@@ -85,9 +85,15 @@ There is a fully documented version of the plugin on the <a href="https://github
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
-#### Known bugs
+#### Known issues
 
-**File field does not display uploaded file when viewed or edited**<br>
+**The "Save & continue feature in Gravity Forms 1.9 in sot supported**<br>
+This will be addressed in a future version of Sticky List.
+
+**Sticky List does not currently support multi page forms**<br>
+This functionallity will be added in a future version of Sticky List.
+
+**Multiple file uploads in same field does not work**<br>
 This will be addressed in a future version of Sticky List.
 
 == Installation ==

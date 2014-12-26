@@ -75,12 +75,15 @@ Paramters: $entries (array of entriy objects)
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
-#### Known bugs
+#### Known issues
 
-**Some fields are not updated**<br>
-There is a bug in earlier versions the Gravity Forms API that prevents Sticky List from working correctly. Please update Gravity Forms. More information and fix, please see the FAQ section of this readme.
+**The "Save & continue feature in Gravity Forms 1.9 in sot supported**<br>
+This will be addressed in a future version of Sticky List.
 
-**File field does not display uploaded file when viewed or edited**<br>
+**Sticky List does not currently support multi page forms**<br>
+This functionallity will be added in a future version of Sticky List.
+
+**Multiple file uploads in same field does not work**<br>
 This will be addressed in a future version of Sticky List.
 
 #### Installation
