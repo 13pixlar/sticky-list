@@ -29,6 +29,17 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 #### Planned features
 
 * Support for multi page forms
+* Support for multiple uploads in file field
+* Support for GF 1.9 "Save and Continue" functionallity
+
+#### Usage
+
+1. Upload and activate the plugin
+2. Go to the settings page of a form and click the Sticky List settings tab
+3. Enable Sticky List for that form and choose your settings
+4. Select the page/post where the **form** is embedded  
+5. Go to the form editor and select what fields should be displayed in the list
+6. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
 
 #### List and edit Gravity Form entries on the front end
 
@@ -53,14 +64,6 @@ Gravity Forms Sticky List adds conditional confirmations and notifications so th
 #### Styling the list
 
 Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory.
-
-#### Usage
-
-1. Upload and activate the plugin
-2. Go to the settings page of a form and click the Sticky List settings tab
-3. Enable Sticky List for that form att choose your settings
-4. Go to the form editor and select what fields should be displayed in the list
-5. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
 
 #### Developers
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
@@ -129,6 +132,10 @@ protected $_min_gravityforms_version = "1.8.19.2";
 to you version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 <h3>Changelog</h3>
+
+**1.0.9**
+* Added support for file upload field (no multi upload yet unfortunately)
+* Added option to prevent text wraping
 
 **1.0.8**
 * Added a filter for entries that are shown in the list
