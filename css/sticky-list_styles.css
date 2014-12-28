@@ -60,7 +60,7 @@ table.sticky-list form:last-child button {
 }
 
 /* Upload field styles */
-div[class^="file_"] {
+div[class^="file_"] .remove-entry {
     cursor: pointer;
 }
 div[class^="file_"] + input[type="file"] {

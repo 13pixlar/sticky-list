@@ -551,7 +551,15 @@ if (class_exists("GFForms")) {
                                         $path = $value;
                                         $file = basename($path);
                                         $delete_icon = plugin_dir_url( __FILE__ ) . 'img/delete.png';
-                                        $upload_inputs .= "$('input[name=\"$new_key\"]').before('<div class=\"file_$key\"><a href=\"$path\">$file</a> <a title=\"" . __("Remove","sticky-list") . "\" class=\"remove-entry\"><img alt=\"" . __("Remove","sticky-list") . "\" src=\"$delete_icon\"></a><input name=\"file_$key\" type=\"hidden\" value=\"$value\"></div>');";
+                                        
+                                        // Only show the remove icon if we are in edit mode
+                                        if ($_POST["mode"] == "edit") {
+                                            $show_delete = " <a title=\"" . __("Remove","sticky-list") . "\" class=\"remove-entry\"><img alt=\"" . __("Remove","sticky-list") . "\" src=\"$delete_icon\"></a>";
+                                        }else{
+                                            $show_delete = "";
+                                        }
+
+                                        $upload_inputs .= "$('input[name=\"$new_key\"]').before('<div class=\"file_$key\"><a href=\"$path\">$file</a>$show_delete<input name=\"file_$key\" type=\"hidden\" value=\"$value\"></div>');";
                                     }
                                 }
 
