@@ -9,10 +9,11 @@ jQuery(document).ready(function($) {
     $('#gaddon-setting-row-enable_view').before(settingsHeader('1',''));
     $('#gaddon-setting-row-action_column_header').before(settingsHeader('2',''));
     $('#gaddon-setting-row-enable_sort').before(settingsHeader('3',''));
+    $('#gaddon-setting-row-enable_pagination').before(settingsHeader('4',''));
 
     // Add donate info
-    $('#gaddon-setting-row-enable_search').after(settingsHeader('4',''));
-    $('#gaddon-setting-row-header-4').after('<tr id="gaddon-setting-row-donate" class="show"><td class="donate-text" colspan="2"></td></tr>');
+    $('#gaddon-setting-row-page_entries').after(settingsHeader('5',''));
+    $('#gaddon-setting-row-header-5').after('<tr id="gaddon-setting-row-donate" class="show"><td class="donate-text" colspan="2"></td></tr>');
 
 	// Define some variables
 	var siblings 			= $('#gaddon-setting-row-enable_list').siblings('[id^=gaddon-setting-row]');
@@ -27,6 +28,8 @@ jQuery(document).ready(function($) {
 	var deleteType		 	= $('#gaddon-setting-row-delete_type');
 	var enableSort			= $('#enable_sort');
 	var enableSearch		= $('#gaddon-setting-row-enable_search');
+	var enablePagination	= $('#enable_pagination');
+	var pageEntries			= $('#gaddon-setting-row-page_entries');
 
 	
 	/**
@@ -63,6 +66,12 @@ jQuery(document).ready(function($) {
 		    	enableSearch.removeClass('show');
 		    }
 
+		    if(enablePagination.is(':checked')) {
+		        pageEntries.addClass('show');
+		    }else{
+		    	pageEntries.removeClass('show');
+		    }
+
 	    
 	    }else{
 	    	siblings.removeClass('show');
@@ -94,7 +103,10 @@ jQuery(document).ready(function($) {
 	});
 
 	enableSort.click(function(event) {
-		enableSearch.toggleClass('show');
-		
+		enableSearch.toggleClass('show');		
+	});
+
+	enablePagination.click(function(event) {
+		pageEntries.toggleClass('show');		
 	});
 });

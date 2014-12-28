@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.0.9
+Version: 1.1
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.0.9";
+        protected $_version = "1.1";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -49,9 +49,6 @@ if (class_exists("GFForms")) {
 
             // Add css
             add_action("wp_enqueue_scripts", array( $this, "register_plugin_styles"));
-
-            // Add scripts
-            add_action("wp_enqueue_scripts", array( $this, "register_plugin_scripts"));
 
             // View or Edit entries
             add_filter("gform_pre_render", array($this,"pre_entry_action"));
@@ -190,6 +187,9 @@ if (class_exists("GFForms")) {
             $enable_sort            = get_sticky_setting("enable_sort", $settings);
             $enable_search          = get_sticky_setting("enable_search", $settings);
             $embedd_page            = get_sticky_setting("embedd_page", $settings);
+            $enable_pagination      = get_sticky_setting("enable_pagination", $settings);
+            $page_entries           = get_sticky_setting("page_entries", $settings);
+
 
             // If a Custom embed url is set we override the selected embedd page
             if(isset($settings["custom_embedd_page"]) && $settings["custom_embedd_page"] != "") $embedd_page = $settings["custom_embedd_page"];
@@ -247,7 +247,7 @@ if (class_exists("GFForms")) {
                         $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
                     }
 
-                    $list_html .= "<table class='sticky-list'><tr>";
+                    $list_html .= "<table class='sticky-list'><thead><tr>";
                     
                     // Get all fields
                     $fields = $form["fields"];
@@ -280,7 +280,7 @@ if (class_exists("GFForms")) {
                         $list_html .= "<th class='sticky-action'>$action_column_header</th>";
                     }
 
-                    $list_html .= "</tr><tbody class='list'>";
+                    $list_html .= "</tr></thead><tbody class='list'>";
 
                     // Make table rows
                     foreach ($entries as $entry) {
@@ -394,19 +394,46 @@ if (class_exists("GFForms")) {
                         $list_html .= "</tr>";
                     }
 
-                    $list_html .= "</tbody></table></div>";
+                    $list_html .= "</tbody></table>";
 
-                    // If list sorting is enabled
-                    if($enable_sort) {
+                    // If paignation is enabled we add the paignation container if there are more entries than what would fit in a page
+                    if($enable_pagination && $page_entries < count($entries)) {
+                        $list_html .= "<ul class='pagination'></ul>";
+                    }
 
-                        // Build and initialize list.js
+                    $list_html .= "</div>";
+
+
+                    // If list sorting or pagination is enabled
+                    if($enable_sort || $enable_pagination) {
+
+                        // Build sort fields string
                         $sort_fileds = "";
                         for ($a=0; $a<$i; $a++) { 
                             $sort_fileds .= "'sort-$a',"; 
                         }
-                        $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper', options);</script><br><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
-                    }
 
+                        // Include list.js
+                        $list_html .= "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/list.min.js' ) . "'></script>";
+                        
+                        // Include list.js pagination plugin
+                        if($enable_pagination) {
+                            $list_html .= "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/list.pagination.min.js' ) . "'></script>";
+                        }
+
+                        // If both sort and paignation is enabled
+                        if($enable_sort && $enable_pagination) {
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper', options);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                        
+                        // If only sort is enabled
+                        }elseif($enable_sort && !$enable_pagination) {
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper', options);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                        
+                        // If only paignation is enabled                        
+                        }elseif(!$enable_sort && $enable_pagination) {                 
+                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper', options);</script></style>";
+                        }
+                    }
 
                     // If delete is enabled we need to insert ajax scripts to help with deletion
                     if($enable_delete) {
@@ -464,17 +491,6 @@ if (class_exists("GFForms")) {
         public function register_plugin_styles() {
             wp_register_style( 'stickylist', plugins_url( 'gravity-forms-sticky-list/css/sticky-list_styles.css' ) );
             wp_enqueue_style( 'stickylist' );
-        }
-
-
-        /**
-         * Add Sticky List sortning js (using list.js)
-         *
-         */
-        public function register_plugin_scripts() {
-            wp_register_script( 'list-js', plugins_url( 'gravity-forms-sticky-list/js/list.min.js' ) );
-            wp_enqueue_script( 'list-js' );
-
         }
 
 
@@ -776,7 +792,8 @@ if (class_exists("GFForms")) {
                 $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit & delete","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-4 h4').html('<?php _e("Donate","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-5 h4').html('<?php _e("Donate","sticky-list"); ?>')
                 $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
              });
             </script>
@@ -984,6 +1001,26 @@ if (class_exists("GFForms")) {
                                     "name"  => "enable_search"
                                 )
                             )
+                        ),
+                        array(
+                            "label"   => __('List pagination','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_pagination",
+                            "tooltip" => __('Check this box to enable pagination for the list','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_pagination"
+                                )
+                            )
+                        ),
+                        array(
+                            "label"   => __('Entries per page','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "page_entries",
+                            "tooltip" => __('Number of entries to be shown on each page.','sticky-list'),
+                            "class"   => "small",
+                            "default_value" => "10"
                         )
                     )
                 )

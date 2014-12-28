@@ -43,6 +43,22 @@ table.sticky-list form:last-child button {
 	margin-right: 0;
 }
 
+/* Pagination styles */
+#sticky-list-wrapper ul.pagination {
+    list-style: none;
+    margin: 0;
+}
+#sticky-list-wrapper ul.pagination li {
+    display: inline-block;
+    margin-right: 5px;
+}
+#sticky-list-wrapper ul.pagination li.active a,
+#sticky-list-wrapper ul.pagination li.disabled a {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}
+
 /* Upload field styles */
 div[class^="file_"] {
     cursor: pointer;
