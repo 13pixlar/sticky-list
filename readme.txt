@@ -20,7 +20,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Display a list of entries on the front end
 * Choose who can se the list; entry creator, all logged in users or anyone.
 * Support for (almost) all Gravity Forms fields
-* Create/edit/delete Wordpress posts from the fron end
+* Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
 * Conditional notifications
@@ -51,7 +51,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### List and edit Gravity Form entries on the front end
 
-Front end editing of entries has allways been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityViews</a> allready does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
+Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions from the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityViews</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
 
 #### Delete Gravity Form submissions from front end
 
@@ -67,7 +67,7 @@ Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.
 
 #### Conditional confirmations and notifications
 
-Gravity Forms Sticky List adds conditional confirmations and notifications so that different confirmations messages can be shown depending on if a new entry was submitted or if an existiong entry was updated, and diffrent email notifications can be sent if an entry was added, updated or deleted.
+Gravity Forms Sticky List adds conditional confirmations and notifications so that different confirmations messages can be shown depending on if a new entry was submitted or if an existing entry was updated, and diffrent email notifications can be sent if an entry was added, updated or deleted.
 
 #### Styling the list
 
@@ -86,7 +86,7 @@ There is a fully documented version of the plugin on the <a href="https://github
 
 #### Known issues
 
-**The "Save & continue feature in Gravity Forms 1.9 in sot supported**<br>
+**The "Save & continue" feature in Gravity Forms 1.9 is not supported**<br>
 This will be addressed in a future version of Sticky List.
 
 **Sticky List does not currently support multi page forms**<br>
@@ -141,7 +141,7 @@ In `plugins/gravity-forms-sticky-list/sticky-list.php` on line `23` change
 `
 protected $_min_gravityforms_version = "1.8.19.2";
 `
-to you version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
+to your version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 == Screenshots ==
 
@@ -178,12 +178,12 @@ to you version of Gravity Forms. Note that this change will be lost when updatin
 = 1.0.4 =
 * Update: Added alphabetic sorting of pages/posts in embedd dropdown
 * Update: Increased number of visible pages/posts in embedd dropdown
-* Feature: Added the option to manually input am embedd url
+* Feature: Added the option to manually input an embedd url
 
 = 1.0.3 =
 * Fixed an issue where last name was displayed before first name in the list
 * Fixed an issue that prevented some confirmations from displaying
-* Fixed som undefined index warnings
+* Fixed some undefined index warnings
 
 = 1.0.2 =
 * Fixed a problem where dependencies would not get included
