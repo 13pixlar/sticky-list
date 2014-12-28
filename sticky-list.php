@@ -322,7 +322,10 @@ if (class_exists("GFForms")) {
                                 }
 
                                 // If the field is a file field
-                                elseif ($field["type"] == "fileupload") {
+                                elseif ($field["type"] == "fileupload" || $field["type"] == "post_image") {
+
+                                    // Use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
+                                    $field_value = strtok($field_value, "|");
                                     $file_name = basename($field_value);
                                     $list_html .= "<td class='sort-$i $nowrap'><a href='$field_value'>$file_name</a></td>";
                                 }
@@ -523,7 +526,7 @@ if (class_exists("GFForms")) {
 
                         // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
                         foreach ($form["fields"] as $fkey => $fvalue) {
-                            if($fvalue["type"] == 'fileupload') {
+                            if($fvalue["type"] == 'fileupload' || $fvalue["type"] == "post_image") {
                                 $uploads[] = $fvalue["id"];
                             }
                         }
@@ -546,9 +549,11 @@ if (class_exists("GFForms")) {
 
                                 // If the current field is an upload field we build the html do display it
                                 $form_id = $form["id"];
-                                if ( in_array( $key, $uploads ) ) {
+                                if (is_array($uploads) && in_array( $key, $uploads ) ) {
                                     if ($value != "") {
-                                        $path = $value;
+
+                                        // Use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
+                                        $path = strtok($value, "|");
                                         $file = basename($path);
                                         $delete_icon = plugin_dir_url( __FILE__ ) . 'img/delete.png';
                                         
