@@ -538,6 +538,9 @@ if (class_exists("GFForms")) {
                                 $uploads[] = $fvalue["id"];
                             }
                         }
+
+                        // This variable will hold upload fields                    
+                        $upload_inputs = "";
                      
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
