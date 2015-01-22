@@ -57,7 +57,7 @@ If you want to display entries only from a specific user you can include the use
 
 #### List and edit Gravity Form entries on the front end
 
-Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions from the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityViews</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
+Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions from the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityView</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
 
 #### Delete Gravity Form submissions from front end
 
