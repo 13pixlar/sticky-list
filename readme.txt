@@ -69,7 +69,7 @@ If you attach a Post Field to your form you can use Sticky List to let your user
 
 #### List entries from a specific user
 
-You can use the list to only list entries from a specified user. This is helpful when building for example a user profile and are lokking to display that users submissions on the front end at his or hers profile page.
+You can use the list to display entries from a specified user. This is helpful when building for example a user profile and are looking to display that user's submissions on the front end at his or hers profile page. Se the **usage** section form more info.
 
 #### Sort and search entries
 
