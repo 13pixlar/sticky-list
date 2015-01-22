@@ -49,10 +49,10 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 5. Go to the form editor and select what fields should be displayed in the list
 6. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
 
-If you want to display entries only from a specific user you can include the user id in the shortcode like so:
+If you want to display entries only from a specific user you can include the user ID like so:<br>
 `[stickylist id="1" user="5"]`
 
-**Tip** To use this in a template file, for example on the user profile page, use:
+**Tip** To use this in a template file, for example on the user profile page, use:<br>
 `echo do_shortcode( "[stickylist id='1' user='" . $user_id . "']");`
 
 #### List and edit Gravity Form entries on the front end
