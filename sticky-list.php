@@ -152,10 +152,14 @@ if (class_exists("GFForms")) {
         function stickylist_shortcode( $atts ) {
             $shortcode_id = shortcode_atts( array(
                 'id' => '1',
+                'user' => '',
             ), $atts );
 
             // Get the form ID from shortcode
             $form_id = $shortcode_id['id'];
+
+            // Get the user ID from shortcode
+            $user_id = $shortcode_id['user'];
 
             // Get the form
             $form = GFAPI::get_form($form_id);
@@ -197,9 +201,13 @@ if (class_exists("GFForms")) {
             // Only render list if Sticky List is enabled for this form
             if($enable_list){
 
-                // Get current user
-                $current_user = wp_get_current_user();
-                $current_user_id = $current_user->ID;
+                // Get current user or get user ID from shortcode
+                if($user_id != "") {
+                    $current_user_id = $user_id;
+                }else{
+                    $current_user = wp_get_current_user();
+                    $current_user_id = $current_user->ID;    
+                }
 
                 //Set max nr of entries to be shown
                 if($max_entries == "") { $max_entries = 999999; }

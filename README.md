@@ -41,6 +41,10 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 5. Go to the form editor and select what fields should be displayed in the list
 6. Put the shortcode in a page/post with the corresponding form id, i.e `[stickylist id="1"]`
 
+If you want to display entries only from a specific user you can include the user id in the shortcode like so: `[stickylist id="1" user="5"]`
+
+**Tip** To use this in a template file, for example on the user profile page, use: `echo do_shortcode( "[stickylist id='1' user='" . $user_id . "']");`
+
 #### List and edit Gravity Form entries on the front end
 
 Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (excelent <a href="https://gravityview.co/">GravityViews</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
@@ -52,6 +56,10 @@ Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Delet
 #### Create, edit and delete Wordpress posts on the front end
 
 If you attach a Post Field to your form you can use Sticky List to let your users create, edit and delete Wordpress posts from the front end. This makes Gravity Forms more powerful and allows you to create all sorts of features for your users.
+
+#### List entries from a specific user
+
+You can use the list to only list entries from a specified user. This is helpful when building for example a user profile and are lokking to display that users submissions on the front end at his or hers profile page.
 
 #### Sort and search entries
 
@@ -137,6 +145,9 @@ protected $_min_gravityforms_version = "1.8.19.2";
 to your version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 <h3>Changelog</h3>
+
+**1.1.1**
+* Feature: Added the option to specify a user ID in the shortcode
 
 **1.1**
 * Feature: Added pagination support
