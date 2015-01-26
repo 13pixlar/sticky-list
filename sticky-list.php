@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.1
+Version: 1.1.2
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.1";
+        protected $_version = "1.1.2";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -703,7 +703,14 @@ if (class_exists("GFForms")) {
         function stickylist_gform_post_data( $post_data, $form, $entry ) {
 
             // If post ID is set we need to update the post
-            if (isset($_POST["post_id"])) $post_data['ID'] = $_POST["post_id"];
+            if (isset($_POST["post_id"])) {
+                $post_id = $_POST["post_id"];
+                $post_data['ID'] = $post_id;
+
+                // Get the post and check the comment status
+                $this_post = get_post($post_id);
+                $post_data["comment_status"] = $this_post->comment_status;
+            }
             return ( $post_data );
         }
 

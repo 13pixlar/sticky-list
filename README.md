@@ -148,6 +148,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.1.2**
+* Fixed an issue where editing a WordPress post would disable comments
+
 **1.1.1**
 * Feature: Added the option to specify a user ID in the shortcode
 
