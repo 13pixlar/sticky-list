@@ -604,6 +604,7 @@ if (class_exists("GFForms")) {
 
                             thisForm.append('<input type="hidden" name="action" value="edit" />');
                             thisForm.append('<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />');
+                             thisForm.append('<input type="hidden" name="mode" value="edit" />');
                             $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
 
                 <?php   }
