@@ -710,6 +710,14 @@ if (class_exists("GFForms")) {
                 $post_id = $_POST["post_id"];
                 $post_data['ID'] = $post_id;
 
+                // To prevent duplicate post meta when a form has custom field fields we need to remove the previous meta prior to saving.
+                $form_fields = $form["fields"];
+                foreach ($form_fields as $form_field) {
+                    if($form_field->type == "post_custom_field") {
+                        delete_post_meta($post_id, $form_field->postCustomFieldName);
+                    }
+                }
+
                 // Get the post and check the comment status
                 $this_post = get_post($post_id);
                 $post_data["comment_status"] = $this_post->comment_status;
