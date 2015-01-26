@@ -603,7 +603,7 @@ if (class_exists("GFForms")) {
                         if($_POST["mode"] == "edit") { ?>
 
                             thisForm.append('<input type="hidden" name="action" value="edit" />');
-                            thisForm.append('<input type="hidden" name="original_entry_id" value="<?php echo $edit_id; ?>" />');
+                            thisForm.append('<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />');
                             $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
 
                 <?php   }
@@ -651,7 +651,7 @@ if (class_exists("GFForms")) {
             if(isset($_POST["action"]) && $_POST["action"] == "edit") {
 
                 // Get original entry id
-                $original_entry_id = $_POST["original_entry_id"];
+                $original_entry_id = $_POST["edit_id"];
 
                 // Get current user
                 $current_user = wp_get_current_user();
