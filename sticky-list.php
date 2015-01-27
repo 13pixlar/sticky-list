@@ -69,6 +69,9 @@ if (class_exists("GFForms")) {
 
             // Update connected Wordpress post if exsists
             add_filter("gform_post_data", array( $this, "stickylist_gform_post_data" ), 10, 3 );
+
+            // Make sure required file fields validate when prepopulated whith existing file during edit
+            add_filter('gform_validation', array( $this, "stickylist_validate_fileupload" ) );
         }
 
 
@@ -315,6 +318,9 @@ if (class_exists("GFForms")) {
                                     $nowrap = " sticky-nowrap";
                                 }
 
+                                // Set $custom_file_upload to true if this is a custom field file upload
+                                if($field->type == "post_custom_field" && $field->inputType == "fileupload") { $custom_file_upload = true; }else{ $custom_file_upload = false; }
+
                                 // If the value is an array (i.e. address field, name field, etc)
                                 if(is_array($field_value)) {
 
@@ -329,10 +335,9 @@ if (class_exists("GFForms")) {
                                     $list_html .= "<td class='sort-$i $nowrap'>$field_values</td>";
                                 }
 
-                                // If the field is a file field
-                                elseif ($field["type"] == "fileupload" || $field["type"] == "post_image") {
+                                // If the field is a file field we use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
+                                elseif ($field["type"] == "fileupload" || $field["type"] == "post_image" || $custom_file_upload = true ) {
 
-                                    // Use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
                                     $field_value = strtok($field_value, "|");
                                     $file_name = basename($field_value);
                                     $list_html .= "<td class='sort-$i $nowrap'><a href='$field_value'>$file_name</a></td>";
@@ -533,8 +538,10 @@ if (class_exists("GFForms")) {
                     if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
 
                         // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
-                        foreach ($form["fields"] as $fkey => $fvalue) {
+                        foreach ($form["fields"] as $fkey => &$fvalue) {
                             if($fvalue["type"] == 'fileupload' || $fvalue["type"] == "post_image") {
+                                $uploads[] = $fvalue["id"];
+                            }elseif ($fvalue["type"] == "post_custom_field" && $fvalue["inputType"] == "fileupload") {
                                 $uploads[] = $fvalue["id"];
                             }
                         }
@@ -604,6 +611,7 @@ if (class_exists("GFForms")) {
 
                             thisForm.append('<input type="hidden" name="action" value="edit" />');
                             thisForm.append('<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />');
+                            thisForm.append('<input type="hidden" name="mode" value="edit" />');
                             $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
 
                 <?php   }
@@ -700,6 +708,50 @@ if (class_exists("GFForms")) {
 
 
         /**
+         * Validate required file input fields
+         *
+         */
+        function stickylist_validate_fileupload($validation_result) {
+
+            // Get the validation results
+            $form = $validation_result["form"];
+
+            foreach($form['fields'] as &$field){
+
+                // If we have a file upload field
+
+                if($field->type == "post_custom_field" && $field->inputType == "fileupload") { $custom_file_upload = true; }else{ $custom_file_upload = false; }
+                if($field->type == 'fileupload' || $field->type == "post_image"|| $custom_file_upload == true) {
+                    
+                    // If the field is not empty
+                    if(rgpost("file_{$field['id']}") != "") {
+                        
+                        // Remove isRequired and set failed_validation to false
+                        $field["isRequired"] = 0;                     
+                        $field['failed_validation'] = false;
+
+                        // Set the whole form as valid
+                        $validation_result["is_valid"] = true;
+                    }
+                }
+            }
+
+            // Save our updated form back to the validation results
+            $validation_result['form'] = $form;
+
+            // Recheck all fields and set form to not valid if these is a non valid field
+            foreach($form['fields'] as &$field) {
+                if ($field['failed_validation'] == true) {
+                    $validation_result["is_valid"] = false;
+                    break;
+                }
+            }
+
+            return $validation_result;
+        }
+
+
+        /**
          * Sticky List update Wordpress post
          *
          */
@@ -711,6 +763,8 @@ if (class_exists("GFForms")) {
                 $post_data['ID'] = $post_id;
 
                 // To prevent duplicate post meta when a form has custom field fields we need to remove the previous meta prior to saving.
+                delete_post_meta($post_id, "_gform-entry-id");
+                delete_post_meta($post_id, "_gform-form-id");
                 $form_fields = $form["fields"];
                 foreach ($form_fields as $form_field) {
                     if($form_field->type == "post_custom_field") {
