@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.1.2
+Version: 1.1.4
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.1.2";
+        protected $_version = "1.1.4";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -184,6 +184,7 @@ if (class_exists("GFForms")) {
             $enable_list            = get_sticky_setting("enable_list", $settings);
             $show_entries_to        = get_sticky_setting("show_entries_to", $settings);
             $max_entries            = get_sticky_setting("max_entries", $settings);
+            $enable_clickable       = get_sticky_setting("enable_clickable", $settings);
             $enable_view            = get_sticky_setting("enable_view", $settings);
             $enable_view_label      = get_sticky_setting("enable_view_label", $settings);
             $enable_edit            = get_sticky_setting("enable_edit", $settings);
@@ -196,7 +197,6 @@ if (class_exists("GFForms")) {
             $embedd_page            = get_sticky_setting("embedd_page", $settings);
             $enable_pagination      = get_sticky_setting("enable_pagination", $settings);
             $page_entries           = get_sticky_setting("page_entries", $settings);
-
 
             // If a Custom embed url is set we override the selected embedd page
             if(isset($settings["custom_embedd_page"]) && $settings["custom_embedd_page"] != "") $embedd_page = $settings["custom_embedd_page"];
@@ -340,7 +340,13 @@ if (class_exists("GFForms")) {
 
                                     $field_value = strtok($field_value, "|");
                                     $file_name = basename($field_value);
-                                    $list_html .= "<td class='sort-$i $nowrap'><a href='$field_value'>$file_name</a></td>";
+
+                                    // Make file clickable or not
+                                    if($enable_clickable) {
+                                        $list_html .= "<td class='sort-$i $nowrap'><a href='$field_value'>$file_name</a></td>";
+                                    }else{
+                                        $list_html .= "<td class='sort-$i $nowrap'>$file_name</td>";
+                                    }
                                 }
 
                                 // All other fields
@@ -968,6 +974,18 @@ if (class_exists("GFForms")) {
                             "name"    => "max_entries",
                             "tooltip" => __('Maximum number of entries to be shown in the list.','sticky-list'),
                             "class"   => "small"
+                        ),
+                        array(
+                            "label"   => __('Make files clickable','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_clickable",
+                            "tooltip" => __('Check this box to make uploaded files that are shown in the list clickable','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_clickable"
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('View entries','sticky-list'),
