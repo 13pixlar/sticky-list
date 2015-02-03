@@ -148,6 +148,13 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.1.4**
+* Added option to enable/disable file hyperlinks in list
+
+**1.1.3**
+* Fixed an issue where required file upload fields would not validate
+* Added support for custom fields in WordPress post fields
+
 **1.1.2**
 * Fixed an issue where editing a WordPress post would disable comments
 

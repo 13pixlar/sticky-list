@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.1.2
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -167,6 +167,13 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 4. Front end list 
 
 == Changelog ==
+
+= 1.1.4 =
+* Added option to enable/disable file hyperlinks in list
+
+= 1.1.3 =
+* Fixed an issue where required file upload fields would not validate
+* Added support for custom fields in WordPress post fields
 
 = 1.1.2 =
 * Fixed an issue where editing a WordPress post would disable comments
