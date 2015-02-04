@@ -18,6 +18,8 @@ jQuery(document).ready(function($) {
 	// Define some variables
 	var siblings 			= $('#gaddon-setting-row-enable_list').siblings('[id^=gaddon-setting-row]');
 	var active 				= $('#enable_list');
+	var enablePostLink		= $('#enable_postlink');
+	var enablePostLinkLabel	= $('#gaddon-setting-row-link_label');
 	var enableView 			= $('#enable_view');
 	var enableViewLabel 	= $('#gaddon-setting-row-enable_view_label');
 	var enableEdit 			= $('#enable_edit');
@@ -40,7 +42,12 @@ jQuery(document).ready(function($) {
 
 		if(active.is(':checked')) {
 	        siblings.addClass('show');
-	    
+
+	        if(enablePostLink.is(':checked')) {
+	        	enablePostLinkLabel.addClass('show');
+		    }else{
+		    	enablePostLinkLabel.removeClass('show');
+		    }
 	        if(enableView.is(':checked')) {
 	        	enableViewLabel.addClass('show');
 		    }else{
@@ -86,6 +93,10 @@ jQuery(document).ready(function($) {
 	
 	active.click(function(event) {
 		toggleActive();
+	});
+
+	enablePostLink.click(function(event) {
+		enablePostLinkLabel.toggleClass('show');
 	});
 
 	enableView.click(function(event) {
