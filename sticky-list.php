@@ -944,6 +944,8 @@ if (class_exists("GFForms")) {
 
             // Buld an array of all fields to allow for selection in the "initial sort" dropdown
             $fields_array = array();
+
+            // Manually add the "date added" choise
             $fields_array = array_merge(
                 array(
                     array(
@@ -953,10 +955,17 @@ if (class_exists("GFForms")) {
                 ),$fields_array
             );
             foreach ($form["fields"] as $key => $value) {
+
+                // If the field has no label we use the ID instead
+                if($value->label == "") {
+                    $label = __('Field ','sticky-list') . $value->id;
+                }else{
+                    $label = $value->label;
+                }
                 $fields_array = array_merge(
                     array(
                         array(
-                            "label" => $value->label,
+                            "label" => $label,
                             "value" => $value->id
                         )
                     ),$fields_array
