@@ -148,6 +148,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.1.6**
+* Feature: Added the option select a field by which the list is sorted
+
 **1.1.5**
 * Feature: Added the option show a link to WordPress post
 

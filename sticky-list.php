@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.1.5
+Version: 1.1.6
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.1.5";
+        protected $_version = "1.1.6";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -195,6 +195,8 @@ if (class_exists("GFForms")) {
             $enable_delete_label    = get_sticky_setting("enable_delete_label", $settings);
             $action_column_header   = get_sticky_setting("action_column_header", $settings);
             $enable_sort            = get_sticky_setting("enable_sort", $settings);
+            $initial_sort           = get_sticky_setting("initial_sort", $settings);
+            $initial_sort_direction = get_sticky_setting("initial_sort_direction", $settings);
             $enable_search          = get_sticky_setting("enable_search", $settings);
             $embedd_page            = get_sticky_setting("embedd_page", $settings);
             $enable_pagination      = get_sticky_setting("enable_pagination", $settings);
@@ -217,8 +219,18 @@ if (class_exists("GFForms")) {
                 //Set max nr of entries to be shown
                 if($max_entries == "") { $max_entries = 999999; }
 
-                // Set sorting and paging variables
-                $sorting = array();
+                // Set sorting variables
+                if($enable_sort && $initial_sort) {
+                    if($initial_sort == "date_added") {
+                        $sorting = array();
+                    }else{
+                        $sorting = array('key' => $initial_sort, 'direction' => $initial_sort_direction );
+                    }
+                }else{
+                    $sorting = array();
+                }
+                
+                // Set paging variables
                 $paging = array('offset' => 0, 'page_size' => $max_entries );
 
                    
@@ -248,6 +260,11 @@ if (class_exists("GFForms")) {
 
                 // If we have some entries, lets loop trough them and start building the output html
                 if(!empty($entries)) {
+
+                    // Maybe reverse sort order
+                    if($initial_sort == "date_added" && $initial_sort_direction == "ASC") {
+                        $entries = array_reverse($entries);
+                    }
 
                     // Allow for entries filtering
                     $entries = apply_filters( 'filter_entries', $entries );
@@ -824,7 +841,7 @@ if (class_exists("GFForms")) {
                     if(!is_wp_error($entry)) {
 
                         // ...and the current user is the creator OR has the capability to delete others posts
-                        if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts' )) {
+                        if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts')) {
 
                             // If we have a connected post, we get the post ID
                             if($_POST["delete_post_id"] != null) {
@@ -920,9 +937,32 @@ if (class_exists("GFForms")) {
                                 "label" => $post_title,
                                 "value" => $post_url
                             )
-                        ),$posts_array);
+                        ),$posts_array
+                    );
                 }
             }
+
+            // Buld an array of all fields to allow for selection in the "initial sort" dropdown
+            $fields_array = array();
+            $fields_array = array_merge(
+                array(
+                    array(
+                        "label" => __('Date added','sticky-list'),
+                        "value" => "date_added"
+                    )
+                ),$fields_array
+            );
+            foreach ($form["fields"] as $key => $value) {
+                $fields_array = array_merge(
+                    array(
+                        array(
+                            "label" => $value->label,
+                            "value" => $value->id
+                        )
+                    ),$fields_array
+                );
+            }
+            $fields_array = array_reverse($fields_array);
             
             return array(
                 array(
@@ -1124,6 +1164,31 @@ if (class_exists("GFForms")) {
                                 array(
                                     "label" => __('Enabled','sticky-list'),
                                     "name"  => "enable_sort"
+                                )
+                            )
+                        ),
+                         array(
+                            "label"   => __('Initial sort by','sticky-list'),
+                            "type"    => "select",
+                            "name"    => "initial_sort",
+                            "tooltip" => __('Initially sort the list by a specific field or by date added. ','sticky-list'),
+                            "choices" => $fields_array
+                        ),
+                        array(
+                            "label" => __('Sort direction','sticky-list'),
+                            "type" => "radio",
+                            "horizontal" => true,
+                            "name" => "initial_sort_direction",
+                            "default_value" => "DESC",
+                            "tooltip" => __('Select the direction in which the list should be sorted when first rendered','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Descending','sticky-list'),
+                                    "value" => "DESC"
+                                ),
+                                array(
+                                    "label" => __('Ascending','sticky-list'),
+                                    "value" => "ASC"
                                 )
                             )
                         ),

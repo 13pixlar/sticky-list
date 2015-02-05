@@ -16,22 +16,24 @@ jQuery(document).ready(function($) {
     $('#gaddon-setting-row-header-5').after('<tr id="gaddon-setting-row-donate" class="show"><td class="donate-text" colspan="2"></td></tr>');
 
 	// Define some variables
-	var siblings 			= $('#gaddon-setting-row-enable_list').siblings('[id^=gaddon-setting-row]');
-	var active 				= $('#enable_list');
-	var enablePostLink		= $('#enable_postlink');
-	var enablePostLinkLabel	= $('#gaddon-setting-row-link_label');
-	var enableView 			= $('#enable_view');
-	var enableViewLabel 	= $('#gaddon-setting-row-enable_view_label');
-	var enableEdit 			= $('#enable_edit');
-	var enableEditLabel 	= $('#gaddon-setting-row-enable_edit_label');
-	var updateText			= $('#gaddon-setting-row-update_text')
-	var enableDelete		= $('#enable_delete');
-	var enableDeleteLabel 	= $('#gaddon-setting-row-enable_delete_label');
-	var deleteType		 	= $('#gaddon-setting-row-delete_type');
-	var enableSort			= $('#enable_sort');
-	var enableSearch		= $('#gaddon-setting-row-enable_search');
-	var enablePagination	= $('#enable_pagination');
-	var pageEntries			= $('#gaddon-setting-row-page_entries');
+	var siblings 				= $('#gaddon-setting-row-enable_list').siblings('[id^=gaddon-setting-row]');
+	var active 					= $('#enable_list');
+	var enablePostLink			= $('#enable_postlink');
+	var enablePostLinkLabel		= $('#gaddon-setting-row-link_label');
+	var enableView 				= $('#enable_view');
+	var enableViewLabel 		= $('#gaddon-setting-row-enable_view_label');
+	var enableEdit 				= $('#enable_edit');
+	var enableEditLabel 		= $('#gaddon-setting-row-enable_edit_label');
+	var updateText				= $('#gaddon-setting-row-update_text')
+	var enableDelete			= $('#enable_delete');
+	var enableDeleteLabel 		= $('#gaddon-setting-row-enable_delete_label');
+	var deleteType		 		= $('#gaddon-setting-row-delete_type');
+	var enableSort				= $('#enable_sort');
+	var initialSort				= $('#gaddon-setting-row-initial_sort');
+	var initialSortDirection 	= $('#gaddon-setting-row-initial_sort_direction');
+	var enableSearch			= $('#gaddon-setting-row-enable_search');
+	var enablePagination		= $('#enable_pagination');
+	var pageEntries				= $('#gaddon-setting-row-page_entries');
 
 	
 	/**
@@ -69,8 +71,12 @@ jQuery(document).ready(function($) {
 		    }
 		    if(enableSort.is(':checked')) {
 		        enableSearch.addClass('show');
+		        initialSort.addClass('show');
+		        initialSortDirection.addClass('show');
 		    }else{
 		    	enableSearch.removeClass('show');
+		    	initialSort.removeClass('show');
+		    	initialSortDirection.removeClass('show');
 		    }
 
 		    if(enablePagination.is(':checked')) {
@@ -114,7 +120,9 @@ jQuery(document).ready(function($) {
 	});
 
 	enableSort.click(function(event) {
-		enableSearch.toggleClass('show');		
+		enableSearch.toggleClass('show');
+		initialSort.toggleClass('show');
+		initialSortDirection.toggleClass('show');		
 	});
 
 	enablePagination.click(function(event) {
