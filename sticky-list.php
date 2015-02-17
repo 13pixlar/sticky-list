@@ -355,7 +355,7 @@ if (class_exists("GFForms")) {
                                 }
 
                                 // If the field is a file field we use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
-                                elseif ($field["type"] == "fileupload" || $field["type"] == "post_image" || $custom_file_upload = true ) {
+                                elseif ($field["type"] == "fileupload" || $field["type"] == "post_image" || $custom_file_upload == true ) {
 
                                     $field_value = strtok($field_value, "|");
                                     $file_name = basename($field_value);
