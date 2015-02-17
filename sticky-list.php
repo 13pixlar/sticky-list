@@ -1457,9 +1457,13 @@ if (class_exists("GFForms")) {
                         $confirmation_type = "";
                     }
 
+
+
                     // Show matching confirmations
                     if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
                         
+                        
+
                         // If the confirmation is a message we add that message to the output sting
                         if($confirmation["type"] == "message") {
                             $new_confirmation .= $confirmation["message"] . " ";
@@ -1472,8 +1476,10 @@ if (class_exists("GFForms")) {
                     }             
                 }
 
-                // Apply merge tags to the confirmation message
-                $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
+
+                // Apply merge tags to the confirmation message if its not a redirect
+                if(!isset($new_confirmation["redirect"]) )
+                    $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
 
                 return $new_confirmation;
 
