@@ -172,6 +172,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 == Changelog ==
 
+= 1.1.9 =
+* Update: Updated Sticky List to user Gravity Forms self initiation to prevent Sticky List from beeing deactivated on update
+
 = 1.1.8 =
 * Feature: Optionally display a confirmation on delete
 
