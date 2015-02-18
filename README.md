@@ -152,6 +152,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.1.8**
+* Feature: Optionally display a confirmation on delete
+
 **1.1.7.1**
 * Fixed a fatal error that would crash the add-on if user was not logged in (sorry!)
 

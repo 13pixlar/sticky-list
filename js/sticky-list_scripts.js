@@ -27,6 +27,9 @@ jQuery(document).ready(function($) {
 	var updateText				= $('#gaddon-setting-row-update_text')
 	var enableDelete			= $('#enable_delete');
 	var enableDeleteLabel 		= $('#gaddon-setting-row-enable_delete_label');
+	var confirmDelete			= $('#gaddon-setting-row-confirm_delete');
+	var confirmDeleteCheckbox	= $('#confirm_delete');
+	var confirmDeleteText		= $('#gaddon-setting-row-confirm_delete_text');
 	var deleteType		 		= $('#gaddon-setting-row-delete_type');
 	var enableSort				= $('#enable_sort');
 	var initialSort				= $('#gaddon-setting-row-initial_sort');
@@ -64,10 +67,17 @@ jQuery(document).ready(function($) {
 		    }
 		    if(enableDelete.is(':checked')) {
 		        enableDeleteLabel.addClass('show');
+		        confirmDelete.addClass('show');
 		        deleteType.addClass('show');
 		    }else{
 		    	enableDeleteLabel.removeClass('show');
+		    	confirmDelete.removeClass('show');
 		    	deleteType.removeClass('show');
+		    }
+		    if(confirmDeleteCheckbox.is(':checked') && enableDelete.is(':checked')) {
+		        confirmDeleteText.addClass('show');
+		    }else{
+				confirmDeleteText.removeClass('show');
 		    }
 		    if(enableSort.is(':checked')) {
 		        enableSearch.addClass('show');
@@ -85,7 +95,6 @@ jQuery(document).ready(function($) {
 		    	pageEntries.removeClass('show');
 		    }
 
-	    
 	    }else{
 	    	siblings.removeClass('show');
 
@@ -116,7 +125,17 @@ jQuery(document).ready(function($) {
 
     enableDelete.click(function(event) {
 		enableDeleteLabel.toggleClass('show');
+		confirmDelete.toggleClass('show');
 		deleteType.toggleClass('show')
+		if(confirmDeleteCheckbox.is(':checked') && enableDelete.is(':checked')) {
+	        confirmDeleteText.addClass('show');
+	    }else{
+			confirmDeleteText.removeClass('show');
+	    }
+	});
+
+	confirmDeleteCheckbox.click(function(event) {
+		confirmDeleteText.toggleClass('show')
 	});
 
 	enableSort.click(function(event) {

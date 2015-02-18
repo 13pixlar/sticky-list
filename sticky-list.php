@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.1.7.1
+Version: 1.1.8
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.1.7.1";
+        protected $_version = "1.1.8";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -193,6 +193,8 @@ if (class_exists("GFForms")) {
             $enable_edit_label      = get_sticky_setting("enable_edit_label", $settings);
             $enable_delete          = get_sticky_setting("enable_delete", $settings);
             $enable_delete_label    = get_sticky_setting("enable_delete_label", $settings);
+            $confirm_delete         = get_sticky_setting("confirm_delete", $settings);
+            $confirm_delete_text    = get_sticky_setting("confirm_delete_text", $settings);
             $action_column_header   = get_sticky_setting("action_column_header", $settings);
             $enable_sort            = get_sticky_setting("enable_sort", $settings);
             $initial_sort           = get_sticky_setting("initial_sort", $settings);
@@ -499,25 +501,33 @@ if (class_exists("GFForms")) {
                             jQuery(document).ready(function($) {
                                 $('.sticky-list-delete').click(function(event) {
                                     
-                                    var delete_id = $(this).siblings('.sticky-list-delete-id').val();
-                                    var delete_post_id = $(this).siblings('.sticky-list-delete-post-id').val();
-                                    var current_button = $(this);
-                                    var current_row = current_button.parent().parent();
-                                    current_button.html('<img src=\'$ajax_spinner\'>');
+                                    var delete_id       = $(this).siblings('.sticky-list-delete-id').val();
+                                    var delete_post_id  = $(this).siblings('.sticky-list-delete-post-id').val();
+                                    var current_button  = $(this);
+                                    var current_row     = current_button.parent().parent();
+                                    var confirm_delete  = $confirm_delete;
                                     
-                                    $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$form_id' })
-                                    .done(function() {
-                                        current_button.html('');
-                                        current_row.css({   
-                                            background: '#fbdcdc',
-                                            color: '#fff'
-                                        });
-                                        current_row.hide('slow');
-                                    })
-                                    .fail(function() {
-                                        current_button.html('$delete_failed');
-                                    })
+                                    if(confirm_delete == 1) {
+                                        var confirm_dialog = confirm('$confirm_delete_text');
+                                    }                         
 
+                                    if (confirm_dialog == true || confirm_delete != 1) {
+
+                                        current_button.html('<img src=\'$ajax_spinner\'>');
+                                        
+                                        $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$form_id' })
+                                        .done(function() {
+                                            current_button.html('');
+                                            current_row.css({   
+                                                background: '#fbdcdc',
+                                                color: '#fff'
+                                            });
+                                            current_row.hide('slow');
+                                        })
+                                        .fail(function() {
+                                            current_button.html('$delete_failed');
+                                        })
+                                    }
                                 });
                             });
                             </script>
@@ -1136,6 +1146,26 @@ if (class_exists("GFForms")) {
                             "tooltip" => __('Label for the delete button','sticky-list'),
                             "class"   => "small",
                             "default_value" => __('Delete','sticky-list')
+                        ),
+                        array(
+                            "label"   => __('Confirm delete','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "confirm_delete",
+                            "tooltip" => __('Check this box require deletions to be confirmed by clicking OK in a dialog box','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "confirm_delete"
+                                )
+                            )
+                        ),
+                        array(
+                            "label"   => __('Confirm delete text','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "confirm_delete_text",
+                            "tooltip" => __('Text for the confirm delete dialog box','sticky-list'),
+                            "class"   => "small",
+                            "default_value" => __('Really delete this entry?','sticky-list')
                         ),
                         array(
                             "label"   => __('On delete','sticky-list'),

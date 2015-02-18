@@ -1,63 +1,67 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2015-02-05 16:58+0100\n"
-"PO-Revision-Date: 2015-02-05 16:59+0100\n"
+"POT-Creation-Date: 2015-02-18 13:11+0100\n"
+"PO-Revision-Date: 2015-02-18 13:16+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../sticky-list.php:108 ../tags/1.0/sticky-list.php:103
-#: ../tags/1.0.1/sticky-list.php:103 ../tags/1.0.2/sticky-list.php:103
-#: ../tags/1.0.3/sticky-list.php:103 ../tags/1.0.4/sticky-list.php:103
-#: ../tags/1.0.5/sticky-list.php:106 ../tags/1.0.6/sticky-list.php:120
-#: ../tags/1.0.7/sticky-list.php:120 ../tags/1.0.8/sticky-list.php:120
-#: ../tags/1.0.9/sticky-list.php:108 ../tags/1.1/sticky-list.php:105
-#: ../tags/1.1.1/sticky-list.php:105 ../tags/1.1.2/sticky-list.php:105
-#: ../tags/1.1.3/sticky-list.php:108 ../tags/1.1.4/sticky-list.php:108
-#: ../tags/1.1.5/sticky-list.php:108 ../tags/1.1.6/sticky-list.php:108
+#: ../sticky-list.php:108 ../tags/1.0.1/sticky-list.php:103
+#: ../tags/1.0.2/sticky-list.php:103 ../tags/1.0.3/sticky-list.php:103
+#: ../tags/1.0.4/sticky-list.php:103 ../tags/1.0.5/sticky-list.php:106
+#: ../tags/1.0.6/sticky-list.php:120 ../tags/1.0.7/sticky-list.php:120
+#: ../tags/1.0.8/sticky-list.php:120 ../tags/1.0.9/sticky-list.php:108
+#: ../tags/1.0/sticky-list.php:103 ../tags/1.1.1/sticky-list.php:105
+#: ../tags/1.1.2/sticky-list.php:105 ../tags/1.1.3/sticky-list.php:108
+#: ../tags/1.1.4/sticky-list.php:108 ../tags/1.1.5/sticky-list.php:108
+#: ../tags/1.1.6/sticky-list.php:108 ../tags/1.1.7.1/sticky-list.php:108
+#: ../tags/1.1.7/sticky-list.php:108 ../tags/1.1/sticky-list.php:105
 #: ../trunk/sticky-list.php:108
 msgid "Show in list"
 msgstr "Visa i listan"
 
 #: ../sticky-list.php:110 ../tags/1.0.9/sticky-list.php:110
-#: ../tags/1.1/sticky-list.php:107 ../tags/1.1.1/sticky-list.php:107
-#: ../tags/1.1.2/sticky-list.php:107 ../tags/1.1.3/sticky-list.php:110
-#: ../tags/1.1.4/sticky-list.php:110 ../tags/1.1.5/sticky-list.php:110
-#: ../tags/1.1.6/sticky-list.php:110 ../trunk/sticky-list.php:110
+#: ../tags/1.1.1/sticky-list.php:107 ../tags/1.1.2/sticky-list.php:107
+#: ../tags/1.1.3/sticky-list.php:110 ../tags/1.1.4/sticky-list.php:110
+#: ../tags/1.1.5/sticky-list.php:110 ../tags/1.1.6/sticky-list.php:110
+#: ../tags/1.1.7.1/sticky-list.php:110 ../tags/1.1.7/sticky-list.php:110
+#: ../tags/1.1/sticky-list.php:107 ../trunk/sticky-list.php:110
 msgid "Dont wrap text from this field"
 msgstr "Avstava inte text från detta fält"
 
-#: ../sticky-list.php:112 ../tags/1.0/sticky-list.php:105
-#: ../tags/1.0.1/sticky-list.php:105 ../tags/1.0.2/sticky-list.php:105
-#: ../tags/1.0.3/sticky-list.php:105 ../tags/1.0.4/sticky-list.php:105
-#: ../tags/1.0.5/sticky-list.php:108 ../tags/1.0.6/sticky-list.php:122
-#: ../tags/1.0.7/sticky-list.php:122 ../tags/1.0.8/sticky-list.php:122
-#: ../tags/1.0.9/sticky-list.php:112 ../tags/1.1/sticky-list.php:109
-#: ../tags/1.1.1/sticky-list.php:109 ../tags/1.1.2/sticky-list.php:109
-#: ../tags/1.1.3/sticky-list.php:112 ../tags/1.1.4/sticky-list.php:112
-#: ../tags/1.1.5/sticky-list.php:112 ../tags/1.1.6/sticky-list.php:112
+#: ../sticky-list.php:112 ../tags/1.0.1/sticky-list.php:105
+#: ../tags/1.0.2/sticky-list.php:105 ../tags/1.0.3/sticky-list.php:105
+#: ../tags/1.0.4/sticky-list.php:105 ../tags/1.0.5/sticky-list.php:108
+#: ../tags/1.0.6/sticky-list.php:122 ../tags/1.0.7/sticky-list.php:122
+#: ../tags/1.0.8/sticky-list.php:122 ../tags/1.0.9/sticky-list.php:112
+#: ../tags/1.0/sticky-list.php:105 ../tags/1.1.1/sticky-list.php:109
+#: ../tags/1.1.2/sticky-list.php:109 ../tags/1.1.3/sticky-list.php:112
+#: ../tags/1.1.4/sticky-list.php:112 ../tags/1.1.5/sticky-list.php:112
+#: ../tags/1.1.6/sticky-list.php:112 ../tags/1.1.7.1/sticky-list.php:112
+#: ../tags/1.1.7/sticky-list.php:112 ../tags/1.1/sticky-list.php:109
 #: ../trunk/sticky-list.php:112
 msgid "Column label"
 msgstr "Kolumnrubrik"
 
-#: ../sticky-list.php:144 ../tags/1.0/sticky-list.php:136
-#: ../tags/1.0.1/sticky-list.php:136 ../tags/1.0.2/sticky-list.php:136
-#: ../tags/1.0.3/sticky-list.php:136 ../tags/1.0.4/sticky-list.php:136
-#: ../tags/1.0.5/sticky-list.php:139 ../tags/1.0.6/sticky-list.php:153
-#: ../tags/1.0.7/sticky-list.php:153 ../tags/1.0.8/sticky-list.php:153
-#: ../tags/1.0.9/sticky-list.php:144 ../tags/1.1/sticky-list.php:141
-#: ../tags/1.1.1/sticky-list.php:141 ../tags/1.1.2/sticky-list.php:141
-#: ../tags/1.1.3/sticky-list.php:144 ../tags/1.1.4/sticky-list.php:144
-#: ../tags/1.1.5/sticky-list.php:144 ../tags/1.1.6/sticky-list.php:144
+#: ../sticky-list.php:144 ../tags/1.0.1/sticky-list.php:136
+#: ../tags/1.0.2/sticky-list.php:136 ../tags/1.0.3/sticky-list.php:136
+#: ../tags/1.0.4/sticky-list.php:136 ../tags/1.0.5/sticky-list.php:139
+#: ../tags/1.0.6/sticky-list.php:153 ../tags/1.0.7/sticky-list.php:153
+#: ../tags/1.0.8/sticky-list.php:153 ../tags/1.0.9/sticky-list.php:144
+#: ../tags/1.0/sticky-list.php:136 ../tags/1.1.1/sticky-list.php:141
+#: ../tags/1.1.2/sticky-list.php:141 ../tags/1.1.3/sticky-list.php:144
+#: ../tags/1.1.4/sticky-list.php:144 ../tags/1.1.5/sticky-list.php:144
+#: ../tags/1.1.6/sticky-list.php:144 ../tags/1.1.7.1/sticky-list.php:144
+#: ../tags/1.1.7/sticky-list.php:144 ../tags/1.1/sticky-list.php:141
 #: ../trunk/sticky-list.php:144
 msgid ""
 "<h6>Show field in list</h6>Check this box to show this field in the list."
@@ -65,10 +69,11 @@ msgstr ""
 "<h6>Visa fält i listan</h6>Markera denna ruta för att visa fältet i listan"
 
 #: ../sticky-list.php:145 ../tags/1.0.9/sticky-list.php:145
-#: ../tags/1.1/sticky-list.php:142 ../tags/1.1.1/sticky-list.php:142
-#: ../tags/1.1.2/sticky-list.php:142 ../tags/1.1.3/sticky-list.php:145
-#: ../tags/1.1.4/sticky-list.php:145 ../tags/1.1.5/sticky-list.php:145
-#: ../tags/1.1.6/sticky-list.php:145 ../trunk/sticky-list.php:145
+#: ../tags/1.1.1/sticky-list.php:142 ../tags/1.1.2/sticky-list.php:142
+#: ../tags/1.1.3/sticky-list.php:145 ../tags/1.1.4/sticky-list.php:145
+#: ../tags/1.1.5/sticky-list.php:145 ../tags/1.1.6/sticky-list.php:145
+#: ../tags/1.1.7.1/sticky-list.php:145 ../tags/1.1.7/sticky-list.php:145
+#: ../tags/1.1/sticky-list.php:142 ../trunk/sticky-list.php:145
 msgid ""
 "<h6>Dont wrap whitespace</h6>Check this box to prevent wraping of text from "
 "this field"
@@ -76,137 +81,148 @@ msgstr ""
 "<h6>Avstava inte text</h6>Markera denna ruta för att förhindra avstavning av "
 "texten i listan hämtad från detta fält"
 
-#: ../sticky-list.php:146 ../tags/1.0/sticky-list.php:137
-#: ../tags/1.0.1/sticky-list.php:137 ../tags/1.0.2/sticky-list.php:137
-#: ../tags/1.0.3/sticky-list.php:137 ../tags/1.0.4/sticky-list.php:137
-#: ../tags/1.0.5/sticky-list.php:140 ../tags/1.0.6/sticky-list.php:154
-#: ../tags/1.0.7/sticky-list.php:154 ../tags/1.0.8/sticky-list.php:154
-#: ../tags/1.0.9/sticky-list.php:146 ../tags/1.1/sticky-list.php:143
-#: ../tags/1.1.1/sticky-list.php:143 ../tags/1.1.2/sticky-list.php:143
-#: ../tags/1.1.3/sticky-list.php:146 ../tags/1.1.4/sticky-list.php:146
-#: ../tags/1.1.5/sticky-list.php:146 ../tags/1.1.6/sticky-list.php:146
+#: ../sticky-list.php:146 ../tags/1.0.1/sticky-list.php:137
+#: ../tags/1.0.2/sticky-list.php:137 ../tags/1.0.3/sticky-list.php:137
+#: ../tags/1.0.4/sticky-list.php:137 ../tags/1.0.5/sticky-list.php:140
+#: ../tags/1.0.6/sticky-list.php:154 ../tags/1.0.7/sticky-list.php:154
+#: ../tags/1.0.8/sticky-list.php:154 ../tags/1.0.9/sticky-list.php:146
+#: ../tags/1.0/sticky-list.php:137 ../tags/1.1.1/sticky-list.php:143
+#: ../tags/1.1.2/sticky-list.php:143 ../tags/1.1.3/sticky-list.php:146
+#: ../tags/1.1.4/sticky-list.php:146 ../tags/1.1.5/sticky-list.php:146
+#: ../tags/1.1.6/sticky-list.php:146 ../tags/1.1.7.1/sticky-list.php:146
+#: ../tags/1.1.7/sticky-list.php:146 ../tags/1.1/sticky-list.php:143
 #: ../trunk/sticky-list.php:146
 msgid "<h6>Header text</h6>Use this field to override the default text header."
 msgstr ""
 "<h6>Fältrubrik</h6>Använd detta fält för att ersätta fältets rubrik i listan"
 
-#: ../sticky-list.php:277 ../tags/1.0/sticky-list.php:212
-#: ../tags/1.0.1/sticky-list.php:216 ../tags/1.0.2/sticky-list.php:216
-#: ../tags/1.0.3/sticky-list.php:216 ../tags/1.0.4/sticky-list.php:219
-#: ../tags/1.0.5/sticky-list.php:222 ../tags/1.0.6/sticky-list.php:248
-#: ../tags/1.0.7/sticky-list.php:248 ../tags/1.0.8/sticky-list.php:255
-#: ../tags/1.0.9/sticky-list.php:247 ../tags/1.1/sticky-list.php:247
-#: ../tags/1.1.1/sticky-list.php:255 ../tags/1.1.2/sticky-list.php:255
-#: ../tags/1.1.3/sticky-list.php:258 ../tags/1.1.4/sticky-list.php:258
-#: ../tags/1.1.5/sticky-list.php:260 ../tags/1.1.6/sticky-list.php:277
-#: ../trunk/sticky-list.php:277
+#: ../sticky-list.php:284 ../tags/1.0.1/sticky-list.php:216
+#: ../tags/1.0.2/sticky-list.php:216 ../tags/1.0.3/sticky-list.php:216
+#: ../tags/1.0.4/sticky-list.php:219 ../tags/1.0.5/sticky-list.php:222
+#: ../tags/1.0.6/sticky-list.php:248 ../tags/1.0.7/sticky-list.php:248
+#: ../tags/1.0.8/sticky-list.php:255 ../tags/1.0.9/sticky-list.php:247
+#: ../tags/1.0/sticky-list.php:212 ../tags/1.1.1/sticky-list.php:255
+#: ../tags/1.1.2/sticky-list.php:255 ../tags/1.1.3/sticky-list.php:258
+#: ../tags/1.1.4/sticky-list.php:258 ../tags/1.1.5/sticky-list.php:260
+#: ../tags/1.1.6/sticky-list.php:277 ../tags/1.1.7.1/sticky-list.php:282
+#: ../tags/1.1.7/sticky-list.php:282 ../tags/1.1/sticky-list.php:247
+#: ../trunk/sticky-list.php:282
 msgid "Search"
 msgstr "Sök"
 
-#: ../sticky-list.php:489 ../tags/1.0/sticky-list.php:364
-#: ../tags/1.0.1/sticky-list.php:368 ../tags/1.0.2/sticky-list.php:368
-#: ../tags/1.0.3/sticky-list.php:368 ../tags/1.0.4/sticky-list.php:371
-#: ../tags/1.0.5/sticky-list.php:374 ../tags/1.0.6/sticky-list.php:406
-#: ../tags/1.0.7/sticky-list.php:406 ../tags/1.0.8/sticky-list.php:413
-#: ../tags/1.0.9/sticky-list.php:417 ../tags/1.1/sticky-list.php:447
-#: ../tags/1.1.1/sticky-list.php:455 ../tags/1.1.2/sticky-list.php:455
-#: ../tags/1.1.3/sticky-list.php:460 ../tags/1.1.4/sticky-list.php:466
-#: ../tags/1.1.5/sticky-list.php:472 ../tags/1.1.6/sticky-list.php:489
-#: ../trunk/sticky-list.php:489
+#: ../sticky-list.php:496 ../tags/1.0.1/sticky-list.php:368
+#: ../tags/1.0.2/sticky-list.php:368 ../tags/1.0.3/sticky-list.php:368
+#: ../tags/1.0.4/sticky-list.php:371 ../tags/1.0.5/sticky-list.php:374
+#: ../tags/1.0.6/sticky-list.php:406 ../tags/1.0.7/sticky-list.php:406
+#: ../tags/1.0.8/sticky-list.php:413 ../tags/1.0.9/sticky-list.php:417
+#: ../tags/1.0/sticky-list.php:364 ../tags/1.1.1/sticky-list.php:455
+#: ../tags/1.1.2/sticky-list.php:455 ../tags/1.1.3/sticky-list.php:460
+#: ../tags/1.1.4/sticky-list.php:466 ../tags/1.1.5/sticky-list.php:472
+#: ../tags/1.1.6/sticky-list.php:489 ../tags/1.1.7.1/sticky-list.php:494
+#: ../tags/1.1.7/sticky-list.php:494 ../tags/1.1/sticky-list.php:447
+#: ../trunk/sticky-list.php:494
 msgid "Delete failed"
 msgstr "Raderingen misslyckades"
 
-#: ../sticky-list.php:609 ../tags/1.0.9/sticky-list.php:538
-#: ../tags/1.1/sticky-list.php:565 ../tags/1.1.1/sticky-list.php:570
-#: ../tags/1.1.2/sticky-list.php:570 ../tags/1.1.3/sticky-list.php:580
-#: ../tags/1.1.4/sticky-list.php:586 ../tags/1.1.5/sticky-list.php:592
-#: ../tags/1.1.6/sticky-list.php:609 ../trunk/sticky-list.php:609
+#: ../sticky-list.php:624 ../tags/1.0.9/sticky-list.php:538
+#: ../tags/1.1.1/sticky-list.php:570 ../tags/1.1.2/sticky-list.php:570
+#: ../tags/1.1.3/sticky-list.php:580 ../tags/1.1.4/sticky-list.php:586
+#: ../tags/1.1.5/sticky-list.php:592 ../tags/1.1.6/sticky-list.php:609
+#: ../tags/1.1.7.1/sticky-list.php:614 ../tags/1.1.7/sticky-list.php:614
+#: ../tags/1.1/sticky-list.php:565 ../trunk/sticky-list.php:614
 msgid "Remove"
 msgstr "Ta bort"
 
-#: ../sticky-list.php:913 ../tags/1.0/sticky-list.php:641
-#: ../tags/1.0.1/sticky-list.php:645 ../tags/1.0.2/sticky-list.php:645
-#: ../tags/1.0.3/sticky-list.php:645 ../tags/1.0.4/sticky-list.php:648
-#: ../tags/1.0.5/sticky-list.php:651 ../tags/1.0.6/sticky-list.php:712
-#: ../tags/1.0.7/sticky-list.php:706 ../tags/1.0.8/sticky-list.php:713
-#: ../tags/1.0.9/sticky-list.php:775 ../tags/1.1/sticky-list.php:807
-#: ../tags/1.1.1/sticky-list.php:812 ../tags/1.1.2/sticky-list.php:819
-#: ../tags/1.1.3/sticky-list.php:884 ../tags/1.1.4/sticky-list.php:890
-#: ../tags/1.1.5/sticky-list.php:896 ../tags/1.1.6/sticky-list.php:913
-#: ../trunk/sticky-list.php:913
+#: ../sticky-list.php:928 ../tags/1.0.1/sticky-list.php:645
+#: ../tags/1.0.2/sticky-list.php:645 ../tags/1.0.3/sticky-list.php:645
+#: ../tags/1.0.4/sticky-list.php:648 ../tags/1.0.5/sticky-list.php:651
+#: ../tags/1.0.6/sticky-list.php:712 ../tags/1.0.7/sticky-list.php:706
+#: ../tags/1.0.8/sticky-list.php:713 ../tags/1.0.9/sticky-list.php:775
+#: ../tags/1.0/sticky-list.php:641 ../tags/1.1.1/sticky-list.php:812
+#: ../tags/1.1.2/sticky-list.php:819 ../tags/1.1.3/sticky-list.php:884
+#: ../tags/1.1.4/sticky-list.php:890 ../tags/1.1.5/sticky-list.php:896
+#: ../tags/1.1.6/sticky-list.php:913 ../tags/1.1.7.1/sticky-list.php:918
+#: ../tags/1.1.7/sticky-list.php:918 ../tags/1.1/sticky-list.php:807
+#: ../trunk/sticky-list.php:918
 msgid "General settings"
 msgstr "Generella inställningar"
 
-#: ../sticky-list.php:914 ../tags/1.0/sticky-list.php:642
-#: ../tags/1.0.1/sticky-list.php:646 ../tags/1.0.2/sticky-list.php:646
-#: ../tags/1.0.3/sticky-list.php:646 ../tags/1.0.4/sticky-list.php:649
-#: ../tags/1.0.5/sticky-list.php:652 ../tags/1.0.6/sticky-list.php:713
-#: ../tags/1.0.7/sticky-list.php:707 ../tags/1.0.8/sticky-list.php:714
-#: ../tags/1.0.9/sticky-list.php:776 ../tags/1.1/sticky-list.php:808
-#: ../tags/1.1.1/sticky-list.php:813 ../tags/1.1.2/sticky-list.php:820
-#: ../tags/1.1.3/sticky-list.php:885 ../tags/1.1.4/sticky-list.php:891
-#: ../tags/1.1.5/sticky-list.php:897 ../tags/1.1.6/sticky-list.php:914
-#: ../trunk/sticky-list.php:914
+#: ../sticky-list.php:929 ../tags/1.0.1/sticky-list.php:646
+#: ../tags/1.0.2/sticky-list.php:646 ../tags/1.0.3/sticky-list.php:646
+#: ../tags/1.0.4/sticky-list.php:649 ../tags/1.0.5/sticky-list.php:652
+#: ../tags/1.0.6/sticky-list.php:713 ../tags/1.0.7/sticky-list.php:707
+#: ../tags/1.0.8/sticky-list.php:714 ../tags/1.0.9/sticky-list.php:776
+#: ../tags/1.0/sticky-list.php:642 ../tags/1.1.1/sticky-list.php:813
+#: ../tags/1.1.2/sticky-list.php:820 ../tags/1.1.3/sticky-list.php:885
+#: ../tags/1.1.4/sticky-list.php:891 ../tags/1.1.5/sticky-list.php:897
+#: ../tags/1.1.6/sticky-list.php:914 ../tags/1.1.7.1/sticky-list.php:919
+#: ../tags/1.1.7/sticky-list.php:919 ../tags/1.1/sticky-list.php:808
+#: ../trunk/sticky-list.php:919
 msgid "View, edit & delete"
 msgstr "Visa, redigera & radera"
 
-#: ../sticky-list.php:915 ../tags/1.0/sticky-list.php:643
-#: ../tags/1.0.1/sticky-list.php:647 ../tags/1.0.2/sticky-list.php:647
-#: ../tags/1.0.3/sticky-list.php:647 ../tags/1.0.4/sticky-list.php:650
-#: ../tags/1.0.5/sticky-list.php:653 ../tags/1.0.6/sticky-list.php:714
-#: ../tags/1.0.7/sticky-list.php:708 ../tags/1.0.8/sticky-list.php:715
-#: ../tags/1.0.9/sticky-list.php:777 ../tags/1.1/sticky-list.php:809
-#: ../tags/1.1.1/sticky-list.php:814 ../tags/1.1.2/sticky-list.php:821
-#: ../tags/1.1.3/sticky-list.php:886 ../tags/1.1.4/sticky-list.php:892
-#: ../tags/1.1.5/sticky-list.php:898 ../tags/1.1.6/sticky-list.php:915
-#: ../trunk/sticky-list.php:915
+#: ../sticky-list.php:930 ../tags/1.0.1/sticky-list.php:647
+#: ../tags/1.0.2/sticky-list.php:647 ../tags/1.0.3/sticky-list.php:647
+#: ../tags/1.0.4/sticky-list.php:650 ../tags/1.0.5/sticky-list.php:653
+#: ../tags/1.0.6/sticky-list.php:714 ../tags/1.0.7/sticky-list.php:708
+#: ../tags/1.0.8/sticky-list.php:715 ../tags/1.0.9/sticky-list.php:777
+#: ../tags/1.0/sticky-list.php:643 ../tags/1.1.1/sticky-list.php:814
+#: ../tags/1.1.2/sticky-list.php:821 ../tags/1.1.3/sticky-list.php:886
+#: ../tags/1.1.4/sticky-list.php:892 ../tags/1.1.5/sticky-list.php:898
+#: ../tags/1.1.6/sticky-list.php:915 ../tags/1.1.7.1/sticky-list.php:920
+#: ../tags/1.1.7/sticky-list.php:920 ../tags/1.1/sticky-list.php:809
+#: ../trunk/sticky-list.php:920
 msgid "Labels"
 msgstr "Texter"
 
-#: ../sticky-list.php:916 ../tags/1.0/sticky-list.php:644
-#: ../tags/1.0.1/sticky-list.php:648 ../tags/1.0.2/sticky-list.php:648
-#: ../tags/1.0.3/sticky-list.php:648 ../tags/1.0.4/sticky-list.php:651
-#: ../tags/1.0.5/sticky-list.php:654 ../tags/1.0.6/sticky-list.php:715
-#: ../tags/1.0.7/sticky-list.php:709 ../tags/1.0.8/sticky-list.php:716
-#: ../tags/1.0.9/sticky-list.php:778 ../tags/1.1/sticky-list.php:810
-#: ../tags/1.1.1/sticky-list.php:815 ../tags/1.1.2/sticky-list.php:822
-#: ../tags/1.1.3/sticky-list.php:887 ../tags/1.1.4/sticky-list.php:893
-#: ../tags/1.1.5/sticky-list.php:899 ../tags/1.1.6/sticky-list.php:916
-#: ../trunk/sticky-list.php:916
+#: ../sticky-list.php:931 ../tags/1.0.1/sticky-list.php:648
+#: ../tags/1.0.2/sticky-list.php:648 ../tags/1.0.3/sticky-list.php:648
+#: ../tags/1.0.4/sticky-list.php:651 ../tags/1.0.5/sticky-list.php:654
+#: ../tags/1.0.6/sticky-list.php:715 ../tags/1.0.7/sticky-list.php:709
+#: ../tags/1.0.8/sticky-list.php:716 ../tags/1.0.9/sticky-list.php:778
+#: ../tags/1.0/sticky-list.php:644 ../tags/1.1.1/sticky-list.php:815
+#: ../tags/1.1.2/sticky-list.php:822 ../tags/1.1.3/sticky-list.php:887
+#: ../tags/1.1.4/sticky-list.php:893 ../tags/1.1.5/sticky-list.php:899
+#: ../tags/1.1.6/sticky-list.php:916 ../tags/1.1.7.1/sticky-list.php:921
+#: ../tags/1.1.7/sticky-list.php:921 ../tags/1.1/sticky-list.php:810
+#: ../trunk/sticky-list.php:921
 msgid "Sort & search"
 msgstr "Sortering & sökning"
 
-#: ../sticky-list.php:917 ../tags/1.1/sticky-list.php:811
-#: ../tags/1.1.1/sticky-list.php:816 ../tags/1.1.2/sticky-list.php:823
-#: ../tags/1.1.3/sticky-list.php:888 ../tags/1.1.4/sticky-list.php:894
-#: ../tags/1.1.5/sticky-list.php:900 ../tags/1.1.6/sticky-list.php:917
-#: ../trunk/sticky-list.php:917
+#: ../sticky-list.php:932 ../tags/1.1.1/sticky-list.php:816
+#: ../tags/1.1.2/sticky-list.php:823 ../tags/1.1.3/sticky-list.php:888
+#: ../tags/1.1.4/sticky-list.php:894 ../tags/1.1.5/sticky-list.php:900
+#: ../tags/1.1.6/sticky-list.php:917 ../tags/1.1.7.1/sticky-list.php:922
+#: ../tags/1.1.7/sticky-list.php:922 ../tags/1.1/sticky-list.php:811
+#: ../trunk/sticky-list.php:922
 msgid "Pagination"
 msgstr "Paginering"
 
-#: ../sticky-list.php:918 ../tags/1.0/sticky-list.php:645
-#: ../tags/1.0.1/sticky-list.php:649 ../tags/1.0.2/sticky-list.php:649
-#: ../tags/1.0.3/sticky-list.php:649 ../tags/1.0.4/sticky-list.php:652
-#: ../tags/1.0.5/sticky-list.php:655 ../tags/1.0.6/sticky-list.php:716
-#: ../tags/1.0.7/sticky-list.php:710 ../tags/1.0.8/sticky-list.php:717
-#: ../tags/1.0.9/sticky-list.php:779 ../tags/1.1/sticky-list.php:812
-#: ../tags/1.1.1/sticky-list.php:817 ../tags/1.1.2/sticky-list.php:824
-#: ../tags/1.1.3/sticky-list.php:889 ../tags/1.1.4/sticky-list.php:895
-#: ../tags/1.1.5/sticky-list.php:901 ../tags/1.1.6/sticky-list.php:918
-#: ../trunk/sticky-list.php:918
+#: ../sticky-list.php:933 ../tags/1.0.1/sticky-list.php:649
+#: ../tags/1.0.2/sticky-list.php:649 ../tags/1.0.3/sticky-list.php:649
+#: ../tags/1.0.4/sticky-list.php:652 ../tags/1.0.5/sticky-list.php:655
+#: ../tags/1.0.6/sticky-list.php:716 ../tags/1.0.7/sticky-list.php:710
+#: ../tags/1.0.8/sticky-list.php:717 ../tags/1.0.9/sticky-list.php:779
+#: ../tags/1.0/sticky-list.php:645 ../tags/1.1.1/sticky-list.php:817
+#: ../tags/1.1.2/sticky-list.php:824 ../tags/1.1.3/sticky-list.php:889
+#: ../tags/1.1.4/sticky-list.php:895 ../tags/1.1.5/sticky-list.php:901
+#: ../tags/1.1.6/sticky-list.php:918 ../tags/1.1.7.1/sticky-list.php:923
+#: ../tags/1.1.7/sticky-list.php:923 ../tags/1.1/sticky-list.php:812
+#: ../trunk/sticky-list.php:923
 msgid "Donate"
 msgstr "Donera"
 
-#: ../sticky-list.php:919 ../tags/1.0/sticky-list.php:646
-#: ../tags/1.0.1/sticky-list.php:650 ../tags/1.0.2/sticky-list.php:650
-#: ../tags/1.0.3/sticky-list.php:650 ../tags/1.0.4/sticky-list.php:653
-#: ../tags/1.0.5/sticky-list.php:656 ../tags/1.0.6/sticky-list.php:717
-#: ../tags/1.0.7/sticky-list.php:711 ../tags/1.0.8/sticky-list.php:718
-#: ../tags/1.0.9/sticky-list.php:780 ../tags/1.1/sticky-list.php:813
-#: ../tags/1.1.1/sticky-list.php:818 ../tags/1.1.2/sticky-list.php:825
-#: ../tags/1.1.3/sticky-list.php:890 ../tags/1.1.4/sticky-list.php:896
-#: ../tags/1.1.5/sticky-list.php:902 ../tags/1.1.6/sticky-list.php:919
-#: ../trunk/sticky-list.php:919
+#: ../sticky-list.php:934 ../tags/1.0.1/sticky-list.php:650
+#: ../tags/1.0.2/sticky-list.php:650 ../tags/1.0.3/sticky-list.php:650
+#: ../tags/1.0.4/sticky-list.php:653 ../tags/1.0.5/sticky-list.php:656
+#: ../tags/1.0.6/sticky-list.php:717 ../tags/1.0.7/sticky-list.php:711
+#: ../tags/1.0.8/sticky-list.php:718 ../tags/1.0.9/sticky-list.php:780
+#: ../tags/1.0/sticky-list.php:646 ../tags/1.1.1/sticky-list.php:818
+#: ../tags/1.1.2/sticky-list.php:825 ../tags/1.1.3/sticky-list.php:890
+#: ../tags/1.1.4/sticky-list.php:896 ../tags/1.1.5/sticky-list.php:902
+#: ../tags/1.1.6/sticky-list.php:919 ../tags/1.1.7.1/sticky-list.php:924
+#: ../tags/1.1.7/sticky-list.php:924 ../tags/1.1/sticky-list.php:813
+#: ../trunk/sticky-list.php:924
 msgid ""
 "Sticky List is completely free. But if you like, you can always <a target="
 "\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
@@ -216,142 +232,155 @@ msgstr ""
 "\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
 "xclick&hosted_button_id=8R393YVXREFN6\">donera</a> några kronor."
 
-#: ../sticky-list.php:952 ../tags/1.1.6/sticky-list.php:950
-#: ../trunk/sticky-list.php:950
+#: ../sticky-list.php:967 ../tags/1.1.6/sticky-list.php:952
+#: ../tags/1.1.7.1/sticky-list.php:957 ../tags/1.1.7/sticky-list.php:957
+#: ../trunk/sticky-list.php:957
 msgid "Date added"
 msgstr "Datum"
 
-#: ../sticky-list.php:961
+#: ../sticky-list.php:976 ../tags/1.1.6/sticky-list.php:961
+#: ../tags/1.1.7.1/sticky-list.php:966 ../tags/1.1.7/sticky-list.php:966
+#: ../trunk/sticky-list.php:966
 msgid "Field "
 msgstr "Fält"
 
-#: ../sticky-list.php:978 ../tags/1.0/sticky-list.php:673
-#: ../tags/1.0.1/sticky-list.php:677 ../tags/1.0.2/sticky-list.php:677
-#: ../tags/1.0.3/sticky-list.php:677 ../tags/1.0.4/sticky-list.php:680
-#: ../tags/1.0.5/sticky-list.php:683 ../tags/1.0.6/sticky-list.php:744
-#: ../tags/1.0.7/sticky-list.php:738 ../tags/1.0.8/sticky-list.php:745
-#: ../tags/1.0.9/sticky-list.php:807 ../tags/1.1/sticky-list.php:840
-#: ../tags/1.1.1/sticky-list.php:845 ../tags/1.1.2/sticky-list.php:852
-#: ../tags/1.1.3/sticky-list.php:917 ../tags/1.1.4/sticky-list.php:923
-#: ../tags/1.1.5/sticky-list.php:929 ../tags/1.1.6/sticky-list.php:969
-#: ../trunk/sticky-list.php:969
+#: ../sticky-list.php:993 ../tags/1.0.1/sticky-list.php:677
+#: ../tags/1.0.2/sticky-list.php:677 ../tags/1.0.3/sticky-list.php:677
+#: ../tags/1.0.4/sticky-list.php:680 ../tags/1.0.5/sticky-list.php:683
+#: ../tags/1.0.6/sticky-list.php:744 ../tags/1.0.7/sticky-list.php:738
+#: ../tags/1.0.8/sticky-list.php:745 ../tags/1.0.9/sticky-list.php:807
+#: ../tags/1.0/sticky-list.php:673 ../tags/1.1.1/sticky-list.php:845
+#: ../tags/1.1.2/sticky-list.php:852 ../tags/1.1.3/sticky-list.php:917
+#: ../tags/1.1.4/sticky-list.php:923 ../tags/1.1.5/sticky-list.php:929
+#: ../tags/1.1.6/sticky-list.php:978 ../tags/1.1.7.1/sticky-list.php:983
+#: ../tags/1.1.7/sticky-list.php:983 ../tags/1.1/sticky-list.php:840
+#: ../trunk/sticky-list.php:983
 msgid "Sticky List Settings"
 msgstr "Sticky List inställningar"
 
-#: ../sticky-list.php:981 ../tags/1.0/sticky-list.php:676
-#: ../tags/1.0.1/sticky-list.php:680 ../tags/1.0.2/sticky-list.php:680
-#: ../tags/1.0.3/sticky-list.php:680 ../tags/1.0.4/sticky-list.php:683
-#: ../tags/1.0.5/sticky-list.php:686 ../tags/1.0.6/sticky-list.php:747
-#: ../tags/1.0.7/sticky-list.php:741 ../tags/1.0.8/sticky-list.php:748
-#: ../tags/1.0.9/sticky-list.php:810 ../tags/1.1/sticky-list.php:843
-#: ../tags/1.1.1/sticky-list.php:848 ../tags/1.1.2/sticky-list.php:855
-#: ../tags/1.1.3/sticky-list.php:920 ../tags/1.1.4/sticky-list.php:926
-#: ../tags/1.1.5/sticky-list.php:932 ../tags/1.1.6/sticky-list.php:972
-#: ../trunk/sticky-list.php:972
+#: ../sticky-list.php:996 ../tags/1.0.1/sticky-list.php:680
+#: ../tags/1.0.2/sticky-list.php:680 ../tags/1.0.3/sticky-list.php:680
+#: ../tags/1.0.4/sticky-list.php:683 ../tags/1.0.5/sticky-list.php:686
+#: ../tags/1.0.6/sticky-list.php:747 ../tags/1.0.7/sticky-list.php:741
+#: ../tags/1.0.8/sticky-list.php:748 ../tags/1.0.9/sticky-list.php:810
+#: ../tags/1.0/sticky-list.php:676 ../tags/1.1.1/sticky-list.php:848
+#: ../tags/1.1.2/sticky-list.php:855 ../tags/1.1.3/sticky-list.php:920
+#: ../tags/1.1.4/sticky-list.php:926 ../tags/1.1.5/sticky-list.php:932
+#: ../tags/1.1.6/sticky-list.php:981 ../tags/1.1.7.1/sticky-list.php:986
+#: ../tags/1.1.7/sticky-list.php:986 ../tags/1.1/sticky-list.php:843
+#: ../trunk/sticky-list.php:986
 msgid "Enable for this form"
 msgstr "Aktivera för detta formulär"
 
-#: ../sticky-list.php:984 ../tags/1.0/sticky-list.php:679
-#: ../tags/1.0.1/sticky-list.php:683 ../tags/1.0.2/sticky-list.php:683
-#: ../tags/1.0.3/sticky-list.php:683 ../tags/1.0.4/sticky-list.php:686
-#: ../tags/1.0.5/sticky-list.php:689 ../tags/1.0.6/sticky-list.php:750
-#: ../tags/1.0.7/sticky-list.php:744 ../tags/1.0.8/sticky-list.php:751
-#: ../tags/1.0.9/sticky-list.php:813 ../tags/1.1/sticky-list.php:846
-#: ../tags/1.1.1/sticky-list.php:851 ../tags/1.1.2/sticky-list.php:858
-#: ../tags/1.1.3/sticky-list.php:923 ../tags/1.1.4/sticky-list.php:929
-#: ../tags/1.1.5/sticky-list.php:935 ../tags/1.1.6/sticky-list.php:975
-#: ../trunk/sticky-list.php:975
+#: ../sticky-list.php:999 ../tags/1.0.1/sticky-list.php:683
+#: ../tags/1.0.2/sticky-list.php:683 ../tags/1.0.3/sticky-list.php:683
+#: ../tags/1.0.4/sticky-list.php:686 ../tags/1.0.5/sticky-list.php:689
+#: ../tags/1.0.6/sticky-list.php:750 ../tags/1.0.7/sticky-list.php:744
+#: ../tags/1.0.8/sticky-list.php:751 ../tags/1.0.9/sticky-list.php:813
+#: ../tags/1.0/sticky-list.php:679 ../tags/1.1.1/sticky-list.php:851
+#: ../tags/1.1.2/sticky-list.php:858 ../tags/1.1.3/sticky-list.php:923
+#: ../tags/1.1.4/sticky-list.php:929 ../tags/1.1.5/sticky-list.php:935
+#: ../tags/1.1.6/sticky-list.php:984 ../tags/1.1.7.1/sticky-list.php:989
+#: ../tags/1.1.7/sticky-list.php:989 ../tags/1.1/sticky-list.php:846
+#: ../trunk/sticky-list.php:989
 msgid "Check this box to enable Sticky List for this form"
 msgstr "Markera denna ruta för att aktivera Sticky List för detta formulär"
 
-#: ../sticky-list.php:993 ../tags/1.0/sticky-list.php:688
-#: ../tags/1.0.1/sticky-list.php:692 ../tags/1.0.2/sticky-list.php:692
-#: ../tags/1.0.3/sticky-list.php:692 ../tags/1.0.4/sticky-list.php:695
-#: ../tags/1.0.5/sticky-list.php:698 ../tags/1.0.6/sticky-list.php:759
-#: ../tags/1.0.7/sticky-list.php:753 ../tags/1.0.8/sticky-list.php:760
-#: ../tags/1.0.9/sticky-list.php:822 ../tags/1.1/sticky-list.php:855
-#: ../tags/1.1.1/sticky-list.php:860 ../tags/1.1.2/sticky-list.php:867
-#: ../tags/1.1.3/sticky-list.php:932 ../tags/1.1.4/sticky-list.php:938
-#: ../tags/1.1.5/sticky-list.php:944 ../tags/1.1.6/sticky-list.php:984
-#: ../trunk/sticky-list.php:984
+#: ../sticky-list.php:1008 ../tags/1.0.1/sticky-list.php:692
+#: ../tags/1.0.2/sticky-list.php:692 ../tags/1.0.3/sticky-list.php:692
+#: ../tags/1.0.4/sticky-list.php:695 ../tags/1.0.5/sticky-list.php:698
+#: ../tags/1.0.6/sticky-list.php:759 ../tags/1.0.7/sticky-list.php:753
+#: ../tags/1.0.8/sticky-list.php:760 ../tags/1.0.9/sticky-list.php:822
+#: ../tags/1.0/sticky-list.php:688 ../tags/1.1.1/sticky-list.php:860
+#: ../tags/1.1.2/sticky-list.php:867 ../tags/1.1.3/sticky-list.php:932
+#: ../tags/1.1.4/sticky-list.php:938 ../tags/1.1.5/sticky-list.php:944
+#: ../tags/1.1.6/sticky-list.php:993 ../tags/1.1.7.1/sticky-list.php:998
+#: ../tags/1.1.7/sticky-list.php:998 ../tags/1.1/sticky-list.php:855
+#: ../trunk/sticky-list.php:998
 msgid "Show entries in list to"
 msgstr "Visa inlägg i listan för"
 
-#: ../sticky-list.php:996 ../tags/1.0/sticky-list.php:691
-#: ../tags/1.0.1/sticky-list.php:695 ../tags/1.0.2/sticky-list.php:695
-#: ../tags/1.0.3/sticky-list.php:695 ../tags/1.0.4/sticky-list.php:698
-#: ../tags/1.0.5/sticky-list.php:701 ../tags/1.0.6/sticky-list.php:762
-#: ../tags/1.0.7/sticky-list.php:756 ../tags/1.0.8/sticky-list.php:763
-#: ../tags/1.0.9/sticky-list.php:825 ../tags/1.1/sticky-list.php:858
-#: ../tags/1.1.1/sticky-list.php:863 ../tags/1.1.2/sticky-list.php:870
-#: ../tags/1.1.3/sticky-list.php:935 ../tags/1.1.4/sticky-list.php:941
-#: ../tags/1.1.5/sticky-list.php:947 ../tags/1.1.6/sticky-list.php:987
-#: ../trunk/sticky-list.php:987
+#: ../sticky-list.php:1011 ../tags/1.0.1/sticky-list.php:695
+#: ../tags/1.0.2/sticky-list.php:695 ../tags/1.0.3/sticky-list.php:695
+#: ../tags/1.0.4/sticky-list.php:698 ../tags/1.0.5/sticky-list.php:701
+#: ../tags/1.0.6/sticky-list.php:762 ../tags/1.0.7/sticky-list.php:756
+#: ../tags/1.0.8/sticky-list.php:763 ../tags/1.0.9/sticky-list.php:825
+#: ../tags/1.0/sticky-list.php:691 ../tags/1.1.1/sticky-list.php:863
+#: ../tags/1.1.2/sticky-list.php:870 ../tags/1.1.3/sticky-list.php:935
+#: ../tags/1.1.4/sticky-list.php:941 ../tags/1.1.5/sticky-list.php:947
+#: ../tags/1.1.6/sticky-list.php:996 ../tags/1.1.7.1/sticky-list.php:1001
+#: ../tags/1.1.7/sticky-list.php:1001 ../tags/1.1/sticky-list.php:858
+#: ../trunk/sticky-list.php:1001
 msgid "Who should be able to se the entries in the list?"
 msgstr "Vem skall kunna se inläggen i listan?"
 
-#: ../sticky-list.php:999 ../tags/1.0/sticky-list.php:694
-#: ../tags/1.0.1/sticky-list.php:698 ../tags/1.0.2/sticky-list.php:698
-#: ../tags/1.0.3/sticky-list.php:698 ../tags/1.0.4/sticky-list.php:701
-#: ../tags/1.0.5/sticky-list.php:704 ../tags/1.0.6/sticky-list.php:765
-#: ../tags/1.0.7/sticky-list.php:759 ../tags/1.0.8/sticky-list.php:766
-#: ../tags/1.0.9/sticky-list.php:828 ../tags/1.1/sticky-list.php:861
-#: ../tags/1.1.1/sticky-list.php:866 ../tags/1.1.2/sticky-list.php:873
-#: ../tags/1.1.3/sticky-list.php:938 ../tags/1.1.4/sticky-list.php:944
-#: ../tags/1.1.5/sticky-list.php:950 ../tags/1.1.6/sticky-list.php:990
-#: ../trunk/sticky-list.php:990
+#: ../sticky-list.php:1014 ../tags/1.0.1/sticky-list.php:698
+#: ../tags/1.0.2/sticky-list.php:698 ../tags/1.0.3/sticky-list.php:698
+#: ../tags/1.0.4/sticky-list.php:701 ../tags/1.0.5/sticky-list.php:704
+#: ../tags/1.0.6/sticky-list.php:765 ../tags/1.0.7/sticky-list.php:759
+#: ../tags/1.0.8/sticky-list.php:766 ../tags/1.0.9/sticky-list.php:828
+#: ../tags/1.0/sticky-list.php:694 ../tags/1.1.1/sticky-list.php:866
+#: ../tags/1.1.2/sticky-list.php:873 ../tags/1.1.3/sticky-list.php:938
+#: ../tags/1.1.4/sticky-list.php:944 ../tags/1.1.5/sticky-list.php:950
+#: ../tags/1.1.6/sticky-list.php:999 ../tags/1.1.7.1/sticky-list.php:1004
+#: ../tags/1.1.7/sticky-list.php:1004 ../tags/1.1/sticky-list.php:861
+#: ../trunk/sticky-list.php:1004
 msgid "Entry creator"
 msgstr "Innläggsförfattaren"
 
-#: ../sticky-list.php:1003 ../tags/1.0/sticky-list.php:698
-#: ../tags/1.0.1/sticky-list.php:702 ../tags/1.0.2/sticky-list.php:702
-#: ../tags/1.0.3/sticky-list.php:702 ../tags/1.0.4/sticky-list.php:705
-#: ../tags/1.0.5/sticky-list.php:708 ../tags/1.0.6/sticky-list.php:769
-#: ../tags/1.0.7/sticky-list.php:763 ../tags/1.0.8/sticky-list.php:770
-#: ../tags/1.0.9/sticky-list.php:832 ../tags/1.1/sticky-list.php:865
-#: ../tags/1.1.1/sticky-list.php:870 ../tags/1.1.2/sticky-list.php:877
-#: ../tags/1.1.3/sticky-list.php:942 ../tags/1.1.4/sticky-list.php:948
-#: ../tags/1.1.5/sticky-list.php:954 ../tags/1.1.6/sticky-list.php:994
-#: ../trunk/sticky-list.php:994
+#: ../sticky-list.php:1018 ../tags/1.0.1/sticky-list.php:702
+#: ../tags/1.0.2/sticky-list.php:702 ../tags/1.0.3/sticky-list.php:702
+#: ../tags/1.0.4/sticky-list.php:705 ../tags/1.0.5/sticky-list.php:708
+#: ../tags/1.0.6/sticky-list.php:769 ../tags/1.0.7/sticky-list.php:763
+#: ../tags/1.0.8/sticky-list.php:770 ../tags/1.0.9/sticky-list.php:832
+#: ../tags/1.0/sticky-list.php:698 ../tags/1.1.1/sticky-list.php:870
+#: ../tags/1.1.2/sticky-list.php:877 ../tags/1.1.3/sticky-list.php:942
+#: ../tags/1.1.4/sticky-list.php:948 ../tags/1.1.5/sticky-list.php:954
+#: ../tags/1.1.6/sticky-list.php:1003 ../tags/1.1.7.1/sticky-list.php:1008
+#: ../tags/1.1.7/sticky-list.php:1008 ../tags/1.1/sticky-list.php:865
+#: ../trunk/sticky-list.php:1008
 msgid "All logged in users"
 msgstr "Alla inloggade användare"
 
-#: ../sticky-list.php:1007 ../tags/1.0/sticky-list.php:702
-#: ../tags/1.0.1/sticky-list.php:706 ../tags/1.0.2/sticky-list.php:706
-#: ../tags/1.0.3/sticky-list.php:706 ../tags/1.0.4/sticky-list.php:709
-#: ../tags/1.0.5/sticky-list.php:712 ../tags/1.0.6/sticky-list.php:773
-#: ../tags/1.0.7/sticky-list.php:767 ../tags/1.0.8/sticky-list.php:774
-#: ../tags/1.0.9/sticky-list.php:836 ../tags/1.1/sticky-list.php:869
-#: ../tags/1.1.1/sticky-list.php:874 ../tags/1.1.2/sticky-list.php:881
-#: ../tags/1.1.3/sticky-list.php:946 ../tags/1.1.4/sticky-list.php:952
-#: ../tags/1.1.5/sticky-list.php:958 ../tags/1.1.6/sticky-list.php:998
-#: ../trunk/sticky-list.php:998
+#: ../sticky-list.php:1022 ../tags/1.0.1/sticky-list.php:706
+#: ../tags/1.0.2/sticky-list.php:706 ../tags/1.0.3/sticky-list.php:706
+#: ../tags/1.0.4/sticky-list.php:709 ../tags/1.0.5/sticky-list.php:712
+#: ../tags/1.0.6/sticky-list.php:773 ../tags/1.0.7/sticky-list.php:767
+#: ../tags/1.0.8/sticky-list.php:774 ../tags/1.0.9/sticky-list.php:836
+#: ../tags/1.0/sticky-list.php:702 ../tags/1.1.1/sticky-list.php:874
+#: ../tags/1.1.2/sticky-list.php:881 ../tags/1.1.3/sticky-list.php:946
+#: ../tags/1.1.4/sticky-list.php:952 ../tags/1.1.5/sticky-list.php:958
+#: ../tags/1.1.6/sticky-list.php:1007 ../tags/1.1.7.1/sticky-list.php:1012
+#: ../tags/1.1.7/sticky-list.php:1012 ../tags/1.1/sticky-list.php:869
+#: ../trunk/sticky-list.php:1012
 msgid "Everyone"
 msgstr "Alla"
 
-#: ../sticky-list.php:1013 ../tags/1.0/sticky-list.php:708
-#: ../tags/1.0.1/sticky-list.php:712 ../tags/1.0.2/sticky-list.php:712
-#: ../tags/1.0.3/sticky-list.php:712 ../tags/1.0.4/sticky-list.php:715
-#: ../tags/1.0.5/sticky-list.php:718 ../tags/1.0.6/sticky-list.php:779
-#: ../tags/1.0.7/sticky-list.php:773 ../tags/1.0.8/sticky-list.php:780
-#: ../tags/1.0.9/sticky-list.php:842 ../tags/1.1/sticky-list.php:875
-#: ../tags/1.1.1/sticky-list.php:880 ../tags/1.1.2/sticky-list.php:887
-#: ../tags/1.1.3/sticky-list.php:952 ../tags/1.1.4/sticky-list.php:958
-#: ../tags/1.1.5/sticky-list.php:964 ../tags/1.1.6/sticky-list.php:1004
-#: ../trunk/sticky-list.php:1004
+#: ../sticky-list.php:1028 ../tags/1.0.1/sticky-list.php:712
+#: ../tags/1.0.2/sticky-list.php:712 ../tags/1.0.3/sticky-list.php:712
+#: ../tags/1.0.4/sticky-list.php:715 ../tags/1.0.5/sticky-list.php:718
+#: ../tags/1.0.6/sticky-list.php:779 ../tags/1.0.7/sticky-list.php:773
+#: ../tags/1.0.8/sticky-list.php:780 ../tags/1.0.9/sticky-list.php:842
+#: ../tags/1.0/sticky-list.php:708 ../tags/1.1.1/sticky-list.php:880
+#: ../tags/1.1.2/sticky-list.php:887 ../tags/1.1.3/sticky-list.php:952
+#: ../tags/1.1.4/sticky-list.php:958 ../tags/1.1.5/sticky-list.php:964
+#: ../tags/1.1.6/sticky-list.php:1013 ../tags/1.1.7.1/sticky-list.php:1018
+#: ../tags/1.1.7/sticky-list.php:1018 ../tags/1.1/sticky-list.php:875
+#: ../trunk/sticky-list.php:1018
 msgid "Embedd page/post"
 msgstr "Inbäddnings-sida/inlägg"
 
-#: ../sticky-list.php:1016 ../tags/1.0/sticky-list.php:711
-#: ../tags/1.0.1/sticky-list.php:715 ../tags/1.0.2/sticky-list.php:715
-#: ../tags/1.0.3/sticky-list.php:715 ../tags/1.0.4/sticky-list.php:718
-#: ../tags/1.0.5/sticky-list.php:721 ../tags/1.0.6/sticky-list.php:782
-#: ../tags/1.0.7/sticky-list.php:776 ../tags/1.0.8/sticky-list.php:783
-#: ../tags/1.0.9/sticky-list.php:845 ../tags/1.1/sticky-list.php:878
-#: ../tags/1.1.1/sticky-list.php:883 ../tags/1.1.2/sticky-list.php:890
-#: ../tags/1.1.3/sticky-list.php:955 ../tags/1.1.4/sticky-list.php:961
-#: ../tags/1.1.5/sticky-list.php:967 ../tags/1.1.6/sticky-list.php:1007
-#: ../trunk/sticky-list.php:1007
+#: ../sticky-list.php:1031 ../tags/1.0.1/sticky-list.php:715
+#: ../tags/1.0.2/sticky-list.php:715 ../tags/1.0.3/sticky-list.php:715
+#: ../tags/1.0.4/sticky-list.php:718 ../tags/1.0.5/sticky-list.php:721
+#: ../tags/1.0.6/sticky-list.php:782 ../tags/1.0.7/sticky-list.php:776
+#: ../tags/1.0.8/sticky-list.php:783 ../tags/1.0.9/sticky-list.php:845
+#: ../tags/1.0/sticky-list.php:711 ../tags/1.1.1/sticky-list.php:883
+#: ../tags/1.1.2/sticky-list.php:890 ../tags/1.1.3/sticky-list.php:955
+#: ../tags/1.1.4/sticky-list.php:961 ../tags/1.1.5/sticky-list.php:967
+#: ../tags/1.1.6/sticky-list.php:1016 ../tags/1.1.7.1/sticky-list.php:1021
+#: ../tags/1.1.7/sticky-list.php:1021 ../tags/1.1/sticky-list.php:878
+#: ../trunk/sticky-list.php:1021
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
@@ -359,25 +388,27 @@ msgstr ""
 "Sidan eller inlägget där formuläret än inbäddat. Denna sida används för att "
 "visa/redigera inlägget"
 
-#: ../sticky-list.php:1020 ../tags/1.0.4/sticky-list.php:722
+#: ../sticky-list.php:1035 ../tags/1.0.4/sticky-list.php:722
 #: ../tags/1.0.5/sticky-list.php:725 ../tags/1.0.6/sticky-list.php:786
 #: ../tags/1.0.7/sticky-list.php:780 ../tags/1.0.8/sticky-list.php:787
-#: ../tags/1.0.9/sticky-list.php:849 ../tags/1.1/sticky-list.php:882
-#: ../tags/1.1.1/sticky-list.php:887 ../tags/1.1.2/sticky-list.php:894
-#: ../tags/1.1.3/sticky-list.php:959 ../tags/1.1.4/sticky-list.php:965
-#: ../tags/1.1.5/sticky-list.php:971 ../tags/1.1.6/sticky-list.php:1011
-#: ../trunk/sticky-list.php:1011
+#: ../tags/1.0.9/sticky-list.php:849 ../tags/1.1.1/sticky-list.php:887
+#: ../tags/1.1.2/sticky-list.php:894 ../tags/1.1.3/sticky-list.php:959
+#: ../tags/1.1.4/sticky-list.php:965 ../tags/1.1.5/sticky-list.php:971
+#: ../tags/1.1.6/sticky-list.php:1020 ../tags/1.1.7.1/sticky-list.php:1025
+#: ../tags/1.1.7/sticky-list.php:1025 ../tags/1.1/sticky-list.php:882
+#: ../trunk/sticky-list.php:1025
 msgid "Custom url"
 msgstr "Egen url"
 
-#: ../sticky-list.php:1023 ../tags/1.0.4/sticky-list.php:725
+#: ../sticky-list.php:1038 ../tags/1.0.4/sticky-list.php:725
 #: ../tags/1.0.5/sticky-list.php:728 ../tags/1.0.6/sticky-list.php:789
 #: ../tags/1.0.7/sticky-list.php:783 ../tags/1.0.8/sticky-list.php:790
-#: ../tags/1.0.9/sticky-list.php:852 ../tags/1.1/sticky-list.php:885
-#: ../tags/1.1.1/sticky-list.php:890 ../tags/1.1.2/sticky-list.php:897
-#: ../tags/1.1.3/sticky-list.php:962 ../tags/1.1.4/sticky-list.php:968
-#: ../tags/1.1.5/sticky-list.php:974 ../tags/1.1.6/sticky-list.php:1014
-#: ../trunk/sticky-list.php:1014
+#: ../tags/1.0.9/sticky-list.php:852 ../tags/1.1.1/sticky-list.php:890
+#: ../tags/1.1.2/sticky-list.php:897 ../tags/1.1.3/sticky-list.php:962
+#: ../tags/1.1.4/sticky-list.php:968 ../tags/1.1.5/sticky-list.php:974
+#: ../tags/1.1.6/sticky-list.php:1023 ../tags/1.1.7.1/sticky-list.php:1028
+#: ../tags/1.1.7/sticky-list.php:1028 ../tags/1.1/sticky-list.php:885
+#: ../trunk/sticky-list.php:1028
 msgid ""
 "Manually input the url of the form. This overrides the selection made in the "
 "dropdown above. Use this if you cannot find the page/post in the list."
@@ -385,68 +416,69 @@ msgstr ""
 "Lägg in formulärets url manuellt. Detta overridar valet du gjort ovan. Du "
 "kan använda detta om du inte kan hitta din sida/inlägg i listan."
 
-#: ../sticky-list.php:1027 ../tags/1.0.8/sticky-list.php:794
-#: ../tags/1.0.9/sticky-list.php:856 ../tags/1.1/sticky-list.php:889
-#: ../tags/1.1.1/sticky-list.php:894 ../tags/1.1.2/sticky-list.php:901
-#: ../tags/1.1.3/sticky-list.php:966 ../tags/1.1.4/sticky-list.php:972
-#: ../tags/1.1.5/sticky-list.php:978 ../tags/1.1.6/sticky-list.php:1018
-#: ../trunk/sticky-list.php:1018
+#: ../sticky-list.php:1042 ../tags/1.0.8/sticky-list.php:794
+#: ../tags/1.0.9/sticky-list.php:856 ../tags/1.1.1/sticky-list.php:894
+#: ../tags/1.1.2/sticky-list.php:901 ../tags/1.1.3/sticky-list.php:966
+#: ../tags/1.1.4/sticky-list.php:972 ../tags/1.1.5/sticky-list.php:978
+#: ../tags/1.1.6/sticky-list.php:1027 ../tags/1.1.7.1/sticky-list.php:1032
+#: ../tags/1.1.7/sticky-list.php:1032 ../tags/1.1/sticky-list.php:889
+#: ../trunk/sticky-list.php:1032
 msgid "Max nr of entries"
 msgstr "Max antal inlägg"
 
-#: ../sticky-list.php:1030 ../tags/1.0.8/sticky-list.php:797
-#: ../tags/1.0.9/sticky-list.php:859 ../tags/1.1/sticky-list.php:892
-#: ../tags/1.1.1/sticky-list.php:897 ../tags/1.1.2/sticky-list.php:904
-#: ../tags/1.1.3/sticky-list.php:969 ../tags/1.1.4/sticky-list.php:975
-#: ../tags/1.1.5/sticky-list.php:981 ../tags/1.1.6/sticky-list.php:1021
-#: ../trunk/sticky-list.php:1021
+#: ../sticky-list.php:1045 ../tags/1.0.8/sticky-list.php:797
+#: ../tags/1.0.9/sticky-list.php:859 ../tags/1.1.1/sticky-list.php:897
+#: ../tags/1.1.2/sticky-list.php:904 ../tags/1.1.3/sticky-list.php:969
+#: ../tags/1.1.4/sticky-list.php:975 ../tags/1.1.5/sticky-list.php:981
+#: ../tags/1.1.6/sticky-list.php:1030 ../tags/1.1.7.1/sticky-list.php:1035
+#: ../tags/1.1.7/sticky-list.php:1035 ../tags/1.1/sticky-list.php:892
+#: ../trunk/sticky-list.php:1035
 msgid "Maximum number of entries to be shown in the list."
 msgstr "Maximalt antal inlägg att visa i listan"
 
-#: ../sticky-list.php:1034 ../tags/1.1.4/sticky-list.php:979
-#: ../tags/1.1.5/sticky-list.php:985 ../tags/1.1.6/sticky-list.php:1025
-#: ../trunk/sticky-list.php:1025
+#: ../sticky-list.php:1049 ../tags/1.1.4/sticky-list.php:979
+#: ../tags/1.1.5/sticky-list.php:985 ../tags/1.1.6/sticky-list.php:1034
+#: ../tags/1.1.7.1/sticky-list.php:1039 ../tags/1.1.7/sticky-list.php:1039
+#: ../trunk/sticky-list.php:1039
 msgid "Make files clickable"
 msgstr "Gör filer klickbara"
 
-#: ../sticky-list.php:1037 ../tags/1.1.4/sticky-list.php:982
-#: ../tags/1.1.5/sticky-list.php:988 ../tags/1.1.6/sticky-list.php:1028
-#: ../trunk/sticky-list.php:1028
+#: ../sticky-list.php:1052 ../tags/1.1.4/sticky-list.php:982
+#: ../tags/1.1.5/sticky-list.php:988 ../tags/1.1.6/sticky-list.php:1037
+#: ../tags/1.1.7.1/sticky-list.php:1042 ../tags/1.1.7/sticky-list.php:1042
+#: ../trunk/sticky-list.php:1042
 msgid ""
 "Check this box to make uploaded files that are shown in the list clickable"
 msgstr "Markera denna ruta för göra uppladdade filer klickbara i listan"
 
-#: ../sticky-list.php:1040 ../sticky-list.php:1052 ../sticky-list.php:1072
-#: ../sticky-list.php:1093 ../sticky-list.php:1122 ../sticky-list.php:1174
-#: ../sticky-list.php:1211 ../sticky-list.php:1223
-#: ../tags/1.0/sticky-list.php:721 ../tags/1.0/sticky-list.php:742
-#: ../tags/1.0/sticky-list.php:771 ../tags/1.0/sticky-list.php:822
-#: ../tags/1.0/sticky-list.php:834 ../tags/1.0.1/sticky-list.php:725
-#: ../tags/1.0.1/sticky-list.php:746 ../tags/1.0.1/sticky-list.php:775
-#: ../tags/1.0.1/sticky-list.php:826 ../tags/1.0.1/sticky-list.php:838
-#: ../tags/1.0.2/sticky-list.php:725 ../tags/1.0.2/sticky-list.php:746
-#: ../tags/1.0.2/sticky-list.php:775 ../tags/1.0.2/sticky-list.php:826
-#: ../tags/1.0.2/sticky-list.php:838 ../tags/1.0.3/sticky-list.php:725
-#: ../tags/1.0.3/sticky-list.php:746 ../tags/1.0.3/sticky-list.php:775
-#: ../tags/1.0.3/sticky-list.php:826 ../tags/1.0.3/sticky-list.php:838
-#: ../tags/1.0.4/sticky-list.php:735 ../tags/1.0.4/sticky-list.php:756
-#: ../tags/1.0.4/sticky-list.php:785 ../tags/1.0.4/sticky-list.php:836
-#: ../tags/1.0.4/sticky-list.php:848 ../tags/1.0.5/sticky-list.php:738
-#: ../tags/1.0.5/sticky-list.php:759 ../tags/1.0.5/sticky-list.php:788
-#: ../tags/1.0.5/sticky-list.php:839 ../tags/1.0.5/sticky-list.php:851
-#: ../tags/1.0.6/sticky-list.php:799 ../tags/1.0.6/sticky-list.php:820
-#: ../tags/1.0.6/sticky-list.php:849 ../tags/1.0.6/sticky-list.php:901
-#: ../tags/1.0.6/sticky-list.php:913 ../tags/1.0.7/sticky-list.php:793
-#: ../tags/1.0.7/sticky-list.php:814 ../tags/1.0.7/sticky-list.php:843
-#: ../tags/1.0.7/sticky-list.php:895 ../tags/1.0.7/sticky-list.php:907
-#: ../tags/1.0.8/sticky-list.php:807 ../tags/1.0.8/sticky-list.php:828
-#: ../tags/1.0.8/sticky-list.php:857 ../tags/1.0.8/sticky-list.php:909
-#: ../tags/1.0.8/sticky-list.php:921 ../tags/1.0.9/sticky-list.php:869
-#: ../tags/1.0.9/sticky-list.php:890 ../tags/1.0.9/sticky-list.php:919
-#: ../tags/1.0.9/sticky-list.php:971 ../tags/1.0.9/sticky-list.php:983
-#: ../tags/1.1/sticky-list.php:902 ../tags/1.1/sticky-list.php:923
-#: ../tags/1.1/sticky-list.php:952 ../tags/1.1/sticky-list.php:1004
-#: ../tags/1.1/sticky-list.php:1016 ../tags/1.1/sticky-list.php:1028
+#: ../sticky-list.php:1055 ../sticky-list.php:1067 ../sticky-list.php:1087
+#: ../sticky-list.php:1108 ../sticky-list.php:1137 ../sticky-list.php:1157
+#: ../sticky-list.php:1209 ../sticky-list.php:1246 ../sticky-list.php:1258
+#: ../tags/1.0.1/sticky-list.php:725 ../tags/1.0.1/sticky-list.php:746
+#: ../tags/1.0.1/sticky-list.php:775 ../tags/1.0.1/sticky-list.php:826
+#: ../tags/1.0.1/sticky-list.php:838 ../tags/1.0.2/sticky-list.php:725
+#: ../tags/1.0.2/sticky-list.php:746 ../tags/1.0.2/sticky-list.php:775
+#: ../tags/1.0.2/sticky-list.php:826 ../tags/1.0.2/sticky-list.php:838
+#: ../tags/1.0.3/sticky-list.php:725 ../tags/1.0.3/sticky-list.php:746
+#: ../tags/1.0.3/sticky-list.php:775 ../tags/1.0.3/sticky-list.php:826
+#: ../tags/1.0.3/sticky-list.php:838 ../tags/1.0.4/sticky-list.php:735
+#: ../tags/1.0.4/sticky-list.php:756 ../tags/1.0.4/sticky-list.php:785
+#: ../tags/1.0.4/sticky-list.php:836 ../tags/1.0.4/sticky-list.php:848
+#: ../tags/1.0.5/sticky-list.php:738 ../tags/1.0.5/sticky-list.php:759
+#: ../tags/1.0.5/sticky-list.php:788 ../tags/1.0.5/sticky-list.php:839
+#: ../tags/1.0.5/sticky-list.php:851 ../tags/1.0.6/sticky-list.php:799
+#: ../tags/1.0.6/sticky-list.php:820 ../tags/1.0.6/sticky-list.php:849
+#: ../tags/1.0.6/sticky-list.php:901 ../tags/1.0.6/sticky-list.php:913
+#: ../tags/1.0.7/sticky-list.php:793 ../tags/1.0.7/sticky-list.php:814
+#: ../tags/1.0.7/sticky-list.php:843 ../tags/1.0.7/sticky-list.php:895
+#: ../tags/1.0.7/sticky-list.php:907 ../tags/1.0.8/sticky-list.php:807
+#: ../tags/1.0.8/sticky-list.php:828 ../tags/1.0.8/sticky-list.php:857
+#: ../tags/1.0.8/sticky-list.php:909 ../tags/1.0.8/sticky-list.php:921
+#: ../tags/1.0.9/sticky-list.php:869 ../tags/1.0.9/sticky-list.php:890
+#: ../tags/1.0.9/sticky-list.php:919 ../tags/1.0.9/sticky-list.php:971
+#: ../tags/1.0.9/sticky-list.php:983 ../tags/1.0/sticky-list.php:721
+#: ../tags/1.0/sticky-list.php:742 ../tags/1.0/sticky-list.php:771
+#: ../tags/1.0/sticky-list.php:822 ../tags/1.0/sticky-list.php:834
 #: ../tags/1.1.1/sticky-list.php:907 ../tags/1.1.1/sticky-list.php:928
 #: ../tags/1.1.1/sticky-list.php:957 ../tags/1.1.1/sticky-list.php:1009
 #: ../tags/1.1.1/sticky-list.php:1021 ../tags/1.1.1/sticky-list.php:1033
@@ -463,25 +495,38 @@ msgstr "Markera denna ruta för göra uppladdade filer klickbara i listan"
 #: ../tags/1.1.5/sticky-list.php:1003 ../tags/1.1.5/sticky-list.php:1023
 #: ../tags/1.1.5/sticky-list.php:1044 ../tags/1.1.5/sticky-list.php:1073
 #: ../tags/1.1.5/sticky-list.php:1125 ../tags/1.1.5/sticky-list.php:1137
-#: ../tags/1.1.5/sticky-list.php:1149 ../tags/1.1.6/sticky-list.php:1031
-#: ../tags/1.1.6/sticky-list.php:1043 ../tags/1.1.6/sticky-list.php:1063
-#: ../tags/1.1.6/sticky-list.php:1084 ../tags/1.1.6/sticky-list.php:1113
-#: ../tags/1.1.6/sticky-list.php:1165 ../tags/1.1.6/sticky-list.php:1202
-#: ../tags/1.1.6/sticky-list.php:1214 ../trunk/sticky-list.php:1031
-#: ../trunk/sticky-list.php:1043 ../trunk/sticky-list.php:1063
-#: ../trunk/sticky-list.php:1084 ../trunk/sticky-list.php:1113
-#: ../trunk/sticky-list.php:1165 ../trunk/sticky-list.php:1202
-#: ../trunk/sticky-list.php:1214
+#: ../tags/1.1.5/sticky-list.php:1149 ../tags/1.1.6/sticky-list.php:1040
+#: ../tags/1.1.6/sticky-list.php:1052 ../tags/1.1.6/sticky-list.php:1072
+#: ../tags/1.1.6/sticky-list.php:1093 ../tags/1.1.6/sticky-list.php:1122
+#: ../tags/1.1.6/sticky-list.php:1174 ../tags/1.1.6/sticky-list.php:1211
+#: ../tags/1.1.6/sticky-list.php:1223 ../tags/1.1.7.1/sticky-list.php:1045
+#: ../tags/1.1.7.1/sticky-list.php:1057 ../tags/1.1.7.1/sticky-list.php:1077
+#: ../tags/1.1.7.1/sticky-list.php:1098 ../tags/1.1.7.1/sticky-list.php:1127
+#: ../tags/1.1.7.1/sticky-list.php:1179 ../tags/1.1.7.1/sticky-list.php:1216
+#: ../tags/1.1.7.1/sticky-list.php:1228 ../tags/1.1.7/sticky-list.php:1045
+#: ../tags/1.1.7/sticky-list.php:1057 ../tags/1.1.7/sticky-list.php:1077
+#: ../tags/1.1.7/sticky-list.php:1098 ../tags/1.1.7/sticky-list.php:1127
+#: ../tags/1.1.7/sticky-list.php:1179 ../tags/1.1.7/sticky-list.php:1216
+#: ../tags/1.1.7/sticky-list.php:1228 ../tags/1.1/sticky-list.php:902
+#: ../tags/1.1/sticky-list.php:923 ../tags/1.1/sticky-list.php:952
+#: ../tags/1.1/sticky-list.php:1004 ../tags/1.1/sticky-list.php:1016
+#: ../tags/1.1/sticky-list.php:1028 ../trunk/sticky-list.php:1045
+#: ../trunk/sticky-list.php:1057 ../trunk/sticky-list.php:1077
+#: ../trunk/sticky-list.php:1098 ../trunk/sticky-list.php:1127
+#: ../trunk/sticky-list.php:1179 ../trunk/sticky-list.php:1216
+#: ../trunk/sticky-list.php:1228
 msgid "Enabled"
 msgstr "Aktivera"
 
-#: ../sticky-list.php:1046 ../tags/1.1.5/sticky-list.php:997
-#: ../tags/1.1.6/sticky-list.php:1037 ../trunk/sticky-list.php:1037
+#: ../sticky-list.php:1061 ../tags/1.1.5/sticky-list.php:997
+#: ../tags/1.1.6/sticky-list.php:1046 ../tags/1.1.7.1/sticky-list.php:1051
+#: ../tags/1.1.7/sticky-list.php:1051 ../trunk/sticky-list.php:1051
 msgid "Link to post"
 msgstr "Länk till post"
 
-#: ../sticky-list.php:1049 ../tags/1.1.5/sticky-list.php:1000
-#: ../tags/1.1.6/sticky-list.php:1040 ../trunk/sticky-list.php:1040
+#: ../sticky-list.php:1064 ../tags/1.1.5/sticky-list.php:1000
+#: ../tags/1.1.6/sticky-list.php:1049 ../tags/1.1.7.1/sticky-list.php:1054
+#: ../tags/1.1.7/sticky-list.php:1054 ../trunk/sticky-list.php:1054
 msgid ""
 "Check this box to insert a link to the WordPress post in the action column. "
 "Only applicable if the list actually contains WordPress posts."
@@ -489,44 +534,49 @@ msgstr ""
 "Markera denna ruta om du vill inkludera en länk till ett WordPress inlägg. "
 "Fungerar endast om listan innehåller inlägg eller andra posttyper."
 
-#: ../sticky-list.php:1058 ../tags/1.1.5/sticky-list.php:1009
-#: ../tags/1.1.6/sticky-list.php:1049 ../trunk/sticky-list.php:1049
+#: ../sticky-list.php:1073 ../tags/1.1.5/sticky-list.php:1009
+#: ../tags/1.1.6/sticky-list.php:1058 ../tags/1.1.7.1/sticky-list.php:1063
+#: ../tags/1.1.7/sticky-list.php:1063 ../trunk/sticky-list.php:1063
 msgid "Link label"
 msgstr "Länktext"
 
-#: ../sticky-list.php:1061 ../tags/1.1.5/sticky-list.php:1012
-#: ../tags/1.1.6/sticky-list.php:1052 ../trunk/sticky-list.php:1052
+#: ../sticky-list.php:1076 ../tags/1.1.5/sticky-list.php:1012
+#: ../tags/1.1.6/sticky-list.php:1061 ../tags/1.1.7.1/sticky-list.php:1066
+#: ../tags/1.1.7/sticky-list.php:1066 ../trunk/sticky-list.php:1066
 msgid "Label for the post link."
 msgstr "Text för länken"
 
-#: ../sticky-list.php:1063 ../tags/1.1.5/sticky-list.php:1014
-#: ../tags/1.1.6/sticky-list.php:1054 ../trunk/sticky-list.php:1054
+#: ../sticky-list.php:1078 ../tags/1.1.5/sticky-list.php:1014
+#: ../tags/1.1.6/sticky-list.php:1063 ../tags/1.1.7.1/sticky-list.php:1068
+#: ../tags/1.1.7/sticky-list.php:1068 ../trunk/sticky-list.php:1068
 msgid "Post"
 msgstr "Inlägg"
 
-#: ../sticky-list.php:1066 ../tags/1.0/sticky-list.php:715
-#: ../tags/1.0.1/sticky-list.php:719 ../tags/1.0.2/sticky-list.php:719
-#: ../tags/1.0.3/sticky-list.php:719 ../tags/1.0.4/sticky-list.php:729
-#: ../tags/1.0.5/sticky-list.php:732 ../tags/1.0.6/sticky-list.php:793
-#: ../tags/1.0.7/sticky-list.php:787 ../tags/1.0.8/sticky-list.php:801
-#: ../tags/1.0.9/sticky-list.php:863 ../tags/1.1/sticky-list.php:896
-#: ../tags/1.1.1/sticky-list.php:901 ../tags/1.1.2/sticky-list.php:908
-#: ../tags/1.1.3/sticky-list.php:973 ../tags/1.1.4/sticky-list.php:991
-#: ../tags/1.1.5/sticky-list.php:1017 ../tags/1.1.6/sticky-list.php:1057
-#: ../trunk/sticky-list.php:1057
+#: ../sticky-list.php:1081 ../tags/1.0.1/sticky-list.php:719
+#: ../tags/1.0.2/sticky-list.php:719 ../tags/1.0.3/sticky-list.php:719
+#: ../tags/1.0.4/sticky-list.php:729 ../tags/1.0.5/sticky-list.php:732
+#: ../tags/1.0.6/sticky-list.php:793 ../tags/1.0.7/sticky-list.php:787
+#: ../tags/1.0.8/sticky-list.php:801 ../tags/1.0.9/sticky-list.php:863
+#: ../tags/1.0/sticky-list.php:715 ../tags/1.1.1/sticky-list.php:901
+#: ../tags/1.1.2/sticky-list.php:908 ../tags/1.1.3/sticky-list.php:973
+#: ../tags/1.1.4/sticky-list.php:991 ../tags/1.1.5/sticky-list.php:1017
+#: ../tags/1.1.6/sticky-list.php:1066 ../tags/1.1.7.1/sticky-list.php:1071
+#: ../tags/1.1.7/sticky-list.php:1071 ../tags/1.1/sticky-list.php:896
+#: ../trunk/sticky-list.php:1071
 msgid "View entries"
 msgstr "Visa inlägg"
 
-#: ../sticky-list.php:1069 ../tags/1.0/sticky-list.php:718
-#: ../tags/1.0.1/sticky-list.php:722 ../tags/1.0.2/sticky-list.php:722
-#: ../tags/1.0.3/sticky-list.php:722 ../tags/1.0.4/sticky-list.php:732
-#: ../tags/1.0.5/sticky-list.php:735 ../tags/1.0.6/sticky-list.php:796
-#: ../tags/1.0.7/sticky-list.php:790 ../tags/1.0.8/sticky-list.php:804
-#: ../tags/1.0.9/sticky-list.php:866 ../tags/1.1/sticky-list.php:899
-#: ../tags/1.1.1/sticky-list.php:904 ../tags/1.1.2/sticky-list.php:911
-#: ../tags/1.1.3/sticky-list.php:976 ../tags/1.1.4/sticky-list.php:994
-#: ../tags/1.1.5/sticky-list.php:1020 ../tags/1.1.6/sticky-list.php:1060
-#: ../trunk/sticky-list.php:1060
+#: ../sticky-list.php:1084 ../tags/1.0.1/sticky-list.php:722
+#: ../tags/1.0.2/sticky-list.php:722 ../tags/1.0.3/sticky-list.php:722
+#: ../tags/1.0.4/sticky-list.php:732 ../tags/1.0.5/sticky-list.php:735
+#: ../tags/1.0.6/sticky-list.php:796 ../tags/1.0.7/sticky-list.php:790
+#: ../tags/1.0.8/sticky-list.php:804 ../tags/1.0.9/sticky-list.php:866
+#: ../tags/1.0/sticky-list.php:718 ../tags/1.1.1/sticky-list.php:904
+#: ../tags/1.1.2/sticky-list.php:911 ../tags/1.1.3/sticky-list.php:976
+#: ../tags/1.1.4/sticky-list.php:994 ../tags/1.1.5/sticky-list.php:1020
+#: ../tags/1.1.6/sticky-list.php:1069 ../tags/1.1.7.1/sticky-list.php:1074
+#: ../tags/1.1.7/sticky-list.php:1074 ../tags/1.1/sticky-list.php:899
+#: ../trunk/sticky-list.php:1074
 msgid ""
 "Check this box to enable users to view the complete submitted entry. A \\"
 "\"View\\\" link will appear in the list"
@@ -534,68 +584,73 @@ msgstr ""
 "Markera denna ruta för att låta användare visa inlägget. En \"Visa\"-länk "
 "visas i listan"
 
-#: ../sticky-list.php:1078 ../tags/1.0/sticky-list.php:727
-#: ../tags/1.0.1/sticky-list.php:731 ../tags/1.0.2/sticky-list.php:731
-#: ../tags/1.0.3/sticky-list.php:731 ../tags/1.0.4/sticky-list.php:741
-#: ../tags/1.0.5/sticky-list.php:744 ../tags/1.0.6/sticky-list.php:805
-#: ../tags/1.0.7/sticky-list.php:799 ../tags/1.0.8/sticky-list.php:813
-#: ../tags/1.0.9/sticky-list.php:875 ../tags/1.1/sticky-list.php:908
-#: ../tags/1.1.1/sticky-list.php:913 ../tags/1.1.2/sticky-list.php:920
-#: ../tags/1.1.3/sticky-list.php:985 ../tags/1.1.4/sticky-list.php:1003
-#: ../tags/1.1.5/sticky-list.php:1029 ../tags/1.1.6/sticky-list.php:1069
-#: ../trunk/sticky-list.php:1069
+#: ../sticky-list.php:1093 ../tags/1.0.1/sticky-list.php:731
+#: ../tags/1.0.2/sticky-list.php:731 ../tags/1.0.3/sticky-list.php:731
+#: ../tags/1.0.4/sticky-list.php:741 ../tags/1.0.5/sticky-list.php:744
+#: ../tags/1.0.6/sticky-list.php:805 ../tags/1.0.7/sticky-list.php:799
+#: ../tags/1.0.8/sticky-list.php:813 ../tags/1.0.9/sticky-list.php:875
+#: ../tags/1.0/sticky-list.php:727 ../tags/1.1.1/sticky-list.php:913
+#: ../tags/1.1.2/sticky-list.php:920 ../tags/1.1.3/sticky-list.php:985
+#: ../tags/1.1.4/sticky-list.php:1003 ../tags/1.1.5/sticky-list.php:1029
+#: ../tags/1.1.6/sticky-list.php:1078 ../tags/1.1.7.1/sticky-list.php:1083
+#: ../tags/1.1.7/sticky-list.php:1083 ../tags/1.1/sticky-list.php:908
+#: ../trunk/sticky-list.php:1083
 msgid "View label"
 msgstr "Visa-text"
 
-#: ../sticky-list.php:1081 ../tags/1.0/sticky-list.php:730
-#: ../tags/1.0.1/sticky-list.php:734 ../tags/1.0.2/sticky-list.php:734
-#: ../tags/1.0.3/sticky-list.php:734 ../tags/1.0.4/sticky-list.php:744
-#: ../tags/1.0.5/sticky-list.php:747 ../tags/1.0.6/sticky-list.php:808
-#: ../tags/1.0.7/sticky-list.php:802 ../tags/1.0.8/sticky-list.php:816
-#: ../tags/1.0.9/sticky-list.php:878 ../tags/1.1/sticky-list.php:911
-#: ../tags/1.1.1/sticky-list.php:916 ../tags/1.1.2/sticky-list.php:923
-#: ../tags/1.1.3/sticky-list.php:988 ../tags/1.1.4/sticky-list.php:1006
-#: ../tags/1.1.5/sticky-list.php:1032 ../tags/1.1.6/sticky-list.php:1072
-#: ../trunk/sticky-list.php:1072
+#: ../sticky-list.php:1096 ../tags/1.0.1/sticky-list.php:734
+#: ../tags/1.0.2/sticky-list.php:734 ../tags/1.0.3/sticky-list.php:734
+#: ../tags/1.0.4/sticky-list.php:744 ../tags/1.0.5/sticky-list.php:747
+#: ../tags/1.0.6/sticky-list.php:808 ../tags/1.0.7/sticky-list.php:802
+#: ../tags/1.0.8/sticky-list.php:816 ../tags/1.0.9/sticky-list.php:878
+#: ../tags/1.0/sticky-list.php:730 ../tags/1.1.1/sticky-list.php:916
+#: ../tags/1.1.2/sticky-list.php:923 ../tags/1.1.3/sticky-list.php:988
+#: ../tags/1.1.4/sticky-list.php:1006 ../tags/1.1.5/sticky-list.php:1032
+#: ../tags/1.1.6/sticky-list.php:1081 ../tags/1.1.7.1/sticky-list.php:1086
+#: ../tags/1.1.7/sticky-list.php:1086 ../tags/1.1/sticky-list.php:911
+#: ../trunk/sticky-list.php:1086
 msgid "Label for the view button"
 msgstr "Text för visa-knappen"
 
-#: ../sticky-list.php:1083 ../tags/1.0/sticky-list.php:732
-#: ../tags/1.0.1/sticky-list.php:736 ../tags/1.0.2/sticky-list.php:736
-#: ../tags/1.0.3/sticky-list.php:736 ../tags/1.0.4/sticky-list.php:746
-#: ../tags/1.0.5/sticky-list.php:749 ../tags/1.0.6/sticky-list.php:810
-#: ../tags/1.0.7/sticky-list.php:804 ../tags/1.0.8/sticky-list.php:818
-#: ../tags/1.0.9/sticky-list.php:880 ../tags/1.1/sticky-list.php:913
-#: ../tags/1.1.1/sticky-list.php:918 ../tags/1.1.2/sticky-list.php:925
-#: ../tags/1.1.3/sticky-list.php:990 ../tags/1.1.4/sticky-list.php:1008
-#: ../tags/1.1.5/sticky-list.php:1034 ../tags/1.1.6/sticky-list.php:1074
-#: ../trunk/sticky-list.php:1074
+#: ../sticky-list.php:1098 ../tags/1.0.1/sticky-list.php:736
+#: ../tags/1.0.2/sticky-list.php:736 ../tags/1.0.3/sticky-list.php:736
+#: ../tags/1.0.4/sticky-list.php:746 ../tags/1.0.5/sticky-list.php:749
+#: ../tags/1.0.6/sticky-list.php:810 ../tags/1.0.7/sticky-list.php:804
+#: ../tags/1.0.8/sticky-list.php:818 ../tags/1.0.9/sticky-list.php:880
+#: ../tags/1.0/sticky-list.php:732 ../tags/1.1.1/sticky-list.php:918
+#: ../tags/1.1.2/sticky-list.php:925 ../tags/1.1.3/sticky-list.php:990
+#: ../tags/1.1.4/sticky-list.php:1008 ../tags/1.1.5/sticky-list.php:1034
+#: ../tags/1.1.6/sticky-list.php:1083 ../tags/1.1.7.1/sticky-list.php:1088
+#: ../tags/1.1.7/sticky-list.php:1088 ../tags/1.1/sticky-list.php:913
+#: ../trunk/sticky-list.php:1088
 msgid "View"
 msgstr "Visa"
 
-#: ../sticky-list.php:1087 ../tags/1.0/sticky-list.php:736
-#: ../tags/1.0.1/sticky-list.php:740 ../tags/1.0.2/sticky-list.php:740
-#: ../tags/1.0.3/sticky-list.php:740 ../tags/1.0.4/sticky-list.php:750
-#: ../tags/1.0.5/sticky-list.php:753 ../tags/1.0.6/sticky-list.php:814
-#: ../tags/1.0.7/sticky-list.php:808 ../tags/1.0.8/sticky-list.php:822
-#: ../tags/1.0.9/sticky-list.php:884 ../tags/1.1/sticky-list.php:917
-#: ../tags/1.1.1/sticky-list.php:922 ../tags/1.1.2/sticky-list.php:929
-#: ../tags/1.1.3/sticky-list.php:994 ../tags/1.1.4/sticky-list.php:1012
-#: ../tags/1.1.5/sticky-list.php:1038 ../tags/1.1.6/sticky-list.php:1078
-#: ../trunk/sticky-list.php:1078
+#: ../sticky-list.php:1102 ../tags/1.0.1/sticky-list.php:740
+#: ../tags/1.0.2/sticky-list.php:740 ../tags/1.0.3/sticky-list.php:740
+#: ../tags/1.0.4/sticky-list.php:750 ../tags/1.0.5/sticky-list.php:753
+#: ../tags/1.0.6/sticky-list.php:814 ../tags/1.0.7/sticky-list.php:808
+#: ../tags/1.0.8/sticky-list.php:822 ../tags/1.0.9/sticky-list.php:884
+#: ../tags/1.0/sticky-list.php:736 ../tags/1.1.1/sticky-list.php:922
+#: ../tags/1.1.2/sticky-list.php:929 ../tags/1.1.3/sticky-list.php:994
+#: ../tags/1.1.4/sticky-list.php:1012 ../tags/1.1.5/sticky-list.php:1038
+#: ../tags/1.1.6/sticky-list.php:1087 ../tags/1.1.7.1/sticky-list.php:1092
+#: ../tags/1.1.7/sticky-list.php:1092 ../tags/1.1/sticky-list.php:917
+#: ../trunk/sticky-list.php:1092
 msgid "Edit entries"
 msgstr "Redigera inlägg"
 
-#: ../sticky-list.php:1090 ../tags/1.0/sticky-list.php:739
-#: ../tags/1.0.1/sticky-list.php:743 ../tags/1.0.2/sticky-list.php:743
-#: ../tags/1.0.3/sticky-list.php:743 ../tags/1.0.4/sticky-list.php:753
-#: ../tags/1.0.5/sticky-list.php:756 ../tags/1.0.6/sticky-list.php:817
-#: ../tags/1.0.7/sticky-list.php:811 ../tags/1.0.8/sticky-list.php:825
-#: ../tags/1.0.9/sticky-list.php:887 ../tags/1.1/sticky-list.php:920
-#: ../tags/1.1.1/sticky-list.php:925 ../tags/1.1.2/sticky-list.php:932
-#: ../tags/1.1.3/sticky-list.php:997 ../tags/1.1.4/sticky-list.php:1015
-#: ../tags/1.1.5/sticky-list.php:1041 ../tags/1.1.6/sticky-list.php:1081
-#: ../trunk/sticky-list.php:1081
+#: ../sticky-list.php:1105 ../tags/1.0.1/sticky-list.php:743
+#: ../tags/1.0.2/sticky-list.php:743 ../tags/1.0.3/sticky-list.php:743
+#: ../tags/1.0.4/sticky-list.php:753 ../tags/1.0.5/sticky-list.php:756
+#: ../tags/1.0.6/sticky-list.php:817 ../tags/1.0.7/sticky-list.php:811
+#: ../tags/1.0.8/sticky-list.php:825 ../tags/1.0.9/sticky-list.php:887
+#: ../tags/1.0/sticky-list.php:739 ../tags/1.1.1/sticky-list.php:925
+#: ../tags/1.1.2/sticky-list.php:932 ../tags/1.1.3/sticky-list.php:997
+#: ../tags/1.1.4/sticky-list.php:1015 ../tags/1.1.5/sticky-list.php:1041
+#: ../tags/1.1.6/sticky-list.php:1090 ../tags/1.1.7.1/sticky-list.php:1095
+#: ../tags/1.1.7/sticky-list.php:1095 ../tags/1.1/sticky-list.php:920
+#: ../trunk/sticky-list.php:1095
 msgid ""
 "Check this box to enable user to edit submitted entries. An \\\"Edit\\\" "
 "link will appear in the list"
@@ -603,107 +658,115 @@ msgstr ""
 "Markera denna ruta för att låta användare redigera inlägget. En \"Redigera\"-"
 "länk visas i listan"
 
-#: ../sticky-list.php:1099 ../tags/1.0/sticky-list.php:748
-#: ../tags/1.0.1/sticky-list.php:752 ../tags/1.0.2/sticky-list.php:752
-#: ../tags/1.0.3/sticky-list.php:752 ../tags/1.0.4/sticky-list.php:762
-#: ../tags/1.0.5/sticky-list.php:765 ../tags/1.0.6/sticky-list.php:826
-#: ../tags/1.0.7/sticky-list.php:820 ../tags/1.0.8/sticky-list.php:834
-#: ../tags/1.0.9/sticky-list.php:896 ../tags/1.1/sticky-list.php:929
-#: ../tags/1.1.1/sticky-list.php:934 ../tags/1.1.2/sticky-list.php:941
-#: ../tags/1.1.3/sticky-list.php:1006 ../tags/1.1.4/sticky-list.php:1024
-#: ../tags/1.1.5/sticky-list.php:1050 ../tags/1.1.6/sticky-list.php:1090
-#: ../trunk/sticky-list.php:1090
+#: ../sticky-list.php:1114 ../tags/1.0.1/sticky-list.php:752
+#: ../tags/1.0.2/sticky-list.php:752 ../tags/1.0.3/sticky-list.php:752
+#: ../tags/1.0.4/sticky-list.php:762 ../tags/1.0.5/sticky-list.php:765
+#: ../tags/1.0.6/sticky-list.php:826 ../tags/1.0.7/sticky-list.php:820
+#: ../tags/1.0.8/sticky-list.php:834 ../tags/1.0.9/sticky-list.php:896
+#: ../tags/1.0/sticky-list.php:748 ../tags/1.1.1/sticky-list.php:934
+#: ../tags/1.1.2/sticky-list.php:941 ../tags/1.1.3/sticky-list.php:1006
+#: ../tags/1.1.4/sticky-list.php:1024 ../tags/1.1.5/sticky-list.php:1050
+#: ../tags/1.1.6/sticky-list.php:1099 ../tags/1.1.7.1/sticky-list.php:1104
+#: ../tags/1.1.7/sticky-list.php:1104 ../tags/1.1/sticky-list.php:929
+#: ../trunk/sticky-list.php:1104
 msgid "Edit label"
 msgstr "Redigera-text"
 
-#: ../sticky-list.php:1102 ../tags/1.0/sticky-list.php:751
-#: ../tags/1.0.1/sticky-list.php:755 ../tags/1.0.2/sticky-list.php:755
-#: ../tags/1.0.3/sticky-list.php:755 ../tags/1.0.4/sticky-list.php:765
-#: ../tags/1.0.5/sticky-list.php:768 ../tags/1.0.6/sticky-list.php:829
-#: ../tags/1.0.7/sticky-list.php:823 ../tags/1.0.8/sticky-list.php:837
-#: ../tags/1.0.9/sticky-list.php:899 ../tags/1.1/sticky-list.php:932
-#: ../tags/1.1.1/sticky-list.php:937 ../tags/1.1.2/sticky-list.php:944
-#: ../tags/1.1.3/sticky-list.php:1009 ../tags/1.1.4/sticky-list.php:1027
-#: ../tags/1.1.5/sticky-list.php:1053 ../tags/1.1.6/sticky-list.php:1093
-#: ../trunk/sticky-list.php:1093
+#: ../sticky-list.php:1117 ../tags/1.0.1/sticky-list.php:755
+#: ../tags/1.0.2/sticky-list.php:755 ../tags/1.0.3/sticky-list.php:755
+#: ../tags/1.0.4/sticky-list.php:765 ../tags/1.0.5/sticky-list.php:768
+#: ../tags/1.0.6/sticky-list.php:829 ../tags/1.0.7/sticky-list.php:823
+#: ../tags/1.0.8/sticky-list.php:837 ../tags/1.0.9/sticky-list.php:899
+#: ../tags/1.0/sticky-list.php:751 ../tags/1.1.1/sticky-list.php:937
+#: ../tags/1.1.2/sticky-list.php:944 ../tags/1.1.3/sticky-list.php:1009
+#: ../tags/1.1.4/sticky-list.php:1027 ../tags/1.1.5/sticky-list.php:1053
+#: ../tags/1.1.6/sticky-list.php:1102 ../tags/1.1.7.1/sticky-list.php:1107
+#: ../tags/1.1.7/sticky-list.php:1107 ../tags/1.1/sticky-list.php:932
+#: ../trunk/sticky-list.php:1107
 msgid "Label for the edit button"
 msgstr "Text för redigera-knappen"
 
-#: ../sticky-list.php:1104 ../tags/1.0/sticky-list.php:753
-#: ../tags/1.0.1/sticky-list.php:757 ../tags/1.0.2/sticky-list.php:757
-#: ../tags/1.0.3/sticky-list.php:757 ../tags/1.0.4/sticky-list.php:767
-#: ../tags/1.0.5/sticky-list.php:770 ../tags/1.0.6/sticky-list.php:831
-#: ../tags/1.0.7/sticky-list.php:825 ../tags/1.0.8/sticky-list.php:839
-#: ../tags/1.0.9/sticky-list.php:901 ../tags/1.1/sticky-list.php:934
-#: ../tags/1.1.1/sticky-list.php:939 ../tags/1.1.2/sticky-list.php:946
-#: ../tags/1.1.3/sticky-list.php:1011 ../tags/1.1.4/sticky-list.php:1029
-#: ../tags/1.1.5/sticky-list.php:1055 ../tags/1.1.6/sticky-list.php:1095
-#: ../trunk/sticky-list.php:1095
+#: ../sticky-list.php:1119 ../tags/1.0.1/sticky-list.php:757
+#: ../tags/1.0.2/sticky-list.php:757 ../tags/1.0.3/sticky-list.php:757
+#: ../tags/1.0.4/sticky-list.php:767 ../tags/1.0.5/sticky-list.php:770
+#: ../tags/1.0.6/sticky-list.php:831 ../tags/1.0.7/sticky-list.php:825
+#: ../tags/1.0.8/sticky-list.php:839 ../tags/1.0.9/sticky-list.php:901
+#: ../tags/1.0/sticky-list.php:753 ../tags/1.1.1/sticky-list.php:939
+#: ../tags/1.1.2/sticky-list.php:946 ../tags/1.1.3/sticky-list.php:1011
+#: ../tags/1.1.4/sticky-list.php:1029 ../tags/1.1.5/sticky-list.php:1055
+#: ../tags/1.1.6/sticky-list.php:1104 ../tags/1.1.7.1/sticky-list.php:1109
+#: ../tags/1.1.7/sticky-list.php:1109 ../tags/1.1/sticky-list.php:934
+#: ../trunk/sticky-list.php:1109
 msgid "Edit"
 msgstr "Redigera"
 
-#: ../sticky-list.php:1108 ../tags/1.0/sticky-list.php:757
-#: ../tags/1.0.1/sticky-list.php:761 ../tags/1.0.2/sticky-list.php:761
-#: ../tags/1.0.3/sticky-list.php:761 ../tags/1.0.4/sticky-list.php:771
-#: ../tags/1.0.5/sticky-list.php:774 ../tags/1.0.6/sticky-list.php:835
-#: ../tags/1.0.7/sticky-list.php:829 ../tags/1.0.8/sticky-list.php:843
-#: ../tags/1.0.9/sticky-list.php:905 ../tags/1.1/sticky-list.php:938
-#: ../tags/1.1.1/sticky-list.php:943 ../tags/1.1.2/sticky-list.php:950
-#: ../tags/1.1.3/sticky-list.php:1015 ../tags/1.1.4/sticky-list.php:1033
-#: ../tags/1.1.5/sticky-list.php:1059 ../tags/1.1.6/sticky-list.php:1099
-#: ../trunk/sticky-list.php:1099
+#: ../sticky-list.php:1123 ../tags/1.0.1/sticky-list.php:761
+#: ../tags/1.0.2/sticky-list.php:761 ../tags/1.0.3/sticky-list.php:761
+#: ../tags/1.0.4/sticky-list.php:771 ../tags/1.0.5/sticky-list.php:774
+#: ../tags/1.0.6/sticky-list.php:835 ../tags/1.0.7/sticky-list.php:829
+#: ../tags/1.0.8/sticky-list.php:843 ../tags/1.0.9/sticky-list.php:905
+#: ../tags/1.0/sticky-list.php:757 ../tags/1.1.1/sticky-list.php:943
+#: ../tags/1.1.2/sticky-list.php:950 ../tags/1.1.3/sticky-list.php:1015
+#: ../tags/1.1.4/sticky-list.php:1033 ../tags/1.1.5/sticky-list.php:1059
+#: ../tags/1.1.6/sticky-list.php:1108 ../tags/1.1.7.1/sticky-list.php:1113
+#: ../tags/1.1.7/sticky-list.php:1113 ../tags/1.1/sticky-list.php:938
+#: ../trunk/sticky-list.php:1113
 msgid "Update button text"
 msgstr "Uppdatera-knappens text"
 
-#: ../sticky-list.php:1111 ../tags/1.0/sticky-list.php:760
-#: ../tags/1.0.1/sticky-list.php:764 ../tags/1.0.2/sticky-list.php:764
-#: ../tags/1.0.3/sticky-list.php:764 ../tags/1.0.4/sticky-list.php:774
-#: ../tags/1.0.5/sticky-list.php:777 ../tags/1.0.6/sticky-list.php:838
-#: ../tags/1.0.7/sticky-list.php:832 ../tags/1.0.8/sticky-list.php:846
-#: ../tags/1.0.9/sticky-list.php:908 ../tags/1.1/sticky-list.php:941
-#: ../tags/1.1.1/sticky-list.php:946 ../tags/1.1.2/sticky-list.php:953
-#: ../tags/1.1.3/sticky-list.php:1018 ../tags/1.1.4/sticky-list.php:1036
-#: ../tags/1.1.5/sticky-list.php:1062 ../tags/1.1.6/sticky-list.php:1102
-#: ../trunk/sticky-list.php:1102
+#: ../sticky-list.php:1126 ../tags/1.0.1/sticky-list.php:764
+#: ../tags/1.0.2/sticky-list.php:764 ../tags/1.0.3/sticky-list.php:764
+#: ../tags/1.0.4/sticky-list.php:774 ../tags/1.0.5/sticky-list.php:777
+#: ../tags/1.0.6/sticky-list.php:838 ../tags/1.0.7/sticky-list.php:832
+#: ../tags/1.0.8/sticky-list.php:846 ../tags/1.0.9/sticky-list.php:908
+#: ../tags/1.0/sticky-list.php:760 ../tags/1.1.1/sticky-list.php:946
+#: ../tags/1.1.2/sticky-list.php:953 ../tags/1.1.3/sticky-list.php:1018
+#: ../tags/1.1.4/sticky-list.php:1036 ../tags/1.1.5/sticky-list.php:1062
+#: ../tags/1.1.6/sticky-list.php:1111 ../tags/1.1.7.1/sticky-list.php:1116
+#: ../tags/1.1.7/sticky-list.php:1116 ../tags/1.1/sticky-list.php:941
+#: ../trunk/sticky-list.php:1116
 msgid "Text for the submit button that is displayed when editing an entry"
 msgstr "Text för knappen som visas när ett inlägg redigeras"
 
-#: ../sticky-list.php:1113 ../tags/1.0/sticky-list.php:762
-#: ../tags/1.0.1/sticky-list.php:766 ../tags/1.0.2/sticky-list.php:766
-#: ../tags/1.0.3/sticky-list.php:766 ../tags/1.0.4/sticky-list.php:776
-#: ../tags/1.0.5/sticky-list.php:779 ../tags/1.0.6/sticky-list.php:840
-#: ../tags/1.0.7/sticky-list.php:834 ../tags/1.0.8/sticky-list.php:848
-#: ../tags/1.0.9/sticky-list.php:910 ../tags/1.1/sticky-list.php:943
-#: ../tags/1.1.1/sticky-list.php:948 ../tags/1.1.2/sticky-list.php:955
-#: ../tags/1.1.3/sticky-list.php:1020 ../tags/1.1.4/sticky-list.php:1038
-#: ../tags/1.1.5/sticky-list.php:1064 ../tags/1.1.6/sticky-list.php:1104
-#: ../trunk/sticky-list.php:1104
+#: ../sticky-list.php:1128 ../tags/1.0.1/sticky-list.php:766
+#: ../tags/1.0.2/sticky-list.php:766 ../tags/1.0.3/sticky-list.php:766
+#: ../tags/1.0.4/sticky-list.php:776 ../tags/1.0.5/sticky-list.php:779
+#: ../tags/1.0.6/sticky-list.php:840 ../tags/1.0.7/sticky-list.php:834
+#: ../tags/1.0.8/sticky-list.php:848 ../tags/1.0.9/sticky-list.php:910
+#: ../tags/1.0/sticky-list.php:762 ../tags/1.1.1/sticky-list.php:948
+#: ../tags/1.1.2/sticky-list.php:955 ../tags/1.1.3/sticky-list.php:1020
+#: ../tags/1.1.4/sticky-list.php:1038 ../tags/1.1.5/sticky-list.php:1064
+#: ../tags/1.1.6/sticky-list.php:1113 ../tags/1.1.7.1/sticky-list.php:1118
+#: ../tags/1.1.7/sticky-list.php:1118 ../tags/1.1/sticky-list.php:943
+#: ../trunk/sticky-list.php:1118
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../sticky-list.php:1116 ../tags/1.0/sticky-list.php:765
-#: ../tags/1.0.1/sticky-list.php:769 ../tags/1.0.2/sticky-list.php:769
-#: ../tags/1.0.3/sticky-list.php:769 ../tags/1.0.4/sticky-list.php:779
-#: ../tags/1.0.5/sticky-list.php:782 ../tags/1.0.6/sticky-list.php:843
-#: ../tags/1.0.7/sticky-list.php:837 ../tags/1.0.8/sticky-list.php:851
-#: ../tags/1.0.9/sticky-list.php:913 ../tags/1.1/sticky-list.php:946
-#: ../tags/1.1.1/sticky-list.php:951 ../tags/1.1.2/sticky-list.php:958
-#: ../tags/1.1.3/sticky-list.php:1023 ../tags/1.1.4/sticky-list.php:1041
-#: ../tags/1.1.5/sticky-list.php:1067 ../tags/1.1.6/sticky-list.php:1107
-#: ../trunk/sticky-list.php:1107
+#: ../sticky-list.php:1131 ../tags/1.0.1/sticky-list.php:769
+#: ../tags/1.0.2/sticky-list.php:769 ../tags/1.0.3/sticky-list.php:769
+#: ../tags/1.0.4/sticky-list.php:779 ../tags/1.0.5/sticky-list.php:782
+#: ../tags/1.0.6/sticky-list.php:843 ../tags/1.0.7/sticky-list.php:837
+#: ../tags/1.0.8/sticky-list.php:851 ../tags/1.0.9/sticky-list.php:913
+#: ../tags/1.0/sticky-list.php:765 ../tags/1.1.1/sticky-list.php:951
+#: ../tags/1.1.2/sticky-list.php:958 ../tags/1.1.3/sticky-list.php:1023
+#: ../tags/1.1.4/sticky-list.php:1041 ../tags/1.1.5/sticky-list.php:1067
+#: ../tags/1.1.6/sticky-list.php:1116 ../tags/1.1.7.1/sticky-list.php:1121
+#: ../tags/1.1.7/sticky-list.php:1121 ../tags/1.1/sticky-list.php:946
+#: ../trunk/sticky-list.php:1121
 msgid "Delete entries"
 msgstr "Ta bort inlägg"
 
-#: ../sticky-list.php:1119 ../tags/1.0/sticky-list.php:768
-#: ../tags/1.0.1/sticky-list.php:772 ../tags/1.0.2/sticky-list.php:772
-#: ../tags/1.0.3/sticky-list.php:772 ../tags/1.0.4/sticky-list.php:782
-#: ../tags/1.0.5/sticky-list.php:785 ../tags/1.0.6/sticky-list.php:846
-#: ../tags/1.0.7/sticky-list.php:840 ../tags/1.0.8/sticky-list.php:854
-#: ../tags/1.0.9/sticky-list.php:916 ../tags/1.1/sticky-list.php:949
-#: ../tags/1.1.1/sticky-list.php:954 ../tags/1.1.2/sticky-list.php:961
-#: ../tags/1.1.3/sticky-list.php:1026 ../tags/1.1.4/sticky-list.php:1044
-#: ../tags/1.1.5/sticky-list.php:1070 ../tags/1.1.6/sticky-list.php:1110
-#: ../trunk/sticky-list.php:1110
+#: ../sticky-list.php:1134 ../tags/1.0.1/sticky-list.php:772
+#: ../tags/1.0.2/sticky-list.php:772 ../tags/1.0.3/sticky-list.php:772
+#: ../tags/1.0.4/sticky-list.php:782 ../tags/1.0.5/sticky-list.php:785
+#: ../tags/1.0.6/sticky-list.php:846 ../tags/1.0.7/sticky-list.php:840
+#: ../tags/1.0.8/sticky-list.php:854 ../tags/1.0.9/sticky-list.php:916
+#: ../tags/1.0/sticky-list.php:768 ../tags/1.1.1/sticky-list.php:954
+#: ../tags/1.1.2/sticky-list.php:961 ../tags/1.1.3/sticky-list.php:1026
+#: ../tags/1.1.4/sticky-list.php:1044 ../tags/1.1.5/sticky-list.php:1070
+#: ../tags/1.1.6/sticky-list.php:1119 ../tags/1.1.7.1/sticky-list.php:1124
+#: ../tags/1.1.7/sticky-list.php:1124 ../tags/1.1/sticky-list.php:949
+#: ../trunk/sticky-list.php:1124
 msgid ""
 "Check this box to enable user to delete submitted entries. A \\\"Delete\\\" "
 "link will appear in the list"
@@ -711,281 +774,330 @@ msgstr ""
 "Markera denna ruta för att låta användare ta bort inlägget. En \"Ta bort\"-"
 "länk visas i listan"
 
-#: ../sticky-list.php:1128 ../tags/1.0/sticky-list.php:777
-#: ../tags/1.0.1/sticky-list.php:781 ../tags/1.0.2/sticky-list.php:781
-#: ../tags/1.0.3/sticky-list.php:781 ../tags/1.0.4/sticky-list.php:791
-#: ../tags/1.0.5/sticky-list.php:794 ../tags/1.0.6/sticky-list.php:855
-#: ../tags/1.0.7/sticky-list.php:849 ../tags/1.0.8/sticky-list.php:863
-#: ../tags/1.0.9/sticky-list.php:925 ../tags/1.1/sticky-list.php:958
-#: ../tags/1.1.1/sticky-list.php:963 ../tags/1.1.2/sticky-list.php:970
-#: ../tags/1.1.3/sticky-list.php:1035 ../tags/1.1.4/sticky-list.php:1053
-#: ../tags/1.1.5/sticky-list.php:1079 ../tags/1.1.6/sticky-list.php:1119
-#: ../trunk/sticky-list.php:1119
+#: ../sticky-list.php:1143 ../tags/1.0.1/sticky-list.php:781
+#: ../tags/1.0.2/sticky-list.php:781 ../tags/1.0.3/sticky-list.php:781
+#: ../tags/1.0.4/sticky-list.php:791 ../tags/1.0.5/sticky-list.php:794
+#: ../tags/1.0.6/sticky-list.php:855 ../tags/1.0.7/sticky-list.php:849
+#: ../tags/1.0.8/sticky-list.php:863 ../tags/1.0.9/sticky-list.php:925
+#: ../tags/1.0/sticky-list.php:777 ../tags/1.1.1/sticky-list.php:963
+#: ../tags/1.1.2/sticky-list.php:970 ../tags/1.1.3/sticky-list.php:1035
+#: ../tags/1.1.4/sticky-list.php:1053 ../tags/1.1.5/sticky-list.php:1079
+#: ../tags/1.1.6/sticky-list.php:1128 ../tags/1.1.7.1/sticky-list.php:1133
+#: ../tags/1.1.7/sticky-list.php:1133 ../tags/1.1/sticky-list.php:958
+#: ../trunk/sticky-list.php:1133
 msgid "Delete label"
 msgstr "Ta bort-text"
 
-#: ../sticky-list.php:1131 ../tags/1.0/sticky-list.php:780
-#: ../tags/1.0.1/sticky-list.php:784 ../tags/1.0.2/sticky-list.php:784
-#: ../tags/1.0.3/sticky-list.php:784 ../tags/1.0.4/sticky-list.php:794
-#: ../tags/1.0.5/sticky-list.php:797 ../tags/1.0.6/sticky-list.php:858
-#: ../tags/1.0.7/sticky-list.php:852 ../tags/1.0.8/sticky-list.php:866
-#: ../tags/1.0.9/sticky-list.php:928 ../tags/1.1/sticky-list.php:961
-#: ../tags/1.1.1/sticky-list.php:966 ../tags/1.1.2/sticky-list.php:973
-#: ../tags/1.1.3/sticky-list.php:1038 ../tags/1.1.4/sticky-list.php:1056
-#: ../tags/1.1.5/sticky-list.php:1082 ../tags/1.1.6/sticky-list.php:1122
-#: ../trunk/sticky-list.php:1122
+#: ../sticky-list.php:1146 ../tags/1.0.1/sticky-list.php:784
+#: ../tags/1.0.2/sticky-list.php:784 ../tags/1.0.3/sticky-list.php:784
+#: ../tags/1.0.4/sticky-list.php:794 ../tags/1.0.5/sticky-list.php:797
+#: ../tags/1.0.6/sticky-list.php:858 ../tags/1.0.7/sticky-list.php:852
+#: ../tags/1.0.8/sticky-list.php:866 ../tags/1.0.9/sticky-list.php:928
+#: ../tags/1.0/sticky-list.php:780 ../tags/1.1.1/sticky-list.php:966
+#: ../tags/1.1.2/sticky-list.php:973 ../tags/1.1.3/sticky-list.php:1038
+#: ../tags/1.1.4/sticky-list.php:1056 ../tags/1.1.5/sticky-list.php:1082
+#: ../tags/1.1.6/sticky-list.php:1131 ../tags/1.1.7.1/sticky-list.php:1136
+#: ../tags/1.1.7/sticky-list.php:1136 ../tags/1.1/sticky-list.php:961
+#: ../trunk/sticky-list.php:1136
 msgid "Label for the delete button"
 msgstr "Text för ta bort-knappen"
 
-#: ../sticky-list.php:1133 ../tags/1.0/sticky-list.php:782
-#: ../tags/1.0.1/sticky-list.php:786 ../tags/1.0.2/sticky-list.php:786
-#: ../tags/1.0.3/sticky-list.php:786 ../tags/1.0.4/sticky-list.php:796
-#: ../tags/1.0.5/sticky-list.php:799 ../tags/1.0.6/sticky-list.php:860
-#: ../tags/1.0.7/sticky-list.php:854 ../tags/1.0.8/sticky-list.php:868
-#: ../tags/1.0.9/sticky-list.php:930 ../tags/1.1/sticky-list.php:963
-#: ../tags/1.1.1/sticky-list.php:968 ../tags/1.1.2/sticky-list.php:975
-#: ../tags/1.1.3/sticky-list.php:1040 ../tags/1.1.4/sticky-list.php:1058
-#: ../tags/1.1.5/sticky-list.php:1084 ../tags/1.1.6/sticky-list.php:1124
-#: ../trunk/sticky-list.php:1124
+#: ../sticky-list.php:1148 ../tags/1.0.1/sticky-list.php:786
+#: ../tags/1.0.2/sticky-list.php:786 ../tags/1.0.3/sticky-list.php:786
+#: ../tags/1.0.4/sticky-list.php:796 ../tags/1.0.5/sticky-list.php:799
+#: ../tags/1.0.6/sticky-list.php:860 ../tags/1.0.7/sticky-list.php:854
+#: ../tags/1.0.8/sticky-list.php:868 ../tags/1.0.9/sticky-list.php:930
+#: ../tags/1.0/sticky-list.php:782 ../tags/1.1.1/sticky-list.php:968
+#: ../tags/1.1.2/sticky-list.php:975 ../tags/1.1.3/sticky-list.php:1040
+#: ../tags/1.1.4/sticky-list.php:1058 ../tags/1.1.5/sticky-list.php:1084
+#: ../tags/1.1.6/sticky-list.php:1133 ../tags/1.1.7.1/sticky-list.php:1138
+#: ../tags/1.1.7/sticky-list.php:1138 ../tags/1.1/sticky-list.php:963
+#: ../trunk/sticky-list.php:1138
 msgid "Delete"
 msgstr "Ta bort"
 
-#: ../sticky-list.php:1136 ../tags/1.0/sticky-list.php:785
-#: ../tags/1.0.1/sticky-list.php:789 ../tags/1.0.2/sticky-list.php:789
-#: ../tags/1.0.3/sticky-list.php:789 ../tags/1.0.4/sticky-list.php:799
-#: ../tags/1.0.5/sticky-list.php:802 ../tags/1.0.6/sticky-list.php:863
-#: ../tags/1.0.7/sticky-list.php:857 ../tags/1.0.8/sticky-list.php:871
-#: ../tags/1.0.9/sticky-list.php:933 ../tags/1.1/sticky-list.php:966
-#: ../tags/1.1.1/sticky-list.php:971 ../tags/1.1.2/sticky-list.php:978
-#: ../tags/1.1.3/sticky-list.php:1043 ../tags/1.1.4/sticky-list.php:1061
-#: ../tags/1.1.5/sticky-list.php:1087 ../tags/1.1.6/sticky-list.php:1127
-#: ../trunk/sticky-list.php:1127
+#: ../sticky-list.php:1151
+msgid "Confirm delete"
+msgstr "Bekräfta radering"
+
+#: ../sticky-list.php:1154
+msgid ""
+"Check this box require deletions to be confirmed by clicking OK in a dialog "
+"box"
+msgstr ""
+"Markera denna ruta för att visa en bekräftelsedialog när ett inlögg skall "
+"raderas"
+
+#: ../sticky-list.php:1163
+msgid "Confirm delete text"
+msgstr "Bekräftelsetext"
+
+#: ../sticky-list.php:1166
+msgid "Text for the confirm delete dialog box"
+msgstr "Text att visa i brkäftelsen"
+
+#: ../sticky-list.php:1168
+msgid "Really delete this entry?"
+msgstr "Radera detta inlägg?"
+
+#: ../sticky-list.php:1171 ../tags/1.0.1/sticky-list.php:789
+#: ../tags/1.0.2/sticky-list.php:789 ../tags/1.0.3/sticky-list.php:789
+#: ../tags/1.0.4/sticky-list.php:799 ../tags/1.0.5/sticky-list.php:802
+#: ../tags/1.0.6/sticky-list.php:863 ../tags/1.0.7/sticky-list.php:857
+#: ../tags/1.0.8/sticky-list.php:871 ../tags/1.0.9/sticky-list.php:933
+#: ../tags/1.0/sticky-list.php:785 ../tags/1.1.1/sticky-list.php:971
+#: ../tags/1.1.2/sticky-list.php:978 ../tags/1.1.3/sticky-list.php:1043
+#: ../tags/1.1.4/sticky-list.php:1061 ../tags/1.1.5/sticky-list.php:1087
+#: ../tags/1.1.6/sticky-list.php:1136 ../tags/1.1.7.1/sticky-list.php:1141
+#: ../tags/1.1.7/sticky-list.php:1141 ../tags/1.1/sticky-list.php:966
+#: ../trunk/sticky-list.php:1141
 msgid "On delete"
 msgstr "Vid radering"
 
-#: ../sticky-list.php:1139 ../tags/1.0/sticky-list.php:788
-#: ../tags/1.0.1/sticky-list.php:792 ../tags/1.0.2/sticky-list.php:792
-#: ../tags/1.0.3/sticky-list.php:792 ../tags/1.0.4/sticky-list.php:802
-#: ../tags/1.0.5/sticky-list.php:805 ../tags/1.0.6/sticky-list.php:866
-#: ../tags/1.0.7/sticky-list.php:860 ../tags/1.0.8/sticky-list.php:874
-#: ../tags/1.0.9/sticky-list.php:936 ../tags/1.1/sticky-list.php:969
-#: ../tags/1.1.1/sticky-list.php:974 ../tags/1.1.2/sticky-list.php:981
-#: ../tags/1.1.3/sticky-list.php:1046 ../tags/1.1.4/sticky-list.php:1064
-#: ../tags/1.1.5/sticky-list.php:1090 ../tags/1.1.6/sticky-list.php:1130
-#: ../trunk/sticky-list.php:1130
+#: ../sticky-list.php:1174 ../tags/1.0.1/sticky-list.php:792
+#: ../tags/1.0.2/sticky-list.php:792 ../tags/1.0.3/sticky-list.php:792
+#: ../tags/1.0.4/sticky-list.php:802 ../tags/1.0.5/sticky-list.php:805
+#: ../tags/1.0.6/sticky-list.php:866 ../tags/1.0.7/sticky-list.php:860
+#: ../tags/1.0.8/sticky-list.php:874 ../tags/1.0.9/sticky-list.php:936
+#: ../tags/1.0/sticky-list.php:788 ../tags/1.1.1/sticky-list.php:974
+#: ../tags/1.1.2/sticky-list.php:981 ../tags/1.1.3/sticky-list.php:1046
+#: ../tags/1.1.4/sticky-list.php:1064 ../tags/1.1.5/sticky-list.php:1090
+#: ../tags/1.1.6/sticky-list.php:1139 ../tags/1.1.7.1/sticky-list.php:1144
+#: ../tags/1.1.7/sticky-list.php:1144 ../tags/1.1/sticky-list.php:969
+#: ../trunk/sticky-list.php:1144
 msgid "Move deleted entries to trash or delete permanently?"
 msgstr "Flytta till papperskorgen eller ta bort permanent?"
 
-#: ../sticky-list.php:1142 ../tags/1.0/sticky-list.php:791
-#: ../tags/1.0.1/sticky-list.php:795 ../tags/1.0.2/sticky-list.php:795
-#: ../tags/1.0.3/sticky-list.php:795 ../tags/1.0.4/sticky-list.php:805
-#: ../tags/1.0.5/sticky-list.php:808 ../tags/1.0.6/sticky-list.php:869
-#: ../tags/1.0.7/sticky-list.php:863 ../tags/1.0.8/sticky-list.php:877
-#: ../tags/1.0.9/sticky-list.php:939 ../tags/1.1/sticky-list.php:972
-#: ../tags/1.1.1/sticky-list.php:977 ../tags/1.1.2/sticky-list.php:984
-#: ../tags/1.1.3/sticky-list.php:1049 ../tags/1.1.4/sticky-list.php:1067
-#: ../tags/1.1.5/sticky-list.php:1093 ../tags/1.1.6/sticky-list.php:1133
-#: ../trunk/sticky-list.php:1133
+#: ../sticky-list.php:1177 ../tags/1.0.1/sticky-list.php:795
+#: ../tags/1.0.2/sticky-list.php:795 ../tags/1.0.3/sticky-list.php:795
+#: ../tags/1.0.4/sticky-list.php:805 ../tags/1.0.5/sticky-list.php:808
+#: ../tags/1.0.6/sticky-list.php:869 ../tags/1.0.7/sticky-list.php:863
+#: ../tags/1.0.8/sticky-list.php:877 ../tags/1.0.9/sticky-list.php:939
+#: ../tags/1.0/sticky-list.php:791 ../tags/1.1.1/sticky-list.php:977
+#: ../tags/1.1.2/sticky-list.php:984 ../tags/1.1.3/sticky-list.php:1049
+#: ../tags/1.1.4/sticky-list.php:1067 ../tags/1.1.5/sticky-list.php:1093
+#: ../tags/1.1.6/sticky-list.php:1142 ../tags/1.1.7.1/sticky-list.php:1147
+#: ../tags/1.1.7/sticky-list.php:1147 ../tags/1.1/sticky-list.php:972
+#: ../trunk/sticky-list.php:1147
 msgid "Move to trash"
 msgstr "Flytta till papperskorgen"
 
-#: ../sticky-list.php:1146 ../tags/1.0/sticky-list.php:795
-#: ../tags/1.0.1/sticky-list.php:799 ../tags/1.0.2/sticky-list.php:799
-#: ../tags/1.0.3/sticky-list.php:799 ../tags/1.0.4/sticky-list.php:809
-#: ../tags/1.0.5/sticky-list.php:812 ../tags/1.0.6/sticky-list.php:873
-#: ../tags/1.0.7/sticky-list.php:867 ../tags/1.0.8/sticky-list.php:881
-#: ../tags/1.0.9/sticky-list.php:943 ../tags/1.1/sticky-list.php:976
-#: ../tags/1.1.1/sticky-list.php:981 ../tags/1.1.2/sticky-list.php:988
-#: ../tags/1.1.3/sticky-list.php:1053 ../tags/1.1.4/sticky-list.php:1071
-#: ../tags/1.1.5/sticky-list.php:1097 ../tags/1.1.6/sticky-list.php:1137
-#: ../trunk/sticky-list.php:1137
+#: ../sticky-list.php:1181 ../tags/1.0.1/sticky-list.php:799
+#: ../tags/1.0.2/sticky-list.php:799 ../tags/1.0.3/sticky-list.php:799
+#: ../tags/1.0.4/sticky-list.php:809 ../tags/1.0.5/sticky-list.php:812
+#: ../tags/1.0.6/sticky-list.php:873 ../tags/1.0.7/sticky-list.php:867
+#: ../tags/1.0.8/sticky-list.php:881 ../tags/1.0.9/sticky-list.php:943
+#: ../tags/1.0/sticky-list.php:795 ../tags/1.1.1/sticky-list.php:981
+#: ../tags/1.1.2/sticky-list.php:988 ../tags/1.1.3/sticky-list.php:1053
+#: ../tags/1.1.4/sticky-list.php:1071 ../tags/1.1.5/sticky-list.php:1097
+#: ../tags/1.1.6/sticky-list.php:1146 ../tags/1.1.7.1/sticky-list.php:1151
+#: ../tags/1.1.7/sticky-list.php:1151 ../tags/1.1/sticky-list.php:976
+#: ../trunk/sticky-list.php:1151
 msgid "Delete permanently"
 msgstr "Radera permanent"
 
-#: ../sticky-list.php:1152 ../tags/1.0/sticky-list.php:801
-#: ../tags/1.0.1/sticky-list.php:805 ../tags/1.0.2/sticky-list.php:805
-#: ../tags/1.0.3/sticky-list.php:805 ../tags/1.0.4/sticky-list.php:815
-#: ../tags/1.0.5/sticky-list.php:818 ../tags/1.0.6/sticky-list.php:879
-#: ../tags/1.0.7/sticky-list.php:873 ../tags/1.0.8/sticky-list.php:887
-#: ../tags/1.0.9/sticky-list.php:949 ../tags/1.1/sticky-list.php:982
-#: ../tags/1.1.1/sticky-list.php:987 ../tags/1.1.2/sticky-list.php:994
-#: ../tags/1.1.3/sticky-list.php:1059 ../tags/1.1.4/sticky-list.php:1077
-#: ../tags/1.1.5/sticky-list.php:1103 ../tags/1.1.6/sticky-list.php:1143
-#: ../trunk/sticky-list.php:1143
+#: ../sticky-list.php:1187 ../tags/1.0.1/sticky-list.php:805
+#: ../tags/1.0.2/sticky-list.php:805 ../tags/1.0.3/sticky-list.php:805
+#: ../tags/1.0.4/sticky-list.php:815 ../tags/1.0.5/sticky-list.php:818
+#: ../tags/1.0.6/sticky-list.php:879 ../tags/1.0.7/sticky-list.php:873
+#: ../tags/1.0.8/sticky-list.php:887 ../tags/1.0.9/sticky-list.php:949
+#: ../tags/1.0/sticky-list.php:801 ../tags/1.1.1/sticky-list.php:987
+#: ../tags/1.1.2/sticky-list.php:994 ../tags/1.1.3/sticky-list.php:1059
+#: ../tags/1.1.4/sticky-list.php:1077 ../tags/1.1.5/sticky-list.php:1103
+#: ../tags/1.1.6/sticky-list.php:1152 ../tags/1.1.7.1/sticky-list.php:1157
+#: ../tags/1.1.7/sticky-list.php:1157 ../tags/1.1/sticky-list.php:982
+#: ../trunk/sticky-list.php:1157
 msgid "Action column header"
 msgstr "Text för sista kolumnen"
 
-#: ../sticky-list.php:1155 ../tags/1.0/sticky-list.php:804
-#: ../tags/1.0.1/sticky-list.php:808 ../tags/1.0.2/sticky-list.php:808
-#: ../tags/1.0.3/sticky-list.php:808 ../tags/1.0.4/sticky-list.php:818
-#: ../tags/1.0.5/sticky-list.php:821 ../tags/1.0.6/sticky-list.php:882
-#: ../tags/1.0.7/sticky-list.php:876 ../tags/1.0.8/sticky-list.php:890
-#: ../tags/1.0.9/sticky-list.php:952 ../tags/1.1/sticky-list.php:985
-#: ../tags/1.1.1/sticky-list.php:990 ../tags/1.1.2/sticky-list.php:997
-#: ../tags/1.1.3/sticky-list.php:1062 ../tags/1.1.4/sticky-list.php:1080
-#: ../tags/1.1.5/sticky-list.php:1106 ../tags/1.1.6/sticky-list.php:1146
-#: ../trunk/sticky-list.php:1146
+#: ../sticky-list.php:1190 ../tags/1.0.1/sticky-list.php:808
+#: ../tags/1.0.2/sticky-list.php:808 ../tags/1.0.3/sticky-list.php:808
+#: ../tags/1.0.4/sticky-list.php:818 ../tags/1.0.5/sticky-list.php:821
+#: ../tags/1.0.6/sticky-list.php:882 ../tags/1.0.7/sticky-list.php:876
+#: ../tags/1.0.8/sticky-list.php:890 ../tags/1.0.9/sticky-list.php:952
+#: ../tags/1.0/sticky-list.php:804 ../tags/1.1.1/sticky-list.php:990
+#: ../tags/1.1.2/sticky-list.php:997 ../tags/1.1.3/sticky-list.php:1062
+#: ../tags/1.1.4/sticky-list.php:1080 ../tags/1.1.5/sticky-list.php:1106
+#: ../tags/1.1.6/sticky-list.php:1155 ../tags/1.1.7.1/sticky-list.php:1160
+#: ../tags/1.1.7/sticky-list.php:1160 ../tags/1.1/sticky-list.php:985
+#: ../trunk/sticky-list.php:1160
 msgid "Text to show as header for the action column"
 msgstr ""
 "Text att visa som rubrik i den sista kolumnen som innehåller Visa-, "
 "Redigera- och Ta bort-knapparna"
 
-#: ../sticky-list.php:1160 ../tags/1.0/sticky-list.php:809
-#: ../tags/1.0.1/sticky-list.php:813 ../tags/1.0.2/sticky-list.php:813
-#: ../tags/1.0.3/sticky-list.php:813 ../tags/1.0.4/sticky-list.php:823
-#: ../tags/1.0.5/sticky-list.php:826 ../tags/1.0.6/sticky-list.php:887
-#: ../tags/1.0.7/sticky-list.php:881 ../tags/1.0.8/sticky-list.php:895
-#: ../tags/1.0.9/sticky-list.php:957 ../tags/1.1/sticky-list.php:990
-#: ../tags/1.1.1/sticky-list.php:995 ../tags/1.1.2/sticky-list.php:1002
-#: ../tags/1.1.3/sticky-list.php:1067 ../tags/1.1.4/sticky-list.php:1085
-#: ../tags/1.1.5/sticky-list.php:1111 ../tags/1.1.6/sticky-list.php:1151
-#: ../trunk/sticky-list.php:1151
+#: ../sticky-list.php:1195 ../tags/1.0.1/sticky-list.php:813
+#: ../tags/1.0.2/sticky-list.php:813 ../tags/1.0.3/sticky-list.php:813
+#: ../tags/1.0.4/sticky-list.php:823 ../tags/1.0.5/sticky-list.php:826
+#: ../tags/1.0.6/sticky-list.php:887 ../tags/1.0.7/sticky-list.php:881
+#: ../tags/1.0.8/sticky-list.php:895 ../tags/1.0.9/sticky-list.php:957
+#: ../tags/1.0/sticky-list.php:809 ../tags/1.1.1/sticky-list.php:995
+#: ../tags/1.1.2/sticky-list.php:1002 ../tags/1.1.3/sticky-list.php:1067
+#: ../tags/1.1.4/sticky-list.php:1085 ../tags/1.1.5/sticky-list.php:1111
+#: ../tags/1.1.6/sticky-list.php:1160 ../tags/1.1.7.1/sticky-list.php:1165
+#: ../tags/1.1.7/sticky-list.php:1165 ../tags/1.1/sticky-list.php:990
+#: ../trunk/sticky-list.php:1165
 msgid "Empty list text"
 msgstr "Text för tom lista"
 
-#: ../sticky-list.php:1163 ../tags/1.0/sticky-list.php:812
-#: ../tags/1.0.1/sticky-list.php:816 ../tags/1.0.2/sticky-list.php:816
-#: ../tags/1.0.3/sticky-list.php:816 ../tags/1.0.4/sticky-list.php:826
-#: ../tags/1.0.5/sticky-list.php:829 ../tags/1.0.6/sticky-list.php:890
-#: ../tags/1.0.7/sticky-list.php:884 ../tags/1.0.8/sticky-list.php:898
-#: ../tags/1.0.9/sticky-list.php:960 ../tags/1.1/sticky-list.php:993
-#: ../tags/1.1.1/sticky-list.php:998 ../tags/1.1.2/sticky-list.php:1005
-#: ../tags/1.1.3/sticky-list.php:1070 ../tags/1.1.4/sticky-list.php:1088
-#: ../tags/1.1.5/sticky-list.php:1114 ../tags/1.1.6/sticky-list.php:1154
-#: ../trunk/sticky-list.php:1154
+#: ../sticky-list.php:1198 ../tags/1.0.1/sticky-list.php:816
+#: ../tags/1.0.2/sticky-list.php:816 ../tags/1.0.3/sticky-list.php:816
+#: ../tags/1.0.4/sticky-list.php:826 ../tags/1.0.5/sticky-list.php:829
+#: ../tags/1.0.6/sticky-list.php:890 ../tags/1.0.7/sticky-list.php:884
+#: ../tags/1.0.8/sticky-list.php:898 ../tags/1.0.9/sticky-list.php:960
+#: ../tags/1.0/sticky-list.php:812 ../tags/1.1.1/sticky-list.php:998
+#: ../tags/1.1.2/sticky-list.php:1005 ../tags/1.1.3/sticky-list.php:1070
+#: ../tags/1.1.4/sticky-list.php:1088 ../tags/1.1.5/sticky-list.php:1114
+#: ../tags/1.1.6/sticky-list.php:1163 ../tags/1.1.7.1/sticky-list.php:1168
+#: ../tags/1.1.7/sticky-list.php:1168 ../tags/1.1/sticky-list.php:993
+#: ../trunk/sticky-list.php:1168
 msgid "Text that is shown if the list is empty"
 msgstr "Text som visas när listan är tom"
 
-#: ../sticky-list.php:1165 ../tags/1.0.6/sticky-list.php:892
+#: ../sticky-list.php:1200 ../tags/1.0.6/sticky-list.php:892
 #: ../tags/1.0.7/sticky-list.php:886 ../tags/1.0.8/sticky-list.php:900
-#: ../tags/1.0.9/sticky-list.php:962 ../tags/1.1/sticky-list.php:995
-#: ../tags/1.1.1/sticky-list.php:1000 ../tags/1.1.2/sticky-list.php:1007
-#: ../tags/1.1.3/sticky-list.php:1072 ../tags/1.1.4/sticky-list.php:1090
-#: ../tags/1.1.5/sticky-list.php:1116 ../tags/1.1.6/sticky-list.php:1156
-#: ../trunk/sticky-list.php:1156
+#: ../tags/1.0.9/sticky-list.php:962 ../tags/1.1.1/sticky-list.php:1000
+#: ../tags/1.1.2/sticky-list.php:1007 ../tags/1.1.3/sticky-list.php:1072
+#: ../tags/1.1.4/sticky-list.php:1090 ../tags/1.1.5/sticky-list.php:1116
+#: ../tags/1.1.6/sticky-list.php:1165 ../tags/1.1.7.1/sticky-list.php:1170
+#: ../tags/1.1.7/sticky-list.php:1170 ../tags/1.1/sticky-list.php:995
+#: ../trunk/sticky-list.php:1170
 msgid "The list is empty. You can edit or remove this text in settings"
 msgstr ""
 "Listan är tom. Du kan redigera eller ta bort denna text under inställningar"
 
-#: ../sticky-list.php:1168 ../tags/1.0/sticky-list.php:816
-#: ../tags/1.0.1/sticky-list.php:820 ../tags/1.0.2/sticky-list.php:820
-#: ../tags/1.0.3/sticky-list.php:820 ../tags/1.0.4/sticky-list.php:830
-#: ../tags/1.0.5/sticky-list.php:833 ../tags/1.0.6/sticky-list.php:895
-#: ../tags/1.0.7/sticky-list.php:889 ../tags/1.0.8/sticky-list.php:903
-#: ../tags/1.0.9/sticky-list.php:965 ../tags/1.1/sticky-list.php:998
-#: ../tags/1.1.1/sticky-list.php:1003 ../tags/1.1.2/sticky-list.php:1010
-#: ../tags/1.1.3/sticky-list.php:1075 ../tags/1.1.4/sticky-list.php:1093
-#: ../tags/1.1.5/sticky-list.php:1119 ../tags/1.1.6/sticky-list.php:1159
-#: ../trunk/sticky-list.php:1159
+#: ../sticky-list.php:1203 ../tags/1.0.1/sticky-list.php:820
+#: ../tags/1.0.2/sticky-list.php:820 ../tags/1.0.3/sticky-list.php:820
+#: ../tags/1.0.4/sticky-list.php:830 ../tags/1.0.5/sticky-list.php:833
+#: ../tags/1.0.6/sticky-list.php:895 ../tags/1.0.7/sticky-list.php:889
+#: ../tags/1.0.8/sticky-list.php:903 ../tags/1.0.9/sticky-list.php:965
+#: ../tags/1.0/sticky-list.php:816 ../tags/1.1.1/sticky-list.php:1003
+#: ../tags/1.1.2/sticky-list.php:1010 ../tags/1.1.3/sticky-list.php:1075
+#: ../tags/1.1.4/sticky-list.php:1093 ../tags/1.1.5/sticky-list.php:1119
+#: ../tags/1.1.6/sticky-list.php:1168 ../tags/1.1.7.1/sticky-list.php:1173
+#: ../tags/1.1.7/sticky-list.php:1173 ../tags/1.1/sticky-list.php:998
+#: ../trunk/sticky-list.php:1173
 msgid "List sort"
 msgstr "Sortering"
 
-#: ../sticky-list.php:1171 ../tags/1.0/sticky-list.php:819
-#: ../tags/1.0.1/sticky-list.php:823 ../tags/1.0.2/sticky-list.php:823
-#: ../tags/1.0.3/sticky-list.php:823 ../tags/1.0.4/sticky-list.php:833
-#: ../tags/1.0.5/sticky-list.php:836 ../tags/1.0.6/sticky-list.php:898
-#: ../tags/1.0.7/sticky-list.php:892 ../tags/1.0.8/sticky-list.php:906
-#: ../tags/1.0.9/sticky-list.php:968 ../tags/1.1/sticky-list.php:1001
-#: ../tags/1.1.1/sticky-list.php:1006 ../tags/1.1.2/sticky-list.php:1013
-#: ../tags/1.1.3/sticky-list.php:1078 ../tags/1.1.4/sticky-list.php:1096
-#: ../tags/1.1.5/sticky-list.php:1122 ../tags/1.1.6/sticky-list.php:1162
-#: ../trunk/sticky-list.php:1162
+#: ../sticky-list.php:1206 ../tags/1.0.1/sticky-list.php:823
+#: ../tags/1.0.2/sticky-list.php:823 ../tags/1.0.3/sticky-list.php:823
+#: ../tags/1.0.4/sticky-list.php:833 ../tags/1.0.5/sticky-list.php:836
+#: ../tags/1.0.6/sticky-list.php:898 ../tags/1.0.7/sticky-list.php:892
+#: ../tags/1.0.8/sticky-list.php:906 ../tags/1.0.9/sticky-list.php:968
+#: ../tags/1.0/sticky-list.php:819 ../tags/1.1.1/sticky-list.php:1006
+#: ../tags/1.1.2/sticky-list.php:1013 ../tags/1.1.3/sticky-list.php:1078
+#: ../tags/1.1.4/sticky-list.php:1096 ../tags/1.1.5/sticky-list.php:1122
+#: ../tags/1.1.6/sticky-list.php:1171 ../tags/1.1.7.1/sticky-list.php:1176
+#: ../tags/1.1.7/sticky-list.php:1176 ../tags/1.1/sticky-list.php:1001
+#: ../trunk/sticky-list.php:1176
 msgid "Check this box to enable sorting for the list"
 msgstr "Markera denna ruta för att aktivera sorterimg av listan"
 
-#: ../sticky-list.php:1180 ../tags/1.1.6/sticky-list.php:1171
-#: ../trunk/sticky-list.php:1171
+#: ../sticky-list.php:1215 ../tags/1.1.6/sticky-list.php:1180
+#: ../tags/1.1.7.1/sticky-list.php:1185 ../tags/1.1.7/sticky-list.php:1185
+#: ../trunk/sticky-list.php:1185
 msgid "Initial sort by"
 msgstr "Initial sortering"
 
-#: ../sticky-list.php:1183 ../tags/1.1.6/sticky-list.php:1174
-#: ../trunk/sticky-list.php:1174
+#: ../sticky-list.php:1218 ../tags/1.1.6/sticky-list.php:1183
+#: ../tags/1.1.7.1/sticky-list.php:1188 ../tags/1.1.7/sticky-list.php:1188
+#: ../trunk/sticky-list.php:1188
 msgid "Initially sort the list by a specific field or by date added. "
 msgstr ""
 "Sortera listan initialt efter ett fält eller efter datum då inlägget "
 "skapades."
 
-#: ../sticky-list.php:1187 ../tags/1.1.6/sticky-list.php:1178
-#: ../trunk/sticky-list.php:1178
+#: ../sticky-list.php:1222 ../tags/1.1.6/sticky-list.php:1187
+#: ../tags/1.1.7.1/sticky-list.php:1192 ../tags/1.1.7/sticky-list.php:1192
+#: ../trunk/sticky-list.php:1192
 msgid "Sort direction"
 msgstr "Sorteringsriktning"
 
-#: ../sticky-list.php:1192 ../tags/1.1.6/sticky-list.php:1183
-#: ../trunk/sticky-list.php:1183
+#: ../sticky-list.php:1227 ../tags/1.1.6/sticky-list.php:1192
+#: ../tags/1.1.7.1/sticky-list.php:1197 ../tags/1.1.7/sticky-list.php:1197
+#: ../trunk/sticky-list.php:1197
 msgid ""
 "Select the direction in which the list should be sorted when first rendered"
 msgstr "Välj riktning för sorteringen i listan när den först visas."
 
-#: ../sticky-list.php:1195 ../tags/1.1.6/sticky-list.php:1186
-#: ../trunk/sticky-list.php:1186
+#: ../sticky-list.php:1230 ../tags/1.1.6/sticky-list.php:1195
+#: ../tags/1.1.7.1/sticky-list.php:1200 ../tags/1.1.7/sticky-list.php:1200
+#: ../trunk/sticky-list.php:1200
 msgid "Descending"
 msgstr "Fallande"
 
-#: ../sticky-list.php:1199 ../tags/1.1.6/sticky-list.php:1190
-#: ../trunk/sticky-list.php:1190
+#: ../sticky-list.php:1234 ../tags/1.1.6/sticky-list.php:1199
+#: ../tags/1.1.7.1/sticky-list.php:1204 ../tags/1.1.7/sticky-list.php:1204
+#: ../trunk/sticky-list.php:1204
 msgid "Ascending"
 msgstr "Stigande"
 
-#: ../sticky-list.php:1205 ../tags/1.0/sticky-list.php:828
-#: ../tags/1.0.1/sticky-list.php:832 ../tags/1.0.2/sticky-list.php:832
-#: ../tags/1.0.3/sticky-list.php:832 ../tags/1.0.4/sticky-list.php:842
-#: ../tags/1.0.5/sticky-list.php:845 ../tags/1.0.6/sticky-list.php:907
-#: ../tags/1.0.7/sticky-list.php:901 ../tags/1.0.8/sticky-list.php:915
-#: ../tags/1.0.9/sticky-list.php:977 ../tags/1.1/sticky-list.php:1010
-#: ../tags/1.1.1/sticky-list.php:1015 ../tags/1.1.2/sticky-list.php:1022
-#: ../tags/1.1.3/sticky-list.php:1087 ../tags/1.1.4/sticky-list.php:1105
-#: ../tags/1.1.5/sticky-list.php:1131 ../tags/1.1.6/sticky-list.php:1196
-#: ../trunk/sticky-list.php:1196
+#: ../sticky-list.php:1240 ../tags/1.0.1/sticky-list.php:832
+#: ../tags/1.0.2/sticky-list.php:832 ../tags/1.0.3/sticky-list.php:832
+#: ../tags/1.0.4/sticky-list.php:842 ../tags/1.0.5/sticky-list.php:845
+#: ../tags/1.0.6/sticky-list.php:907 ../tags/1.0.7/sticky-list.php:901
+#: ../tags/1.0.8/sticky-list.php:915 ../tags/1.0.9/sticky-list.php:977
+#: ../tags/1.0/sticky-list.php:828 ../tags/1.1.1/sticky-list.php:1015
+#: ../tags/1.1.2/sticky-list.php:1022 ../tags/1.1.3/sticky-list.php:1087
+#: ../tags/1.1.4/sticky-list.php:1105 ../tags/1.1.5/sticky-list.php:1131
+#: ../tags/1.1.6/sticky-list.php:1205 ../tags/1.1.7.1/sticky-list.php:1210
+#: ../tags/1.1.7/sticky-list.php:1210 ../tags/1.1/sticky-list.php:1010
+#: ../trunk/sticky-list.php:1210
 msgid "List search"
 msgstr "Sökning i listan"
 
-#: ../sticky-list.php:1208 ../tags/1.0/sticky-list.php:831
-#: ../tags/1.0.1/sticky-list.php:835 ../tags/1.0.2/sticky-list.php:835
-#: ../tags/1.0.3/sticky-list.php:835 ../tags/1.0.4/sticky-list.php:845
-#: ../tags/1.0.5/sticky-list.php:848 ../tags/1.0.6/sticky-list.php:910
-#: ../tags/1.0.7/sticky-list.php:904 ../tags/1.0.8/sticky-list.php:918
-#: ../tags/1.0.9/sticky-list.php:980 ../tags/1.1/sticky-list.php:1013
-#: ../tags/1.1.1/sticky-list.php:1018 ../tags/1.1.2/sticky-list.php:1025
-#: ../tags/1.1.3/sticky-list.php:1090 ../tags/1.1.4/sticky-list.php:1108
-#: ../tags/1.1.5/sticky-list.php:1134 ../tags/1.1.6/sticky-list.php:1199
-#: ../trunk/sticky-list.php:1199
+#: ../sticky-list.php:1243 ../tags/1.0.1/sticky-list.php:835
+#: ../tags/1.0.2/sticky-list.php:835 ../tags/1.0.3/sticky-list.php:835
+#: ../tags/1.0.4/sticky-list.php:845 ../tags/1.0.5/sticky-list.php:848
+#: ../tags/1.0.6/sticky-list.php:910 ../tags/1.0.7/sticky-list.php:904
+#: ../tags/1.0.8/sticky-list.php:918 ../tags/1.0.9/sticky-list.php:980
+#: ../tags/1.0/sticky-list.php:831 ../tags/1.1.1/sticky-list.php:1018
+#: ../tags/1.1.2/sticky-list.php:1025 ../tags/1.1.3/sticky-list.php:1090
+#: ../tags/1.1.4/sticky-list.php:1108 ../tags/1.1.5/sticky-list.php:1134
+#: ../tags/1.1.6/sticky-list.php:1208 ../tags/1.1.7.1/sticky-list.php:1213
+#: ../tags/1.1.7/sticky-list.php:1213 ../tags/1.1/sticky-list.php:1013
+#: ../trunk/sticky-list.php:1213
 msgid "Check this box to enable search for the list"
 msgstr "Markera denna ruta för att aktivera sökning i listan"
 
-#: ../sticky-list.php:1217 ../tags/1.1/sticky-list.php:1022
-#: ../tags/1.1.1/sticky-list.php:1027 ../tags/1.1.2/sticky-list.php:1034
-#: ../tags/1.1.3/sticky-list.php:1099 ../tags/1.1.4/sticky-list.php:1117
-#: ../tags/1.1.5/sticky-list.php:1143 ../tags/1.1.6/sticky-list.php:1208
-#: ../trunk/sticky-list.php:1208
+#: ../sticky-list.php:1252 ../tags/1.1.1/sticky-list.php:1027
+#: ../tags/1.1.2/sticky-list.php:1034 ../tags/1.1.3/sticky-list.php:1099
+#: ../tags/1.1.4/sticky-list.php:1117 ../tags/1.1.5/sticky-list.php:1143
+#: ../tags/1.1.6/sticky-list.php:1217 ../tags/1.1.7.1/sticky-list.php:1222
+#: ../tags/1.1.7/sticky-list.php:1222 ../tags/1.1/sticky-list.php:1022
+#: ../trunk/sticky-list.php:1222
 msgid "List pagination"
 msgstr "Paginering i listan"
 
-#: ../sticky-list.php:1220 ../tags/1.1/sticky-list.php:1025
-#: ../tags/1.1.1/sticky-list.php:1030 ../tags/1.1.2/sticky-list.php:1037
-#: ../tags/1.1.3/sticky-list.php:1102 ../tags/1.1.4/sticky-list.php:1120
-#: ../tags/1.1.5/sticky-list.php:1146 ../tags/1.1.6/sticky-list.php:1211
-#: ../trunk/sticky-list.php:1211
+#: ../sticky-list.php:1255 ../tags/1.1.1/sticky-list.php:1030
+#: ../tags/1.1.2/sticky-list.php:1037 ../tags/1.1.3/sticky-list.php:1102
+#: ../tags/1.1.4/sticky-list.php:1120 ../tags/1.1.5/sticky-list.php:1146
+#: ../tags/1.1.6/sticky-list.php:1220 ../tags/1.1.7.1/sticky-list.php:1225
+#: ../tags/1.1.7/sticky-list.php:1225 ../tags/1.1/sticky-list.php:1025
+#: ../trunk/sticky-list.php:1225
 msgid "Check this box to enable pagination for the list"
 msgstr "Markera denna ruta för att aktivera paginering i listan"
 
-#: ../sticky-list.php:1229 ../tags/1.1/sticky-list.php:1034
-#: ../tags/1.1.1/sticky-list.php:1039 ../tags/1.1.2/sticky-list.php:1046
-#: ../tags/1.1.3/sticky-list.php:1111 ../tags/1.1.4/sticky-list.php:1129
-#: ../tags/1.1.5/sticky-list.php:1155 ../tags/1.1.6/sticky-list.php:1220
-#: ../trunk/sticky-list.php:1220
+#: ../sticky-list.php:1264 ../tags/1.1.1/sticky-list.php:1039
+#: ../tags/1.1.2/sticky-list.php:1046 ../tags/1.1.3/sticky-list.php:1111
+#: ../tags/1.1.4/sticky-list.php:1129 ../tags/1.1.5/sticky-list.php:1155
+#: ../tags/1.1.6/sticky-list.php:1229 ../tags/1.1.7.1/sticky-list.php:1234
+#: ../tags/1.1.7/sticky-list.php:1234 ../tags/1.1/sticky-list.php:1034
+#: ../trunk/sticky-list.php:1234
 msgid "Entries per page"
 msgstr "Inlägg per sida"
 
-#: ../sticky-list.php:1232 ../tags/1.1/sticky-list.php:1037
-#: ../tags/1.1.1/sticky-list.php:1042 ../tags/1.1.2/sticky-list.php:1049
-#: ../tags/1.1.3/sticky-list.php:1114 ../tags/1.1.4/sticky-list.php:1132
-#: ../tags/1.1.5/sticky-list.php:1158 ../tags/1.1.6/sticky-list.php:1223
-#: ../trunk/sticky-list.php:1223
+#: ../sticky-list.php:1267 ../tags/1.1.1/sticky-list.php:1042
+#: ../tags/1.1.2/sticky-list.php:1049 ../tags/1.1.3/sticky-list.php:1114
+#: ../tags/1.1.4/sticky-list.php:1132 ../tags/1.1.5/sticky-list.php:1158
+#: ../tags/1.1.6/sticky-list.php:1232 ../tags/1.1.7.1/sticky-list.php:1237
+#: ../tags/1.1.7/sticky-list.php:1237 ../tags/1.1/sticky-list.php:1037
+#: ../trunk/sticky-list.php:1237
 msgid "Number of entries to be shown on each page."
 msgstr "Antal inlägg att visa på varje sida."
 
-#: ../sticky-list.php:1298 ../sticky-list.php:1390
-#: ../tags/1.0/sticky-list.php:901 ../tags/1.0/sticky-list.php:996
+#: ../sticky-list.php:1333 ../sticky-list.php:1425
 #: ../tags/1.0.1/sticky-list.php:905 ../tags/1.0.1/sticky-list.php:1000
 #: ../tags/1.0.2/sticky-list.php:905 ../tags/1.0.2/sticky-list.php:1000
 #: ../tags/1.0.3/sticky-list.php:905 ../tags/1.0.3/sticky-list.php:998
@@ -995,19 +1107,21 @@ msgstr "Antal inlägg att visa på varje sida."
 #: ../tags/1.0.7/sticky-list.php:974 ../tags/1.0.7/sticky-list.php:1066
 #: ../tags/1.0.8/sticky-list.php:988 ../tags/1.0.8/sticky-list.php:1080
 #: ../tags/1.0.9/sticky-list.php:1050 ../tags/1.0.9/sticky-list.php:1142
-#: ../tags/1.1/sticky-list.php:1103 ../tags/1.1/sticky-list.php:1195
+#: ../tags/1.0/sticky-list.php:901 ../tags/1.0/sticky-list.php:996
 #: ../tags/1.1.1/sticky-list.php:1108 ../tags/1.1.1/sticky-list.php:1200
 #: ../tags/1.1.2/sticky-list.php:1115 ../tags/1.1.2/sticky-list.php:1207
 #: ../tags/1.1.3/sticky-list.php:1180 ../tags/1.1.3/sticky-list.php:1272
 #: ../tags/1.1.4/sticky-list.php:1198 ../tags/1.1.4/sticky-list.php:1290
 #: ../tags/1.1.5/sticky-list.php:1224 ../tags/1.1.5/sticky-list.php:1316
-#: ../tags/1.1.6/sticky-list.php:1289 ../tags/1.1.6/sticky-list.php:1381
-#: ../trunk/sticky-list.php:1289 ../trunk/sticky-list.php:1381
+#: ../tags/1.1.6/sticky-list.php:1298 ../tags/1.1.6/sticky-list.php:1390
+#: ../tags/1.1.7.1/sticky-list.php:1303 ../tags/1.1.7.1/sticky-list.php:1395
+#: ../tags/1.1.7/sticky-list.php:1303 ../tags/1.1.7/sticky-list.php:1395
+#: ../tags/1.1/sticky-list.php:1103 ../tags/1.1/sticky-list.php:1195
+#: ../trunk/sticky-list.php:1303 ../trunk/sticky-list.php:1395
 msgid "Always"
 msgstr "Alltid"
 
-#: ../sticky-list.php:1299 ../sticky-list.php:1392
-#: ../tags/1.0/sticky-list.php:902 ../tags/1.0/sticky-list.php:998
+#: ../sticky-list.php:1334 ../sticky-list.php:1427
 #: ../tags/1.0.1/sticky-list.php:906 ../tags/1.0.1/sticky-list.php:1002
 #: ../tags/1.0.2/sticky-list.php:906 ../tags/1.0.2/sticky-list.php:1002
 #: ../tags/1.0.3/sticky-list.php:906 ../tags/1.0.3/sticky-list.php:1000
@@ -1017,19 +1131,21 @@ msgstr "Alltid"
 #: ../tags/1.0.7/sticky-list.php:975 ../tags/1.0.7/sticky-list.php:1068
 #: ../tags/1.0.8/sticky-list.php:989 ../tags/1.0.8/sticky-list.php:1082
 #: ../tags/1.0.9/sticky-list.php:1051 ../tags/1.0.9/sticky-list.php:1144
-#: ../tags/1.1/sticky-list.php:1104 ../tags/1.1/sticky-list.php:1197
+#: ../tags/1.0/sticky-list.php:902 ../tags/1.0/sticky-list.php:998
 #: ../tags/1.1.1/sticky-list.php:1109 ../tags/1.1.1/sticky-list.php:1202
 #: ../tags/1.1.2/sticky-list.php:1116 ../tags/1.1.2/sticky-list.php:1209
 #: ../tags/1.1.3/sticky-list.php:1181 ../tags/1.1.3/sticky-list.php:1274
 #: ../tags/1.1.4/sticky-list.php:1199 ../tags/1.1.4/sticky-list.php:1292
 #: ../tags/1.1.5/sticky-list.php:1225 ../tags/1.1.5/sticky-list.php:1318
-#: ../tags/1.1.6/sticky-list.php:1290 ../tags/1.1.6/sticky-list.php:1383
-#: ../trunk/sticky-list.php:1290 ../trunk/sticky-list.php:1383
+#: ../tags/1.1.6/sticky-list.php:1299 ../tags/1.1.6/sticky-list.php:1392
+#: ../tags/1.1.7.1/sticky-list.php:1304 ../tags/1.1.7.1/sticky-list.php:1397
+#: ../tags/1.1.7/sticky-list.php:1304 ../tags/1.1.7/sticky-list.php:1397
+#: ../tags/1.1/sticky-list.php:1104 ../tags/1.1/sticky-list.php:1197
+#: ../trunk/sticky-list.php:1304 ../trunk/sticky-list.php:1397
 msgid "When a new entry is submitted"
 msgstr "När ett nytt inlägg skapas"
 
-#: ../sticky-list.php:1300 ../sticky-list.php:1393
-#: ../tags/1.0/sticky-list.php:903 ../tags/1.0/sticky-list.php:999
+#: ../sticky-list.php:1335 ../sticky-list.php:1428
 #: ../tags/1.0.1/sticky-list.php:907 ../tags/1.0.1/sticky-list.php:1003
 #: ../tags/1.0.2/sticky-list.php:907 ../tags/1.0.2/sticky-list.php:1003
 #: ../tags/1.0.3/sticky-list.php:907 ../tags/1.0.3/sticky-list.php:1001
@@ -1039,66 +1155,73 @@ msgstr "När ett nytt inlägg skapas"
 #: ../tags/1.0.7/sticky-list.php:976 ../tags/1.0.7/sticky-list.php:1069
 #: ../tags/1.0.8/sticky-list.php:990 ../tags/1.0.8/sticky-list.php:1083
 #: ../tags/1.0.9/sticky-list.php:1052 ../tags/1.0.9/sticky-list.php:1145
-#: ../tags/1.1/sticky-list.php:1105 ../tags/1.1/sticky-list.php:1198
+#: ../tags/1.0/sticky-list.php:903 ../tags/1.0/sticky-list.php:999
 #: ../tags/1.1.1/sticky-list.php:1110 ../tags/1.1.1/sticky-list.php:1203
 #: ../tags/1.1.2/sticky-list.php:1117 ../tags/1.1.2/sticky-list.php:1210
 #: ../tags/1.1.3/sticky-list.php:1182 ../tags/1.1.3/sticky-list.php:1275
 #: ../tags/1.1.4/sticky-list.php:1200 ../tags/1.1.4/sticky-list.php:1293
 #: ../tags/1.1.5/sticky-list.php:1226 ../tags/1.1.5/sticky-list.php:1319
-#: ../tags/1.1.6/sticky-list.php:1291 ../tags/1.1.6/sticky-list.php:1384
-#: ../trunk/sticky-list.php:1291 ../trunk/sticky-list.php:1384
+#: ../tags/1.1.6/sticky-list.php:1300 ../tags/1.1.6/sticky-list.php:1393
+#: ../tags/1.1.7.1/sticky-list.php:1305 ../tags/1.1.7.1/sticky-list.php:1398
+#: ../tags/1.1.7/sticky-list.php:1305 ../tags/1.1.7/sticky-list.php:1398
+#: ../tags/1.1/sticky-list.php:1105 ../tags/1.1/sticky-list.php:1198
+#: ../trunk/sticky-list.php:1305 ../trunk/sticky-list.php:1398
 msgid "When an entry is updated"
 msgstr "När ett inlägg  uppdaterats"
 
-#: ../sticky-list.php:1301 ../tags/1.0/sticky-list.php:904
-#: ../tags/1.0.1/sticky-list.php:908 ../tags/1.0.2/sticky-list.php:908
-#: ../tags/1.0.3/sticky-list.php:908 ../tags/1.0.4/sticky-list.php:918
-#: ../tags/1.0.5/sticky-list.php:921 ../tags/1.0.6/sticky-list.php:983
-#: ../tags/1.0.7/sticky-list.php:977 ../tags/1.0.8/sticky-list.php:991
-#: ../tags/1.0.9/sticky-list.php:1053 ../tags/1.1/sticky-list.php:1106
-#: ../tags/1.1.1/sticky-list.php:1111 ../tags/1.1.2/sticky-list.php:1118
-#: ../tags/1.1.3/sticky-list.php:1183 ../tags/1.1.4/sticky-list.php:1201
-#: ../tags/1.1.5/sticky-list.php:1227 ../tags/1.1.6/sticky-list.php:1292
-#: ../trunk/sticky-list.php:1292
+#: ../sticky-list.php:1336 ../tags/1.0.1/sticky-list.php:908
+#: ../tags/1.0.2/sticky-list.php:908 ../tags/1.0.3/sticky-list.php:908
+#: ../tags/1.0.4/sticky-list.php:918 ../tags/1.0.5/sticky-list.php:921
+#: ../tags/1.0.6/sticky-list.php:983 ../tags/1.0.7/sticky-list.php:977
+#: ../tags/1.0.8/sticky-list.php:991 ../tags/1.0.9/sticky-list.php:1053
+#: ../tags/1.0/sticky-list.php:904 ../tags/1.1.1/sticky-list.php:1111
+#: ../tags/1.1.2/sticky-list.php:1118 ../tags/1.1.3/sticky-list.php:1183
+#: ../tags/1.1.4/sticky-list.php:1201 ../tags/1.1.5/sticky-list.php:1227
+#: ../tags/1.1.6/sticky-list.php:1301 ../tags/1.1.7.1/sticky-list.php:1306
+#: ../tags/1.1.7/sticky-list.php:1306 ../tags/1.1/sticky-list.php:1106
+#: ../trunk/sticky-list.php:1306
 msgid "When an entry is deleted"
 msgstr "När ett inlägg raderats"
 
-#: ../sticky-list.php:1317 ../tags/1.0/sticky-list.php:920
-#: ../tags/1.0.1/sticky-list.php:924 ../tags/1.0.2/sticky-list.php:924
-#: ../tags/1.0.3/sticky-list.php:924 ../tags/1.0.4/sticky-list.php:934
-#: ../tags/1.0.5/sticky-list.php:937 ../tags/1.0.6/sticky-list.php:999
-#: ../tags/1.0.7/sticky-list.php:993 ../tags/1.0.8/sticky-list.php:1007
-#: ../tags/1.0.9/sticky-list.php:1069 ../tags/1.1/sticky-list.php:1122
-#: ../tags/1.1.1/sticky-list.php:1127 ../tags/1.1.2/sticky-list.php:1134
-#: ../tags/1.1.3/sticky-list.php:1199 ../tags/1.1.4/sticky-list.php:1217
-#: ../tags/1.1.5/sticky-list.php:1243 ../tags/1.1.6/sticky-list.php:1308
-#: ../trunk/sticky-list.php:1308
+#: ../sticky-list.php:1352 ../tags/1.0.1/sticky-list.php:924
+#: ../tags/1.0.2/sticky-list.php:924 ../tags/1.0.3/sticky-list.php:924
+#: ../tags/1.0.4/sticky-list.php:934 ../tags/1.0.5/sticky-list.php:937
+#: ../tags/1.0.6/sticky-list.php:999 ../tags/1.0.7/sticky-list.php:993
+#: ../tags/1.0.8/sticky-list.php:1007 ../tags/1.0.9/sticky-list.php:1069
+#: ../tags/1.0/sticky-list.php:920 ../tags/1.1.1/sticky-list.php:1127
+#: ../tags/1.1.2/sticky-list.php:1134 ../tags/1.1.3/sticky-list.php:1199
+#: ../tags/1.1.4/sticky-list.php:1217 ../tags/1.1.5/sticky-list.php:1243
+#: ../tags/1.1.6/sticky-list.php:1317 ../tags/1.1.7.1/sticky-list.php:1322
+#: ../tags/1.1.7/sticky-list.php:1322 ../tags/1.1/sticky-list.php:1122
+#: ../trunk/sticky-list.php:1322
 msgid "Send this notification"
 msgstr "Skicka denna notifikation"
 
-#: ../sticky-list.php:1391 ../tags/1.0/sticky-list.php:997
-#: ../tags/1.0.1/sticky-list.php:1001 ../tags/1.0.2/sticky-list.php:1001
-#: ../tags/1.0.3/sticky-list.php:999 ../tags/1.0.4/sticky-list.php:1009
-#: ../tags/1.0.5/sticky-list.php:1011 ../tags/1.0.6/sticky-list.php:1073
-#: ../tags/1.0.7/sticky-list.php:1067 ../tags/1.0.8/sticky-list.php:1081
-#: ../tags/1.0.9/sticky-list.php:1143 ../tags/1.1/sticky-list.php:1196
-#: ../tags/1.1.1/sticky-list.php:1201 ../tags/1.1.2/sticky-list.php:1208
-#: ../tags/1.1.3/sticky-list.php:1273 ../tags/1.1.4/sticky-list.php:1291
-#: ../tags/1.1.5/sticky-list.php:1317 ../tags/1.1.6/sticky-list.php:1382
-#: ../trunk/sticky-list.php:1382
+#: ../sticky-list.php:1426 ../tags/1.0.1/sticky-list.php:1001
+#: ../tags/1.0.2/sticky-list.php:1001 ../tags/1.0.3/sticky-list.php:999
+#: ../tags/1.0.4/sticky-list.php:1009 ../tags/1.0.5/sticky-list.php:1011
+#: ../tags/1.0.6/sticky-list.php:1073 ../tags/1.0.7/sticky-list.php:1067
+#: ../tags/1.0.8/sticky-list.php:1081 ../tags/1.0.9/sticky-list.php:1143
+#: ../tags/1.0/sticky-list.php:997 ../tags/1.1.1/sticky-list.php:1201
+#: ../tags/1.1.2/sticky-list.php:1208 ../tags/1.1.3/sticky-list.php:1273
+#: ../tags/1.1.4/sticky-list.php:1291 ../tags/1.1.5/sticky-list.php:1317
+#: ../tags/1.1.6/sticky-list.php:1391 ../tags/1.1.7.1/sticky-list.php:1396
+#: ../tags/1.1.7/sticky-list.php:1396 ../tags/1.1/sticky-list.php:1196
+#: ../trunk/sticky-list.php:1396
 msgid "Never"
 msgstr "Aldrig"
 
-#: ../sticky-list.php:1409 ../tags/1.0/sticky-list.php:1015
-#: ../tags/1.0.1/sticky-list.php:1019 ../tags/1.0.2/sticky-list.php:1019
-#: ../tags/1.0.3/sticky-list.php:1017 ../tags/1.0.4/sticky-list.php:1027
-#: ../tags/1.0.5/sticky-list.php:1029 ../tags/1.0.6/sticky-list.php:1091
-#: ../tags/1.0.7/sticky-list.php:1085 ../tags/1.0.8/sticky-list.php:1099
-#: ../tags/1.0.9/sticky-list.php:1161 ../tags/1.1/sticky-list.php:1214
-#: ../tags/1.1.1/sticky-list.php:1219 ../tags/1.1.2/sticky-list.php:1226
-#: ../tags/1.1.3/sticky-list.php:1291 ../tags/1.1.4/sticky-list.php:1309
-#: ../tags/1.1.5/sticky-list.php:1335 ../tags/1.1.6/sticky-list.php:1400
-#: ../trunk/sticky-list.php:1400
+#: ../sticky-list.php:1444 ../tags/1.0.1/sticky-list.php:1019
+#: ../tags/1.0.2/sticky-list.php:1019 ../tags/1.0.3/sticky-list.php:1017
+#: ../tags/1.0.4/sticky-list.php:1027 ../tags/1.0.5/sticky-list.php:1029
+#: ../tags/1.0.6/sticky-list.php:1091 ../tags/1.0.7/sticky-list.php:1085
+#: ../tags/1.0.8/sticky-list.php:1099 ../tags/1.0.9/sticky-list.php:1161
+#: ../tags/1.0/sticky-list.php:1015 ../tags/1.1.1/sticky-list.php:1219
+#: ../tags/1.1.2/sticky-list.php:1226 ../tags/1.1.3/sticky-list.php:1291
+#: ../tags/1.1.4/sticky-list.php:1309 ../tags/1.1.5/sticky-list.php:1335
+#: ../tags/1.1.6/sticky-list.php:1409 ../tags/1.1.7.1/sticky-list.php:1414
+#: ../tags/1.1.7/sticky-list.php:1414 ../tags/1.1/sticky-list.php:1214
+#: ../trunk/sticky-list.php:1414
 msgid "Display this confirmation"
 msgstr "Visa denna bekräftelse"
 
