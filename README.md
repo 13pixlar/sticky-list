@@ -106,6 +106,10 @@ When editing an entry that has Wordpress Post Image Field the meta inputs are no
 
 <h3>Frequently Asked Questions</h3>
 
+<h5>The plugin is activated but doesnt seem to work</h5>
+
+Sometimes after an upgrade Gravity Forms will fail to reactivate add-ons properly. Just deactivate and activate Sticky List manually from the plugins page in the WordPress admin.
+
 <h5>The list is empty, why?</h5>
 
 You need to check "Show in list" on the fields that you would like to appear in the list. This is done in the form editor when edtiting a field.
