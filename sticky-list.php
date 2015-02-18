@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.1.7
+Version: 1.1.7.1
 Author: 13pixar
 Author URI: http://13pixlar.se
 */
@@ -21,7 +21,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.1.7";
+        protected $_version = "1.1.7.1";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -216,7 +216,7 @@ if (class_exists("GFForms")) {
                     $current_user_id = $current_user->ID;
 
                     // If we didnt get a user ID we might be on buddypress
-                    if( $current_user_id == NULL && function_exists(bp_loggedin_user_id()) ) {
+                    if( $current_user_id == NULL && function_exists("bp_loggedin_user_id") ) {
                         $current_user_id = bp_loggedin_user_id();
                     }
                 }
