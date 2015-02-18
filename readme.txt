@@ -172,6 +172,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 == Changelog ==
 
+= 1.1.7.1 =
+* Fixed a fatal error that would crash the add-on if user was not logged in (sorry!)
+
 = 1.1.7 =
 * Fixed an issue that prevented redirects from working
 * Fixed an where list would be empty on BuddyPress
