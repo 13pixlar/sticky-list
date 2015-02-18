@@ -148,6 +148,11 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.1.7**
+* Fixed an issue that prevented redirects from working
+* Fixed an where list would be empty on BuddyPress
+* Fixed some possible bugs with file uploads
+
 **1.1.6**
 * Feature: Added the option select a field by which the list is sorted
 
