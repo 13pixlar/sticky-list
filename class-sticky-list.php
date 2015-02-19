@@ -1514,10 +1514,6 @@ if (class_exists("GFForms")) {
                 // If Sticky List is not enabled for the current form
                 return $original_confirmation;
             }
-
         }
     }
-
-    // Phew, thats it. Lets initialize the class
-    new StickyList();
 }
