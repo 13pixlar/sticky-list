@@ -152,6 +152,12 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.2**
+* Updated the code to use a better way of getting the currently logged in user
+
+**1.1.9.1**
+* Fixed a bug that would show the Sticky List menu item twice
+
 **1.1.9**
 * Update: Updated Sticky List to user Gravity Forms self initiation to prevent Sticky List from beeing deactivated on update
 

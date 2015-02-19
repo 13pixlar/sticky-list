@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.1.9";
+        protected $_version = "1.2";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -137,6 +137,22 @@ if (class_exists("GFForms")) {
            $tooltips["form_field_text_value"] = __('<h6>Header text</h6>Use this field to override the default text header.','sticky-list');
            return $tooltips;
         }
+        
+
+        /**
+         * Helper function to get current user
+         *
+         */
+        public function stickylist_get_current_user() {
+            $current_user = wp_get_current_user();
+            $current_user_id = $current_user->ID;
+
+            // If we didnt get a user ID we might be on buddypress
+            if( $current_user_id == NULL && function_exists("bp_loggedin_user_id") ) {
+                $current_user_id = bp_loggedin_user_id();
+            }
+            return $current_user_id;
+        }
 
       
         /**
@@ -205,13 +221,7 @@ if (class_exists("GFForms")) {
                 if($user_id != "") {
                     $current_user_id = $user_id;
                 }else{
-                    $current_user = wp_get_current_user();
-                    $current_user_id = $current_user->ID;
-
-                    // If we didnt get a user ID we might be on buddypress
-                    if( $current_user_id == NULL && function_exists("bp_loggedin_user_id") ) {
-                        $current_user_id = bp_loggedin_user_id();
-                    }
+                    $current_user_id = $this->stickylist_get_current_user();
                 }
 
                 //Set max nr of entries to be shown
@@ -237,7 +247,7 @@ if (class_exists("GFForms")) {
                 if($show_entries_to === "creator"){
 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
-                    $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
+                    $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $this->stickylist_get_current_user());
 
                     $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
                 
@@ -395,7 +405,7 @@ if (class_exists("GFForms")) {
                                 if($enable_edit) {
 
                                     // ...and current user is the creator OR has the capability to edit others posts
-                                    if($entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
+                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts')) {
                                         $list_html .= "
                                             <form action='$embedd_page' method='post'>
                                                 <button class='submit'>$enable_edit_label</button>
@@ -409,7 +419,7 @@ if (class_exists("GFForms")) {
                                 if($enable_delete) {
 
                                     // ...and current user is the creator OR has the capability to delete others posts
-                                    if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts')) {
+                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts')) {
                                         
                                         $list_html .= "
                                             <button class='sticky-list-delete submit'>$enable_delete_label</button>
@@ -562,15 +572,12 @@ if (class_exists("GFForms")) {
                     $view_id = $_POST["view_id"];
                     $form_fields = GFAPI::get_entry($view_id);
                 }
-        
-                // Get current user
-                $current_user = wp_get_current_user();
                
                 // If we have an entry that is active
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
                     // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
-                    if($form_fields["created_by"] == $current_user->ID || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
+                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
 
                         // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
                         foreach ($form["fields"] as $fkey => &$fvalue) {
@@ -695,9 +702,6 @@ if (class_exists("GFForms")) {
 
                 // Get original entry id
                 $original_entry_id = $_POST["edit_id"];
-
-                // Get current user
-                $current_user = wp_get_current_user();
                 
                 // Get original entry
                 $original_entry =  GFAPI::get_entry($original_entry_id);
@@ -706,7 +710,7 @@ if (class_exists("GFForms")) {
                 if($original_entry && $original_entry["status"] == "active") {
 
                     // ...and the current user is creator OR has the capability to edit others posts
-                    if($original_entry["created_by"] == $current_user->ID || current_user_can('edit_others_posts')) {
+                    if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts')) {
 
                         // Keep starred and read status
                         $entry["is_read"] = $original_entry["is_read"];
@@ -840,14 +844,13 @@ if (class_exists("GFForms")) {
                 if($enable_delete) {
 
                     $delete_id = $_POST["delete_id"];                
-                    $current_user = wp_get_current_user();
                     $entry = GFAPI::get_entry($delete_id);
                     
                     // If we were able to retrieve the entry
                     if(!is_wp_error($entry)) {
 
                         // ...and the current user is the creator OR has the capability to delete others posts
-                        if($entry["created_by"] == $current_user->ID || current_user_can('delete_others_posts')) {
+                        if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts')) {
 
                             // If we have a connected post, we get the post ID
                             if($_POST["delete_post_id"] != null) {
