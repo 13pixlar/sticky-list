@@ -83,7 +83,7 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 **Avalible filters**<br>
 The filter `filter_entries` allows for filtering of the entries in the list.<br>
-Paramters: $entries (array of entriy objects)<br>
+Paramters: $entries (array of entry objects)<br>
 
 **Example**<br>
 This code (when placed in functions.php) would filter out all entries where field ID 1 equals "some-text"<br>
@@ -159,7 +159,7 @@ if (empty($entry_id)) {
 
 In that case, you also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
 
-In `plugins/gravity-forms-sticky-list/sticky-list.php` on line `23` change 
+In `plugins/gravity-forms-sticky-list/class-sticky-list.php` on line `8` change 
 ```PHP
 protected $_min_gravityforms_version = "1.8.19.2";
 ```
