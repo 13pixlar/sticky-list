@@ -88,7 +88,20 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 
 **Avalible filters**<br>
 The filter `filter_entries` allows for filtering of the entries in the list.<br>
-Paramters: $entries (array of entriy objects)<br>
+Paramters: $entries (array of entriy objects)<br><br>
+**Example**
+This code (when placed in functions.php) would filter out all entries where field ID 1 equals "some-text"<br>
+`
+add_filter('filter_entries','hide_some_rows' );
+function hide_some_rows($entries) {
+	foreach ($entries as $entryKey => $entryValue) {		
+		if ($entryValue["1"] == "some-text") {
+			unset($entries[$entryKey]);
+		}
+	}
+	return $entries;
+}
+`
 
 **Documentation**<br>
 There is a fully documented version of the plugin on the <a href="https://github.com/13pixlar/sticky-list">Github project page</a>. This plugin is Open Source and pull requests are welcome.

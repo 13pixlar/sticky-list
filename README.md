@@ -81,7 +81,21 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 **Avalible filters**<br>
 The filter `filter_entries` allows for filtering of the entries in the list.<br>
-Paramters: $entries (array of entriy objects)<br>
+Paramters: $entries (array of entriy objects)<br><br>
+
+**Example**
+This code (when placed in functions.php) would filter out all entries where field ID 1 equals "some-text"<br>
+```PHP
+add_filter('filter_entries','hide_some_rows' );
+function hide_some_rows($entries) {
+	foreach ($entries as $entryKey => $entryValue) {		
+		if ($entryValue["1"] == "some-text") {
+			unset($entries[$entryKey]);
+		}
+	}
+	return $entries;
+}
+```
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
