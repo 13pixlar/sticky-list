@@ -81,9 +81,9 @@ This is the fully documented version of the plugin. This plugin is Open Source a
 
 **Avalible filters**<br>
 The filter `filter_entries` allows for filtering of the entries in the list.<br>
-Paramters: $entries (array of entriy objects)<br><br>
+Paramters: $entries (array of entriy objects)<br>
 
-**Example**
+**Example**<br>
 This code (when placed in functions.php) would filter out all entries where field ID 1 equals "some-text"<br>
 ```PHP
 add_filter('filter_entries','hide_some_rows' );
