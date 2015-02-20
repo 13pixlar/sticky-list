@@ -1,16 +1,19 @@
 /* sticky-list styles */
 
-/* Table styles */
+/* Make the action buttons aligned to the right */
 table.sticky-list th.sticky-action,
 table.sticky-list td.sticky-action  {
 	text-align: right;
     white-space:nowrap;
 }
+
+/* Do not wrap text in the table header */
 table.sticky-list th,
 table.sticky-list .sticky-nowrap {
     white-space:nowrap;
 }
 
+/* Make every other row in the list slightly grey */
 table.sticky-list tr:nth-child(2n+2) {
 	background: #f7f7f7;
 }
@@ -26,6 +29,7 @@ table.sticky-list form input {
 	display: inline-block !important;
 }
 
+/* Style the action buttons */
 table.sticky-list button {
     background:none!important;
     border:none; 
@@ -36,11 +40,8 @@ table.sticky-list button {
     text-transform: none;
     font-size: inherit;
     color: inherit;
-    margin-right: 5px;
+    margin-left: 5px;
     text-decoration: underline;
-}
-table.sticky-list form:last-child button {
-	margin-right: 0;
 }
 
 /* Pagination styles */

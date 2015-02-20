@@ -73,7 +73,7 @@ Gravity Forms Sticky List adds conditional confirmations and notifications so th
 
 #### Styling the list
 
-Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory.
+Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory. To override a style just copy it from <a href="https://github.com/13pixlar/sticky-list/blob/master/css/sticky-list_styles.css">sticky-list_styles.css</a> and paste it in your themes css-file, then modify the style to your liking.
 
 #### Developers
 This is the fully documented version of the plugin. This plugin is Open Source and pull requests are welcome. The commenting in the main plugin file may seem excessive but I'm learing as I go and keeping the code comments detailed is a good way to remember exactly what every piece of code does. I hope that this will also be of help to anyone interested in contributing to the source code.
