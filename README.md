@@ -26,6 +26,8 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Fully supported and maintained
 * Completely free and open source
 
+**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
+
 #### Planned features
 
 * Support for multi page forms
@@ -96,8 +98,6 @@ function hide_some_rows($entries) {
 	return $entries;
 }
 ```
-
-**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
 #### Known issues
 
