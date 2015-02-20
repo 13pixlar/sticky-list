@@ -348,8 +348,25 @@ if (class_exists("GFForms")) {
                                 // Set $custom_file_upload to true if this is a custom field file upload
                                 if($field["type"] == "post_custom_field" && $field["inputType"] == "fileupload") { $custom_file_upload = true; }else{ $custom_file_upload = false; }
 
+                                // If the field is a product field
+                                if ($field["type"] == "product" || $field["type"] == "shipping") {
+                                    
+                                    // If the value is an array
+                                    if(is_array($field_value)) {
+                                        
+                                        // Get the total number of products (last item in array)
+                                        $field_value = end($field_value);
+                                        $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+                                    }else{
+
+                                        // Remove the price 
+                                        $field_value = substr($field_value, 0, strpos($field_value, "|"));
+                                        $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+                                    }
+                                }
+
                                 // If the value is an array (i.e. address field, name field, etc)
-                                if(is_array($field_value)) {
+                                elseif(is_array($field_value)) {
 
                                     // Sort the array by key so that the fields are shown in the correct order
                                     ksort($field_value);
