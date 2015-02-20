@@ -152,6 +152,10 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.2.1**
+* Added better price field support
+* Updated styles and enque priority
+
 **1.2**
 * Updated the code to use a better way of getting the currently logged in user
 
