@@ -361,6 +361,9 @@ if (class_exists("GFForms")) {
                                             foreach ($field_value as &$option) {
                                                 $option = substr($option, 0, strpos($option, "|"));
                                             }
+
+                                            // Remove empty values and implode the array
+                                            $field_value = array_filter($field_value);
                                             $field_value = implode(", ", $field_value);
                                         
                                         }else{
