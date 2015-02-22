@@ -349,17 +349,31 @@ if (class_exists("GFForms")) {
                                 if($field["type"] == "post_custom_field" && $field["inputType"] == "fileupload") { $custom_file_upload = true; }else{ $custom_file_upload = false; }
 
                                 // If the field is a product field
-                                if ($field["type"] == "product" || $field["type"] == "shipping") {
+                                if ($field["type"] == "product" || $field["type"] == "shipping" || $field["type"] == "option") {
                                     
-                                    // If the value is an array
+                                    // ...and the value is an array
                                     if(is_array($field_value)) {
+
+                                        // If this product field is an option field
+                                        if($field["type"] == "option") {
+
+                                            // Remove the price from the string
+                                            foreach ($field_value as &$option) {
+                                                $option = substr($option, 0, strpos($option, "|"));
+                                            }
+                                            $field_value = implode(", ", $field_value);
                                         
-                                        // Get the total number of products (last item in array)
-                                        $field_value = end($field_value);
+                                        }else{
+
+                                            // Get the total number of products (last item in array)
+                                            $field_value = end($field_value); 
+                                        }
+                                        
                                         $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+
                                     }else{
 
-                                        // Remove the price 
+                                        // Remove the price from the string
                                         $field_value = substr($field_value, 0, strpos($field_value, "|"));
                                         $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
                                     }
@@ -604,6 +618,7 @@ if (class_exists("GFForms")) {
                                 $uploads[] = $fvalue["id"];
                             }
                         }
+                        if (!isset($uploads)) $uploads = "";
 
                         // This variable will hold upload fields                    
                         $upload_inputs = "";
