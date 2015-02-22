@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -186,6 +186,10 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 4. Front end list 
 
 == Changelog ==
+
+= 1.2.2 =
+* Added better support for price option fields
+* Fixed an undefined index notice
 
 = 1.2.1 =
 * Added better price field support

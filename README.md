@@ -167,6 +167,10 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.2.2**
+* Added better support for price option fields
+* Fixed an undefined index notice
+
 **1.2.1**
 * Added better price field support
 * Updated styles and enque priority
