@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Sticky List
 Plugin URI: https://github.com/13pixlar/sticky-list
 Description: List and edit submitted entries from the front end
-Version: 1.2.2
+Version: 1.2.3
 Author: 13pixar
 Author URI: http://13pixlar.se
 */

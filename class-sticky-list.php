@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.2";
+        protected $_version = "1.2.3";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -439,7 +439,7 @@ if (class_exists("GFForms")) {
                                 if($enable_edit) {
 
                                     // ...and current user is the creator OR has the capability to edit others posts
-                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts')) {
+                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
                                         $list_html .= "
                                             <form action='$embedd_page' method='post'>
                                                 <button class='submit'>$enable_edit_label</button>
@@ -453,7 +453,7 @@ if (class_exists("GFForms")) {
                                 if($enable_delete) {
 
                                     // ...and current user is the creator OR has the capability to delete others posts
-                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts')) {
+                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts') || current_user_can('stickylist_delete_entries')) {
                                         
                                         $list_html .= "
                                             <button class='sticky-list-delete submit'>$enable_delete_label</button>
@@ -611,7 +611,7 @@ if (class_exists("GFForms")) {
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
                     // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
-                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || $_POST["mode"] == "view") {
+                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view") {
 
                         // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
                         foreach ($form["fields"] as $fkey => &$fvalue) {
@@ -745,7 +745,7 @@ if (class_exists("GFForms")) {
                 if($original_entry && $original_entry["status"] == "active") {
 
                     // ...and the current user is creator OR has the capability to edit others posts
-                    if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts')) {
+                    if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
 
                         // Keep starred and read status
                         $entry["is_read"] = $original_entry["is_read"];
@@ -885,7 +885,7 @@ if (class_exists("GFForms")) {
                     if(!is_wp_error($entry)) {
 
                         // ...and the current user is the creator OR has the capability to delete others posts
-                        if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts')) {
+                        if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts') || current_user_can('stickylist_delete_entries')) {
 
                             // If we have a connected post, we get the post ID
                             if($_POST["delete_post_id"] != null) {
