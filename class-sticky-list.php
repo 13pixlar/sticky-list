@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.3";
+        protected $_version = "1.2.4";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -106,6 +106,38 @@ if (class_exists("GFForms")) {
                     <?php
                 }
             }
+        }
+
+
+        /**
+         * Format date filed according to user preference
+         *
+         */
+        function format_the_date($timestamp,$format) {
+            switch ( $format ) {
+                case 'mdy' :
+                    $format_name = 'm/d/Y';
+                    break;
+                case 'dmy' :
+                    $format_name = 'd/m/Y';
+                    break;
+                case 'dmy_dash' :
+                    $format_name = 'd-m-Y';
+                    break;
+                case 'dmy_dot' :
+                    $format_name = 'd.m.Y';
+                    break;
+                case 'ymd_slash' :
+                    $format_name = 'Y/m/d';
+                    break;
+                case 'ymd_dash' :
+                    $format_name = 'Y-m-d';
+                    break;
+                case 'ymd_dot' :
+                    $format_name = 'Y.m.d';
+                    break;
+            }
+            return date($format_name, strtotime($timestamp));
         }
 
         
@@ -408,6 +440,12 @@ if (class_exists("GFForms")) {
                                     }else{
                                         $list_html .= "<td class='sort-$i $nowrap'>$file_name</td>";
                                     }
+                                }
+
+                                // If the field is a date field we need to format it
+                                elseif ($field["type"] == "date" && $field_value != "") {
+                                    $field_value = $this->format_the_date($field_value,$field["dateFormat"]);
+                                    $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
                                 }
 
                                 // All other fields

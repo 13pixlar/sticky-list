@@ -171,6 +171,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.2.4**
+* Added better date field support
+
 **1.2.3**
 * Added two custom capabilities for edit and delete
 
