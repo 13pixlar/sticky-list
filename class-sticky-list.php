@@ -110,7 +110,7 @@ if (class_exists("GFForms")) {
 
 
         /**
-         * Format date filed according to user preference
+         * Format date field according to user preference
          *
          */
         function format_the_date($timestamp,$format) {
@@ -234,6 +234,8 @@ if (class_exists("GFForms")) {
             $enable_delete_label    = get_sticky_setting("enable_delete_label", $settings);
             $confirm_delete         = get_sticky_setting("confirm_delete", $settings);
             $confirm_delete_text    = get_sticky_setting("confirm_delete_text", $settings);
+            $enable_duplicate       = get_sticky_setting("enable_duplicate", $settings);
+            $enable_duplicate_label = get_sticky_setting("enable_duplicate_label", $settings);
             $action_column_header   = get_sticky_setting("action_column_header", $settings);
             $enable_sort            = get_sticky_setting("enable_sort", $settings);
             $initial_sort           = get_sticky_setting("initial_sort", $settings);
@@ -345,7 +347,7 @@ if (class_exists("GFForms")) {
                     }
 
                     // If view, edit, delete or postlink is enabled we need an extra column
-                    if($enable_view || $enable_edit || $enable_delete || $enable_postlink) {
+                    if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate) {
 
                         $list_html .= "<th class='sticky-action'>$action_column_header</th>";
                     }
@@ -458,8 +460,8 @@ if (class_exists("GFForms")) {
                             }
                         }
 
-                        // If view, edit, delete or postlink is enabled we need a cell with appropiate links
-                        if($enable_view || $enable_edit || $enable_delete || $enable_postlink){
+                        // If view, edit, delete, postlink or duplicate is enabled we need a cell with appropiate links
+                        if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate){
                             
                             $list_html .= "<td class='sticky-action'>";
 
@@ -511,6 +513,20 @@ if (class_exists("GFForms")) {
 
                                     $permalink = get_permalink($entry["post_id"]);
                                     $list_html .= "<button class='submit' onclick='document.location.href=\"$permalink\"'>$link_label</button>";
+                                }
+
+                                // Only show duplicate link if edit is enabled
+                                if($enable_duplicate) {
+
+                                    // ...and current user is the creator OR has the capability to publish posts
+                                    if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('publish_posts')) {
+                                        $list_html .= "
+                                            <form action='$embedd_page' method='post'>
+                                                <button class='submit'>$enable_duplicate_label</button>
+                                                <input type='hidden' name='mode' value='duplicate'>
+                                                <input type='hidden' name='duplicate_id' value='$entry_id'>
+                                            </form>";
+                                    }
                                 }
 
                             $list_html .= "</td>";
@@ -633,7 +649,7 @@ if (class_exists("GFForms")) {
          */
         public function pre_entry_action($form) {
             
-            if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" ) {
+            if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
                 if($_POST["mode"] == "edit") {
                     $edit_id = $_POST["edit_id"];
@@ -644,12 +660,17 @@ if (class_exists("GFForms")) {
                     $view_id = $_POST["view_id"];
                     $form_fields = GFAPI::get_entry($view_id);
                 }
+
+                if($_POST["mode"] == "duplicate") {
+                    $duplicate_id = $_POST["duplicate_id"];
+                    $form_fields = GFAPI::get_entry($duplicate_id);
+                }
                
                 // If we have an entry that is active
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
                     // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
-                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view") {
+                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view" || $_POST["mode"] == "duplicate") {
 
                         // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
                         foreach ($form["fields"] as $fkey => &$fvalue) {
@@ -1148,7 +1169,7 @@ if (class_exists("GFForms")) {
                             "label"   => __('View entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_view",
-                            "tooltip" => __('Check this box to enable users to view the complete submitted entry. A \"View\" link will appear in the list','sticky-list'),
+                            "tooltip" => __('Check this box to enable users to view the complete submitted entry. A "View" link will appear in the list','sticky-list'),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1169,7 +1190,7 @@ if (class_exists("GFForms")) {
                             "label"   => __('Edit entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_edit",
-                            "tooltip" => __('Check this box to enable user to edit submitted entries. An \"Edit\" link will appear in the list','sticky-list'),
+                            "tooltip" => __('Check this box to enable user to edit submitted entries. An "Edit" link will appear in the list','sticky-list'),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1198,7 +1219,7 @@ if (class_exists("GFForms")) {
                             "label"   => __('Delete entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_delete",
-                            "tooltip" => __('Check this box to enable user to delete submitted entries. A \"Delete\" link will appear in the list','sticky-list'),
+                            "tooltip" => __('Check this box to enable user to delete submitted entries. A "Delete" link will appear in the list','sticky-list'),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1249,6 +1270,26 @@ if (class_exists("GFForms")) {
                                     "value" => "permanent"
                                 )
                             )
+                        ),
+                        array(
+                            "label"   => __('Duplicate entries','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_duplicate",
+                            "tooltip" => __('Check this box to enable user to duplicate entries in the list. A "Duplicate" link will appear in the list that allows the user to use an existing entry as a template for a new one.','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_duplicate"
+                                )
+                            )
+                        ),
+                        array(
+                            "label"   => __('Duplicate label','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "enable_duplicate_label",
+                            "tooltip" => __('Label for the duplicate button','sticky-list'),
+                            "class"   => "small",
+                            "default_value" => __('Duplicate','sticky-list')
                         ),
                         array(
                             "label"   => __('Action column header','sticky-list'),
