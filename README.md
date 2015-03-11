@@ -15,6 +15,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
+* Use existing entries as templates for duplication
 * Conditional notifications
 * Conditional confirmations
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
@@ -170,6 +171,9 @@ protected $_min_gravityforms_version = "1.8.19.2";
 to your version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 <h3>Changelog</h3>
+
+**1.2.5**
+* Feature: Allow duplication of entries in the list
 
 **1.2.4**
 * Added better date field support

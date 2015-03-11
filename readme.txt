@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
+* Use existing entries as templates for duplication
 * Conditional notifications
 * Conditional confirmations
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
@@ -190,6 +191,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 4. Front end list 
 
 == Changelog ==
+
+= 1.2.5 =
+* Feature: Allow duplication of entries in the list
 
 = 1.2.4 =
 * Added better date field support

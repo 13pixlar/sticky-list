@@ -30,6 +30,8 @@ jQuery(document).ready(function($) {
 	var confirmDelete			= $('#gaddon-setting-row-confirm_delete');
 	var confirmDeleteCheckbox	= $('#confirm_delete');
 	var confirmDeleteText		= $('#gaddon-setting-row-confirm_delete_text');
+	var enableDuplicate			= $('#enable_duplicate');
+	var enableDuplicateLabel 	= $('#gaddon-setting-row-enable_duplicate_label');
 	var deleteType		 		= $('#gaddon-setting-row-delete_type');
 	var enableSort				= $('#enable_sort');
 	var initialSort				= $('#gaddon-setting-row-initial_sort');
@@ -78,6 +80,11 @@ jQuery(document).ready(function($) {
 		        confirmDeleteText.addClass('show');
 		    }else{
 				confirmDeleteText.removeClass('show');
+		    }
+		    if(enableDuplicate.is(':checked')) {
+	        	enableDuplicateLabel.addClass('show');
+		    }else{
+		    	enableDuplicateLabel.removeClass('show');
 		    }
 		    if(enableSort.is(':checked')) {
 		        enableSearch.addClass('show');
@@ -136,6 +143,10 @@ jQuery(document).ready(function($) {
 
 	confirmDeleteCheckbox.click(function(event) {
 		confirmDeleteText.toggleClass('show')
+	});
+
+	enableDuplicate.click(function(event) {
+		enableDuplicateLabel.toggleClass('show');
 	});
 
 	enableSort.click(function(event) {

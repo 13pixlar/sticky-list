@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.4";
+        protected $_version = "1.2.5";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -346,7 +346,7 @@ if (class_exists("GFForms")) {
                         }
                     }
 
-                    // If view, edit, delete or postlink is enabled we need an extra column
+                    // If view, edit, delete, postlink or duplicate is enabled we need an extra column
                     if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate) {
 
                         $list_html .= "<th class='sticky-action'>$action_column_header</th>";
@@ -515,7 +515,7 @@ if (class_exists("GFForms")) {
                                     $list_html .= "<button class='submit' onclick='document.location.href=\"$permalink\"'>$link_label</button>";
                                 }
 
-                                // Only show duplicate link if edit is enabled
+                                // Only show duplicate link if duplicate is enabled
                                 if($enable_duplicate) {
 
                                     // ...and current user is the creator OR has the capability to publish posts
@@ -669,7 +669,7 @@ if (class_exists("GFForms")) {
                 // If we have an entry that is active
                 if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
                     
-                    // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry
+                    // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry OR is duplicating the entry
                     if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view" || $_POST["mode"] == "duplicate") {
 
                         // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
@@ -1014,7 +1014,7 @@ if (class_exists("GFForms")) {
             // Instert headers into the settings page. Since we need the headers to be translatable we set them here
             jQuery(document).ready(function($) { 
                 $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit & delete","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete & duplicate","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
