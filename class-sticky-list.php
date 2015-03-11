@@ -373,6 +373,9 @@ if (class_exists("GFForms")) {
                                 // ...we get the value for it
                                 $field_value = RGFormsModel::get_lead_field_value( $entry, $field );
 
+                                // Set a class variable to use in list table
+                                $tdClass = "stickylist-" . $field["type"];
+
                                 // If nowrap is set for this field we add a class to it
                                 $nowrap = "";
                                 if(isset($field["stickylistFieldNoWrap"]) && $field["stickylistFieldNoWrap"] != "") {
@@ -406,13 +409,13 @@ if (class_exists("GFForms")) {
                                             $field_value = end($field_value); 
                                         }
                                         
-                                        $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
 
                                     }else{
 
                                         // Remove the price from the string
                                         $field_value = substr($field_value, 0, strpos($field_value, "|"));
-                                        $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
                                     }
                                 }
 
@@ -427,7 +430,7 @@ if (class_exists("GFForms")) {
                                     foreach ($field_value as $field => $value) {
                                         $field_values .= $value . " ";
                                     }
-                                    $list_html .= "<td class='sort-$i $nowrap'>$field_values</td>";
+                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_values</td>";
                                 }
 
                                 // If the field is a file field we use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
@@ -438,21 +441,21 @@ if (class_exists("GFForms")) {
 
                                     // Make file clickable or not
                                     if($enable_clickable) {
-                                        $list_html .= "<td class='sort-$i $nowrap'><a href='$field_value'>$file_name</a></td>";
+                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
                                     }else{
-                                        $list_html .= "<td class='sort-$i $nowrap'>$file_name</td>";
+                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$file_name</td>";
                                     }
                                 }
 
                                 // If the field is a date field we need to format it
                                 elseif ($field["type"] == "date" && $field_value != "") {
                                     $field_value = $this->format_the_date($field_value,$field["dateFormat"]);
-                                    $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
                                 }
 
                                 // All other fields
                                 else{ 
-                                    $list_html .= "<td class='sort-$i $nowrap'>$field_value</td>";
+                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
                                 }
 
                                 // Increment sorting counter
