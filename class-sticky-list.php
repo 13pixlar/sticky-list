@@ -709,7 +709,7 @@ if (class_exists("GFForms")) {
                                 if (is_array($uploads) && in_array( $key, $uploads ) ) {
                                     if ($value != "") {
 
-                                        // Use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
+                                        // Use strtok to remove any metadata used by post_image field (meta data is stored after "|" in string)
                                         $path = strtok($value, "|");
                                         $file = basename($path);
                                         $delete_icon = plugin_dir_url( __FILE__ ) . 'img/delete.png';
