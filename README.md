@@ -51,6 +51,9 @@ If you want to display entries only from a specific user you can include the use
 To use this in a template file, for example on the user profile page (make user that the variable **$user_id** holds the ID of the user who's profile is being viewed):<br>
 `echo do_shortcode( "[stickylist id='1' user='" . $user_id . "']");`
 
+If you want to use the list on different pages and restrict viewing of entries to different groups you can include the `showto` parameter in the shot code. This parameter has three possible settings: `creator`, `loggedin` or `everyone`.<br>
+`[stickylist id="1" user="5" showto="creator"]`
+
 #### List and edit Gravity Form entries on the front end
 
 Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityView</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
@@ -171,6 +174,12 @@ protected $_min_gravityforms_version = "1.8.19.2";
 to your version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
 
 <h3>Changelog</h3>
+
+**1.2.7**
+* Feature: Uppdated the shortcode to accept a "showto" parameter
+
+**1.2.6**
+* Update: Make URL's clickable
 
 **1.2.5**
 * Feature: Allow duplication of entries in the list

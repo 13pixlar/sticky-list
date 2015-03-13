@@ -5,3 +5,6 @@ tr + tr {
 tr:last-child { 
     display: table-row;
 }
+img.heart {
+	vertical-align: sub;
+}

@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.5";
+        protected $_version = "1.2.7";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -193,8 +193,9 @@ if (class_exists("GFForms")) {
          */
         function stickylist_shortcode( $atts ) {
             $shortcode_id = shortcode_atts( array(
-                'id' => '1',
-                'user' => '',
+                'id'        => '1',
+                'user'      => '',
+                'showto'    => ''
             ), $atts );
 
             // Get the form ID from shortcode
@@ -202,6 +203,9 @@ if (class_exists("GFForms")) {
 
             // Get the user ID from shortcode
             $user_id = $shortcode_id['user'];
+
+            // Get the user ID from shortcode
+            $showto = $shortcode_id['showto'];
 
             // Get the form
             $form = GFAPI::get_form($form_id);
@@ -247,6 +251,9 @@ if (class_exists("GFForms")) {
 
             // If a Custom embed url is set we override the selected embedd page
             if(isset($settings["custom_embedd_page"]) && $settings["custom_embedd_page"] != "") $embedd_page = $settings["custom_embedd_page"];
+
+            // If a showto value is set in the shortcode we override the value in settings
+            if(isset($showto) && $showto != "") $show_entries_to = $showto;
             
             // Only render list if Sticky List is enabled for this form
             if($enable_list){
@@ -294,7 +301,7 @@ if (class_exists("GFForms")) {
                     }
                 
                 // Show to everyone
-                }else{
+                }elseif($show_entries_to === "everyone"){
                 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                     $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
@@ -451,6 +458,12 @@ if (class_exists("GFForms")) {
                                 elseif ($field["type"] == "date" && $field_value != "") {
                                     $field_value = $this->format_the_date($field_value,$field["dateFormat"]);
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                }
+
+                                // If the field is an URL we need to format it
+                                elseif ($field["type"] == "website" && $field_value != "") {
+                                    $tdClass = "stickylist-url";
+                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$field_value</a></td>";
                                 }
 
                                 // All other fields
@@ -1022,7 +1035,7 @@ if (class_exists("GFForms")) {
                 $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-5 h4').html('<?php _e("Donate","sticky-list"); ?>')
-                $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
+                $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?> <img class=\"heart\" src=\"http://13pixlar.se/heart.png\">')
              });
             </script>
             <?php

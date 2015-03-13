@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.2.5
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,9 @@ If you want to display entries only from a specific user you can include the use
 
 To use this in a template file, for example on the user profile page (make user that the variable **$user_id** holds the ID of the user who's profile is being viewed):<br>
 `echo do_shortcode( "[stickylist id='1' user='" . $user_id . "']");`
+
+If you want to use the list on different pages and restrict viewing of entries to different groups you can include the `showto` parameter in the shot code. This parameter has three possible settings: `creator`, `loggedin` or `everyone`.<br>
+`[stickylist id="1" user="5" showto="creator"]`
 
 #### List and edit Gravity Form entries on the front end
 
@@ -191,6 +194,12 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 4. Front end list 
 
 == Changelog ==
+
+= 1.2.7 =
+* Feature: Uppdated the shortcode to accept a "showto" parameter
+
+= 1.2.6 =
+* Update: Make URL's clickable
 
 = 1.2.5 =
 * Feature: Allow duplication of entries in the list
