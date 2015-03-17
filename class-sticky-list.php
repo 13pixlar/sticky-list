@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.7";
+        protected $_version = "1.2.8";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -284,7 +284,6 @@ if (class_exists("GFForms")) {
                 
                 // Set paging variables
                 $paging = array('offset' => 0, 'page_size' => $max_entries );
-
                    
                 // Get entries to show depending on settings
                 // Show only to creator
@@ -308,6 +307,15 @@ if (class_exists("GFForms")) {
                 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                     $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
+                
+                // Show to selected user role
+                }else{
+                    $user = wp_get_current_user();
+                    // Check if the current user has the selectecd role OR is admin
+                    if( in_array( $show_entries_to, (array) $user->roles ) || in_array( "administrator", (array) $user->roles )) {
+                        $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
+                        $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
+                    }
                 }
 
                 // If we have some entries, lets loop trough them and start building the output html
@@ -1094,6 +1102,43 @@ if (class_exists("GFForms")) {
                 );
             }
             $fields_array = array_reverse($fields_array);
+
+
+            // Buld roles array
+            $roles_array = array();
+            $roles_array = array_merge(
+                array(
+                    array(
+                        "label" => __('Everyone','sticky-list'),
+                        "value" => "everyone"
+                    ),
+                    array(
+                        "label" => __('All logged in users','sticky-list'),
+                        "value" => "loggedin"
+                    ),
+                    array(
+                        "label" => __('Entry creator','sticky-list'),
+                        "value" => "creator"
+                    )                    
+                ),$roles_array
+            );
+
+            //Get all avalible roles
+            global $wp_roles;
+            $roles = $wp_roles->get_names();
+            
+            foreach ($roles as $key => $value) {
+                $roles_array = array_merge(
+                    array(
+                        array(
+                            "label" => $value,
+                            "value" => $key
+                        )
+                    ),$roles_array
+                );
+            }
+            $roles_array = array_reverse($roles_array);
+
             
             return array(
                 array(
@@ -1115,21 +1160,8 @@ if (class_exists("GFForms")) {
                             "label"   => __('Show entries in list to','sticky-list'),
                             "type"    => "select",
                             "name"    => "show_entries_to",
-                            "tooltip" => __('Who should be able to se the entries in the list?','sticky-list'),
-                            "choices" => array(
-                                array(
-                                    "label" => __('Entry creator','sticky-list'),
-                                    "value" => "creator"
-                                ),
-                                array(
-                                    "label" => __('All logged in users','sticky-list'),
-                                    "value" => "loggedin"
-                                ),
-                                array(
-                                    "label" => __('Everyone','sticky-list'),
-                                    "value" => "everyone"
-                                )
-                            )
+                            "tooltip" => __('Select who should be able to se the entries in the list. Administrators will always see all entries','sticky-list'),
+                            "choices" => $roles_array
                         ),
                         array(
                             "label"   => __('Embedd page/post','sticky-list'),

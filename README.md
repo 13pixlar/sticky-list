@@ -175,6 +175,9 @@ to your version of Gravity Forms. Note that this change will be lost when updati
 
 <h3>Changelog</h3>
 
+**1.2.8**
+* Feature: Display list entries only to a selected role
+
 **1.2.7**
 * Feature: Uppdated the shortcode to accept a "showto" parameter
 
