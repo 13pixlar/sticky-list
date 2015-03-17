@@ -136,6 +136,9 @@ if (class_exists("GFForms")) {
                 case 'ymd_dot' :
                     $format_name = 'Y.m.d';
                     break;
+                case '' :
+                    $format_name = 'Y-m-d';
+                    break;
             }
             return date($format_name, strtotime($timestamp));
         }
