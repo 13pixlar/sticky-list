@@ -591,7 +591,7 @@ if (class_exists("GFForms")) {
 
                         // If both sort and paignation is enabled
                         if($enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper', options);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
                         
                         // If only sort is enabled
                         }elseif($enable_sort && !$enable_pagination) {
@@ -599,7 +599,7 @@ if (class_exists("GFForms")) {
                         
                         // If only paignation is enabled                        
                         }elseif(!$enable_sort && $enable_pagination) {                 
-                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper', options);</script></style>";
+                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script></style>";
                         }
                     }
 
@@ -615,36 +615,44 @@ if (class_exists("GFForms")) {
                             <img src='$ajax_spinner' style='display: none;'>
                             <script>
                             jQuery(document).ready(function($) {
-                                $('.sticky-list-delete').click(function(event) {
-                                    
-                                    var delete_id       = $(this).siblings('.sticky-list-delete-id').val();
-                                    var delete_post_id  = $(this).siblings('.sticky-list-delete-post-id').val();
-                                    var current_button  = $(this);
-                                    var current_row     = current_button.parent().parent();
-                                    var confirm_delete  = $confirm_delete;
-                                    
-                                    if(confirm_delete == 1) {
-                                        var confirm_dialog = confirm('$confirm_delete_text');
-                                    }                         
 
-                                    if (confirm_dialog == true || confirm_delete != 1) {
+                                window.listUpdated = function(){
 
-                                        current_button.html('<img src=\'$ajax_spinner\'>');
+                                    $('.sticky-list-delete').click(function(event) {
+
+                                        event.stopImmediatePropagation()
+                                    
+                                        var delete_id       = $(this).siblings('.sticky-list-delete-id').val();
+                                        var delete_post_id  = $(this).siblings('.sticky-list-delete-post-id').val();
+                                        var current_button  = $(this);
+                                        var current_row     = current_button.parent().parent();
+                                        var confirm_delete  = $confirm_delete;
                                         
-                                        $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$form_id' })
-                                        .done(function() {
-                                            current_button.html('');
-                                            current_row.css({   
-                                                background: '#fbdcdc',
-                                                color: '#fff'
-                                            });
-                                            current_row.hide('slow');
-                                        })
-                                        .fail(function() {
-                                            current_button.html('$delete_failed');
-                                        })
-                                    }
-                                });
+                                        if(confirm_delete == 1) {
+                                            var confirm_dialog = confirm('$confirm_delete_text');
+                                        }                         
+
+                                        if (confirm_dialog == true || confirm_delete != 1) {
+
+                                            current_button.html('<img src=\'$ajax_spinner\'>');
+                                            
+                                            $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$form_id' })
+                                            .done(function() {
+                                                current_button.html('');
+                                                current_row.css({   
+                                                    background: '#fbdcdc',
+                                                    color: '#fff'
+                                                });
+                                                current_row.hide('slow');
+                                            })
+                                            .fail(function() {
+                                                current_button.html('$delete_failed');
+                                            })
+                                        }
+                                    });   
+                                }
+
+                                window.listUpdated();
                             });
                             </script>
                         ";
