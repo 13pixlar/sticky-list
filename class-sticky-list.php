@@ -291,7 +291,7 @@ if (class_exists("GFForms")) {
                 if($show_entries_to === "creator"){
 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
-                    $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $this->stickylist_get_current_user());
+                    $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
 
                     $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
                 
