@@ -496,7 +496,7 @@ if (class_exists("GFForms")) {
                                 if($enable_view) {
                                     $list_html .= "
                                         <form action='$embedd_page' method='post'>
-                                            <button class='submit'>$enable_view_label</button>
+                                            <button class='sticky-list-view submit'>$enable_view_label</button>
                                             <input type='hidden' name='mode' value='view'>
                                             <input type='hidden' name='view_id' value='$entry_id'>
                                         </form>";
@@ -509,7 +509,7 @@ if (class_exists("GFForms")) {
                                     if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
                                         $list_html .= "
                                             <form action='$embedd_page' method='post'>
-                                                <button class='submit'>$enable_edit_label</button>
+                                                <button class='sticky-list-edit submit'>$enable_edit_label</button>
                                                 <input type='hidden' name='mode' value='edit'>
                                                 <input type='hidden' name='edit_id' value='$entry_id'>
                                             </form>";
@@ -539,7 +539,7 @@ if (class_exists("GFForms")) {
                                 if($enable_postlink && $entry["post_id"] != NULL) {
 
                                     $permalink = get_permalink($entry["post_id"]);
-                                    $list_html .= "<button class='submit' onclick='document.location.href=\"$permalink\"'>$link_label</button>";
+                                    $list_html .= "<button class='sticky-list-postlink submit' onclick='document.location.href=\"$permalink\"'>$link_label</button>";
                                 }
 
                                 // Only show duplicate link if duplicate is enabled
@@ -549,7 +549,7 @@ if (class_exists("GFForms")) {
                                     if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('publish_posts')) {
                                         $list_html .= "
                                             <form action='$embedd_page' method='post'>
-                                                <button class='submit'>$enable_duplicate_label</button>
+                                                <button class='sticky-list-dublicate submit'>$enable_duplicate_label</button>
                                                 <input type='hidden' name='mode' value='duplicate'>
                                                 <input type='hidden' name='duplicate_id' value='$entry_id'>
                                             </form>";
