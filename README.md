@@ -119,7 +119,7 @@ This functionallity will be added in a future version of Sticky List.
 This will be addressed in a future version of Sticky List.
 
 **Post image meta fields are not populated when editing an entry**<br>
-When editing an entry that has Wordpress Post Image Field the meta inputs are not populated with existing values. This is due to how Gravity Form saves the data. This issue *might* be adressed in a future version if requested.
+When editing an entry that has Wordpress Post Image Field the meta inputs are not populated with existing values. This is due to how Gravity Form saves the data. This issue wont get fixed unless Rocket Genious changes the way it handles these fields.
 
 #### Installation
 
@@ -149,31 +149,27 @@ Sticky List is activated on a per form basis. The settings are located in the in
 
 Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
 
-There is a bug in the Gravity Forms API in pervious versions that prevented fields from getting saved in the entry. The bug was fixed in version 1.8.19.2 of Gravity Forms. Make sure you use an <a href="http://www.gravityhelp.com/downloads/">updated version</a>. If you are not able to update Gravity Forms you can easily apply the patch manually to `plugins/gravityforms/includes/api.php`
+<h5>How can I add the entry ID to the list?</h5>
 
-On line `510`, remove 
+1. Add a field to your form and note the ID of that field
+2. Add this code to your functions.php
+
 ```PHP
-if (empty($entry_id))
-    $entry_id = $entry["id"];
-```
-and replace with
-```PHP
-if (empty($entry_id)) {
-    $entry_id = $entry["id"];
-}else{
-    $entry["id"] = $entry_id;
+add_filter('filter_entries','add_entry_id' );
+function add_entry_id($entries) {
+    foreach ($entries as &$entry) {
+    	$entry["xxx"] = $entry["id"];
+    }
+    return $entries;
 }
 ```
 
-In that case, you also need to change the Sticky List plugin file to requre an earlier version of Gravity Forms
-
-In `plugins/gravity-forms-sticky-list/class-sticky-list.php` on line `8` change 
-```PHP
-protected $_min_gravityforms_version = "1.8.19.2";
-```
-to your version of Gravity Forms. Note that this change will be lost when updating Sticky List. Therefore its absolutely recommended that you update Gravity Forms when using this plugin on a production site.
+3. Change xxx in the code above to the ID of your field (from step 1). 
 
 <h3>Changelog</h3>
+
+**1.2.9**
+* Add css-classes to view, edit, delete, update and post links
 
 **1.2.8**
 * Feature: Display list entries only to a selected role
