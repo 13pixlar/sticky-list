@@ -549,7 +549,7 @@ if (class_exists("GFForms")) {
                                     if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('publish_posts')) {
                                         $list_html .= "
                                             <form action='$embedd_page' method='post'>
-                                                <button class='sticky-list-dublicate submit'>$enable_duplicate_label</button>
+                                                <button class='sticky-list-duplicate submit'>$enable_duplicate_label</button>
                                                 <input type='hidden' name='mode' value='duplicate'>
                                                 <input type='hidden' name='duplicate_id' value='$entry_id'>
                                             </form>";
