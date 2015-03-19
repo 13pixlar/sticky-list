@@ -151,8 +151,7 @@ Make sure that the plugin is activated **and** that your Gravity Forms version i
 
 <h5>How can I add the entry ID to the list?</h5>
 
-1. Add a field to your form and note the ID of that field
-2. Add this code to your functions.php
+Add a field to your form and note the ID of that field and then add this code to your functions.php
 
 ```PHP
 add_filter('filter_entries','add_entry_id' );
@@ -164,7 +163,7 @@ function add_entry_id($entries) {
 }
 ```
 
-3. Change xxx in the code above to the ID of your field (from step 1). 
+Change xxx in the code above to the ID of your field (from step 1). 
 
 <h3>Changelog</h3>
 
