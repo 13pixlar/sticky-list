@@ -173,7 +173,7 @@ function add_entry_id($entries) {
 }
 `
 
-Change xxx in the code above to the ID of your field (from step 1). 
+Change xxx in the code above to the ID of your new field.
 
 == Screenshots ==
 
