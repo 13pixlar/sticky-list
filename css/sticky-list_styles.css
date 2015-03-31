@@ -45,16 +45,16 @@ table.sticky-list button {
 }
 
 /* Pagination styles */
-#sticky-list-wrapper ul.pagination {
+div[id^="sticky-list-wrapper"] ul.pagination {
     list-style: none;
     margin: 0;
 }
-#sticky-list-wrapper ul.pagination li {
+div[id^="sticky-list-wrapper"] ul.pagination li {
     display: inline-block;
     margin-right: 5px;
 }
-#sticky-list-wrapper ul.pagination li.active a,
-#sticky-list-wrapper ul.pagination li.disabled a {
+div[id^="sticky-list-wrapper"] ul.pagination li.active a,
+div[id^="sticky-list-wrapper"] ul.pagination li.disabled a {
     color: inherit;
     text-decoration: none;
     cursor: default;
