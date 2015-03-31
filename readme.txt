@@ -200,6 +200,7 @@ Change xxx in the code above to the ID of your new field.
 
 = 1.2.10 =
 * Added support for multiple lists in one page
+* Added class to table headers
 
 = 1.2.9 =
 * Add css-classes to view, edit, delete, update and post links
