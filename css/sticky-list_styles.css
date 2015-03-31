@@ -67,5 +67,3 @@ div[class^="file_"] .remove-entry {
 div[class^="file_"] + input[type="file"] {
     display: none;
 }
-
-

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
 * List pagination
 * Custom column labels
+* Multiple lists in same page or post
 * Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
 * Fully customizable with dead simple styles to override
 * Fully localized. You can <a href="https://github.com/13pixlar/sticky-list/tree/master/languages">add your translation</a>
@@ -196,6 +197,9 @@ Change xxx in the code above to the ID of your new field.
 4. Front end list 
 
 == Changelog ==
+
+= 1.2.10 =
+* Added support for multiple lists in one page
 
 = 1.2.9 =
 * Add css-classes to view, edit, delete, update and post links

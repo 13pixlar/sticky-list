@@ -21,6 +21,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * List sorting and search (using <a href="http://www.listjs.com/">list.js</a>)
 * List pagination
 * Custom column labels
+* Multiple lists in same page or post
 * Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
 * Fully customizable with dead simple styles to override
 * Fully localized. You can <a href="https://github.com/13pixlar/sticky-list/tree/master/languages">add your translation</a>
@@ -176,6 +177,9 @@ function add_entry_id($entries) {
 Change xxx in the code above to the ID of your new field.
 
 <h3>Changelog</h3>
+
+**1.2.10**
+* Added support for multiple lists in one page
 
 **1.2.9**
 * Add css-classes to view, edit, delete, update and post links
