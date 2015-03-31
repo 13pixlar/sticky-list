@@ -88,6 +88,16 @@ Gravity Forms Sticky List adds conditional confirmations and notifications so th
 
 Sticky List ships with a minimal stylesheet that is easy to override. The table has the class of `.sticky-list` attached to it which can be used to override the default styles. The stylesheet is located in `sticky-list/css/sticky-list_styles.css` in the plugins main directory. To override a style just copy it from <a href="https://github.com/13pixlar/sticky-list/blob/master/css/sticky-list_styles.css">sticky-list_styles.css</a> and paste it in your themes css-file, then modify the style to your liking.
 
+To style the View, Edit, Delete, Post, and Duplicate links you can use these CSS classes:
+
+```
+.sticky-list-view
+.sticky-list-edit
+.sticky-list-delete
+.sticky-list-postlink
+.sticky-list-duplicate
+```
+
 #### Custom capabilities
 
 Sticky List adds two capabilities that can be used to allow users to edit and delete entries in the list. These are `stickylist_edit_entries` and `stickylist_delete_entries`. Users/roles with these capabilities will be able to edit/delete entries in the list.
