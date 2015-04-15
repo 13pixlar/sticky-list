@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.10";
+        protected $_version = "1.2.11";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -847,9 +847,10 @@ if (class_exists("GFForms")) {
                     // ...and the current user is creator OR has the capability to edit others posts
                     if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
 
-                        // Keep starred and read status
+                        // Keep starred and read status and original poster
                         $entry["is_read"] = $original_entry["is_read"];
                         $entry["is_starred"] = $original_entry["is_starred"];
+                        $entry["created_by"] = $original_entry["created_by"];
 
                         // Look for existing file uploads and use them to keep the files
                         foreach ($_POST as $key => &$value) {
