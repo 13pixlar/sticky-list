@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.2.10
+Stable tag: 1.2.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,13 +91,13 @@ Sticky List ships with a minimal stylesheet that is easy to override. The table 
 
 To style the View, Edit, Delete, Post, and Duplicate links you can use these CSS classes:
 
-```
+`
 .sticky-list-view
 .sticky-list-edit
 .sticky-list-delete
 .sticky-list-postlink
 .sticky-list-duplicate
-```
+`
 
 #### Custom capabilities
 
@@ -197,6 +197,9 @@ Change xxx in the code above to the ID of your new field.
 4. Front end list 
 
 == Changelog ==
+
+= 1.2.11 =
+* Edited entries now keep the original poster 
 
 = 1.2.10 =
 * Added support for multiple lists in one page

@@ -178,6 +178,9 @@ Change xxx in the code above to the ID of your new field.
 
 <h3>Changelog</h3>
 
+**1.2.11**
+* Edited entries now keep the original poster 
+
 **1.2.10**
 * Added support for multiple lists in one page
 * Added class to table headers
