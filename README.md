@@ -178,6 +178,12 @@ Change xxx in the code above to the ID of your new field.
 
 <h3>Changelog</h3>
 
+**1.2.13**
+* Added support for post category fields
+
+**1.2.12**
+* Edited entries now retain admin only field values
+
 **1.2.11**
 * Edited entries now keep the original poster 
 

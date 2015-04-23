@@ -4,7 +4,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.2.11";
+        protected $_version = "1.2.13";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -483,6 +483,13 @@ if (class_exists("GFForms")) {
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$field_value</a></td>";
                                 }
 
+                                // If the field is a post category we need to remove the ID from the string
+                                elseif ($field["type"] == "post_category" && $field_value != "") {
+                                    $tdClass = "stickylist-category";
+                                    $field_value = strtok($field_value, ":");
+                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                }
+
                                 // All other fields
                                 else{ 
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
@@ -723,6 +730,13 @@ if (class_exists("GFForms")) {
                         }
                         if (!isset($uploads)) $uploads = "";
 
+                        // Loop trough the form fields and check for post category fields. If found, store ID in $categories array
+                        foreach ($form["fields"] as $fkey => &$fvalue) {
+                            if($fvalue["type"] == 'post_category') {
+                                $categories[] = $fvalue["id"];
+                            }
+                        }
+
                         // This variable will hold upload fields                    
                         $upload_inputs = "";
                      
@@ -738,12 +752,16 @@ if (class_exists("GFForms")) {
                                     $value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
                                 }
 
+                                // If the current field is a post category field we need to remove all but the id from it (id is stored after : in string)
+                                if (is_array($categories) && in_array( $key, $categories ) ) {
+                                    $value = substr( $value, strpos( $value, ':') + 1);                              
+                                }
+
                                 // Format the key
                                 $new_key = str_replace(".", "_", "input_$key");
                                 $form_fields[$new_key] = $form_fields[$key];
 
                                 // If the current field is an upload field we build the html do display it
-                                $form_id = $form["id"];
                                 if (is_array($uploads) && in_array( $key, $uploads ) ) {
                                     if ($value != "") {
 
@@ -851,6 +869,13 @@ if (class_exists("GFForms")) {
                         $entry["is_read"] = $original_entry["is_read"];
                         $entry["is_starred"] = $original_entry["is_starred"];
                         $entry["created_by"] = $original_entry["created_by"];
+
+                        // Look for admin only fields and pass them on from the original entry
+                        foreach ($form["fields"] as $field) {
+                            if($field["adminOnly"] == true) {
+                                $entry[$field["id"]] = $original_entry[$field["id"]];
+                            }
+                        }
 
                         // Look for existing file uploads and use them to keep the files
                         foreach ($_POST as $key => &$value) {
