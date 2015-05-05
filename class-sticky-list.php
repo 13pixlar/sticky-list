@@ -1524,7 +1524,7 @@ if (class_exists("GFForms")) {
 
             $settings = $this->get_form_settings($form);
 
-            if (isset($settings["enable_list"])) {
+            if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
 
                 // Add new notification options    
                 $type = rgar( $notification, 'stickylist_notification_type' );
@@ -1578,7 +1578,7 @@ if (class_exists("GFForms")) {
             $settings = $this->get_form_settings($form);
 
             // Only send notifications if Sticky List is enabled for the current form
-            if(isset($settings["enable_list"])) {
+            if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
                 
                 if(isset($notification["stickylist_notification_type"]) && $notification["stickylist_notification_type"] != "") {
 
@@ -1615,7 +1615,7 @@ if (class_exists("GFForms")) {
 
             $settings = $this->get_form_settings($form);
 
-            if (isset($settings["enable_list"])) {
+            if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
 
                 // Add new confirmation options    
                 $type = rgar( $confirmation, 'stickylist_confirmation_type' );
@@ -1670,7 +1670,7 @@ if (class_exists("GFForms")) {
             $settings = $this->get_form_settings($form);
 
             // Only show confirmations if Sticky List is enabled for the current form
-            if(isset($settings["enable_list"])) {
+            if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
             
                 // Get all confirmations for the current form
                 $confirmations = $form["confirmations"];
