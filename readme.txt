@@ -3,8 +3,8 @@ Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
-Tested up to: 4.1
-Stable tag: 1.2.13
+Tested up to: 4.2.1
+Stable tag: 1.2.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -197,6 +197,9 @@ Change xxx in the code above to the ID of your new field.
 4. Front end list 
 
 == Changelog ==
+
+= 1.2.14 =
+* Fixed a problem with checking if the list was enabled
 
 = 1.2.13 =
 * Added support for post category fields

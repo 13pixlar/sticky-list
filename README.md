@@ -178,6 +178,9 @@ Change xxx in the code above to the ID of your new field.
 
 <h3>Changelog</h3>
 
+**1.2.14**
+* Fixed a problem with checking if the list was enabled
+
 **1.2.13**
 * Added support for post category fields
 
