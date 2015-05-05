@@ -1715,7 +1715,7 @@ if (class_exists("GFForms")) {
                 if(!isset($new_confirmation["redirect"]) )
                     $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
 
-                return $new_confirmation;
+                return '<div id="gform_confirmation_message_' . $form["id"] . '" class="gform_confirmation_message_' . $form["id"] . ' gform_confirmation_message">' . $new_confirmation . '</div>';;
 
             }else{
 
