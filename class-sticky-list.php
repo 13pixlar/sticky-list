@@ -1712,10 +1712,12 @@ if (class_exists("GFForms")) {
 
 
                 // Apply merge tags to the confirmation message if its not a redirect
-                if(!isset($new_confirmation["redirect"]) )
+                if(!isset($new_confirmation["redirect"]) ) {
                     $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
-
-                return '<div id="gform_confirmation_message_' . $form["id"] . '" class="gform_confirmation_message_' . $form["id"] . ' gform_confirmation_message">' . $new_confirmation . '</div>';;
+                    return '<div id="gform_confirmation_message_' . $form["id"] . '" class="gform_confirmation_message_' . $form["id"] . ' gform_confirmation_message">' . $new_confirmation . '</div>';;
+                }else{
+                    return $new_confirmation;
+                }
 
             }else{
 
