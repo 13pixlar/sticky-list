@@ -11,6 +11,9 @@ if (class_exists("GFForms")) {
         protected $_full_path = __FILE__;
         protected $_title = "Gravity Forms Sticky List";
         protected $_short_title = "Sticky List";
+        protected $_capabilities_form_settings = 'gravityforms_stickylist';
+        protected $_capabilities_uninstall = 'gravityforms_stickylist_uninstall';
+        protected $_capabilities = array('gravityforms_stickylist', 'gravityforms_stickylist_uninstall');
 
         public function init(){
             parent::init();
