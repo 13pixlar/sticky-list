@@ -38,7 +38,7 @@ if (class_exists("GFForms")) {
 
             // View or Edit entries
             add_filter("gform_pre_render", array($this,"pre_entry_action"));
-            add_action("gform_post_submission", array($this, "post_edit_entry"), 10, 2);
+            add_action("gform_after_submission", array($this, "post_edit_entry"), 10, 2);
 
             // Delete entries
             $this->maybe_delete_entry();
