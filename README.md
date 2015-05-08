@@ -178,6 +178,24 @@ function add_entry_id($entries) {
 
 Change xxx in the code above to the ID of your new field.
 
+<h5>How can I stop some entries from showing up in the list</h5>
+
+To filter out entries from the list depending on  a value you can use the `filter_entries` filter. For example; if you want to show only approved entries you could use this code in your functions.php:
+
+```PHP
+add_filter('filter_entries','show_only_approved' );
+function show_only_approved($entries) {
+    foreach ($entries as $entryKey => &$entryValue) {
+        if ($entryValue["xxx"] == NULL) {
+            unset($entries[$entryKey]);
+        }
+    }
+    return $entries;
+}
+```
+
+Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
+
 <h3>Changelog</h3>
 
 **1.3**
