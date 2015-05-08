@@ -23,6 +23,7 @@ jQuery(document).ready(function($) {
 	var enableView 				= $('#enable_view');
 	var enableViewLabel 		= $('#gaddon-setting-row-enable_view_label');
 	var enableEdit 				= $('#enable_edit');
+	var newEntryId 				= $('#gaddon-setting-row-new_entry_id');
 	var enableEditLabel 		= $('#gaddon-setting-row-enable_edit_label');
 	var updateText				= $('#gaddon-setting-row-update_text')
 	var enableDelete			= $('#enable_delete');
@@ -63,9 +64,11 @@ jQuery(document).ready(function($) {
 		    if(enableEdit.is(':checked')) {
 		        enableEditLabel.addClass('show');
 		        updateText.addClass('show');
+		        newEntryId.addClass('show');
 		    }else{
 		    	enableEditLabel.removeClass('show');
 		    	updateText.removeClass('show');
+		    	newEntryId.removeClass('show');
 		    }
 		    if(enableDelete.is(':checked')) {
 		        enableDeleteLabel.addClass('show');
@@ -128,6 +131,7 @@ jQuery(document).ready(function($) {
     enableEdit.click(function(event) {
 		enableEditLabel.toggleClass('show');
 		updateText.toggleClass('show');
+		newEntryId.toggleClass('show');
 	});
 
     enableDelete.click(function(event) {
