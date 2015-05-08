@@ -3,8 +3,8 @@ Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
-Tested up to: 4.2.1
-Stable tag: 1.2.14
+Tested up to: 4.2.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,8 @@ Sticky List is activated on a per form basis. The settings are located in the in
 
 Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
 
+Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
+
 = How can I add the entry ID to the list? =
 
 Add a field to your form and note the ID of that field and then add this code to your functions.php
@@ -186,6 +188,8 @@ function add_entry_id($entries) {
 
 Change xxx in the code above to the ID of your new field.
 
+=  =
+
 == Screenshots ==
 
 1. Sticky List settings page 
@@ -197,6 +201,17 @@ Change xxx in the code above to the ID of your new field.
 4. Front end list 
 
 == Changelog ==
+
+= 1.3 =
+* Revamped settings UI
+* Added new capabilities
+* Added option to update entry ID on edit
+* New banner and icon
+* New screenshots
+* Fixed a confirmation redirect bug
+* Fixed an issue with confirmation and notification ID
+* Updated the FAQ
+* Updated a depricated hook
 
 = 1.2.14 =
 * Fixed a problem with checking if the list was enabled
