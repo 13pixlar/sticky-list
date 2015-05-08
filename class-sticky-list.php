@@ -38,7 +38,7 @@ if (class_exists("GFForms")) {
 
             // View or Edit entries
             add_filter("gform_pre_render", array($this,"pre_entry_action"));
-            add_action("gform_post_submission", array($this, "post_edit_entry"), 10, 2);
+	        add_filter("gform_entry_id_pre_save_lead", array($this,"post_edit_entry"), 10, 2);
 
             // Delete entries
             $this->maybe_delete_entry();
@@ -862,48 +862,47 @@ if (class_exists("GFForms")) {
                 // Get original entry
                 $original_entry =  GFAPI::get_entry($original_entry_id);
 
-                // If we have an original entry that is active 
+                // If we have an original entry that is active
                 if($original_entry && $original_entry["status"] == "active") {
 
                     // ...and the current user is creator OR has the capability to edit others posts
                     if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
 
-                        // Keep starred and read status and original poster
-                        $entry["is_read"] = $original_entry["is_read"];
-                        $entry["is_starred"] = $original_entry["is_starred"];
-                        $entry["created_by"] = $original_entry["created_by"];
+	                    foreach ( $form["fields"] as $field ) {
+		                    if ( $field["adminOnly"] == true ) {
+			                    $input_name = 'input_' . str_replace( '.', '_', $field["id"] );
+			                    switch ( $field["type"] ) {
+				                    case 'list' :
+					                    $value = maybe_unserialize($original_entry[ $field["id"] ]);
+					                    $input_value = array();
+					                    if ( is_array( $value ) ) {
+						                    foreach ( $value as $item ) {
+							                    if ( is_array( $item ) ) {
+								                    foreach( $item as $i ){
+									                    array_push( $input_value, $i );
+								                    }
+							                    }
+						                    }
+					                    }
+					                    $_POST[$input_name] = $input_value;
+					                    break;
+				                    case 'multiselect' :
+				                    case 'checkbox' :
+					                    $value = explode( ',', $original_entry[ $field["id"] ] );
+					                    if ( is_array( $value ) ) {
+						                    $_POST[$input_name] = $value;
+					                    }
+					                    break;
+				                    default :
+					                    $value = $original_entry[ $field["id"] ];
+					                    $_POST[$input_name] = $value;
+					                    break;
+			                    }
 
-                        // Look for admin only fields and pass them on from the original entry
-                        foreach ($form["fields"] as $field) {
-                            if($field["adminOnly"] == true) {
-                                $entry[$field["id"]] = $original_entry[$field["id"]];
-                            }
-                        }
+		                    }
+	                    }
 
-                        // Look for existing file uploads and use them to keep the files
-                        foreach ($_POST as $key => &$value) {
-                            if (strpos($key, "file_") !== false) {
-                                $entry[str_replace("file_", "", $key)] = $value;
-                            }     
-                        }
-
-                        // Uppdate original entry with new fields
-                        $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
-
-                        // Empty the newly created entry before deletion (to keep attached files)
-                        foreach ($entry as $key => &$value) {
-                            
-                            // Dont empty the ID or we wont be able to update and remove the entry
-                            if ($key != "id") {
-                                $entry[$key] = "";
-                            }
-                        }
-                        
-                        // Delete newly created entry
-                        if($success_uppdate) {
-                            $empty_the_entry = GFAPI::update_entry($entry, $entry["id"]);
-                            $success_delete = GFAPI::delete_entry($entry["id"]);
-                        } 
+	                    return $original_entry_id;
                     }
                 }
             }
