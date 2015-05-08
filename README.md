@@ -178,7 +178,7 @@ function add_entry_id($entries) {
 
 Change xxx in the code above to the ID of your new field.
 
-<h5>How can I stop some entries from showing up in the list</h5>
+<h5>How can I stop some entries from showing up in the list?</h5>
 
 To filter out entries from the list depending on  a value you can use the `filter_entries` filter. For example; if you want to show only approved entries you could use this code in your functions.php:
 
