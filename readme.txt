@@ -210,7 +210,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 2. Sticky List settings page 
 
-3. Sticky List field settings
+3. Sticky List settings page
 
 4. Sticky List field settings
 
