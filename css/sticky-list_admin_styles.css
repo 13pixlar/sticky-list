@@ -5,6 +5,23 @@ tr + tr {
 tr:last-child { 
     display: table-row;
 }
-img.heart {
-	vertical-align: sub;
+#gaddon-setting-row-link_label th:before,
+#gaddon-setting-row-enable_view_label th:before,
+#gaddon-setting-row-enable_edit_label th:before,
+#gaddon-setting-row-update_text th:before,
+#gaddon-setting-row-new_entry_id th:before,
+#gaddon-setting-row-enable_delete_label th:before,
+#gaddon-setting-row-confirm_delete th:before,
+#gaddon-setting-row-confirm_delete_text th:before,
+#gaddon-setting-row-delete_type th:before,
+#gaddon-setting-row-enable_duplicate_label th:before,
+#gaddon-setting-row-initial_sort th:before,
+#gaddon-setting-row-initial_sort_direction th:before,
+#gaddon-setting-row-enable_search th:before,
+#gaddon-setting-row-page_entries th:before {
+	content: "\27a5";
+	color: #ddd;
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 15px !important;
 }
