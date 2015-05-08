@@ -47,6 +47,7 @@ if (class_exists("GFForms")) {
             add_action("gform_notification_ui_settings", array($this, "stickylist_gform_notification_ui_settings"), 10, 3 );
             add_action("gform_pre_notification_save", array($this, "stickylist_gform_pre_notification_save"), 10, 2 );
             add_filter("gform_disable_notification", array($this, "stickylist_gform_disable_notification" ), 10, 4 );
+            add_filter("gform_notification", array($this, "stickylist_modify_notification" ), 10, 3 );
 
             // Add confirmation options
             add_action("gform_confirmation_ui_settings", array($this, "stickylist_gform_confirmation_ui_settings"), 10, 3 );
@@ -916,7 +917,6 @@ if (class_exists("GFForms")) {
 
                             // If checked we delete the original entry
                             }else{
-                                var_dump($original_entry_id);
                                 $success_delete = GFAPI::delete_entry($original_entry_id);    
                             }
                         }
@@ -1605,7 +1605,7 @@ if (class_exists("GFForms")) {
 
 
         /**
-         * Send selected notification type
+         * Maybe disable notification notification type
          *
          */
         function stickylist_gform_disable_notification( $is_disabled, $notification, $form, $entry ) {
@@ -1640,6 +1640,21 @@ if (class_exists("GFForms")) {
             }
 
             return ( $is_disabled );
+        }
+        
+
+        /**
+         * Make sure that the notification has the correct ID
+         *
+         */
+        function stickylist_modify_notification($notification, $form, $entry) {
+
+            $settings = $this->get_form_settings($form);
+            if(isset($_POST["edit_id"]) && $_POST["edit_id"] != "") {
+                if(true != $settings["new_entry_id"]){
+                    $entry["id"] = $_POST["edit_id"];
+                }
+            }
         }
 
 
@@ -1717,6 +1732,13 @@ if (class_exists("GFForms")) {
                     $_POST["action"] = "new";
                 }
 
+                // Make sure that the conformation has the correct ID
+                if(isset($_POST["edit_id"]) && $_POST["edit_id"] != "") {
+                    if(true != $settings["new_entry_id"]){
+                        $lead["id"] = $_POST["edit_id"];
+                    }
+                }
+
                 // Loop trough all confirmations
                 foreach ($confirmations as $confirmation) {
 
@@ -1727,13 +1749,9 @@ if (class_exists("GFForms")) {
                         $confirmation_type = "";
                     }
 
-
-
                     // Show matching confirmations
                     if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
                         
-                        
-
                         // If the confirmation is a message we add that message to the output sting
                         if($confirmation["type"] == "message") {
                             $new_confirmation .= $confirmation["message"] . " ";
