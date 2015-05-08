@@ -244,6 +244,7 @@ if (class_exists("GFForms")) {
             $enable_view_label      = $this->get_sticky_setting("enable_view_label", $settings);
             $enable_edit            = $this->get_sticky_setting("enable_edit", $settings);
             $enable_edit_label      = $this->get_sticky_setting("enable_edit_label", $settings);
+            $new_entry_id           = $this->get_sticky_setting("new_entry_id", $settings);
             $enable_delete          = $this->get_sticky_setting("enable_delete", $settings);
             $enable_delete_label    = $this->get_sticky_setting("enable_delete_label", $settings);
             $confirm_delete         = $this->get_sticky_setting("confirm_delete", $settings);
@@ -862,49 +863,69 @@ if (class_exists("GFForms")) {
                 // Get original entry
                 $original_entry =  GFAPI::get_entry($original_entry_id);
 
-                // If we have an original entry that is active 
-                if($original_entry && $original_entry["status"] == "active") {
+                // If we have an original entry
+                if($original_entry && is_wp_error($original_entry) == false) {
 
-                    // ...and the current user is creator OR has the capability to edit others posts
-                    if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
+                    // Make sure the entry is active (not in trash)
+                    if($original_entry["status"] == "active") {
 
-                        // Keep starred and read status and original poster
-                        $entry["is_read"] = $original_entry["is_read"];
-                        $entry["is_starred"] = $original_entry["is_starred"];
-                        $entry["created_by"] = $original_entry["created_by"];
+                        // If the current user is creator OR has the capability to edit others posts
+                        if($original_entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) { 
 
-                        // Look for admin only fields and pass them on from the original entry
-                        foreach ($form["fields"] as $field) {
-                            if($field["adminOnly"] == true) {
-                                $entry[$field["id"]] = $original_entry[$field["id"]];
+                            // Keep starred and read status and original poster
+                            $entry["is_read"] = $original_entry["is_read"];
+                            $entry["is_starred"] = $original_entry["is_starred"];
+                            $entry["created_by"] = $original_entry["created_by"];
+
+                            // Look for admin only fields and pass them on from the original entry
+                            foreach ($form["fields"] as $field) {
+                                if($field["adminOnly"] == true) {
+                                    $entry[$field["id"]] = $original_entry[$field["id"]];
+                                }
+                            }
+
+                            // Look for existing file uploads and use them to keep the files
+                            foreach ($_POST as $key => &$value) {
+                                if (strpos($key, "file_") !== false) {
+                                    $entry[str_replace("file_", "", $key)] = $value;
+                                }     
+                            }
+
+
+                            // If new entry ID is not checked
+                            $new_entry_id = $this->get_sticky_setting("new_entry_id", $this->get_form_settings($form));
+                            if (!$new_entry_id) {
+
+                                // Uppdate original entry with new fields
+                                $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
+
+                                // Empty the newly created entry before deletion (to keep attached files)
+                                foreach ($entry as $key => &$value) {
+                                    
+                                    // Dont empty the ID or we wont be able to update and remove the entry
+                                    if ($key != "id") {
+                                        $entry[$key] = "";
+                                    }
+                                }
+                                
+                                // Delete newly created entry
+                                if($success_uppdate) {
+                                    $empty_the_entry = GFAPI::update_entry($entry, $entry["id"]);
+                                    $success_delete = GFAPI::delete_entry($entry["id"]);
+                                }
+
+                            // If checked we delete the original entry
+                            }else{
+                                var_dump($original_entry_id);
+                                $success_delete = GFAPI::delete_entry($original_entry_id);    
                             }
                         }
-
-                        // Look for existing file uploads and use them to keep the files
-                        foreach ($_POST as $key => &$value) {
-                            if (strpos($key, "file_") !== false) {
-                                $entry[str_replace("file_", "", $key)] = $value;
-                            }     
-                        }
-
-                        // Uppdate original entry with new fields
-                        $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
-
-                        // Empty the newly created entry before deletion (to keep attached files)
-                        foreach ($entry as $key => &$value) {
-                            
-                            // Dont empty the ID or we wont be able to update and remove the entry
-                            if ($key != "id") {
-                                $entry[$key] = "";
-                            }
-                        }
-                        
-                        // Delete newly created entry
-                        if($success_uppdate) {
-                            $empty_the_entry = GFAPI::update_entry($entry, $entry["id"]);
-                            $success_delete = GFAPI::delete_entry($entry["id"]);
-                        } 
                     }
+                }
+
+                // If we were unable to edit an entry we must delete the newly created entry
+                if(is_wp_error($original_entry)) {
+                    $success_delete = GFAPI::delete_entry($entry["id"]);
                 }
             }
         }
@@ -1308,6 +1329,18 @@ if (class_exists("GFForms")) {
                             "tooltip" => __('Text for the submit button that is displayed when editing an entry','sticky-list'),
                             "class"   => "small",
                             "default_value" => __('Update','sticky-list')              
+                        ),
+                         array(
+                            "label"   => __('New entry ID','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "new_entry_id",
+                            "tooltip" => __('Check this box to give an edited entry a new ID every time it is updated.','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "new_entry_id"
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('Delete entries','sticky-list'),
