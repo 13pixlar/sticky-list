@@ -198,6 +198,9 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**1.3.0.1**
+* Fixed a bug where notifications were not sent
+
 **1.3**
 * Revamped settings UI
 * Added new capabilities
