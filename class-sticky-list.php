@@ -725,24 +725,20 @@ if (class_exists("GFForms")) {
                     // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry OR is duplicating the entry
                     if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view" || $_POST["mode"] == "duplicate") {
 
-                        // Loop trough the form fields and check for upload fields. If found, store ID in $uploads array
+                        // Loop trough the form fields and check for upload- and category fields. If found, store ID in array
                         foreach ($form["fields"] as $fkey => &$fvalue) {
                             if($fvalue["type"] == 'fileupload' || $fvalue["type"] == "post_image") {
                                 $uploads[] = $fvalue["id"];
                             }elseif ($fvalue["type"] == "post_custom_field" && $fvalue["inputType"] == "fileupload") {
                                 $uploads[] = $fvalue["id"];
+                            }elseif ($fvalue["type"] == 'post_category') {
+                                $categories[] = $fvalue["id"];  
                             }
                         }
                         if (!isset($uploads)) $uploads = "";
+                        if (!isset($categories)) $categories = "";
 
-                        // Loop trough the form fields and check for post category fields. If found, store ID in $categories array
-                        foreach ($form["fields"] as $fkey => &$fvalue) {
-                            if($fvalue["type"] == 'post_category') {
-                                $categories[] = $fvalue["id"];
-                            }
-                        }
-
-                        // This variable will hold upload fields                    
+                        // This variable will hold upload fields
                         $upload_inputs = "";
                      
                         // Loop trough all the fields
