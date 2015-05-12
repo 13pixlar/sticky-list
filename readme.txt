@@ -218,7 +218,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 == Changelog ==
 
-==1.3.0.1==
+= 1.3.0.1 =
 * Fixed a bug where notifications were not sent
 
 = 1.3 =

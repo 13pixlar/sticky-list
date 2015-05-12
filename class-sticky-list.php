@@ -1362,7 +1362,7 @@ if (class_exists("GFForms")) {
                             "label"   => __('Confirm delete','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "confirm_delete",
-                            "tooltip" => __('Check this box require deletions to be confirmed by clicking OK in a dialog box','sticky-list'),
+                            "tooltip" => __('Check this box to require deletions to be confirmed by clicking OK in a dialog box','sticky-list'),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
