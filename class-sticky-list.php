@@ -1660,7 +1660,7 @@ if (class_exists("GFForms")) {
 
             $settings = $this->get_form_settings($form);
 
-            if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
+            if(isset($settings["enable_list"]) && true == $settings["enable_list"] && !isset($confirmation["event"])){
 
                 // Add new confirmation options    
                 $type = rgar( $confirmation, 'stickylist_confirmation_type' );
@@ -1746,23 +1746,28 @@ if (class_exists("GFForms")) {
                     // Show matching confirmations
                     if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
                         
-                        // If the confirmation is a message we add that message to the output sting
-                        if($confirmation["type"] == "message") {
-                            $new_confirmation .= $confirmation["message"] . " ";
+                        // If this is not a "save & continue" confirmation
+                        if (!isset($confirmation["event"])) {
+                            
+                            // If the confirmation is a message and is not a save-event we add that message to the output string
+                            if($confirmation["type"] == "message") {
+                                $new_confirmation .= $confirmation["message"] . " ";
 
-                        // If not, we set the redirect variable to true    
-                        }else{
-                            $new_confirmation = $original_confirmation;
-                            break;
+                            // If not, we set the redirect variable to true    
+                            }else{
+                                $new_confirmation = $original_confirmation;
+                                break;
+                            }
                         }
-                    }             
+                    }        
                 }
-
 
                 // Apply merge tags to the confirmation message if its not a redirect
                 if(!isset($new_confirmation["redirect"]) ) {
+
                     $new_confirmation = GFCommon::replace_variables($new_confirmation, $form, $lead);
-                    return '<div id="gform_confirmation_message_' . $form["id"] . '" class="gform_confirmation_message_' . $form["id"] . ' gform_confirmation_message">' . $new_confirmation . '</div>';;
+                    $new_confirmation = '<div id="gform_confirmation_message_' . $form["id"] . '" class="gform_confirmation_message_' . $form["id"] . ' gform_confirmation_message">' . $new_confirmation . '</div>';
+                    return $new_confirmation;
                 }else{
                     return $new_confirmation;
                 }
