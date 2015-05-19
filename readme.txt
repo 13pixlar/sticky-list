@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 1.3.0.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 * Support for multi page forms
 * Support for multiple uploads in file field
-* Support for GF 1.9 "Save and Continue" functionallity
 
 #### Usage
 
@@ -130,9 +129,6 @@ There is a fully documented version of the plugin on the <a href="https://github
 
 #### Known issues
 
-**The "Save & continue" feature in Gravity Forms 1.9 is not supported**<br>
-This will be addressed in a future version of Sticky List.
-
 **Sticky List does not currently support multi page forms**<br>
 This functionallity will be added in a future version of Sticky List.
 
@@ -171,6 +167,39 @@ Sticky List is activated on a per form basis. The settings are located in the in
 Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
 
 Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
+
+= File uploads can't be edited =
+
+Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.
+
+= Why can't I  edit my multi page entries? =
+
+Multi page forms are not yet supported. This feature is the roadmap for a future release. Only single page forms are supported at this time.
+
+= Can I display a thumbnail/icon instead of the file name in the list? =
+
+This can be done using jQuery.
+
+**Thumbnail**
+
+`
+jQuery(document).ready(function($) {
+    cell = $('.stickylist-fileupload a');
+    image = cell.attr('href');
+    cell.html('<img width="100" src="' + image + '">');
+});
+`
+
+**Icon**
+
+`
+jQuery(document).ready(function($) {
+    cell = $('.stickylist-fileupload a');
+    cell.html('<img width="100" src="path/to/icon.png">');
+});
+`
+
+Note that you might want to tweak the code above a little to fit your needs.
 
 = How can I add the entry ID to the list? =
 
@@ -217,6 +246,10 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list 
 
 == Changelog ==
+
+= 1.3.1 =
+* Added support for "Save & continue"
+* Fixed a bug where duplicate entries would not work
 
 = 1.3.0.1 =
 * Fixed a bug where notifications were not sent

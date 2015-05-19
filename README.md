@@ -34,7 +34,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 * Support for multi page forms
 * Support for multiple uploads in file field
-* Support for GF 1.9 "Save and Continue" functionallity
 
 #### Usage
 
@@ -120,9 +119,6 @@ function hide_some_rows($entries) {
 
 #### Known issues
 
-**The "Save & continue" feature in Gravity Forms 1.9 is not supported**<br>
-This will be addressed in a future version of Sticky List.
-
 **Sticky List does not currently support multi page forms**<br>
 This functionallity will be added in a future version of Sticky List.
 
@@ -162,6 +158,39 @@ Make sure that the plugin is activated **and** that your Gravity Forms version i
 
 Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
 
+<h5>File uploads can't be edited</h5>
+
+Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.
+
+<h5>Why can't I  edit my multi page entries?</h5>
+
+Multi page forms are not yet supported. This feature is the roadmap for a future release. Only single page forms are supported at this time.
+
+<h5>Can I display a thumbnail/icon instead of the file name in the list?</h5>
+
+This can be done using jQuery.
+
+**Thumbnail**
+
+```
+jQuery(document).ready(function($) {
+    cell = $('.stickylist-fileupload a');
+    image = cell.attr('href');
+    cell.html('<img width="100" src="' + image + '">');
+});
+```
+
+**Icon**
+
+```
+jQuery(document).ready(function($) {
+    cell = $('.stickylist-fileupload a');
+    cell.html('<img width="100" src="path/to/icon.png">');
+});
+```
+
+Note that you might want to tweak the code above a little to fit your needs.
+
 <h5>How can I add the entry ID to the list?</h5>
 
 Add a field to your form and note the ID of that field and then add this code to your functions.php
@@ -197,6 +226,10 @@ function show_only_approved($entries) {
 Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
 
 <h3>Changelog</h3>
+
+**1.3.1**
+* Added support for "Save & continue"
+* Fixed a bug where duplicate entries would not work
 
 **1.3.0.1**
 * Fixed a bug where notifications were not sent
