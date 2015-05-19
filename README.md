@@ -172,7 +172,7 @@ This can be done using jQuery.
 
 **Thumbnail**
 
-```
+```javascript
 jQuery(document).ready(function($) {
     cell = $('.stickylist-fileupload a');
     image = cell.attr('href');
@@ -182,7 +182,7 @@ jQuery(document).ready(function($) {
 
 **Icon**
 
-```
+```javascript
 jQuery(document).ready(function($) {
     cell = $('.stickylist-fileupload a');
     cell.html('<img width="100" src="path/to/icon.png">');
