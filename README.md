@@ -170,7 +170,7 @@ Multi page forms are not yet supported. This feature is the roadmap for a future
 
 This can be done using jQuery.
 
-**Thumbnail**
+Thumbnail
 
 ```javascript
 jQuery(document).ready(function($) {
@@ -180,7 +180,7 @@ jQuery(document).ready(function($) {
 });
 ```
 
-**Icon**
+Icon
 
 ```javascript
 jQuery(document).ready(function($) {
