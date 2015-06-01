@@ -1,10 +1,17 @@
 <?php
+
+/* 
+Attention developers
+There is a fully documented and commented version of this file on Github
+https://github.com/13pixlar/sticky-list
+*/
+
 if (class_exists("GFForms")) {
     GFForms::include_addon_framework();
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.3.1";
+        protected $_version = "1.3.3";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -469,7 +476,7 @@ if (class_exists("GFForms")) {
                                     $file_name = basename($field_value);
 
                                     // Make file clickable or not
-                                    if($enable_clickable) {
+                                    if($enable_clickable && $field_value != "") {
                                         $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
                                     }else{
                                         $list_html .= "<td class='sort-$i $nowrap $tdClass'>$file_name</td>";
@@ -493,6 +500,16 @@ if (class_exists("GFForms")) {
                                     $tdClass = "stickylist-category";
                                     $field_value = strtok($field_value, ":");
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                }
+
+                                // If the field is a list field we need to unserialize it, flatten the array and implode it into a string
+                                elseif ($field["type"] == "list" && $field_value != "") {
+                                    if(is_array(maybe_unserialize($field_value))) {
+                                        $list = maybe_unserialize($field_value);
+                                        $field_value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
+                                        $field_value = implode(", ", $field_value);
+                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                    }
                                 }
 
                                 // All other fields

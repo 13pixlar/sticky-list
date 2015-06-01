@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 1.3.1
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 #### Features
 
 * Display a list of entries on the front end
-* Choose who can se the list; entry creator, all logged in users or anyone.
+* Choose who can se the list; specific role, entry creator, all logged in users or anyone.
 * Support for (almost) all Gravity Forms fields
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
@@ -152,7 +152,7 @@ Sometimes after an upgrade Gravity Forms will fail to reactivate add-ons properl
 
 = The list is empty, why? =
 
-You need to check "Show in list" on the fields that you would like to appear in the list. This is done in the form editor when edtiting a field.
+You need to check "Show in list" on the fields that you would like to appear in the list. This is done in the form editor when edtiting a field. <a href="https://ps.w.org/gravity-forms-sticky-list/assets/screenshot-4.png">See screenshot</a>.
 
 = The View and Edit links don't do anything =
 
@@ -180,26 +180,30 @@ Multi page forms are not yet supported. This feature is the roadmap for a future
 
 This can be done using jQuery.
 
-**Thumbnail**
+Thumbnail:
 
 `
 jQuery(document).ready(function($) {
     cell = $('.stickylist-fileupload a');
-    image = cell.attr('href');
-    cell.html('<img width="100" src="' + image + '">');
+    cell.each(function(index) {
+        image = $(this).attr('href');
+        $(this).html('<img width="50" src="' + image + '">');
+    });
 });
 `
 
-**Icon**
+Icon:
 
 `
 jQuery(document).ready(function($) {
     cell = $('.stickylist-fileupload a');
-    cell.html('<img width="100" src="path/to/icon.png">');
+    cell.each(function(index) {
+        $(this).html('<img width="50" src="path/to/icon.jpg">');
+    });
 });
 `
 
-Note that you might want to tweak the code above a little to fit your needs.
+Note that the code above assumes that you have "Make files clickable" checked. Also note that you might want to tweak the code a little to fit your needs.
 
 = How can I add the entry ID to the list? =
 
@@ -246,6 +250,13 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list 
 
 == Changelog ==
+
+= 1.3.3 =
+* Added support for displaying list-field values in the list
+
+= 1.3.2 =
+* Various updates to faq and description
+* Minor code enhancements
 
 = 1.3.1 =
 * Added support for "Save & continue"
