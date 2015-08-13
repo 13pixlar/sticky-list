@@ -221,9 +221,12 @@ if (class_exists("GFForms")) {
          */
         function stickylist_shortcode( $atts ) {
             $shortcode_id = shortcode_atts( array(
-                'id'        => '1',
-                'user'      => '',
-                'showto'    => ''
+                'id'            => '1',
+                'user'          => '',
+                'showto'        => '',
+                'field'         => '',
+                'value'         => '',
+                'test'          => ''
             ), $atts );
 
             // Get the form ID from shortcode
@@ -234,6 +237,12 @@ if (class_exists("GFForms")) {
 
             // Get the user ID from shortcode
             $showto = $shortcode_id['showto'];
+
+            // Get the filter field from shortcode
+            $filterField = $shortcode_id['field'];
+
+            // Get the filter value from shortcode
+            $filterValue = $shortcode_id['value'];
 
             // Get the form
             $form = GFAPI::get_form($form_id);
@@ -332,6 +341,15 @@ if (class_exists("GFForms")) {
                         $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                         $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
                     }
+                }
+
+                // If a filter is set in the shortcode we filter out all entries that do not match
+                if(!empty($entries) && $filterValue && $filterField) {
+                     foreach ($entries as $id => $data) {
+                        if($data[$filterField] != $filterValue) {
+                            unset($entries[$id]);
+                        }
+                     }
                 }
 
                 // If we have some entries, lets loop trough them and start building the output html
