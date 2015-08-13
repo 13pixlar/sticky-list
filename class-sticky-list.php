@@ -346,7 +346,7 @@ if (class_exists("GFForms")) {
                     $entries = apply_filters( 'filter_entries', $entries );
                     
                     // This vaiable will hold all html for the form                
-                    $list_html = "<div id='sticky-list-wrapper_$form_id'>";
+                    $list_html = "<div id='sticky-list-wrapper_$form_id' class='sticky-list-wrapper'>";
                     
                     // If sorting and searching is enabled, show search box        
                     if($enable_sort && $enable_search) {
