@@ -63,6 +63,11 @@ div[id^="sticky-list-wrapper"] ul.pagination li.disabled a {
 /* Upload field styles */
 div[class^="file_"] .remove-entry {
     cursor: pointer;
+    text-decoration: none;
+    border-bottom: none;
+}
+div[class^="file_"] a.remove-entry img {
+    display: inline-block;
 }
 div[class^="file_"] + input[type="file"] {
     display: none;
