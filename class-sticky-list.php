@@ -11,7 +11,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.3.3";
+        protected $_version = "1.3.4";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -352,6 +352,11 @@ if (class_exists("GFForms")) {
                      }
                 }
 
+                // Allow for entries filtering
+                if(!empty($entries)) {
+                    $entries = apply_filters( 'filter_entries', $entries );
+                }
+
                 // If we have some entries, lets loop trough them and start building the output html
                 if(!empty($entries)) {
 
@@ -359,9 +364,6 @@ if (class_exists("GFForms")) {
                     if($initial_sort == "date_added" && $initial_sort_direction == "ASC") {
                         $entries = array_reverse($entries);
                     }
-
-                    // Allow for entries filtering
-                    $entries = apply_filters( 'filter_entries', $entries );
                     
                     // This vaiable will hold all html for the form                
                     $list_html = "<div id='sticky-list-wrapper_$form_id' class='sticky-list-wrapper'>";

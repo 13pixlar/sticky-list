@@ -3,8 +3,8 @@ Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
-Tested up to: 4.2.2
-Stable tag: 1.3.3
+Tested up to: 4.2.4
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,10 @@ To use this in a template file, for example on the user profile page (make user 
 
 If you want to use the list on different pages and restrict viewing of entries to different groups you can include the `showto` parameter in the shot code. This parameter has three possible settings: `creator`, `loggedin` or `everyone`.<br>
 `[stickylist id="1" user="5" showto="creator"]`
+
+If you want to filter out some entries depending on a value of a field you can use the attributes **field** and **value** like so:<br>
+`[stickylist field="5" value="Test"]`
+The shortcode above would produce a list that only contained entries where the field with an ID of 5 had a value of "Test". You can check all field ID's in the form editor.
 
 #### List and edit Gravity Form entries on the front end
 
@@ -250,6 +254,10 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list 
 
 == Changelog ==
+
+= 1.3.4 =
+* Added ability to filter entries via shortcode
+* Fixed an issue where an embty list would still shot table headers
 
 = 1.3.3 =
 * Added support for displaying list-field values in the list
