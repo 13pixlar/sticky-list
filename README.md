@@ -12,6 +12,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Display a list of entries on the front end
 * Choose who can se the list; specific role, entry creator, all logged in users or anyone.
 * Support for (almost) all Gravity Forms fields
+* Multi page form support
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
@@ -32,7 +33,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### Planned features
 
-* Support for multi page forms
 * Support for multiple uploads in file field
 
 #### Usage
@@ -61,7 +61,7 @@ The shortcode above would produce a list that only contained entries where the f
 
 #### List and edit Gravity Form entries on the front end
 
-Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityView</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page.
+Front end editing of entries has always been a problem in Gravity Forms. Solutions that exist are buggy and not very feature rich. Gravity Forms Sticky List aims to fill this gap and provide a simple and solid way to view, edit and delete entry submissions on the front end. The goal of the plugin is not to to display entries in a fancy way (<a href="https://gravityview.co/">GravityView</a> already does that brilliantly) but to provide a simple, lightweight and rock solid way to list, edit and delete submissions on the front-end. Lists can be embedded in any post or page and Sticky List also supports front end editing of multi page forms.
 
 #### Delete Gravity Form submissions from front end
 
@@ -124,9 +124,6 @@ function hide_some_rows($entries) {
 
 #### Known issues
 
-**Sticky List does not currently support multi page forms**<br>
-This functionallity will be added in a future version of Sticky List.
-
 **Multiple file uploads in same field does not work**<br>
 This will be addressed in a future version of Sticky List.
 
@@ -169,10 +166,6 @@ Make sure that your user/role has the correct capabilities. You can use a <a hre
 <h5>File uploads can't be edited</h5>
 
 Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.
-
-<h5>Why can't I  edit my multi page entries?</h5>
-
-Multi page forms are not yet supported. This feature is the roadmap for a future release. Only single page forms are supported at this time.
 
 <h5>Can I display a thumbnail/icon instead of the file name in the list?</h5>
 
