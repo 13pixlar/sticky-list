@@ -232,6 +232,12 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**1.4**
+* Multi page support
+* Remove table header when last list item is deleted
+* Filter by empty value in shortcode
+* Better support for multiple lists in one page
+
 **1.3.4**
 * Added ability to filter entries via shortcode
 * Fixed an issue where an embty list would still shot table headers
