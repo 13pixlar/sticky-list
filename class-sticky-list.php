@@ -670,7 +670,7 @@ if (class_exists("GFForms")) {
 
                                 window.listUpdated = function(){
 
-                                    $('.sticky-list-delete').click(function(event) {
+                                    $('#sticky-list-wrapper_$form_id .sticky-list-delete').click(function(event) {
 
                                         event.stopImmediatePropagation()
                                     
