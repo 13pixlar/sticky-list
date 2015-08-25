@@ -874,9 +874,9 @@ if (class_exists("GFForms")) {
                         });
                         </script>
                         <!-- End JQuery -->
-
+                        
                 <?php   // Add our manipulated fields to the $_POST variable
-                        $_POST = $form_fields;
+                        $_POST = array_merge($form_fields,$_POST);
                     }
                 }
             }
