@@ -695,7 +695,13 @@ if (class_exists("GFForms")) {
                                                     background: '#fbdcdc',
                                                     color: '#fff'
                                                 });
-                                                current_row.hide('slow');
+                                                current_row.hide('slow', function() {
+                                                    current_row.remove();
+                                                    remaining_rows = $('#sticky-list-wrapper_$form_id tbody tr');
+                                                    if(remaining_rows.length === 0) {
+                                                        $('#sticky-list-wrapper_$form_id table').html('" . $settings["empty_list_text"] . "');
+                                                    }
+                                                });
                                             })
                                             .fail(function() {
                                                 current_button.html('$delete_failed');
