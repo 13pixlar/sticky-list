@@ -344,7 +344,7 @@ if (class_exists("GFForms")) {
                 }
 
                 // If a filter is set in the shortcode we filter out all entries that do not match
-                if(!empty($entries) && $filterValue && $filterField) {
+                if(!empty($entries) && $filterField) {
                      foreach ($entries as $id => $data) {
                         if($data[$filterField] != $filterValue) {
                             unset($entries[$id]);
