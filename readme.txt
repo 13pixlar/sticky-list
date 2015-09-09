@@ -139,8 +139,8 @@ This will be addressed in a future version of Sticky List.
 **Post image meta fields are not populated when editing an entry**<br>
 When editing an entry that has Wordpress Post Image Field the meta inputs are not populated with existing values. This is due to how Gravity Form saves the data. This issue wont get fixed unless Rocket Genious changes the way it handles these fields.
 
-**Not fully compatible with Gravity Forms "limit entries" feature**<br>
-When imposing a limit to the number of entries allowed for a form the edit functionallity will stop working when the limit is reached.
+**Not fully compatible with Gravity Forms "limit entries" and "No Duplicates" features**<br>
+When imposing a limit to the number of entries allowed for a form the edit functionallity will stop working when the limit is reached. The same issue affect usage of the No Duplicate feature. If using this feature on a form entry edits wont save unless you change the input.
 
 == Installation ==
 
