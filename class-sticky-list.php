@@ -741,6 +741,9 @@ if (class_exists("GFForms")) {
          *
          */
         public function pre_entry_action($form) {
+
+            // Add support for get requests
+            $_POST = array_merge($_POST, $_GET);
             
             if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
