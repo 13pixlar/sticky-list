@@ -232,6 +232,9 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**1.4.1**
+* Added limit for nr of posts in embedd dropdown
+
 **1.4**
 * Multi page support
 * Remove table header when last list item is deleted
