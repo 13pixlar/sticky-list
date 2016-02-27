@@ -863,7 +863,7 @@ if (class_exists("GFForms")) {
 
                             $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
                             $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
-                            thisForm.prepend('<input type="text" name="mode" value="view" />');
+                            thisForm.prepend('<input type="hidden" name="mode" value="view" />');
 
                             <?php
                               wp_enqueue_script(
