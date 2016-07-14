@@ -20,7 +20,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Display a list of entries on the front end
 * Choose who can se the list; specific role, entry creator, all logged in users or anyone.
 * Support for (almost) all Gravity Forms fields
-* Multi page form support
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
@@ -40,6 +39,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 #### Planned features
 
 * Support for multiple uploads in file field
+* Support for full multi page forms
 
 #### Usage
 
