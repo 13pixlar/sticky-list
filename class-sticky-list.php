@@ -699,7 +699,7 @@ if (class_exists("GFForms")) {
                                                     current_row.remove();
                                                     remaining_rows = $('#sticky-list-wrapper_$form_id tbody tr');
                                                     if(remaining_rows.length === 0) {
-                                                        $('#sticky-list-wrapper_$form_id table').html('" . $settings["empty_list_text"] . "');
+                                                        $('#sticky-list-wrapper_$form_id table').html('" . esc_js($settings["empty_list_text"]) . "');
                                                     }
                                                 });
                                             })
