@@ -6,6 +6,8 @@ tr:last-child {
     display: table-row;
 }
 #gaddon-setting-row-link_label th:before,
+#gaddon-setting-row-enable_pdf_label th:before,
+#gaddon-setting-row-enable_pdf_id th:before,
 #gaddon-setting-row-enable_view_label th:before,
 #gaddon-setting-row-enable_edit_label th:before,
 #gaddon-setting-row-update_text th:before,
