@@ -3,8 +3,8 @@ Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
-Tested up to: 4.3
-Stable tag: 1.4
+Tested up to: 4.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Display a list of entries on the front end
 * Choose who can se the list; specific role, entry creator, all logged in users or anyone.
 * Support for (almost) all Gravity Forms fields
-* Multi page form support
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
@@ -40,6 +39,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 #### Planned features
 
 * Support for multiple uploads in file field
+* Support for full multi page forms
 
 #### Usage
 
@@ -250,6 +250,9 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list 
 
 == Changelog ==
+
+= 1.4.1 =
+* Added limit for nr of posts in embedd dropdown
 
 = 1.4 =
 * Multi page support

@@ -11,7 +11,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.4";
+        protected $_version = "1.4.1";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -699,7 +699,7 @@ if (class_exists("GFForms")) {
                                                     current_row.remove();
                                                     remaining_rows = $('#sticky-list-wrapper_$form_id tbody tr');
                                                     if(remaining_rows.length === 0) {
-                                                        $('#sticky-list-wrapper_$form_id table').html('" . $settings["empty_list_text"] . "');
+                                                        $('#sticky-list-wrapper_$form_id table').html('" . esc_js($settings["empty_list_text"]) . "');
                                                     }
                                                 });
                                             })
@@ -1159,7 +1159,7 @@ if (class_exists("GFForms")) {
             <?php
 
             // Build an array of all post to allow for selection in "embedd page" dropdown
-            $args = array( 'posts_per_page' => 999999, 'post_type' => 'any', 'post_status' => 'any', 'orderby' => 'title'); 
+            $args = array( 'posts_per_page' => 1001, 'post_type' => 'any', 'post_status' => 'any', 'orderby' => 'date', 'order' => 'ASC'); 
             $posts = get_posts( $args );
             $posts_array = array();
             foreach ($posts as $post) {
@@ -1177,6 +1177,12 @@ if (class_exists("GFForms")) {
                         ),$posts_array
                     );
                 }
+            }
+
+            if(count($posts_array) > 1000) {
+                $embedd_post_page_label = __('Embedd page/post','sticky-list') . "<br><small>" . __('<strong>NOTE</strong>: Only the latest 1000 items are shown. Use "custom url" below if your desired post is not listed.','sticky-list') . "</small>";
+            }else {
+                $embedd_post_page_label = __('Embedd page/post','sticky-list');
             }
 
             // Buld an array of all fields to allow for selection in the "initial sort" dropdown
@@ -1271,7 +1277,7 @@ if (class_exists("GFForms")) {
                             "choices" => $roles_array
                         ),
                         array(
-                            "label"   => __('Embedd page/post','sticky-list'),
+                            "label"   => $embedd_post_page_label,
                             "type"    => "select",
                             "name"    => "embedd_page",
                             "tooltip" => __('The page/post where the form is embedded. This page will be used to view/edit the entry','sticky-list'),
