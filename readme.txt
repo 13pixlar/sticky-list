@@ -48,20 +48,24 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 3. Enable Sticky List for that form and choose your settings
 4. Select the page/post where the **form** is embedded
 5. Go to the form editor and select what fields should be displayed in the list
-6. Put the shortcode in a page/post with the corresponding form id, i.e:<br>
-`[stickylist id="1"]`
+6. Put the shortcode in a page/post with the corresponding form id, i.e: `[stickylist id="1"]`
 
-If you want to display entries only from a specific user you can include the user ID like so:<br>
+If you want to display entries only from a specific user you can include the user ID like so:
+
 `[stickylist id="1" user="5"]`
 
-To use this in a template file, for example on the user profile page (make user that the variable **$user_id** holds the ID of the user who's profile is being viewed):<br>
+To use this in a template file, for example on the user profile page (make user that the variable **$user_id** holds the ID of the user who's profile is being viewed):
+
 `echo do_shortcode( "[stickylist id='1' user='" . $user_id . "']");`
 
-If you want to use the list on different pages and restrict viewing of entries to different groups you can include the `showto` parameter in the shot code. This parameter has three possible settings: `creator`, `loggedin` or `everyone`.<br>
+If you want to use the list on different pages and restrict viewing of entries to different groups you can include the `showto` parameter in the shot code. This parameter has three possible settings: `creator`, `loggedin` or `everyone`.
+
 `[stickylist id="1" user="5" showto="creator"]`
 
-If you want to filter out some entries depending on a value of a field you can use the attributes **field** and **value** like so:<br>
+If you want to filter out some entries depending on a value of a field you can use the attributes **field** and **value** like so:
+
 `[stickylist field="5" value="Test"]`
+
 The shortcode above would produce a list that only contained entries where the field with an ID of 5 had a value of "Test". You can check all field ID's in the form editor.
 
 #### List and edit Gravity Form entries on the front end
