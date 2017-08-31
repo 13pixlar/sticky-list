@@ -831,9 +831,8 @@ if (class_exists("GFForms")) {
                         $form_id = $form['id'];
 
                         // ...only for the form that was acutally submitted
-                        if ($_POST["gform_submit"] == $form_id || isset($_POST["mode"])) {
-                            $form_fields["is_submit_$form_id"] = "1";
-                        }
+                        if (isset($_POST["mode"])) $form_fields["is_submit_$form_id"] = "1";
+                        if (isset($_POST["gform_submit"]) && $_POST["gform_submit"] == $form_id) $form_fields["is_submit_$form_id"] = "1";
 
                         // Get current form settings
                         $settings = $this->get_form_settings($form);
