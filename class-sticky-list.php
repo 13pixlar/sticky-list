@@ -484,7 +484,7 @@ if (class_exists("GFForms")) {
 
                                     // Concatenate field values into string separated by a space
                                     foreach ($field_value as $field => $value) {
-                                        $field_values .= $value . " ";
+                                        if(!empty($value)) $field_values .= $value . " ";
                                     }
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_values</td>";
                                 }
