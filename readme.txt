@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.8.1
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -254,6 +254,13 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list
 
 == Changelog ==
+
+= 1.4.2 =
+* Fixed bad formating in readme that caused problems with copy/paste
+* Fixed double spacing bug that caused search not to match in some conditions
+* Updated stable tag to 4.8.1
+* Fixed an undefined index notice
+* Removed unwanted spaces
 
 = 1.4.1 =
 * Added limit for nr of posts in embedd dropdown

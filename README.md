@@ -232,6 +232,13 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**1.4.2**
+* Fixed bad formating in readme that caused problems with copy/paste
+* Fixed double spacing bug that caused search not to match in some conditions
+* Updated stable tag to 4.8.1
+* Fixed an undefined index notice
+* Removed unwanted spaces
+
 **1.4.1**
 * Added limit for nr of posts in embedd dropdown
 
