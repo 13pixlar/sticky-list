@@ -2,7 +2,7 @@ tr + tr {
     display: none;
 }
 .show,
-tr:last-child { 
+tr:last-child {
     display: table-row;
 }
 #gaddon-setting-row-link_label th:before,

@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
 	var enablePagination		= $('#enable_pagination');
 	var pageEntries				= $('#gaddon-setting-row-page_entries');
 
-	
+
 	/**
      * Main function to toggle fields depending on checkboxes
      *
@@ -115,7 +115,7 @@ jQuery(document).ready(function($) {
 	toggleActive();
 
 	// Toggle visibility on click
-	
+
 	active.click(function(event) {
 		toggleActive();
 	});
@@ -156,10 +156,10 @@ jQuery(document).ready(function($) {
 	enableSort.click(function(event) {
 		enableSearch.toggleClass('show');
 		initialSort.toggleClass('show');
-		initialSortDirection.toggleClass('show');		
+		initialSortDirection.toggleClass('show');
 	});
 
 	enablePagination.click(function(event) {
-		pageEntries.toggleClass('show');		
+		pageEntries.toggleClass('show');
 	});
 });

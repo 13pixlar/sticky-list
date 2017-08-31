@@ -32,11 +32,11 @@ table.sticky-list form input {
 /* Style the action buttons */
 table.sticky-list button {
     background:none!important;
-    border:none; 
+    border:none;
     padding:0!important;
     cursor: pointer;
     font-style: normal;
-    font-weight: normal;   
+    font-weight: normal;
     text-transform: none;
     font-size: inherit;
     color: inherit;

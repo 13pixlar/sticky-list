@@ -5,7 +5,7 @@ Sticky List is a Gravity Forms add-on that lets you list and **edit entries** fr
 <h2>Description</h2>
 
 #### Sticky List
-Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries. 
+Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries.
 
 #### Features
 
@@ -33,14 +33,14 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 #### Planned features
 
 * Support for multiple uploads in file field
-* Support for multi page form 
+* Support for multi page form
 
 #### Usage
 
 1. Upload and activate the plugin
 2. Go to the settings page of a form and click the Sticky List settings tab
 3. Enable Sticky List for that form and choose your settings
-4. Select the page/post where the **form** is embedded  
+4. Select the page/post where the **form** is embedded
 5. Go to the form editor and select what fields should be displayed in the list
 6. Put the shortcode in a page/post with the corresponding form id, i.e:<br>
  `[stickylist id="1"]`
@@ -65,7 +65,7 @@ Front end editing of entries has always been a problem in Gravity Forms. Solutio
 
 #### Delete Gravity Form submissions from front end
 
-Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending on the per form settings. 
+Gravity Forms Sticky List uses a simple ajax approach to deleting entries. Deleted entries are moved to trash or permanently deleted depending on the per form settings.
 
 #### Create, edit and delete Wordpress posts on the front end
 
@@ -77,7 +77,7 @@ You can use the list to display entries from a specified user. This is helpful w
 
 #### Sort and search entries
 
-Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately. 
+Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately.
 
 #### Conditional confirmations and notifications
 
@@ -113,7 +113,7 @@ This code (when placed in functions.php) would filter out all entries where fiel
 ```PHP
 add_filter('filter_entries','hide_some_rows' );
 function hide_some_rows($entries) {
-	foreach ($entries as $entryKey => $entryValue) {		
+	foreach ($entries as $entryKey => $entryValue) {
 		if ($entryValue["1"] == "some-text") {
 			unset($entries[$entryKey]);
 		}
@@ -280,7 +280,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 * Edited entries now retain admin only field values
 
 **1.2.11**
-* Edited entries now keep the original poster 
+* Edited entries now keep the original poster
 
 **1.2.10**
 * Added support for multiple lists in one page
