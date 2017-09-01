@@ -415,7 +415,10 @@ if (class_exists("GFForms")) {
 
                         $entry_id = $entry["id"];
 
-                        $list_html .= "<tr>";
+                        // Make is_read class
+                        $is_read = ($entry["is_read"]) ? "is_read" : "not_read" ;
+
+                        $list_html .= "<tr class='" . $is_read . "'>";
 
                         // Recycle the sorting counter we used above
                         $i=0;
@@ -837,6 +840,12 @@ if (class_exists("GFForms")) {
                         // Get current form settings
                         $settings = $this->get_form_settings($form);
 
+                        // Maybe mark as read
+                        $mark_read_view = $this->get_sticky_setting("mark_read_view", $settings);
+                        $mark_read_edit = $this->get_sticky_setting("mark_read_edit", $settings);
+                        if($_POST["mode"] == "edit") if($mark_read_edit) GFAPI::update_entry_property( $form_fields["id"], "is_read", 1);
+                        if($_POST["mode"] == "view") if($mark_read_view) GFAPI::update_entry_property( $form_fields["id"], "is_read", 1);
+
                         // Get update text
                         if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = ""; ?>
 
@@ -852,15 +861,15 @@ if (class_exists("GFForms")) {
                             thisForm.append('<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />');
                             thisForm.append('<input type="hidden" name="mode" value="edit" />');
                             $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
+                <?php
+                        }
 
-                <?php   }
-
-                        // If we are in view mode we disable all inputs and hide the submit button
                         if($_POST["mode"] == "view") { ?>
 
                             $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
                             $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
-                <?php   }
+                <?php
+                        }
 
                         // If we have a post ID it means that there is a post field present. We then insert a hidden field with the post ID for use later
                         if($form_fields["post_id"] != null ) { ?>
@@ -1462,6 +1471,22 @@ if (class_exists("GFForms")) {
                             "tooltip" => __('Label for the duplicate button','sticky-list'),
                             "class"   => "small",
                             "default_value" => __('Duplicate','sticky-list')
+                        ),
+                         array(
+                            "label"   => __('Mark entries as read','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "mark_read",
+                            "tooltip" => __('Check these boxes to mark an entry as read when viewed or edited.','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('On view','sticky-list'),
+                                    "name"  => "mark_read_view"
+                                ),
+                                array(
+                                    "label" => __('On edit','sticky-list'),
+                                    "name"  => "mark_read_edit"
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('Action column header','sticky-list'),
