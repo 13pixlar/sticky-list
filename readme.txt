@@ -30,6 +30,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * List pagination
 * Custom column labels
 * Multiple lists in same page or post
+* Mark entries as read when viewed or edited on frontend
 * Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
 * Fully customizable with dead simple styles to override
 * Fully localized. You can <a href="https://github.com/13pixlar/sticky-list/tree/master/languages">add your translation</a>
@@ -104,6 +105,13 @@ To style the View, Edit, Delete, Post, and Duplicate links you can use these CSS
 .sticky-list-delete
 .sticky-list-postlink
 .sticky-list-duplicate
+`
+
+To style read and unread entries in the list you can use these CSS classes
+
+`
+.is_read
+.not_read
 `
 
 #### Custom capabilities
