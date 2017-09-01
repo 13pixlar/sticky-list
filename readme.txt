@@ -264,6 +264,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 == Changelog ==
 
 = 1.4.2 =
+* Mark entries as read when viewed or edited on frontend
 * Fixed bad formating in readme that caused problems with copy/paste
 * Fixed double spacing bug that caused search not to match in some conditions
 * Updated stable tag to 4.8.1

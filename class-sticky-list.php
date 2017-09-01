@@ -4,6 +4,14 @@
 Attention developers
 There is a fully documented and commented version of this file on Github
 https://github.com/13pixlar/sticky-list
+
+Preimum features (to be implemented):
+Multi page form support
+Multiple file upload
+Fully compatible with Gravity Forms “limit entries” and “No Duplicates” features
+Export list to .csv from front end (based of search results)
+Choose who can view/edit/delete and who can see the entries
+Abillity to control all settings from within the shortcode
 */
 
 if (class_exists("GFForms")) {
