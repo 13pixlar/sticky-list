@@ -526,6 +526,19 @@ if (class_exists("GFForms")) {
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$field_value</a></td>";
                                 }
 
+                                // If the field is an number field we need to format it
+                                elseif ($field["type"] == "number" && $field_value != "") {
+                                    $tdClass = "stickylist-number";
+                                    if ($field["numberFormat"] == "decimal_comma") {
+                                        $field_value = number_format($field_value,2,",",".");
+                                        $field_value = str_replace(",00", "", $field_value);
+                                    }elseif ($field["numberFormat"] == "decimal_dot") {
+                                        $field_value = number_format($field_value,2,".",",");
+                                        $field_value = str_replace(".00", "", $field_value);
+                                    }
+                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                }
+
                                 // If the field is a post category we need to remove the ID from the string
                                 elseif ($field["type"] == "post_category" && $field_value != "") {
                                     $tdClass = "stickylist-category";
