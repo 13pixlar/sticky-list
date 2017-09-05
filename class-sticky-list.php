@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.4.2";
+        protected $_version = "1.4.3";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -768,6 +768,8 @@ if (class_exists("GFForms")) {
 
             if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
+                echo "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/arrive.min.js' ) . "'></script>";
+
                 if($_POST["mode"] == "edit") {
                     $edit_id = $_POST["edit_id"];
                     $form_fields = GFAPI::get_entry($edit_id);
@@ -803,7 +805,7 @@ if (class_exists("GFForms")) {
                         if (!isset($categories)) $categories = "";
 
                         // This variable will hold upload fields
-                        $upload_inputs = "";
+                        $upload_inputs = false;
 
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
@@ -826,7 +828,7 @@ if (class_exists("GFForms")) {
                                 $new_key = str_replace(".", "_", "input_$key");
                                 $form_fields[$new_key] = $form_fields[$key];
 
-                                // If the current field is an upload field we build the html do display it
+                                // If the current field is an upload field we build the html to display it
                                 if (is_array($uploads) && in_array( $key, $uploads ) ) {
                                     if ($value != "") {
 
@@ -842,7 +844,18 @@ if (class_exists("GFForms")) {
                                             $show_delete = "";
                                         }
 
-                                        $upload_inputs .= "$('input[name=\"$new_key\"]').before('<div class=\"file_$key\"><a href=\"$path\">$file</a>$show_delete<input name=\"file_$key\" type=\"hidden\" value=\"$value\"></div>');";
+                                        $upload_inputs = true;
+
+                                        ?>
+                                        <script>
+                                        jQuery(document).ready(function($) {
+                                            $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
+                                            $(document).arrive("form", function(el) {
+                                                $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
+                                            });
+                                        });
+                                        </script>
+                                        <?php
                                     }
                                 }
 
@@ -873,22 +886,30 @@ if (class_exists("GFForms")) {
                         <!-- Add JQuery to help with view/update/delete -->
                         <script>
                         jQuery(document).ready(function($) {
-                            var thisForm = $('#gform_<?php echo $form_id;?>')
+                            var thisForm = $('#gform_<?php echo $form_id;?>');
 
                 <?php   // If we are in edit mode we insert two hidden fields with entry id and mode = edit
                         if($_POST["mode"] == "edit") { ?>
 
-                            thisForm.append('<input type="hidden" name="action" value="edit" />');
-                            thisForm.append('<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />');
-                            thisForm.append('<input type="hidden" name="mode" value="edit" />');
+                            var edit = '<input type="hidden" name="action" value="edit" />';
+                            var edit_id = '<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />';
+                            var mode = '<input type="hidden" name="mode" value="edit" />';
+                            thisForm.append(edit, edit_id, mode);
                             $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
+
+                            $(document).arrive("form", function(el) {
+                                $(el).append(edit, edit_id, mode);
+                                $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
+                            });
                 <?php
                         }
 
                         if($_POST["mode"] == "view") { ?>
 
-                            $("#gform_<?php echo $form_id;?> :input").attr("disabled", true);
-                            $("#gform_submit_button_<?php echo $form_id;?>").css('display', 'none');
+                            $("#gform_submit_button_<?php echo $form_id;?>").remove();
+                            $(document).arrive("form", function(el) {
+                                $("#gform_submit_button_<?php echo $form_id;?>").remove();
+                            });
                 <?php
                         }
 
@@ -896,12 +917,18 @@ if (class_exists("GFForms")) {
                         if($form_fields["post_id"] != null ) { ?>
 
                             thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
+                            $(document).arrive("form", function(el) {
+                                $(el).append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
+                            });
                 <?php   }
 
                         // If we have one ore more upload fields we output the html to help with editing
-                        if($upload_inputs != "") {
-                            $upload_inputs .= "$('div[class^=\"file_\"] .remove-entry').click( function(event){ event.preventDefault; $(this).parent().remove();});";
-                            echo $upload_inputs;
+                        if($upload_inputs) { ?>
+                            $('div[class^=\"file_\"] .remove-entry').click( function(event){ event.preventDefault; $(this).parent().remove();});
+                            $(document).arrive("form", function(el) {
+                                $('div[class^=\"file_\"] .remove-entry').click( function(event){ event.preventDefault; $(this).parent().remove();});
+                            });
+                            <?php
                         } ?>
 
                         });

@@ -132,6 +132,9 @@ function hide_some_rows($entries) {
 
 #### Known issues
 
+**Multi page file uploads**<br>
+In multi page forms, file uploads must be on the last page to be editable.
+
 **Multiple file uploads in same field does not work**<br>
 This will be addressed in a future version of Sticky List.
 
