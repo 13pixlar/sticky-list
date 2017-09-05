@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.8.1
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -265,6 +265,12 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list
 
 == Changelog ==
+
+= 1.4.4 =
+* Fixed an issue where a form in ajax mode would create a new entry in a multi page form
+
+= 1.4.3 =
+* Improved formating of numbers field
 
 = 1.4.2 =
 * Mark entries as read when viewed or edited on frontend

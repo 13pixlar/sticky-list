@@ -243,6 +243,12 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**1.4.4**
+* Fixed an issue where a form in ajax mode would create a new entry in a multi page form
+
+**1.4.3**
+* Improved formating of numbers field
+
 **1.4.2**
 * Mark entries as read when viewed or edited on frontend
 * Fixed bad formating in readme that caused problems with copy/paste
