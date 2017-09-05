@@ -824,6 +824,16 @@ if (class_exists("GFForms")) {
                                     $value = substr( $value, strpos( $value, ':') + 1);
                                 }
 
+                                // If the value is numeric we might need to format if
+                                if (is_numeric($value)) {
+                                    $field = GFFormsModel::get_field($form, $key);
+                                    if ($field->type == "number") {
+                                        if ($field->numberFormat == "decimal_comma") {
+                                            $value = str_replace(".", ",", $value);
+                                        }
+                                    }
+                                }
+
                                 // Format the key
                                 $new_key = str_replace(".", "_", "input_$key");
                                 $form_fields[$new_key] = $form_fields[$key];
