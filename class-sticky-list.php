@@ -284,8 +284,6 @@ if (class_exists("GFForms")) {
             $enable_duplicate_label = $this->get_sticky_setting("enable_duplicate_label", $settings);
             $action_column_header   = $this->get_sticky_setting("action_column_header", $settings);
             $enable_sort            = $this->get_sticky_setting("enable_sort", $settings);
-            $enable_export          = $this->get_sticky_setting("enable_export", $settings);
-            $export_link_text       = $this->get_sticky_setting("export_link_text", $settings);
             $initial_sort           = $this->get_sticky_setting("initial_sort", $settings);
             $initial_sort_direction = $this->get_sticky_setting("initial_sort_direction", $settings);
             $enable_search          = $this->get_sticky_setting("enable_search", $settings);
@@ -387,12 +385,6 @@ if (class_exists("GFForms")) {
                     // If sorting and searching is enabled, show search box
                     if($enable_sort && $enable_search) {
                         $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
-                    }
-
-                    // If export is enabled, include export script and show export button
-                    if($enable_export) {
-                        $list_html .= "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/sticky-list_export.js' ) . "'></script>";
-                        $list_html .= "<a href='#' id='stickylist_export' class='export'/>" .  $export_link_text . "</a>";
                     }
 
                     $list_html .= "<table class='sticky-list'><thead><tr>";
@@ -1258,7 +1250,7 @@ if (class_exists("GFForms")) {
                 $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete & duplicate","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort, search & export","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-5 h4').html('<?php _e("Donate","sticky-list"); ?>')
                 $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
@@ -1683,27 +1675,6 @@ if (class_exists("GFForms")) {
                                     "name"  => "enable_search"
                                 )
                             )
-                        ),
-                        array(
-                            "label"   => __('List export','sticky-list'),
-                            "type"    => "checkbox",
-                            "name"    => "enable_export",
-                            "tooltip" => __('Check this box to enable csv export of list','sticky-list'),
-                            "choices" => array(
-                                array(
-                                    "label" => __('Enabled','sticky-list'),
-                                    "name"  => "enable_export"
-                                )
-                            )
-                        ),
-                        array(
-                            "label"   => __('Export link text','sticky-list'),
-                            "type"    => "text",
-                            "name"    => "export_link_text",
-                            "tooltip" => __('Text for the export link','sticky-list'),
-                            "class"   => "small",
-                            "default_value" => __('Export list as csv','sticky-list')
-
                         ),
                         array(
                             "label"   => __('List pagination','sticky-list'),
