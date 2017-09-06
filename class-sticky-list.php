@@ -8,7 +8,7 @@ https://github.com/13pixlar/sticky-list
 Preimum features (to be implemented):
 Multi page form support
 Multiple file upload
-Fully compatible with Gravity Forms “limit entries” and “No Duplicates” features
+Fully compatible with Gravity Forms “limit entries” and “No Duplicates” features [done]
 Export list to .csv from front end (based of search results)
 Choose who can view/edit/delete and who can see the entries
 Abillity to control all settings from within the shortcode
@@ -74,6 +74,12 @@ if (class_exists("GFForms")) {
 
             // Make sure required file fields validate when prepopulated whith existing file during edit
             add_filter('gform_validation', array( $this, "stickylist_validate_fileupload" ) );
+
+            // Allow edits of entries in forms with entry limit
+            add_filter( 'gform_pre_validation', array( $this, "stickylist_validate_limit" ) );
+
+            // Allow edits of entries in forms with no duplicate fields
+            add_filter( 'gform_is_duplicate', array( $this, "stickylist_validate_duplicate" ), 10, 4 );
         }
 
         // This helps with initiating the add-on
@@ -278,6 +284,8 @@ if (class_exists("GFForms")) {
             $enable_duplicate_label = $this->get_sticky_setting("enable_duplicate_label", $settings);
             $action_column_header   = $this->get_sticky_setting("action_column_header", $settings);
             $enable_sort            = $this->get_sticky_setting("enable_sort", $settings);
+            $enable_export          = $this->get_sticky_setting("enable_export", $settings);
+            $export_link_text       = $this->get_sticky_setting("export_link_text", $settings);
             $initial_sort           = $this->get_sticky_setting("initial_sort", $settings);
             $initial_sort_direction = $this->get_sticky_setting("initial_sort_direction", $settings);
             $enable_search          = $this->get_sticky_setting("enable_search", $settings);
@@ -379,6 +387,12 @@ if (class_exists("GFForms")) {
                     // If sorting and searching is enabled, show search box
                     if($enable_sort && $enable_search) {
                         $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
+                    }
+
+                    // If export is enabled, include export script and show export button
+                    if($enable_export) {
+                        $list_html .= "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/sticky-list_export.js' ) . "'></script>";
+                        $list_html .= "<a href='#' id='stickylist_export' class='export'/>" .  $export_link_text . "</a>";
                     }
 
                     $list_html .= "<table class='sticky-list'><thead><tr>";
@@ -768,6 +782,10 @@ if (class_exists("GFForms")) {
 
             if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
+                // No limits on edit/views
+                $form["limitEntries"] = false;
+
+                // Add lib to help with ajax in multi page forms
                 echo "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/arrive.min.js' ) . "'></script>";
 
                 if($_POST["mode"] == "edit") {
@@ -1038,6 +1056,33 @@ if (class_exists("GFForms")) {
 
 
         /**
+         * Allow edits of entries in forms with no dupelicate fields
+         *
+         */
+        function stickylist_validate_duplicate($count, $form_id, $field, $value) {
+            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+                // Temporarily remove no duplicate restriction
+                return 0;
+            }else{
+                return $count;
+            }
+        }
+
+
+        /**
+         * Allow edits of entries in forms with entry limit
+         *
+         */
+        function stickylist_validate_limit($form) {
+            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+                // Temporarily remove entry limit
+                $form["limitEntries"] = false;
+            }
+            return $form;
+        }
+
+
+        /**
          * Validate required file input fields
          *
          */
@@ -1213,7 +1258,7 @@ if (class_exists("GFForms")) {
                 $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete & duplicate","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort, search & export","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-5 h4').html('<?php _e("Donate","sticky-list"); ?>')
                 $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
@@ -1260,22 +1305,50 @@ if (class_exists("GFForms")) {
                     )
                 ),$fields_array
             );
+
             foreach ($form["fields"] as $key => $value) {
 
-                // If the field has no label we use the ID instead
-                if($value["label"] == "") {
-                    $label = __('Field ','sticky-list') . $value["id"];
-                }else{
-                    $label = $value["label"];
+                // If the field is not in the list, we exclude it
+                if ($value["stickylistField"]) {
+
+                    // If the field has no label we use the ID instead
+                    if($value["label"] == "") {
+                        $label = __('Field ','sticky-list')  . $value["id"];
+                    }else{
+                        $label = $value["label"];
+                    }
+
+                    // If a field has sub fields (ex Name field)
+                    if ($value["inputs"]) {
+                        foreach ($value["inputs"] as $inputKey => $inputValue) {
+
+                            // ...that is not hidden
+                            if (!isset($inputValue["isHidden"]) || $inputValue["isHidden"] == false) {
+
+                                // We make it selectable
+                                $fields_array = array_merge(
+                                    array(
+                                        array(
+                                            "label" => $label . " (" . $inputValue["label"] . ")",
+                                            "value" => $inputValue["id"]
+                                        )
+                                    ),$fields_array
+                                );
+                            }
+                        }
+
+                    // If not, proceed as normal
+                    }else{
+                        $fields_array = array_merge(
+                            array(
+                                array(
+                                    "label" => $label,
+                                    "value" => $value["id"]
+                                )
+                            ),$fields_array
+                        );
+                    }
                 }
-                $fields_array = array_merge(
-                    array(
-                        array(
-                            "label" => $label,
-                            "value" => $value["id"]
-                        )
-                    ),$fields_array
-                );
             }
             $fields_array = array_reverse($fields_array);
 
@@ -1610,6 +1683,27 @@ if (class_exists("GFForms")) {
                                     "name"  => "enable_search"
                                 )
                             )
+                        ),
+                        array(
+                            "label"   => __('List export','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_export",
+                            "tooltip" => __('Check this box to enable csv export of list','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_export"
+                                )
+                            )
+                        ),
+                        array(
+                            "label"   => __('Export link text','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "export_link_text",
+                            "tooltip" => __('Text for the export link','sticky-list'),
+                            "class"   => "small",
+                            "default_value" => __('Export list as csv','sticky-list')
+
                         ),
                         array(
                             "label"   => __('List pagination','sticky-list'),
