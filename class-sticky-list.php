@@ -772,6 +772,8 @@ if (class_exists("GFForms")) {
          */
         public function pre_entry_action($form) {
 
+            var_dump($_REQUEST);
+
             if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
                 // No limits on edit/views
@@ -916,18 +918,21 @@ if (class_exists("GFForms")) {
                             var mode = '<input type="hidden" name="mode" value="edit" />';
                             thisForm.append(edit, edit_id, mode);
                             $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
-
                             $(document).arrive("form", function(el) {
                                 $(el).append(edit, edit_id, mode);
                                 $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
                             });
                 <?php
                         }
-
+                        // If we are in view mode we insert two hidden fields with entry id and mode = view
                         if($_POST["mode"] == "view") { ?>
-
+                            var view_id = '<input type="hidden" name="view_id" value="<?php echo $view_id; ?>" />';
+                            var mode = '<input type="hidden" name="mode" value="view" />';
+                            thisForm.append(view_id, mode);
+                            $("#gform_wrapper_<?php echo $form_id;?> .gform_page_fields input").attr('disabled','disabled');
                             $("#gform_submit_button_<?php echo $form_id;?>").remove();
                             $(document).arrive("form", function(el) {
+                                $(el).append(view_id, mode);
                                 $("#gform_submit_button_<?php echo $form_id;?>").remove();
                             });
                 <?php
