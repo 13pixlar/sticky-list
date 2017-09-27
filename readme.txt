@@ -267,6 +267,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 == Changelog ==
 
 = 1.4.4 =
+* Added currency formating
 * Fixed a view entries bug
 * Improved initial sort of list to work with complex fields (Name, address)
 * Fixed an issue where a form in ajax mode would create a new entry in a multi page form

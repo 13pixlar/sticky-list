@@ -541,6 +541,9 @@ if (class_exists("GFForms")) {
                                     }elseif ($field["numberFormat"] == "decimal_dot") {
                                         $field_value = number_format($field_value,2,".",",");
                                         $field_value = str_replace(".00", "", $field_value);
+                                    }elseif ($field->numberFormat == "currency") {
+                                        $currency = new RGCurrency( GFCommon::get_currency() );
+                                        $field_value   = $currency->to_money( $field_value );
                                     }
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
                                 }
@@ -771,8 +774,6 @@ if (class_exists("GFForms")) {
          *
          */
         public function pre_entry_action($form) {
-
-            var_dump($_REQUEST);
 
             if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
