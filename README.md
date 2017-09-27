@@ -244,6 +244,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 <h3>Changelog</h3>
 
 **1.4.4**
+* Fixed a view entries bug
 * Improved initial sort of list to work with complex fields (Name, address)
 * Fixed an issue where a form in ajax mode would create a new entry in a multi page form
 
