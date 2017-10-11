@@ -267,6 +267,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 == Changelog ==
 
 = 1.4.4 =
+* Fixed a bug where fields were not grayed out during view
 * Added currency formating
 * Fixed a view entries bug
 * Improved initial sort of list to work with complex fields (Name, address)
