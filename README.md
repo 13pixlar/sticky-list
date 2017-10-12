@@ -244,6 +244,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 <h3>Changelog</h3>
 
 **1.4.4**
+* Fixed a bug that would leave empty entries in the database on edit
 * Fixed a bug where fields were not grayed out during view
 * Added currency formating
 * Fixed a view entries bug
