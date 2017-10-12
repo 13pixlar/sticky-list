@@ -1027,7 +1027,8 @@ if (class_exists("GFForms")) {
 
                                     // Dont empty the ID or we wont be able to update and remove the entry
                                     if ($key != "id") {
-                                        $entry[$key] = "";
+                                        // Set to an empty space or else we wont be able to delete the entry
+                                        $entry[$key] = " ";
                                     }
                                 }
 
