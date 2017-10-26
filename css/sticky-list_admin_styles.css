@@ -15,6 +15,8 @@ tr:last-child {
 #gaddon-setting-row-confirm_delete_text th:before,
 #gaddon-setting-row-delete_type th:before,
 #gaddon-setting-row-enable_duplicate_label th:before,
+#gaddon-setting-row-pdf_label th:before,
+#gaddon-setting-row-pdf_id th:before,
 #gaddon-setting-row-initial_sort th:before,
 #gaddon-setting-row-initial_sort_direction th:before,
 #gaddon-setting-row-enable_search th:before,

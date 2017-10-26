@@ -34,6 +34,9 @@ jQuery(document).ready(function($) {
 	var enableDuplicate			= $('#enable_duplicate');
 	var enableDuplicateLabel 	= $('#gaddon-setting-row-enable_duplicate_label');
 	var deleteType		 		= $('#gaddon-setting-row-delete_type');
+	var enablePdf				= $('#enable_pdf');
+	var enablePdfLabel			= $('#gaddon-setting-row-pdf_label');
+	var enablePdfId				= $('#gaddon-setting-row-pdf_id');
 	var enableSort				= $('#enable_sort');
 	var initialSort				= $('#gaddon-setting-row-initial_sort');
 	var initialSortDirection 	= $('#gaddon-setting-row-initial_sort_direction');
@@ -89,6 +92,13 @@ jQuery(document).ready(function($) {
 		    }else{
 		    	enableDuplicateLabel.removeClass('show');
 		    }
+			if(enablePdf.is(':checked')) {
+				enablePdfLabel.addClass('show');
+				enablePdfId.addClass('show');
+			}else{
+				enablePdfLabel.removeClass('show');
+				enablePdfId.removeClass('show');
+			}
 		    if(enableSort.is(':checked')) {
 		        enableSearch.addClass('show');
 		        initialSort.addClass('show');
@@ -153,6 +163,11 @@ jQuery(document).ready(function($) {
 		enableDuplicateLabel.toggleClass('show');
 	});
 
+	enablePdf.click(function(event) {
+		enablePdfLabel.toggleClass('show');
+		enablePdfId.toggleClass('show');
+	});
+
 	enableSort.click(function(event) {
 		enableSearch.toggleClass('show');
 		initialSort.toggleClass('show');
@@ -161,5 +176,14 @@ jQuery(document).ready(function($) {
 
 	enablePagination.click(function(event) {
 		pageEntries.toggleClass('show');
+	});
+
+	enableExport.click(function(event) {
+		enableExportLinkText.toggleClass('show');
+	});
+
+	enableLog.click(function(event) {
+		enableLogView.toggleClass('show');
+		enableLogEdit.toggleClass('show');
 	});
 });

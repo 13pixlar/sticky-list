@@ -282,6 +282,9 @@ if (class_exists("GFForms")) {
             $confirm_delete_text    = $this->get_sticky_setting("confirm_delete_text", $settings);
             $enable_duplicate       = $this->get_sticky_setting("enable_duplicate", $settings);
             $enable_duplicate_label = $this->get_sticky_setting("enable_duplicate_label", $settings);
+            $enable_pdf             = $this->get_sticky_setting("enable_pdf", $settings);
+            $pdf_label              = $this->get_sticky_setting("pdf_label", $settings);
+            $pdf_id                 = $this->get_sticky_setting("pdf_id", $settings);
             $action_column_header   = $this->get_sticky_setting("action_column_header", $settings);
             $enable_sort            = $this->get_sticky_setting("enable_sort", $settings);
             $initial_sort           = $this->get_sticky_setting("initial_sort", $settings);
@@ -416,8 +419,8 @@ if (class_exists("GFForms")) {
                         }
                     }
 
-                    // If view, edit, delete, postlink or duplicate is enabled we need an extra column
-                    if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate) {
+                    // If view, edit, delete, postlink, duplicate or pdf is enabled we need an extra column
+                    if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate || $enable_pdf) {
 
                         $list_html .= "<th class='sticky-action'>$action_column_header</th>";
                     }
@@ -575,7 +578,7 @@ if (class_exists("GFForms")) {
                             }
                         }
 
-                        // If view, edit, delete, postlink or duplicate is enabled we need a cell with appropiate links
+                        // If view, edit, delete, postlink, duplicate or pdf is enabled we need a cell with appropiate links
                         if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate){
 
                             $list_html .= "<td class='sticky-action'>";
@@ -639,6 +642,11 @@ if (class_exists("GFForms")) {
                                             <input type='hidden' name='mode' value='duplicate'>
                                             <input type='hidden' name='duplicate_id' value='$entry_id'>
                                         </form>";
+                                }
+
+                                if($enable_pdf) {
+                                    $list_html .= "
+                                        <a href='". get_bloginfo('url') ."/pdf/$pdf_id/$entry_id/' target='_blank'><button type='button' class='sticky-list-view submit'>$pdf_label</button></a>";
                                 }
 
                             $list_html .= "</td>";
@@ -1255,7 +1263,7 @@ if (class_exists("GFForms")) {
             // Instert headers into the settings page. Since we need the headers to be translatable we set them here
             jQuery(document).ready(function($) {
                 $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete & duplicate","sticky-list"); ?>')
+                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete, duplicate & pdf","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
                 $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
@@ -1468,7 +1476,7 @@ if (class_exists("GFForms")) {
                             "label"   => __('View entries','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "enable_view",
-                            "tooltip" => __('Check this box to enable users to view the complete submitted entry. A "View" link will appear in the list','sticky-list'),
+                            "tooltip" => __('Check this box to enable users to view the complete submitted entry.','sticky-list'),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1619,12 +1627,38 @@ if (class_exists("GFForms")) {
                             )
                         ),
                         array(
+                            "label"   => __('View PDF','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_pdf",
+                            "tooltip" => __('Check this box to enable users to view the complete submitted entry as a PDF (requires Gravity PDF Addon). A "PDF" link will appear in the list','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_pdf"
+                                )
+                            )
+                        ),
+                        array(
+                            "label"   => __('PDF button label','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "pdf_label",
+                            "tooltip" => __('Label for the PDF button','sticky-list'),
+                            "class"   => "small",
+                            "default_value" => __('PDF','sticky-list')
+                       ),
+                        array(
+                            "label"   => __('Gravity PDF ID','sticky-list'),
+                            "type"    => "text",
+                            "name"    => "pdf_id",
+                            "tooltip" => __('The Gravity PDF id, found in the settings for each PDF created, without any slashes, dashes, etc. Example = 579e892aaf1b5','sticky-list'),
+                            "class"   => "small",
+                        ),
+                        array(
                             "label"   => __('Action column header','sticky-list'),
                             "type"    => "text",
                             "name"    => "action_column_header",
                             "tooltip" => __('Text to show as header for the action column','sticky-list'),
                             "class"   => "medium"
-
                         ),
                         array(
                             "label"   => __('Empty list text','sticky-list'),
