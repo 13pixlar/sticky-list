@@ -138,6 +138,31 @@ function hide_some_rows($entries) {
 }
 `
 
+**Avalible actions**<br>
+The action `entry_edited` fires after an entry has been edited.<br>
+Paramters: $old_entry, $new_entry (entry objects)<br>
+
+**Example**<br>
+Use this to perform acions after an entry has been edited.<br>
+`
+add_action('entry_edited','my_entry_edited_function', 10, 2 );
+function my_entry_edited_function($old_entry, $new_entry) {
+    // Do something
+}
+`
+
+The action `entry_deleted` fires after an entry has been deleted.<br>
+Paramters: $entry (entry object)<br>
+
+**Example**<br>
+Use this to perform acions after an entry has been edited.<br>
+`
+add_action('entry_deleted','my_entry_deleted_function', 10, 1 );
+function my_entry_deleted_function($old_entry, $new_entry) {
+    // Do something
+}
+`
+
 **Documentation**<br>
 There is a fully documented version of the plugin on the <a href="https://github.com/13pixlar/sticky-list">Github project page</a>. This plugin is Open Source and pull requests are welcome.
 
