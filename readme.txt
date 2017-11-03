@@ -3,8 +3,8 @@ Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
-Tested up to: 4.8.1
-Stable tag: 1.4.4
+Tested up to: 4.8.3
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
