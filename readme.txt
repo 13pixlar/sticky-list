@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.8.3
-Stable tag: 1.4.5
+Stable tag: 1.4.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,25 +139,25 @@ function hide_some_rows($entries) {
 `
 
 **Avalible actions**<br>
-The action `entry_edited` fires after an entry has been edited.<br>
+The action `stickylist_entry_edited` fires after an entry has been edited.<br>
 Paramters: $old_entry, $new_entry (entry objects)<br>
 
 **Example**<br>
 Use this to perform acions after an entry has been edited.<br>
 `
-add_action('entry_edited','my_entry_edited_function', 10, 2 );
+add_action('stickylist_entry_edited','my_entry_edited_function', 10, 2 );
 function my_entry_edited_function($old_entry, $new_entry) {
     // Do something
 }
 `
 
-The action `entry_deleted` fires after an entry has been deleted.<br>
+The action `stickylist_entry_deleted` fires after an entry has been deleted.<br>
 Paramters: $entry (entry object)<br>
 
 **Example**<br>
 Use this to perform acions after an entry has been edited.<br>
 `
-add_action('entry_deleted','my_entry_deleted_function', 10, 1 );
+add_action('stickylist_entry_deleted','my_entry_deleted_function', 10, 1 );
 function my_entry_deleted_function($old_entry, $new_entry) {
     // Do something
 }
@@ -290,6 +290,10 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list
 
 == Changelog ==
+
+= 1.4.5.1 =
+* Fixed a problem where files were missing from the plugin directory
+* Changed hook name (see Developers section)
 
 = 1.4.5 =
 * Added action hooks for edit entries and delete entries

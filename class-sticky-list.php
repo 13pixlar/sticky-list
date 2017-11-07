@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.4.5";
+        protected $_version = "1.4.5.1";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -1057,7 +1057,7 @@ if (class_exists("GFForms")) {
                 if(is_wp_error($original_entry)) {
                     $success_delete = GFAPI::delete_entry($entry["id"]);
                 }else{
-                    do_action( 'entry_edited', $old_entry, $new_entry );
+                    do_action( 'stickylist_entry_edited', $old_entry, $new_entry );
                 }
             }
         }
@@ -1247,7 +1247,7 @@ if (class_exists("GFForms")) {
                                 // Send the notification(s)
                                 GFCommon::send_notifications($notification_ids, $form, $entry);
                             }
-                            do_action( 'entry_deleted', $entry );
+                            do_action( 'stickylist_entry_deleted', $entry );
                         }
                     }
                 }
@@ -1831,7 +1831,7 @@ if (class_exists("GFForms")) {
                     $is_disabled = true;
 
                     // If we are in edit mode
-                    if($_POST["action"] == "edit") {
+                    if(isset($_POST["action"]) && $_POST["action"] == "edit") {
 
                         // ...and the current notification has the "edit" or "all" setting
                         if($notification["stickylist_notification_type"] == "edit" || $notification["stickylist_notification_type"] == "all") {
