@@ -292,6 +292,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 == Changelog ==
 
 = 1.4.5.1 =
+* Keep original post date when editing WordPress post
 * Fixed a problem where files were missing from the plugin directory
 * Changed hook name (see Developers section)
 
