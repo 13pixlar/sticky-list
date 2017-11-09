@@ -177,13 +177,4 @@ jQuery(document).ready(function($) {
 	enablePagination.click(function(event) {
 		pageEntries.toggleClass('show');
 	});
-
-	enableExport.click(function(event) {
-		enableExportLinkText.toggleClass('show');
-	});
-
-	enableLog.click(function(event) {
-		enableLogView.toggleClass('show');
-		enableLogEdit.toggleClass('show');
-	});
 });
