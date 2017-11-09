@@ -15,6 +15,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
+* Download entry as PDF (requires <a href="https://gravitypdf.com/">Gravity PDF</a>)
 * Use existing entries as templates for duplication
 * Conditional notifications
 * Conditional confirmations
@@ -23,6 +24,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Custom column labels
 * Multiple lists in same page or post
 * Mark entries as read when viewed or edited on frontend
+* Fully compatible with Gravity Forms "limit entries" and "No Duplicates" features
 * Uses new <a href="http://www.gravityhelp.com/documentation/page/Gravity_Forms_API">Gravity Forms API</a> and the official <a href="http://www.gravityhelp.com/documentation/page/Add-On_Framework">Gravity Forms Add-on framework</a>
 * Fully customizable with dead simple styles to override
 * Fully localized. You can <a href="https://github.com/13pixlar/sticky-list/tree/master/languages">add your translation</a>
@@ -166,9 +168,6 @@ This will be addressed in a future version of Sticky List.
 **Post image meta fields are not populated when editing an entry**<br>
 When editing an entry that has Wordpress Post Image Field the meta inputs are not populated with existing values. This is due to how Gravity Form saves the data. This issue wont get fixed unless Rocket Genious changes the way it handles these fields.
 
-**Not fully compatible with Gravity Forms "limit entries" and "No Duplicates" features**<br>
-When imposing a limit to the number of entries allowed for a form the edit functionallity will stop working when the limit is reached. The same issue affect usage of the No Duplicate feature. If using this feature on a form entry edits wont save unless you change the input.
-
 #### Installation
 
 1. Upload extracted folder to the '/wp-content/plugins/' directory
@@ -267,6 +266,10 @@ function show_only_approved($entries) {
 Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
 
 <h3>Changelog</h3>
+
+**1.5**
+* Added support for Gravity PDF
+* Added support for "limit entries" and "No Duplicates"
 
 **1.4.5.1**
 * Keep original post date when editing WordPress post
