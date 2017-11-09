@@ -130,6 +130,31 @@ function hide_some_rows($entries) {
 }
 ```
 
+**Avalible actions**<br>
+The action `stickylist_entry_edited` fires after an entry has been edited.<br>
+Paramters: $old_entry, $new_entry (entry objects)<br>
+
+**Example**<br>
+Use this to perform acions after an entry has been edited.<br>
+```PHP
+add_action('stickylist_entry_edited','my_entry_edited_function', 10, 2 );
+function my_entry_edited_function($old_entry, $new_entry) {
+    // Do something
+}
+```
+
+The action `stickylist_entry_deleted` fires after an entry has been deleted.<br>
+Paramters: $entry (entry object)<br>
+
+**Example**<br>
+Use this to perform acions after an entry has been edited.<br>
+```PHP
+add_action('stickylist_entry_deleted','my_entry_deleted_function', 10, 1 );
+function my_entry_deleted_function($old_entry, $new_entry) {
+    // Do something
+}
+```
+
 #### Known issues
 
 **Multi page file uploads**<br>
@@ -242,6 +267,14 @@ function show_only_approved($entries) {
 Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
 
 <h3>Changelog</h3>
+
+**1.4.5.1**
+* Keep original post date when editing WordPress post
+* Fixed a problem where files were missing from the plugin directory
+* Changed hook name (see Developers section)
+
+**1.4.5**
+* Added action hooks for edit entries and delete entries
 
 **1.4.4**
 * Fixed a bug that would leave empty entries in the database on edit

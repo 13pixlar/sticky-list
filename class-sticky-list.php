@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.4.4";
+        protected $_version = "1.4.5.1";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -994,6 +994,10 @@ if (class_exists("GFForms")) {
                 // Get original entry
                 $original_entry =  GFAPI::get_entry($original_entry_id);
 
+                // Save old and new entries for use in hook
+                $old_entry = $original_entry;
+                $new_entry = $entry;
+
                 // If we have an original entry
                 if($original_entry && is_wp_error($original_entry) == false) {
 
@@ -1046,6 +1050,9 @@ if (class_exists("GFForms")) {
                                     $success_delete = GFAPI::delete_entry($entry["id"]);
                                 }
 
+                                // Save the old entry ID for use in hook
+                                $new_entry["id"] = $old_entry["id"];
+
                             // If checked we delete the original entry
                             }else{
                                 $success_delete = GFAPI::delete_entry($original_entry_id);
@@ -1057,6 +1064,8 @@ if (class_exists("GFForms")) {
                 // If we were unable to edit an entry we must delete the newly created entry
                 if(is_wp_error($original_entry)) {
                     $success_delete = GFAPI::delete_entry($entry["id"]);
+                }else{
+                    do_action( 'stickylist_entry_edited', $old_entry, $new_entry );
                 }
             }
         }
@@ -1154,9 +1163,11 @@ if (class_exists("GFForms")) {
                     }
                 }
 
-                // Get the post and check the comment status
+                // Get the post and check the comment status and post date
                 $this_post = get_post($post_id);
                 $post_data["comment_status"] = $this_post->comment_status;
+                $post_data["post_date"] = $this_post->post_date;
+                $post_data["post_date_gmt"] = $this_post->post_date_gmt;
             }
             return ( $post_data );
         }
@@ -1246,6 +1257,7 @@ if (class_exists("GFForms")) {
                                 // Send the notification(s)
                                 GFCommon::send_notifications($notification_ids, $form, $entry);
                             }
+                            do_action( 'stickylist_entry_deleted', $entry );
                         }
                     }
                 }
@@ -1855,7 +1867,7 @@ if (class_exists("GFForms")) {
                     $is_disabled = true;
 
                     // If we are in edit mode
-                    if($_POST["action"] == "edit") {
+                    if(isset($_POST["action"]) && $_POST["action"] == "edit") {
 
                         // ...and the current notification has the "edit" or "all" setting
                         if($notification["stickylist_notification_type"] == "edit" || $notification["stickylist_notification_type"] == "all") {
