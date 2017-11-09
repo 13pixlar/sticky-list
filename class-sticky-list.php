@@ -1155,9 +1155,11 @@ if (class_exists("GFForms")) {
                     }
                 }
 
-                // Get the post and check the comment status
+                // Get the post and check the comment status and post date
                 $this_post = get_post($post_id);
                 $post_data["comment_status"] = $this_post->comment_status;
+                $post_data["post_date"] = $this_post->post_date;
+                $post_data["post_date_gmt"] = $this_post->post_date_gmt;
             }
             return ( $post_data );
         }
