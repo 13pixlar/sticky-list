@@ -7,6 +7,8 @@ Tested up to: 4.9
 Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sticky-list
+Domain Path: /languages
 
 Sticky List is a Gravity Forms add-on that lets you list and edit entries from the front end.
 
@@ -23,7 +25,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Create/edit/delete Wordpress posts from the front end
 * Conditional logic support
 * View, edit and delete existing entries from the front-end
-* Download entry as PDF (requires <a href="https://gravitypdf.com/">Gravity PDF</a>)
+* Download entries as PDF (requires <a href="https://gravitypdf.com/">Gravity PDF</a>)
 * Use existing entries as templates for duplication
 * Conditional notifications
 * Conditional confirmations
@@ -67,7 +69,7 @@ If you want to use the list on different pages and restrict viewing of entries t
 
 If you want to filter out some entries depending on a value of a field you can use the attributes **field** and **value** like so:
 
-`[stickylist field="5" value="Test"]`
+`[stickylist id="1" field="5" value="Test"]`
 
 The shortcode above would produce a list that only contained entries where the field with an ID of 5 had a value of "Test". You can check all field ID's in the form editor.
 
@@ -293,6 +295,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 = 1.5 =
 * Added support for Gravity PDF
 * Added support for "limit entries" and "No Duplicates"
+* Fixed an issue with file uploads
 
 = 1.4.5.1 =
 * Keep original post date when editing WordPress post

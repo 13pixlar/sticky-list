@@ -6,8 +6,6 @@ Description: List and edit submitted entries from the front end
 Version: 1.5
 Author: 13pixar
 Author URI: http://13pixlar.se
-Text Domain: sticky-list
-Domain Path: /languages
 */
 
 

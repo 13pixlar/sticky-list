@@ -1026,7 +1026,6 @@ if (class_exists("GFForms")) {
                                 }
                             }
 
-
                             // If new entry ID is not checked
                             $new_entry_id = $this->get_sticky_setting("new_entry_id", $this->get_form_settings($form));
                             if (!$new_entry_id) {
@@ -1034,28 +1033,20 @@ if (class_exists("GFForms")) {
                                 // Uppdate original entry with new fields
                                 $success_uppdate = GFAPI::update_entry($entry, $original_entry_id);
 
-                                // Empty the newly created entry before deletion (to keep attached files)
-                                foreach ($entry as $key => &$value) {
-
-                                    // Dont empty the ID or we wont be able to update and remove the entry
-                                    if ($key != "id") {
-                                        // Set to an empty space or else we wont be able to delete the entry
-                                        $entry[$key] = " ";
-                                    }
-                                }
-
                                 // Delete newly created entry
-                                if($success_uppdate) {
-                                    $empty_the_entry = GFAPI::update_entry($entry, $entry["id"]);
-                                    $success_delete = GFAPI::delete_entry($entry["id"]);
-                                }
+                                $this->stickylist_delete_entry($entry["id"]);
 
                                 // Save the old entry ID for use in hook
                                 $new_entry["id"] = $old_entry["id"];
 
                             // If checked we delete the original entry
                             }else{
-                                $success_delete = GFAPI::delete_entry($original_entry_id);
+
+                                // Uppdate new entry with original fields
+                                $success_uppdate = GFAPI::update_entry($entry, $entry["id"]);
+
+                                // Delete original entry
+                                $this->stickylist_delete_entry($original_entry_id);
                             }
                         }
                     }
@@ -1072,16 +1063,49 @@ if (class_exists("GFForms")) {
 
 
         /**
+         * Helper function delete an entry
+         *
+         */
+        function stickylist_delete_entry($entry_delete_id) {
+
+            // Get entry to be deleted
+            $entry_delete = GFAPI::get_entry($entry_delete_id);
+
+            // Empty the entry before deletion (to keep attached files)
+            foreach ($entry_delete as $key => &$value) {
+
+                // Dont empty the ID or we wont be able to update and remove the entry
+                if ($key != "id") {
+                    // Set to empty or else we wont be able to delete the entry
+                    $entry_delete[$key] = "";
+                }
+            }
+
+            $empty_the_entry = GFAPI::update_entry($entry_delete, $entry_delete_id);
+            $success_delete = GFAPI::delete_entry($entry_delete_id);
+            global $wpdb;
+            $wpdb->delete( $wpdb->prefix . 'rg_lead', [ 'id' => $entry_delete_id ], [ '%d' ] );
+        }
+
+
+        /**
          * Allow edits of entries in forms with no dupelicate fields
          *
          */
         function stickylist_validate_duplicate($count, $form_id, $field, $value) {
+
             if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+
                 // Temporarily remove no duplicate restriction
-                return 0;
-            }else{
-                return $count;
+                $entry = GFAPI::get_entry( $_POST["edit_id"] );
+                $old_value = $entry[$field["id"]];
+                $new_value = $value;
+
+                if ($old_value == $new_value) {
+                    $count = 0;
+                }
             }
+            return $count;
         }
 
 
