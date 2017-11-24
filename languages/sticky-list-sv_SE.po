@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2017-09-06 14:41+0200\n"
-"PO-Revision-Date: 2017-09-06 14:41+0200\n"
+"POT-Creation-Date: 2017-11-24 14:03+0100\n"
+"PO-Revision-Date: 2017-11-24 14:10+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -46,43 +46,43 @@ msgid "<h6>Header text</h6>Use this field to override the default text header."
 msgstr ""
 "<h6>Fältrubrik</h6>Använd detta fält för att ersätta fältets rubrik i listan"
 
-#: ../class-sticky-list.php:387
+#: ../class-sticky-list.php:391
 msgid "Search"
 msgstr "Sök"
 
-#: ../class-sticky-list.php:694
+#: ../class-sticky-list.php:709
 msgid "Delete failed"
 msgstr "Raderingen misslyckades"
 
-#: ../class-sticky-list.php:862
+#: ../class-sticky-list.php:877
 msgid "Remove"
 msgstr "Ta bort"
 
-#: ../class-sticky-list.php:1250
+#: ../class-sticky-list.php:1305
 msgid "General settings"
 msgstr "Generella inställningar"
 
-#: ../class-sticky-list.php:1251
-msgid "View, edit, delete & duplicate"
-msgstr "Visa, redigera, radera & duplicera"
+#: ../class-sticky-list.php:1306
+msgid "View, edit, delete, duplicate & pdf"
+msgstr "Visa, redigera, ta bort, duplicera, pdf"
 
-#: ../class-sticky-list.php:1252
+#: ../class-sticky-list.php:1307
 msgid "Labels"
 msgstr "Texter"
 
-#: ../class-sticky-list.php:1253
+#: ../class-sticky-list.php:1308
 msgid "Sort & search"
 msgstr "Sortering & sökning"
 
-#: ../class-sticky-list.php:1254
+#: ../class-sticky-list.php:1309
 msgid "Pagination"
 msgstr "Paginering"
 
-#: ../class-sticky-list.php:1255
+#: ../class-sticky-list.php:1310
 msgid "Donate"
 msgstr "Donera"
 
-#: ../class-sticky-list.php:1256
+#: ../class-sticky-list.php:1311
 msgid ""
 "Sticky List is completely free. But if you like, you can always <a target="
 "\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
@@ -92,11 +92,11 @@ msgstr ""
 "\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
 "xclick&hosted_button_id=8R393YVXREFN6\">donera</a> några kronor."
 
-#: ../class-sticky-list.php:1283 ../class-sticky-list.php:1285
+#: ../class-sticky-list.php:1338 ../class-sticky-list.php:1340
 msgid "Embedd page/post"
 msgstr "Inbäddnings-sida/inlägg"
 
-#: ../class-sticky-list.php:1283
+#: ../class-sticky-list.php:1338
 msgid ""
 "<strong>NOTE</strong>: Only the latest 1000 items are shown. Use \"custom url"
 "\" below if your desired post is not listed."
@@ -104,43 +104,43 @@ msgstr ""
 "<strong>OBS</strong>: Bara de senaste 1000 senaste inläggen/sidorna visas. "
 "Använd \"Egen url\" nedan för att ange en egen url."
 
-#: ../class-sticky-list.php:1295
+#: ../class-sticky-list.php:1350
 msgid "Date added"
 msgstr "Datum"
 
-#: ../class-sticky-list.php:1308
+#: ../class-sticky-list.php:1363
 msgid "Field "
 msgstr "Fält"
 
-#: ../class-sticky-list.php:1353
+#: ../class-sticky-list.php:1408
 msgid "Everyone"
 msgstr "Alla"
 
-#: ../class-sticky-list.php:1357
+#: ../class-sticky-list.php:1412
 msgid "All logged in users"
 msgstr "Alla inloggade användare"
 
-#: ../class-sticky-list.php:1361
+#: ../class-sticky-list.php:1416
 msgid "Entry creator"
 msgstr "Innläggsförfattaren"
 
-#: ../class-sticky-list.php:1386
+#: ../class-sticky-list.php:1441
 msgid "Sticky List Settings"
 msgstr "Sticky List inställningar"
 
-#: ../class-sticky-list.php:1389
+#: ../class-sticky-list.php:1444
 msgid "Enable for this form"
 msgstr "Aktivera för detta formulär"
 
-#: ../class-sticky-list.php:1392
+#: ../class-sticky-list.php:1447
 msgid "Check this box to enable Sticky List for this form"
 msgstr "Markera denna ruta för att aktivera Sticky List för detta formulär"
 
-#: ../class-sticky-list.php:1401
+#: ../class-sticky-list.php:1456
 msgid "Show entries in list to"
 msgstr "Visa inlägg i listan för"
 
-#: ../class-sticky-list.php:1404
+#: ../class-sticky-list.php:1459
 msgid ""
 "Select who should be able to se the entries in the list. Administrators will "
 "always see all entries"
@@ -148,7 +148,7 @@ msgstr ""
 "Välj vem skall kunna se inläggen i listan. Administratörer ser alltid alla "
 "inlägg"
 
-#: ../class-sticky-list.php:1411
+#: ../class-sticky-list.php:1466
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
@@ -156,11 +156,11 @@ msgstr ""
 "Sidan eller inlägget där formuläret än inbäddat. Denna sida används för att "
 "visa/redigera inlägget"
 
-#: ../class-sticky-list.php:1415
+#: ../class-sticky-list.php:1470
 msgid "Custom url"
 msgstr "Egen url"
 
-#: ../class-sticky-list.php:1418
+#: ../class-sticky-list.php:1473
 msgid ""
 "Manually input the url of the form. This overrides the selection made in the "
 "dropdown above. Use this if you cannot find the page/post in the list."
@@ -168,37 +168,53 @@ msgstr ""
 "Lägg in formulärets url manuellt. Detta overridar valet du gjort ovan. Du "
 "kan använda detta om du inte kan hitta din sida/inlägg i listan."
 
-#: ../class-sticky-list.php:1422
+#: ../class-sticky-list.php:1477
 msgid "Max nr of entries"
 msgstr "Max antal inlägg"
 
-#: ../class-sticky-list.php:1425
+#: ../class-sticky-list.php:1480
 msgid "Maximum number of entries to be shown in the list."
 msgstr "Maximalt antal inlägg att visa i listan"
 
-#: ../class-sticky-list.php:1429
+#: ../class-sticky-list.php:1484
+msgid "Multiple values separator"
+msgstr "Separator för multipla värden"
+
+#: ../class-sticky-list.php:1487
+msgid "Select a separator to use for fields that contain multiple values"
+msgstr "Vält en separator för fält med multipla värden"
+
+#: ../class-sticky-list.php:1490
+msgid "Space"
+msgstr "Mellanslag"
+
+#: ../class-sticky-list.php:1494
+msgid "Comma"
+msgstr "Kommatecken"
+
+#: ../class-sticky-list.php:1500
 msgid "Make files clickable"
 msgstr "Gör filer klickbara"
 
-#: ../class-sticky-list.php:1432
+#: ../class-sticky-list.php:1503
 msgid ""
 "Check this box to make uploaded files that are shown in the list clickable"
 msgstr "Markera denna ruta för göra uppladdade filer klickbara i listan"
 
-#: ../class-sticky-list.php:1435 ../class-sticky-list.php:1447
-#: ../class-sticky-list.php:1467 ../class-sticky-list.php:1488
-#: ../class-sticky-list.php:1517 ../class-sticky-list.php:1529
-#: ../class-sticky-list.php:1549 ../class-sticky-list.php:1585
-#: ../class-sticky-list.php:1637 ../class-sticky-list.php:1674
-#: ../class-sticky-list.php:1686
+#: ../class-sticky-list.php:1506 ../class-sticky-list.php:1518
+#: ../class-sticky-list.php:1538 ../class-sticky-list.php:1559
+#: ../class-sticky-list.php:1588 ../class-sticky-list.php:1600
+#: ../class-sticky-list.php:1620 ../class-sticky-list.php:1656
+#: ../class-sticky-list.php:1692 ../class-sticky-list.php:1734
+#: ../class-sticky-list.php:1771 ../class-sticky-list.php:1783
 msgid "Enabled"
 msgstr "Aktivera"
 
-#: ../class-sticky-list.php:1441
+#: ../class-sticky-list.php:1512
 msgid "Link to post"
 msgstr "Länk till post"
 
-#: ../class-sticky-list.php:1444
+#: ../class-sticky-list.php:1515
 msgid ""
 "Check this box to insert a link to the WordPress post in the action column. "
 "Only applicable if the list actually contains WordPress posts."
@@ -206,47 +222,45 @@ msgstr ""
 "Markera denna ruta om du vill inkludera en länk till ett WordPress inlägg. "
 "Fungerar endast om listan innehåller inlägg eller andra posttyper."
 
-#: ../class-sticky-list.php:1453
+#: ../class-sticky-list.php:1524
 msgid "Link label"
 msgstr "Länktext"
 
-#: ../class-sticky-list.php:1456
+#: ../class-sticky-list.php:1527
 msgid "Label for the post link."
 msgstr "Text för länken"
 
-#: ../class-sticky-list.php:1458
+#: ../class-sticky-list.php:1529
 msgid "Post"
 msgstr "Inlägg"
 
-#: ../class-sticky-list.php:1461
+#: ../class-sticky-list.php:1532
 msgid "View entries"
 msgstr "Visa inlägg"
 
-#: ../class-sticky-list.php:1464
-msgid ""
-"Check this box to enable users to view the complete submitted entry. A \"View"
-"\" link will appear in the list"
+#: ../class-sticky-list.php:1535
+msgid "Check this box to enable users to view the complete submitted entry."
 msgstr ""
-"Markera denna ruta för att låta användare visa inlägget. En \"Visa\"-länk "
+"Markera denna ruta för att låta användare se ett inlägg. En \"Visa\"-länk "
 "visas i listan"
 
-#: ../class-sticky-list.php:1473
+#: ../class-sticky-list.php:1544
 msgid "View label"
 msgstr "Visa-text"
 
-#: ../class-sticky-list.php:1476
+#: ../class-sticky-list.php:1547
 msgid "Label for the view button"
 msgstr "Text för visa-knappen"
 
-#: ../class-sticky-list.php:1478
+#: ../class-sticky-list.php:1549
 msgid "View"
 msgstr "Visa"
 
-#: ../class-sticky-list.php:1482
+#: ../class-sticky-list.php:1553
 msgid "Edit entries"
 msgstr "Redigera inlägg"
 
-#: ../class-sticky-list.php:1485
+#: ../class-sticky-list.php:1556
 msgid ""
 "Check this box to enable user to edit submitted entries. An \"Edit\" link "
 "will appear in the list"
@@ -254,46 +268,46 @@ msgstr ""
 "Markera denna ruta för att låta användare redigera inlägget. En \"Redigera\"-"
 "länk visas i listan"
 
-#: ../class-sticky-list.php:1494
+#: ../class-sticky-list.php:1565
 msgid "Edit label"
 msgstr "Redigera-text"
 
-#: ../class-sticky-list.php:1497
+#: ../class-sticky-list.php:1568
 msgid "Label for the edit button"
 msgstr "Text för redigera-knappen"
 
-#: ../class-sticky-list.php:1499
+#: ../class-sticky-list.php:1570
 msgid "Edit"
 msgstr "Redigera"
 
-#: ../class-sticky-list.php:1503
+#: ../class-sticky-list.php:1574
 msgid "Update button text"
 msgstr "Uppdatera-knappens text"
 
-#: ../class-sticky-list.php:1506
+#: ../class-sticky-list.php:1577
 msgid "Text for the submit button that is displayed when editing an entry"
 msgstr "Text för knappen som visas när ett inlägg redigeras"
 
-#: ../class-sticky-list.php:1508
+#: ../class-sticky-list.php:1579
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../class-sticky-list.php:1511
+#: ../class-sticky-list.php:1582
 msgid "New entry ID"
 msgstr "Nytt inläggsID"
 
-#: ../class-sticky-list.php:1514
+#: ../class-sticky-list.php:1585
 msgid ""
 "Check this box to give an edited entry a new ID every time it is updated."
 msgstr ""
 "Markera denna ruta för att ge varje redigerat inlägg ett nytt ID när det "
 "uppdaterats."
 
-#: ../class-sticky-list.php:1523
+#: ../class-sticky-list.php:1594
 msgid "Delete entries"
 msgstr "Ta bort inlägg"
 
-#: ../class-sticky-list.php:1526
+#: ../class-sticky-list.php:1597
 msgid ""
 "Check this box to enable user to delete submitted entries. A \"Delete\" link "
 "will appear in the list"
@@ -301,61 +315,61 @@ msgstr ""
 "Markera denna ruta för att låta användare ta bort inlägget. En \"Ta bort\"-"
 "länk visas i listan"
 
-#: ../class-sticky-list.php:1535
+#: ../class-sticky-list.php:1606
 msgid "Delete label"
 msgstr "Ta bort-text"
 
-#: ../class-sticky-list.php:1538
+#: ../class-sticky-list.php:1609
 msgid "Label for the delete button"
 msgstr "Text för ta bort-knappen"
 
-#: ../class-sticky-list.php:1540
+#: ../class-sticky-list.php:1611
 msgid "Delete"
 msgstr "Ta bort"
 
-#: ../class-sticky-list.php:1543
+#: ../class-sticky-list.php:1614
 msgid "Confirm delete"
 msgstr "Bekräfta radering"
 
-#: ../class-sticky-list.php:1546
+#: ../class-sticky-list.php:1617
 msgid ""
 "Check this box to require deletions to be confirmed by clicking OK in a "
 "dialog box"
 msgstr "Markera denna ruta för att kräva bekräftlese vid radering"
 
-#: ../class-sticky-list.php:1555
+#: ../class-sticky-list.php:1626
 msgid "Confirm delete text"
 msgstr "Bekräftelsetext"
 
-#: ../class-sticky-list.php:1558
+#: ../class-sticky-list.php:1629
 msgid "Text for the confirm delete dialog box"
 msgstr "Text att visa i brkäftelsen"
 
-#: ../class-sticky-list.php:1560
+#: ../class-sticky-list.php:1631
 msgid "Really delete this entry?"
 msgstr "Radera detta inlägg?"
 
-#: ../class-sticky-list.php:1563
+#: ../class-sticky-list.php:1634
 msgid "On delete"
 msgstr "Vid radering"
 
-#: ../class-sticky-list.php:1566
+#: ../class-sticky-list.php:1637
 msgid "Move deleted entries to trash or delete permanently?"
 msgstr "Flytta till papperskorgen eller ta bort permanent?"
 
-#: ../class-sticky-list.php:1569
+#: ../class-sticky-list.php:1640
 msgid "Move to trash"
 msgstr "Flytta till papperskorgen"
 
-#: ../class-sticky-list.php:1573
+#: ../class-sticky-list.php:1644
 msgid "Delete permanently"
 msgstr "Radera permanent"
 
-#: ../class-sticky-list.php:1579
+#: ../class-sticky-list.php:1650
 msgid "Duplicate entries"
 msgstr "Duplicera inlägg"
 
-#: ../class-sticky-list.php:1582
+#: ../class-sticky-list.php:1653
 msgid ""
 "Check this box to enable user to duplicate entries in the list. A \"Duplicate"
 "\" link will appear in the list that allows the user to use an existing "
@@ -364,145 +378,191 @@ msgstr ""
 "Markera denna ruta för att låta användare duplicera inlägg. En \"Duplucera\"-"
 "länk visas i listan"
 
-#: ../class-sticky-list.php:1591
+#: ../class-sticky-list.php:1662
 msgid "Duplicate label"
 msgstr "Duplicera-text"
 
-#: ../class-sticky-list.php:1594
+#: ../class-sticky-list.php:1665
 msgid "Label for the duplicate button"
 msgstr "Text för duplicera-knappen"
 
-#: ../class-sticky-list.php:1596
+#: ../class-sticky-list.php:1667
 msgid "Duplicate"
 msgstr "Duplicera"
 
-#: ../class-sticky-list.php:1599
+#: ../class-sticky-list.php:1670
 msgid "Mark entries as read"
 msgstr "Markera inlägg som lästa"
 
-#: ../class-sticky-list.php:1602
+#: ../class-sticky-list.php:1673
 msgid "Check these boxes to mark an entry as read when viewed or edited."
 msgstr ""
 "Markera dessa rutor för att markera inlägg som lästa när de visas eller "
 "redigeras"
 
-#: ../class-sticky-list.php:1605
+#: ../class-sticky-list.php:1676
 msgid "On view"
 msgstr "Vid visning"
 
-#: ../class-sticky-list.php:1609
+#: ../class-sticky-list.php:1680
 msgid "On edit"
 msgstr "Vid redigering"
 
-#: ../class-sticky-list.php:1615
+#: ../class-sticky-list.php:1686
+msgid "View PDF"
+msgstr "Visa PDF"
+
+#: ../class-sticky-list.php:1689
+msgid ""
+"Check this box to enable users to view the complete submitted entry as a PDF "
+"(requires Gravity PDF Addon). A \"PDF\" link will appear in the list"
+msgstr ""
+"Markera denna ruta för att låta användare visa ett inlägg som PDF (kräver "
+"Gravity PDF). En \"PDF\"-länk visas i listan"
+
+#: ../class-sticky-list.php:1698
+msgid "PDF button label"
+msgstr "PDF länk-text"
+
+#: ../class-sticky-list.php:1701
+msgid "Label for the PDF button"
+msgstr "Text för PDF-länken"
+
+#: ../class-sticky-list.php:1703
+msgid "PDF"
+msgstr "PDF"
+
+#: ../class-sticky-list.php:1706
+msgid "Gravity PDF ID"
+msgstr "Gravity PDF ID"
+
+#: ../class-sticky-list.php:1709
+msgid ""
+"The Gravity PDF id, found in the settings for each PDF created, without any "
+"slashes, dashes, etc. Example = 579e892aaf1b5"
+msgstr ""
+"Id:t för Gravity PDF. Finns under inställningar för en skapad PFD. Exempel = "
+"579e892aaf1b5"
+
+#: ../class-sticky-list.php:1713
 msgid "Action column header"
 msgstr "Text för sista kolumnen"
 
-#: ../class-sticky-list.php:1618
+#: ../class-sticky-list.php:1716
 msgid "Text to show as header for the action column"
 msgstr ""
 "Text att visa som rubrik i den sista kolumnen som innehåller Visa-, "
 "Redigera- och Ta bort-knapparna"
 
-#: ../class-sticky-list.php:1623
+#: ../class-sticky-list.php:1720
 msgid "Empty list text"
 msgstr "Text för tom lista"
 
-#: ../class-sticky-list.php:1626
+#: ../class-sticky-list.php:1723
 msgid "Text that is shown if the list is empty"
 msgstr "Text som visas när listan är tom"
 
-#: ../class-sticky-list.php:1628
+#: ../class-sticky-list.php:1725
 msgid "The list is empty. You can edit or remove this text in settings"
 msgstr ""
 "Listan är tom. Du kan redigera eller ta bort denna text under inställningar"
 
-#: ../class-sticky-list.php:1631
+#: ../class-sticky-list.php:1728
 msgid "List sort"
 msgstr "Sortering"
 
-#: ../class-sticky-list.php:1634
+#: ../class-sticky-list.php:1731
 msgid "Check this box to enable sorting for the list"
 msgstr "Markera denna ruta för att aktivera sorterimg av listan"
 
-#: ../class-sticky-list.php:1643
+#: ../class-sticky-list.php:1740
 msgid "Initial sort by"
 msgstr "Initial sortering"
 
-#: ../class-sticky-list.php:1646
+#: ../class-sticky-list.php:1743
 msgid "Initially sort the list by a specific field or by date added. "
 msgstr ""
 "Sortera listan initialt efter ett fält eller efter datum då inlägget "
 "skapades."
 
-#: ../class-sticky-list.php:1650
+#: ../class-sticky-list.php:1747
 msgid "Sort direction"
 msgstr "Sorteringsriktning"
 
-#: ../class-sticky-list.php:1655
+#: ../class-sticky-list.php:1752
 msgid ""
 "Select the direction in which the list should be sorted when first rendered"
 msgstr "Välj riktning för sorteringen i listan när den först visas."
 
-#: ../class-sticky-list.php:1658
+#: ../class-sticky-list.php:1755
 msgid "Descending"
 msgstr "Fallande"
 
-#: ../class-sticky-list.php:1662
+#: ../class-sticky-list.php:1759
 msgid "Ascending"
 msgstr "Stigande"
 
-#: ../class-sticky-list.php:1668
+#: ../class-sticky-list.php:1765
 msgid "List search"
 msgstr "Sökning i listan"
 
-#: ../class-sticky-list.php:1671
+#: ../class-sticky-list.php:1768
 msgid "Check this box to enable search for the list"
 msgstr "Markera denna ruta för att aktivera sökning i listan"
 
-#: ../class-sticky-list.php:1680
+#: ../class-sticky-list.php:1777
 msgid "List pagination"
 msgstr "Paginering i listan"
 
-#: ../class-sticky-list.php:1683
+#: ../class-sticky-list.php:1780
 msgid "Check this box to enable pagination for the list"
 msgstr "Markera denna ruta för att aktivera paginering i listan"
 
-#: ../class-sticky-list.php:1692
+#: ../class-sticky-list.php:1789
 msgid "Entries per page"
 msgstr "Inlägg per sida"
 
-#: ../class-sticky-list.php:1695
+#: ../class-sticky-list.php:1792
 msgid "Number of entries to be shown on each page."
 msgstr "Antal inlägg att visa på varje sida."
 
-#: ../class-sticky-list.php:1761 ../class-sticky-list.php:1869
+#: ../class-sticky-list.php:1858 ../class-sticky-list.php:1966
 msgid "Always"
 msgstr "Alltid"
 
-#: ../class-sticky-list.php:1762 ../class-sticky-list.php:1871
+#: ../class-sticky-list.php:1859 ../class-sticky-list.php:1968
 msgid "When a new entry is submitted"
 msgstr "När ett nytt inlägg skapas"
 
-#: ../class-sticky-list.php:1763 ../class-sticky-list.php:1872
+#: ../class-sticky-list.php:1860 ../class-sticky-list.php:1969
 msgid "When an entry is updated"
 msgstr "När ett inlägg  uppdaterats"
 
-#: ../class-sticky-list.php:1764
+#: ../class-sticky-list.php:1861
 msgid "When an entry is deleted"
 msgstr "När ett inlägg raderats"
 
-#: ../class-sticky-list.php:1780
+#: ../class-sticky-list.php:1877
 msgid "Send this notification"
 msgstr "Skicka denna notifikation"
 
-#: ../class-sticky-list.php:1870
+#: ../class-sticky-list.php:1967
 msgid "Never"
 msgstr "Aldrig"
 
-#: ../class-sticky-list.php:1888
+#: ../class-sticky-list.php:1985
 msgid "Display this confirmation"
 msgstr "Visa denna bekräftelse"
+
+#~ msgid "View, edit, delete & duplicate"
+#~ msgstr "Visa, redigera, radera & duplicera"
+
+#~ msgid ""
+#~ "Check this box to enable users to view the complete submitted entry. A "
+#~ "\"View\" link will appear in the list"
+#~ msgstr ""
+#~ "Markera denna ruta för att låta användare visa inlägget. En \"Visa\"-länk "
+#~ "visas i listan"
 
 #~ msgid "View, edit & delete"
 #~ msgstr "Visa, redigera & radera"

@@ -270,6 +270,7 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 **1.5**
 * Added support for Gravity PDF
 * Added support for "limit entries" and "No Duplicates"
+* Added multiple values separator setting
 * Fixed an issue with file uploads
 
 **1.4.5.1**

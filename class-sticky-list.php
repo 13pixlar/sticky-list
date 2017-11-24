@@ -268,6 +268,7 @@ if (class_exists("GFForms")) {
             $enable_list            = $this->get_sticky_setting("enable_list", $settings);
             $show_entries_to        = $this->get_sticky_setting("show_entries_to", $settings);
             $max_entries            = $this->get_sticky_setting("max_entries", $settings);
+            $value_separator        = $this->get_sticky_setting("value_separator", $settings);
             $enable_clickable       = $this->get_sticky_setting("enable_clickable", $settings);
             $enable_postlink        = $this->get_sticky_setting("enable_postlink", $settings);
             $link_label             = $this->get_sticky_setting("link_label", $settings);
@@ -502,10 +503,13 @@ if (class_exists("GFForms")) {
                                     ksort($field_value);
                                     $field_values = "";
 
+                                    if($value_separator == "") $value_separator = " ";
+
                                     // Concatenate field values into string separated by a space
                                     foreach ($field_value as $field => $value) {
-                                        if(!empty($value)) $field_values .= $value . " ";
+                                        if(!empty($value)) $field_values .= $value . $value_separator;
                                     }
+                                    $field_values = trim($field_values, $value_separator);
                                     $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_values</td>";
                                 }
 
@@ -1475,6 +1479,22 @@ if (class_exists("GFForms")) {
                             "name"    => "max_entries",
                             "tooltip" => __('Maximum number of entries to be shown in the list.','sticky-list'),
                             "class"   => "small"
+                        ),
+                        array(
+                            "label"   => __('Multiple values separator','sticky-list'),
+                            "type"    => "select",
+                            "name"    => "value_separator",
+                            "tooltip" => __('Select a separator to use for fields that contain multiple values','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Space','sticky-list'),
+                                    "value" => " "
+                                ),
+                                array(
+                                    "label" => __('Comma','sticky-list'),
+                                    "value" => ", "
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('Make files clickable','sticky-list'),
