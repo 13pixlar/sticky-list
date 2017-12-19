@@ -307,6 +307,7 @@ if (class_exists("GFForms")) {
                 // Get current user or get user ID from shortcode
                 if($user_id != "") {
                     $current_user_id = $user_id;
+                    $show_only_to_specific_user = true;
                 }else{
                     $current_user_id = $this->stickylist_get_current_user();
                 }
@@ -330,7 +331,7 @@ if (class_exists("GFForms")) {
 
                 // Get entries to show depending on settings
                 // Show only to creator
-                if($show_entries_to === "creator"){
+                if($show_entries_to === "creator" || isset($show_only_to_specific_user)){
 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
                     $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
