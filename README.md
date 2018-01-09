@@ -7,6 +7,11 @@ Sticky List is a Gravity Forms add-on that lets you list and **edit entries** fr
 #### Sticky List
 Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> that lets you list and edit entries from the front end. You can display a list on the front end where users can view, delete and edit submitted entries.
 
+#### New Features
+
+* Download entries as PDF (requires <a href="https://gravitypdf.com/">Gravity PDF</a>)
+* Added support for "limit entries" and "No Duplicates"
+
 #### Features
 
 * Display a list of entries on the front end
@@ -35,8 +40,12 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 
 #### Planned features
 
+* Log deletes, edits and views
+* Graphic shortcode builder
+* Export list to .csv from front end
+* Abillity to control ALL settings from within the shortcode
 * Support for multiple uploads in file field
-* Support for multi page form
+* Support for full multi page forms
 
 #### Usage
 
@@ -270,6 +279,8 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 **1.5**
 * Added support for Gravity PDF
 * Added support for "limit entries" and "No Duplicates"
+* Fixed an issue with embedd dropdown
+* Fixed an issue with filtering on user id in shortcode
 * Added multiple values separator setting
 * Fixed an issue with file uploads
 
