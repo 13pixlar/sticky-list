@@ -334,7 +334,11 @@ if (class_exists("GFForms")) {
                 if($show_entries_to === "creator" || isset($show_only_to_specific_user)){
 
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
-                    $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
+
+                    // Admin can allways see all entries
+                    if (!current_user_can('administrator')) {
+                        $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
+                    }
 
                     $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
 
