@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gravity Forms Sticky List\n"
-"POT-Creation-Date: 2017-11-24 14:10+0100\n"
+"POT-Creation-Date: 2018-02-01 23:03+0100\n"
 "PO-Revision-Date: 2015-05-08 16:21+0100\n"
 "Last-Translator: Adam Rehal <adam.rehal@nineyards.se>\n"
 "Language-Team: \n"
@@ -20,498 +20,519 @@ msgid "Show in list"
 msgstr ""
 
 #: ../class-sticky-list.php:126
-msgid "Dont wrap text from this field"
+msgid "Don't wrap text from this field"
 msgstr ""
 
 #: ../class-sticky-list.php:128
+msgid "Don't populate this field on edit"
+msgstr ""
+
+#: ../class-sticky-list.php:130
 msgid "Column label"
 msgstr ""
 
-#: ../class-sticky-list.php:195
+#: ../class-sticky-list.php:198
 msgid ""
 "<h6>Show field in list</h6>Check this box to show this field in the list."
 msgstr ""
 
-#: ../class-sticky-list.php:196
+#: ../class-sticky-list.php:199
 msgid ""
-"<h6>Dont wrap whitespace</h6>Check this box to prevent wraping of text from "
+"<h6>Don't wrap whitespace</h6>Check this box to prevent wraping of text from "
 "this field"
 msgstr ""
 
-#: ../class-sticky-list.php:197
+#: ../class-sticky-list.php:200
+msgid ""
+"<h6>Don't populate this field</h6>Check this box to prevent this field from "
+"being populated with the saved on edit"
+msgstr ""
+
+#: ../class-sticky-list.php:201
 msgid "<h6>Header text</h6>Use this field to override the default text header."
 msgstr ""
 
-#: ../class-sticky-list.php:391
+#: ../class-sticky-list.php:400
 msgid "Search"
 msgstr ""
 
-#: ../class-sticky-list.php:709
+#: ../class-sticky-list.php:718
 msgid "Delete failed"
 msgstr ""
 
-#: ../class-sticky-list.php:877
+#: ../class-sticky-list.php:902
 msgid "Remove"
 msgstr ""
 
-#: ../class-sticky-list.php:1305
+#: ../class-sticky-list.php:1330
 msgid "General settings"
 msgstr ""
 
-#: ../class-sticky-list.php:1306
+#: ../class-sticky-list.php:1331
 msgid "View, edit, delete, duplicate & pdf"
 msgstr ""
 
-#: ../class-sticky-list.php:1307
+#: ../class-sticky-list.php:1332
 msgid "Labels"
 msgstr ""
 
-#: ../class-sticky-list.php:1308
+#: ../class-sticky-list.php:1333
 msgid "Sort & search"
 msgstr ""
 
-#: ../class-sticky-list.php:1309
+#: ../class-sticky-list.php:1334
 msgid "Pagination"
 msgstr ""
 
-#: ../class-sticky-list.php:1310
+#: ../class-sticky-list.php:1335
 msgid "Donate"
 msgstr ""
 
-#: ../class-sticky-list.php:1311
+#: ../class-sticky-list.php:1336
 msgid ""
 "Sticky List is completely free. But if you like, you can always <a target="
 "\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
 "xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks."
 msgstr ""
 
-#: ../class-sticky-list.php:1338 ../class-sticky-list.php:1340
+#: ../class-sticky-list.php:1364 ../class-sticky-list.php:1366
 msgid "Embedd page/post"
 msgstr ""
 
-#: ../class-sticky-list.php:1338
+#: ../class-sticky-list.php:1364
 msgid ""
 "<strong>NOTE</strong>: Only the latest 1000 items are shown. Use \"custom url"
 "\" below if your desired post is not listed."
 msgstr ""
 
-#: ../class-sticky-list.php:1350
+#: ../class-sticky-list.php:1376
 msgid "Date added"
 msgstr ""
 
-#: ../class-sticky-list.php:1363
+#: ../class-sticky-list.php:1389
 msgid "Field "
 msgstr ""
 
-#: ../class-sticky-list.php:1408
+#: ../class-sticky-list.php:1434
 msgid "Everyone"
 msgstr ""
 
-#: ../class-sticky-list.php:1412
+#: ../class-sticky-list.php:1438
 msgid "All logged in users"
 msgstr ""
 
-#: ../class-sticky-list.php:1416
+#: ../class-sticky-list.php:1442
 msgid "Entry creator"
 msgstr ""
 
-#: ../class-sticky-list.php:1441
+#: ../class-sticky-list.php:1467
 msgid "Sticky List Settings"
 msgstr ""
 
-#: ../class-sticky-list.php:1444
+#: ../class-sticky-list.php:1470
 msgid "Enable for this form"
 msgstr ""
 
-#: ../class-sticky-list.php:1447
+#: ../class-sticky-list.php:1473
 msgid "Check this box to enable Sticky List for this form"
 msgstr ""
 
-#: ../class-sticky-list.php:1456
+#: ../class-sticky-list.php:1482
 msgid "Show entries in list to"
 msgstr ""
 
-#: ../class-sticky-list.php:1459
+#: ../class-sticky-list.php:1485
 msgid ""
 "Select who should be able to se the entries in the list. Administrators will "
 "always see all entries"
 msgstr ""
 
-#: ../class-sticky-list.php:1466
+#: ../class-sticky-list.php:1492
 msgid ""
 "The page/post where the form is embedded. This page will be used to view/"
 "edit the entry"
 msgstr ""
 
-#: ../class-sticky-list.php:1470
+#: ../class-sticky-list.php:1496
 msgid "Custom url"
 msgstr ""
 
-#: ../class-sticky-list.php:1473
+#: ../class-sticky-list.php:1499
 msgid ""
 "Manually input the url of the form. This overrides the selection made in the "
 "dropdown above. Use this if you cannot find the page/post in the list."
 msgstr ""
 
-#: ../class-sticky-list.php:1477
+#: ../class-sticky-list.php:1503
 msgid "Max nr of entries"
 msgstr ""
 
-#: ../class-sticky-list.php:1480
+#: ../class-sticky-list.php:1506
 msgid "Maximum number of entries to be shown in the list."
 msgstr ""
 
-#: ../class-sticky-list.php:1484
+#: ../class-sticky-list.php:1510
+msgid "Enable GET requests"
+msgstr ""
+
+#: ../class-sticky-list.php:1513
+msgid ""
+"Check this box to enable GET requests. This can be used to link to specific "
+"entries"
+msgstr ""
+
+#: ../class-sticky-list.php:1516 ../class-sticky-list.php:1544
+#: ../class-sticky-list.php:1556 ../class-sticky-list.php:1576
+#: ../class-sticky-list.php:1597 ../class-sticky-list.php:1626
+#: ../class-sticky-list.php:1638 ../class-sticky-list.php:1658
+#: ../class-sticky-list.php:1694 ../class-sticky-list.php:1730
+#: ../class-sticky-list.php:1772 ../class-sticky-list.php:1809
+#: ../class-sticky-list.php:1821
+msgid "Enabled"
+msgstr ""
+
+#: ../class-sticky-list.php:1522
 msgid "Multiple values separator"
 msgstr ""
 
-#: ../class-sticky-list.php:1487
+#: ../class-sticky-list.php:1525
 msgid "Select a separator to use for fields that contain multiple values"
 msgstr ""
 
-#: ../class-sticky-list.php:1490
+#: ../class-sticky-list.php:1528
 msgid "Space"
 msgstr ""
 
-#: ../class-sticky-list.php:1494
+#: ../class-sticky-list.php:1532
 msgid "Comma"
 msgstr ""
 
-#: ../class-sticky-list.php:1500
+#: ../class-sticky-list.php:1538
 msgid "Make files clickable"
 msgstr ""
 
-#: ../class-sticky-list.php:1503
+#: ../class-sticky-list.php:1541
 msgid ""
 "Check this box to make uploaded files that are shown in the list clickable"
 msgstr ""
 
-#: ../class-sticky-list.php:1506 ../class-sticky-list.php:1518
-#: ../class-sticky-list.php:1538 ../class-sticky-list.php:1559
-#: ../class-sticky-list.php:1588 ../class-sticky-list.php:1600
-#: ../class-sticky-list.php:1620 ../class-sticky-list.php:1656
-#: ../class-sticky-list.php:1692 ../class-sticky-list.php:1734
-#: ../class-sticky-list.php:1771 ../class-sticky-list.php:1783
-msgid "Enabled"
-msgstr ""
-
-#: ../class-sticky-list.php:1512
+#: ../class-sticky-list.php:1550
 msgid "Link to post"
 msgstr ""
 
-#: ../class-sticky-list.php:1515
+#: ../class-sticky-list.php:1553
 msgid ""
 "Check this box to insert a link to the WordPress post in the action column. "
 "Only applicable if the list actually contains WordPress posts."
 msgstr ""
 
-#: ../class-sticky-list.php:1524
+#: ../class-sticky-list.php:1562
 msgid "Link label"
 msgstr ""
 
-#: ../class-sticky-list.php:1527
+#: ../class-sticky-list.php:1565
 msgid "Label for the post link."
 msgstr ""
 
-#: ../class-sticky-list.php:1529
+#: ../class-sticky-list.php:1567
 msgid "Post"
 msgstr ""
 
-#: ../class-sticky-list.php:1532
+#: ../class-sticky-list.php:1570
 msgid "View entries"
 msgstr ""
 
-#: ../class-sticky-list.php:1535
+#: ../class-sticky-list.php:1573
 msgid "Check this box to enable users to view the complete submitted entry."
 msgstr ""
 
-#: ../class-sticky-list.php:1544
+#: ../class-sticky-list.php:1582
 msgid "View label"
 msgstr ""
 
-#: ../class-sticky-list.php:1547
+#: ../class-sticky-list.php:1585
 msgid "Label for the view button"
 msgstr ""
 
-#: ../class-sticky-list.php:1549
+#: ../class-sticky-list.php:1587
 msgid "View"
 msgstr ""
 
-#: ../class-sticky-list.php:1553
+#: ../class-sticky-list.php:1591
 msgid "Edit entries"
 msgstr ""
 
-#: ../class-sticky-list.php:1556
+#: ../class-sticky-list.php:1594
 msgid ""
 "Check this box to enable user to edit submitted entries. An \"Edit\" link "
 "will appear in the list"
 msgstr ""
 
-#: ../class-sticky-list.php:1565
+#: ../class-sticky-list.php:1603
 msgid "Edit label"
 msgstr ""
 
-#: ../class-sticky-list.php:1568
+#: ../class-sticky-list.php:1606
 msgid "Label for the edit button"
 msgstr ""
 
-#: ../class-sticky-list.php:1570
+#: ../class-sticky-list.php:1608
 msgid "Edit"
 msgstr ""
 
-#: ../class-sticky-list.php:1574
+#: ../class-sticky-list.php:1612
 msgid "Update button text"
 msgstr ""
 
-#: ../class-sticky-list.php:1577
+#: ../class-sticky-list.php:1615
 msgid "Text for the submit button that is displayed when editing an entry"
 msgstr ""
 
-#: ../class-sticky-list.php:1579
+#: ../class-sticky-list.php:1617
 msgid "Update"
 msgstr ""
 
-#: ../class-sticky-list.php:1582
+#: ../class-sticky-list.php:1620
 msgid "New entry ID"
 msgstr ""
 
-#: ../class-sticky-list.php:1585
+#: ../class-sticky-list.php:1623
 msgid ""
 "Check this box to give an edited entry a new ID every time it is updated."
 msgstr ""
 
-#: ../class-sticky-list.php:1594
+#: ../class-sticky-list.php:1632
 msgid "Delete entries"
 msgstr ""
 
-#: ../class-sticky-list.php:1597
+#: ../class-sticky-list.php:1635
 msgid ""
 "Check this box to enable user to delete submitted entries. A \"Delete\" link "
 "will appear in the list"
 msgstr ""
 
-#: ../class-sticky-list.php:1606
+#: ../class-sticky-list.php:1644
 msgid "Delete label"
 msgstr ""
 
-#: ../class-sticky-list.php:1609
+#: ../class-sticky-list.php:1647
 msgid "Label for the delete button"
 msgstr ""
 
-#: ../class-sticky-list.php:1611
+#: ../class-sticky-list.php:1649
 msgid "Delete"
 msgstr ""
 
-#: ../class-sticky-list.php:1614
+#: ../class-sticky-list.php:1652
 msgid "Confirm delete"
 msgstr ""
 
-#: ../class-sticky-list.php:1617
+#: ../class-sticky-list.php:1655
 msgid ""
 "Check this box to require deletions to be confirmed by clicking OK in a "
 "dialog box"
 msgstr ""
 
-#: ../class-sticky-list.php:1626
+#: ../class-sticky-list.php:1664
 msgid "Confirm delete text"
 msgstr ""
 
-#: ../class-sticky-list.php:1629
+#: ../class-sticky-list.php:1667
 msgid "Text for the confirm delete dialog box"
 msgstr ""
 
-#: ../class-sticky-list.php:1631
+#: ../class-sticky-list.php:1669
 msgid "Really delete this entry?"
 msgstr ""
 
-#: ../class-sticky-list.php:1634
+#: ../class-sticky-list.php:1672
 msgid "On delete"
 msgstr ""
 
-#: ../class-sticky-list.php:1637
+#: ../class-sticky-list.php:1675
 msgid "Move deleted entries to trash or delete permanently?"
 msgstr ""
 
-#: ../class-sticky-list.php:1640
+#: ../class-sticky-list.php:1678
 msgid "Move to trash"
 msgstr ""
 
-#: ../class-sticky-list.php:1644
+#: ../class-sticky-list.php:1682
 msgid "Delete permanently"
 msgstr ""
 
-#: ../class-sticky-list.php:1650
+#: ../class-sticky-list.php:1688
 msgid "Duplicate entries"
 msgstr ""
 
-#: ../class-sticky-list.php:1653
+#: ../class-sticky-list.php:1691
 msgid ""
 "Check this box to enable user to duplicate entries in the list. A \"Duplicate"
 "\" link will appear in the list that allows the user to use an existing "
 "entry as a template for a new one."
 msgstr ""
 
-#: ../class-sticky-list.php:1662
+#: ../class-sticky-list.php:1700
 msgid "Duplicate label"
 msgstr ""
 
-#: ../class-sticky-list.php:1665
+#: ../class-sticky-list.php:1703
 msgid "Label for the duplicate button"
 msgstr ""
 
-#: ../class-sticky-list.php:1667
+#: ../class-sticky-list.php:1705
 msgid "Duplicate"
 msgstr ""
 
-#: ../class-sticky-list.php:1670
+#: ../class-sticky-list.php:1708
 msgid "Mark entries as read"
 msgstr ""
 
-#: ../class-sticky-list.php:1673
+#: ../class-sticky-list.php:1711
 msgid "Check these boxes to mark an entry as read when viewed or edited."
 msgstr ""
 
-#: ../class-sticky-list.php:1676
+#: ../class-sticky-list.php:1714
 msgid "On view"
 msgstr ""
 
-#: ../class-sticky-list.php:1680
+#: ../class-sticky-list.php:1718
 msgid "On edit"
 msgstr ""
 
-#: ../class-sticky-list.php:1686
+#: ../class-sticky-list.php:1724
 msgid "View PDF"
 msgstr ""
 
-#: ../class-sticky-list.php:1689
+#: ../class-sticky-list.php:1727
 msgid ""
 "Check this box to enable users to view the complete submitted entry as a PDF "
 "(requires Gravity PDF Addon). A \"PDF\" link will appear in the list"
 msgstr ""
 
-#: ../class-sticky-list.php:1698
+#: ../class-sticky-list.php:1736
 msgid "PDF button label"
 msgstr ""
 
-#: ../class-sticky-list.php:1701
+#: ../class-sticky-list.php:1739
 msgid "Label for the PDF button"
 msgstr ""
 
-#: ../class-sticky-list.php:1703
+#: ../class-sticky-list.php:1741
 msgid "PDF"
 msgstr ""
 
-#: ../class-sticky-list.php:1706
+#: ../class-sticky-list.php:1744
 msgid "Gravity PDF ID"
 msgstr ""
 
-#: ../class-sticky-list.php:1709
+#: ../class-sticky-list.php:1747
 msgid ""
 "The Gravity PDF id, found in the settings for each PDF created, without any "
 "slashes, dashes, etc. Example = 579e892aaf1b5"
 msgstr ""
 
-#: ../class-sticky-list.php:1713
+#: ../class-sticky-list.php:1751
 msgid "Action column header"
 msgstr ""
 
-#: ../class-sticky-list.php:1716
+#: ../class-sticky-list.php:1754
 msgid "Text to show as header for the action column"
 msgstr ""
 
-#: ../class-sticky-list.php:1720
+#: ../class-sticky-list.php:1758
 msgid "Empty list text"
 msgstr ""
 
-#: ../class-sticky-list.php:1723
+#: ../class-sticky-list.php:1761
 msgid "Text that is shown if the list is empty"
 msgstr ""
 
-#: ../class-sticky-list.php:1725
+#: ../class-sticky-list.php:1763
 msgid "The list is empty. You can edit or remove this text in settings"
 msgstr ""
 
-#: ../class-sticky-list.php:1728
+#: ../class-sticky-list.php:1766
 msgid "List sort"
 msgstr ""
 
-#: ../class-sticky-list.php:1731
+#: ../class-sticky-list.php:1769
 msgid "Check this box to enable sorting for the list"
 msgstr ""
 
-#: ../class-sticky-list.php:1740
+#: ../class-sticky-list.php:1778
 msgid "Initial sort by"
 msgstr ""
 
-#: ../class-sticky-list.php:1743
+#: ../class-sticky-list.php:1781
 msgid "Initially sort the list by a specific field or by date added. "
 msgstr ""
 
-#: ../class-sticky-list.php:1747
+#: ../class-sticky-list.php:1785
 msgid "Sort direction"
 msgstr ""
 
-#: ../class-sticky-list.php:1752
+#: ../class-sticky-list.php:1790
 msgid ""
 "Select the direction in which the list should be sorted when first rendered"
 msgstr ""
 
-#: ../class-sticky-list.php:1755
+#: ../class-sticky-list.php:1793
 msgid "Descending"
 msgstr ""
 
-#: ../class-sticky-list.php:1759
+#: ../class-sticky-list.php:1797
 msgid "Ascending"
 msgstr ""
 
-#: ../class-sticky-list.php:1765
+#: ../class-sticky-list.php:1803
 msgid "List search"
 msgstr ""
 
-#: ../class-sticky-list.php:1768
+#: ../class-sticky-list.php:1806
 msgid "Check this box to enable search for the list"
 msgstr ""
 
-#: ../class-sticky-list.php:1777
+#: ../class-sticky-list.php:1815
 msgid "List pagination"
 msgstr ""
 
-#: ../class-sticky-list.php:1780
+#: ../class-sticky-list.php:1818
 msgid "Check this box to enable pagination for the list"
 msgstr ""
 
-#: ../class-sticky-list.php:1789
+#: ../class-sticky-list.php:1827
 msgid "Entries per page"
 msgstr ""
 
-#: ../class-sticky-list.php:1792
+#: ../class-sticky-list.php:1830
 msgid "Number of entries to be shown on each page."
 msgstr ""
 
-#: ../class-sticky-list.php:1858 ../class-sticky-list.php:1966
+#: ../class-sticky-list.php:1896 ../class-sticky-list.php:2004
 msgid "Always"
 msgstr ""
 
-#: ../class-sticky-list.php:1859 ../class-sticky-list.php:1968
+#: ../class-sticky-list.php:1897 ../class-sticky-list.php:2006
 msgid "When a new entry is submitted"
 msgstr ""
 
-#: ../class-sticky-list.php:1860 ../class-sticky-list.php:1969
+#: ../class-sticky-list.php:1898 ../class-sticky-list.php:2007
 msgid "When an entry is updated"
 msgstr ""
 
-#: ../class-sticky-list.php:1861
+#: ../class-sticky-list.php:1899
 msgid "When an entry is deleted"
 msgstr ""
 
-#: ../class-sticky-list.php:1877
+#: ../class-sticky-list.php:1915
 msgid "Send this notification"
 msgstr ""
 
-#: ../class-sticky-list.php:1967
+#: ../class-sticky-list.php:2005
 msgid "Never"
 msgstr ""
 
-#: ../class-sticky-list.php:1985
+#: ../class-sticky-list.php:2023
 msgid "Display this confirmation"
 msgstr ""
