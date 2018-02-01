@@ -967,7 +967,8 @@ if (class_exists("GFForms")) {
                             var view_id = '<input type="hidden" name="view_id" value="<?php echo $view_id; ?>" />';
                             var mode = '<input type="hidden" name="mode" value="view" />';
                             thisForm.append(view_id, mode);
-                            $("#gform_wrapper_<?php echo $form_id;?> .gform_fields input").not("input[type=file]").attr("disabled","disabled");
+                            formFieldsWrapper = $("#gform_wrapper_<?php echo $form_id;?> .gform_fields");
+                            formFieldsWrapper.find('input, select, textarea').not("input[type=file]").attr("disabled","disabled");
                             $("#gform_submit_button_<?php echo $form_id;?>").remove();
                             $(document).arrive("form", function(el) {
                                 $(el).append(view_id, mode);
