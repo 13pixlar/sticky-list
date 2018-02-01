@@ -123,7 +123,9 @@ if (class_exists("GFForms")) {
                         <br>
                         <input type="checkbox" id="field_list_value" onclick="SetFieldProperty('stickylistField', this.checked);" /><label class="inline" for="field_list_value"><?php _e('Show in list', 'sticky-list'); ?> <?php gform_tooltip("form_field_list_value") ?></label>
                         <br>
-                        <input type="checkbox" id="field_nowrap_value" onclick="SetFieldProperty('stickylistFieldNoWrap', this.checked);" /><label class="inline" for="field_nowrap_value"><?php _e('Dont wrap text from this field', 'sticky-list'); ?> <?php gform_tooltip("form_field_nowrap_value") ?></label>
+                        <input type="checkbox" id="field_nowrap_value" onclick="SetFieldProperty('stickylistFieldNoWrap', this.checked);" /><label class="inline" for="field_nowrap_value"><?php _e('Don\'t wrap text from this field', 'sticky-list'); ?> <?php gform_tooltip("form_field_nowrap_value") ?></label>
+                        <br>
+                        <input type="checkbox" id="field_nopopulate_value" onclick="SetFieldProperty('stickylistFieldNoPopulate', this.checked);" /><label class="inline" for="field_nopopulate_value"><?php _e('Don\'t populate this field on edit', 'sticky-list'); ?> <?php gform_tooltip("form_field_nopopulate_value") ?></label>
                         <br>
                         <label class="inline" for="field_list_text_value"><?php _e('Column label', 'sticky-list'); ?> <?php gform_tooltip("form_field_text_value") ?></label><br><input class="fieldwidth-3" type="text" id="field_list_text_value" onkeyup="SetFieldProperty('stickylistFieldLabel', this.value);" />
                     </li>
@@ -180,6 +182,7 @@ if (class_exists("GFForms")) {
                 jQuery(document).bind("gform_load_field_settings", function(event, field, form){
                     jQuery("#field_list_value").attr("checked", field["stickylistField"] == true);
                     jQuery("#field_nowrap_value").attr("checked", field["stickylistFieldNoWrap"] == true);
+                    jQuery("#field_nopopulate_value").attr("checked", field["stickylistFieldNoPopulate"] == true);
                     jQuery("#field_list_text_value").val(field["stickylistFieldLabel"]);
                 });
             </script>
@@ -193,7 +196,8 @@ if (class_exists("GFForms")) {
          */
         function add_stickylist_tooltips($tooltips){
            $tooltips["form_field_list_value"] = __('<h6>Show field in list</h6>Check this box to show this field in the list.','sticky-list');
-           $tooltips["form_field_nowrap_value"] = __('<h6>Dont wrap whitespace</h6>Check this box to prevent wraping of text from this field','sticky-list');
+           $tooltips["form_field_nowrap_value"] = __('<h6>Don\'t wrap whitespace</h6>Check this box to prevent wraping of text from this field','sticky-list');
+           $tooltips["form_field_nopopulate_value"] = __('<h6>Don\'t populate this field</h6>Check this box to prevent this field from being populated with the saved on edit','sticky-list');
            $tooltips["form_field_text_value"] = __('<h6>Header text</h6>Use this field to override the default text header.','sticky-list');
            return $tooltips;
         }
@@ -843,11 +847,21 @@ if (class_exists("GFForms")) {
                         // This variable will hold upload fields
                         $upload_inputs = false;
 
+                        // Buid array of field id's that should not be populated on edit
+                        $no_populate = array();
+                        foreach ($form["fields"] as $test_field) {
+                            $no_populate[$test_field->id] = $test_field->stickylistFieldNoPopulate;
+                        }
+
                         // Loop trough all the fields
                         foreach ($form_fields as $key => &$value) {
 
                             // If the key is numeric we need to change it from [X.X] to [input_X_X]
                             if (is_numeric($key)) {
+
+                                // Skip the field if No Populate is set
+                                if($no_populate[substr($key, 0, 1)])
+                                    continue;
 
                                 // If the current field is a list field we need to unserialize it and flatten the array
                                 if(is_array(maybe_unserialize($value))) {
