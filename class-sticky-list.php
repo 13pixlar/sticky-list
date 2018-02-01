@@ -792,6 +792,12 @@ if (class_exists("GFForms")) {
          */
         public function pre_entry_action($form) {
 
+            // Maybe enable get requests
+            $enable_get_requests = $this->get_sticky_setting("enable_get_requests", $this->get_form_settings($form));
+            if ($enable_get_requests) {
+                $_POST = array_merge($_POST, $_GET);
+            }
+
             if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
 
                 // No limits on edit/views
@@ -1485,6 +1491,18 @@ if (class_exists("GFForms")) {
                             "name"    => "max_entries",
                             "tooltip" => __('Maximum number of entries to be shown in the list.','sticky-list'),
                             "class"   => "small"
+                        ),
+                        array(
+                            "label"   => __('Enable GET requests','sticky-list'),
+                            "type"    => "checkbox",
+                            "name"    => "enable_get_requests",
+                            "tooltip" => __('Check this box to enable GET requests. This can be used to link to specific entries','sticky-list'),
+                            "choices" => array(
+                                array(
+                                    "label" => __('Enabled','sticky-list'),
+                                    "name"  => "enable_get_requests"
+                                )
+                            )
                         ),
                         array(
                             "label"   => __('Multiple values separator','sticky-list'),
