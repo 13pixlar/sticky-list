@@ -860,7 +860,12 @@ if (class_exists("GFForms")) {
                             if (is_numeric($key)) {
 
                                 // Skip the field if No Populate is set
-                                if($no_populate[substr($key, 0, 1)])
+                                if (strpos($key, ".")) {
+                                    $field_key = substr($key, 0, strpos($key, "."));
+                                }else{
+                                    $field_key = $key;
+                                }
+                                if($no_populate[$field_key])
                                     continue;
 
                                 // If the current field is a list field we need to unserialize it and flatten the array
