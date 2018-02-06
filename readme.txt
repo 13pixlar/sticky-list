@@ -311,6 +311,8 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 * Added GET request support
 * Fixed an issue with textareas and selects not being disabled on view
 * Fixed an issue where admin could not see entries in the list
+* Updated database to match new structure
+* Fixed a bug in dont populate
 
 = 1.5 =
 * Added support for Gravity PDF
