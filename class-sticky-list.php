@@ -1118,10 +1118,15 @@ if (class_exists("GFForms")) {
 
             $empty_the_entry = GFAPI::update_entry($entry_delete, $entry_delete_id);
             $success_delete = GFAPI::delete_entry($entry_delete_id);
-            global $wpdb;
-            $wpdb->delete( $wpdb->prefix . 'rg_lead', [ 'id' => $entry_delete_id ], [ '%d' ] );
-        }
 
+            // Manually remove empty entry from database
+            global $wpdb;
+            if (version_compare(GFForms::$version, '2.3-rc-3') > 0 ) {
+                $wpdb->delete( $wpdb->prefix . 'rg_lead', [ 'id' => $entry_delete_id ], [ '%d' ] );
+            }else{
+                $wpdb->delete( $wpdb->prefix . 'gf_entry', [ 'id' => $entry_delete_id ], [ '%d' ] );
+            }
+        }
 
         /**
          * Allow edits of entries in forms with no dupelicate fields
