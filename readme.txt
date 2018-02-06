@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.9
-Stable tag: 1.5
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sticky-list
@@ -101,6 +101,11 @@ You can use the list to display entries from a specified user. This is helpful w
 #### Sort and search entries
 
 Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately.
+
+#### GET request support
+
+You can enable GET requests to link directly to entries that you want to view or edit, like so:
+`www.domain.com/some-page-with-form/?mode=edit&edit_id=99`
 
 #### Conditional confirmations and notifications
 
@@ -300,6 +305,12 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list
 
 == Changelog ==
+
+= 1.5.1 =
+* Added setting to not populate field on edit
+* Added GET request support
+* Fixed an issue with textareas and selects not being disabled on view
+* Fixed an issue where admin could not see entries in the list
 
 = 1.5 =
 * Added support for Gravity PDF

@@ -91,6 +91,11 @@ You can use the list to display entries from a specified user. This is helpful w
 
 Sticky List uses the fast and lightweight <a href="http://www.listjs.com/">list.js</a> to allow for sorting the list and searching the entries. Searching entries is fast and results are updated immediately.
 
+#### GET request support
+
+You can enable GET requests to link directly to entries that you want to view or edit, like so:
+`www.domain.com/some-page-with-form/?mode=edit&edit_id=99`
+
 #### Conditional confirmations and notifications
 
 Gravity Forms Sticky List adds conditional confirmations and notifications so that different confirmations messages can be shown depending on if a new entry was submitted or if an existing entry was updated, and diffrent email notifications can be sent if an entry was added, updated or deleted.
@@ -275,6 +280,12 @@ function show_only_approved($entries) {
 Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
 
 <h3>Changelog</h3>
+
+**1.5.1**
+* Added setting to not populate field on edit
+* Added GET request support
+* Fixed an issue with textareas and selects not being disabled on view
+* Fixed an issue where admin could not see entries in the list
 
 **1.5**
 * Added support for Gravity PDF
