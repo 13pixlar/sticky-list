@@ -1121,7 +1121,7 @@ if (class_exists("GFForms")) {
 
             // Manually remove empty entry from database
             global $wpdb;
-            if (version_compare(GFForms::$version, '2.3-rc-3') > 0 ) {
+            if (version_compare(GFForms::$version, '2.3-rc-1') < 0 ) {
                 $wpdb->delete( $wpdb->prefix . 'rg_lead', [ 'id' => $entry_delete_id ], [ '%d' ] );
             }else{
                 $wpdb->delete( $wpdb->prefix . 'gf_entry', [ 'id' => $entry_delete_id ], [ '%d' ] );
