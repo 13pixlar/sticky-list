@@ -422,7 +422,7 @@ if (class_exists("GFForms")) {
 
                             $class_label = "header-" . str_replace(" ", "-", strtolower($label));
 
-                            $list_html .= "<th class='sort $class_label' data-sort='sort-$i'>$label</th>";
+                            $list_html .= "<th class='sort $class_label' data-sort='column-$i'>$label</th>";
 
                             // Increment sorting counter
                             $i++;
@@ -495,13 +495,13 @@ if (class_exists("GFForms")) {
                                             $field_value = end($field_value);
                                         }
 
-                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
 
                                     }else{
 
                                         // Remove the price from the string
                                         $field_value = substr($field_value, 0, strpos($field_value, "|"));
-                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
                                     }
                                 }
 
@@ -519,7 +519,7 @@ if (class_exists("GFForms")) {
                                         if(!empty($value)) $field_values .= $value . $value_separator;
                                     }
                                     $field_values = trim($field_values, $value_separator);
-                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_values</td>";
+                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_values</td>";
                                 }
 
                                 // If the field is a file field we use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
@@ -530,22 +530,22 @@ if (class_exists("GFForms")) {
 
                                     // Make file clickable or not
                                     if($enable_clickable && $field_value != "") {
-                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
+                                        $list_html .= "<td class='column-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
                                     }else{
-                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$file_name</td>";
+                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$file_name</td>";
                                     }
                                 }
 
                                 // If the field is a date field we need to format it
                                 elseif ($field["type"] == "date" && $field_value != "") {
                                     $field_value = $this->format_the_date($field_value,$field["dateFormat"]);
-                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
                                 }
 
                                 // If the field is an URL we need to format it
                                 elseif ($field["type"] == "website" && $field_value != "") {
                                     $tdClass = "stickylist-url";
-                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'><a href='$field_value'>$field_value</a></td>";
+                                    $list_html .= "<td class='column-$i $nowrap $tdClass'><a href='$field_value'>$field_value</a></td>";
                                 }
 
                                 // If the field is an number field we need to format it
@@ -561,14 +561,14 @@ if (class_exists("GFForms")) {
                                         $currency = new RGCurrency( GFCommon::get_currency() );
                                         $field_value   = $currency->to_money( $field_value );
                                     }
-                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
                                 }
 
                                 // If the field is a post category we need to remove the ID from the string
                                 elseif ($field["type"] == "post_category" && $field_value != "") {
                                     $tdClass = "stickylist-category";
                                     $field_value = strtok($field_value, ":");
-                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
                                 }
 
                                 // If the field is a list field we need to unserialize it, flatten the array and implode it into a string
@@ -577,13 +577,13 @@ if (class_exists("GFForms")) {
                                         $list = maybe_unserialize($field_value);
                                         $field_value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
                                         $field_value = implode(", ", $field_value);
-                                        $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
                                     }
                                 }
 
                                 // All other fields
                                 else{
-                                    $list_html .= "<td class='sort-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
                                 }
 
                                 // Increment sorting counter
@@ -684,7 +684,7 @@ if (class_exists("GFForms")) {
                         // Build sort fields string
                         $sort_fileds = "";
                         for ($a=0; $a<$i; $a++) {
-                            $sort_fileds .= "'sort-$a',";
+                            $sort_fileds .= "'column-$a',";
                         }
 
                         // Include list.js
