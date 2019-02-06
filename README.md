@@ -281,6 +281,10 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**1.5.2**
+* Fixed an issue that would not show confirmations based on conditional logic
+* Added some responsivness to list
+
 **1.5.1**
 * Added setting to not populate field on edit
 * Added GET request support

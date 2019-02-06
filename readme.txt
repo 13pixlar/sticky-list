@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: gravity forms, edit, list, delete
 Requires at least: 3.0.1
 Tested up to: 4.9.9
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sticky-list
@@ -305,6 +305,10 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list
 
 == Changelog ==
+
+= 1.5.2 =
+* Fixed an issue that would not show confirmations based on conditional logic
+* Added some responsivness to list
 
 = 1.5.1 =
 * Added setting to not populate field on edit
