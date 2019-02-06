@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.5.1";
+        protected $_version = "1.5.2";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -781,12 +781,14 @@ if (class_exists("GFForms")) {
 
 
         /**
-         * Add Sticky List stylesheet
+         * Add Sticky List stylesheet and responsive js
          *
          */
         public function register_plugin_styles() {
             wp_register_style( 'stickylist', plugins_url( 'gravity-forms-sticky-list/css/sticky-list_styles.css' ) );
             wp_enqueue_style( 'stickylist' );
+            wp_register_script( 'stickylist_js', plugins_url( 'gravity-forms-sticky-list/js/sticky-list_responsive.js' ), array( 'jquery' ) );
+            wp_enqueue_script( 'stickylist_js' );
         }
 
 
@@ -2093,7 +2095,7 @@ if (class_exists("GFForms")) {
                     if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
 
                         // If this is not a "save & continue" confirmation
-                        if (!isset($confirmation["event"])) {
+                        if (!isset($confirmation["event"]) && GFCommon::evaluate_conditional_logic( rgar($confirmation, 'conditionalLogic'), $form, $lead )) {
 
                             // If the confirmation is a message and is not a save-event we add that message to the output string
                             if($confirmation["type"] == "message") {
