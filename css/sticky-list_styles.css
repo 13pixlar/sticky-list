@@ -72,3 +72,21 @@ div[class^="file_"] a.remove-entry img {
 div[class^="file_"] + input[type="file"] {
     display: none;
 }
+
+.sticky-list thead .sort:after{
+    content:"\21C5";
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.sticky-list thead .asc:after{
+    content:"\2193";
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.sticky-list thead .desc:after{
+    content:"\2191";
+    font-weight: normal;
+    margin-left: 5px;
+}
