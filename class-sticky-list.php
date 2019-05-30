@@ -697,7 +697,7 @@ if (class_exists("GFForms")) {
 
                         // If both sort and paignation is enabled
                         if($enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { return window.listUpdated instanceof Function ? window.listUpdated():''; } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
 
                         // If only sort is enabled
                         }elseif($enable_sort && !$enable_pagination) {
@@ -705,7 +705,7 @@ if (class_exists("GFForms")) {
 
                         // If only paignation is enabled
                         }elseif(!$enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script></style>";
+                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { return window.listUpdated instanceof Function ? window.listUpdated():''; } userList.on('updated', callback);</script></style>";
                         }
                     }
 
