@@ -343,6 +343,8 @@ if (class_exists("GFForms")) {
                     if (!current_user_can('administrator')) {
                         $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
                     }
+//var_dump($search_criteria);
+//var_dump($sorting);
 
                     $entries = GFAPI::get_entries($form_id, $search_criteria, $sorting, $paging);
 
@@ -697,7 +699,7 @@ if (class_exists("GFForms")) {
 
                         // If both sort and paignation is enabled
                         if($enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { return window.listUpdated instanceof Function ? window.listUpdated():''; } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
 
                         // If only sort is enabled
                         }elseif($enable_sort && !$enable_pagination) {
@@ -705,7 +707,7 @@ if (class_exists("GFForms")) {
 
                         // If only paignation is enabled
                         }elseif(!$enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { return window.listUpdated instanceof Function ? window.listUpdated():''; } userList.on('updated', callback);</script></style>";
+                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script></style>";
                         }
                     }
 
@@ -811,6 +813,7 @@ if (class_exists("GFForms")) {
 
                 // Add lib to help with ajax in multi page forms
                 echo "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/arrive.min.js' ) . "'></script>";
+                echo "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/sticky-list_multiple_file_view_edit.js' ) . "'></script>";
 
                 if($_POST["mode"] == "edit") {
                     $edit_id = $_POST["edit_id"];
@@ -911,18 +914,57 @@ if (class_exists("GFForms")) {
                                             $show_delete = "";
                                         }
 
+
                                         $upload_inputs = true;
 
-                                        ?>
-                                        <script>
-                                        jQuery(document).ready(function($) {
-                                            $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
-                                            $(document).arrive("form", function(el) {
-                                                $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
-                                            });
-                                        });
-                                        </script>
-                                        <?php
+                                        if(strpos($value, '[') === 0){//Enable Multi-File Upload
+                                            $value_json =  json_decode($value);
+                                            $file_preview_html="";
+                                            if($show_delete != ""){// if this page is in edit mode, change the show_delete html
+                                                $show_delete = " <a title=\"" . __("Remove","sticky-list") . "\" class=\"remove-entry-for-multi-file-upload\"><img alt=\"" . __("Remove","sticky-list") . "\" src=\"$delete_icon\"></a>";
+                                            }
+                                            $field_files_arr_string = "";
+                                            foreach ($value_json as $key => $value) {
+                                                $field_files_arr_string .=  ",{\"existed_filename\":\"".$value."\"}";
+                                                $file_obj = basename($value);
+                                                $file_preview_html .= '<div class="gform_preview_file"><a class="gform_preview_file_link" target="_blank" href="'.$value.'">'.$file_obj.'</a> '.$show_delete.'</div>';
+                                            }
+                                            if(strlen($field_files_arr_string)>0){
+                                                //remove the first comma
+                                                $field_files_arr_string = substr($field_files_arr_string,1);
+                                                //wrap with []
+                                                $field_files_arr_string = "[".$field_files_arr_string."]";
+                                            }
+                                            ?>
+                                            <script>
+                                                jQuery(document).ready(function($) {
+                                                    var $gform_uploaded_files = $('#gform_uploaded_files_<?php echo $form['id'] ?>');
+                                                    var gform_uploaded_files_val = $gform_uploaded_files.val();
+                                                    var gform_uploaded_files_val_json={};
+                                                    if(gform_uploaded_files_val){
+                                                        gform_uploaded_files_val_json = $.parseJSON(gform_uploaded_files_val);
+                                                    }
+
+                                                    gform_uploaded_files_val_json["input_<?php echo $field_key ?>"] = (<?php echo $field_files_arr_string ?>);
+                                                    $gform_uploaded_files.val($.toJSON(gform_uploaded_files_val_json));
+                                                    validateFilesSizeAfterInitialization('gform_multifile_upload_<?php echo $form['id'] ?>_<?php echo $field_key ?>');
+
+                                                    $('#gform_preview_<?php echo $form['id'] ?>_<?php echo $field_key ?>').append('<?php echo $file_preview_html ?>');
+                                                });
+                                            </script>
+                                            <?php
+                                        }else{//Single-File Upload
+                                            ?>
+                                            <script>
+                                                jQuery(document).ready(function($) {
+                                                    $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a target="_blank" href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
+                                                    $(document).arrive("form", function(el) {
+                                                        $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a target="_blank" href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
+                                                    });
+                                                });
+                                            </script>
+                                            <?php
+                                        }
                                     }
                                 }
 
@@ -1034,6 +1076,29 @@ if (class_exists("GFForms")) {
                 // Save old and new entries for use in hook
                 $old_entry = $original_entry;
                 $new_entry = $entry;
+
+                $gform_uploaded_files = $_POST["gform_uploaded_files"];
+                $gform_uploaded_files_obj = json_decode(stripslashes($gform_uploaded_files));
+                if ( is_object( $gform_uploaded_files_obj ) ){
+                    $gform_uploaded_files_obj_vars = get_object_vars( $gform_uploaded_files_obj );
+                    foreach( $gform_uploaded_files_obj_vars as $gform_uploaded_file_key => $gform_uploaded_file_value ){
+
+                        $file_field_index = substr($gform_uploaded_file_key,6);
+                        $new_entry_file_string = $new_entry[$file_field_index];
+                        $new_entry_file_arr = json_decode($new_entry_file_string,true);
+
+                        foreach( $gform_uploaded_file_value as $_key => $_value ){
+                            if(property_exists($_value,"existed_filename")){
+                                $_value_existed_filename = $_value->existed_filename;
+                                $new_entry_file_arr[$_key]=$_value_existed_filename;
+                            }
+                        }
+                        $correct_files = json_encode($new_entry_file_arr);
+                        $new_entry[$file_field_index] = $correct_files;
+                        $old_entry[$file_field_index] = $correct_files;
+                        $entry[$file_field_index] = $correct_files;
+                    }
+                }
 
                 // If we have an original entry
                 if($original_entry && is_wp_error($original_entry) == false) {
