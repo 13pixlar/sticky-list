@@ -90,3 +90,6 @@ div[class^="file_"] + input[type="file"] {
     font-weight: normal;
     margin-left: 5px;
 }
+.remove-entry-for-multi-file-upload:hover{
+    cursor: pointer;
+}
