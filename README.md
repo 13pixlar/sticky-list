@@ -35,6 +35,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Fully localized. You can <a href="https://github.com/13pixlar/sticky-list/tree/master/languages">add your translation</a>
 * Fully supported and maintained
 * Completely free and open source
+* Support for multiple uploads view & update in file field
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
@@ -44,7 +45,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Graphic shortcode builder
 * Export list to .csv from front end
 * Abillity to control ALL settings from within the shortcode
-* Support for multiple uploads in file field
 * Support for full multi page forms
 
 #### Usage
