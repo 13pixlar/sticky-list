@@ -281,6 +281,10 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 
 <h3>Changelog</h3>
 
+**2.0**
+* Fixed some bugs.
+* Added multiple file viewing & editing support
+
 **1.5.2**
 * Fixed an issue that would not show confirmations based on conditional logic
 * Added some responsivness to list
