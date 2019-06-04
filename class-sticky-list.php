@@ -661,7 +661,7 @@ if (class_exists("GFForms")) {
 
                                 if($enable_pdf) {
                                     $list_html .= "
-                                        <a href='". get_bloginfo('url') ."/pdf/$pdf_id/$entry_id/' target='_blank'><button type='button' class='sticky-list-view submit'>$pdf_label</button></a>";
+                                        <a class='gf-sticky-pdf' href='". get_bloginfo('url') ."/pdf/$pdf_id/$entry_id/' target='_blank'><button type='button' class='sticky-list-view submit'>$pdf_label</button></a>";
                                 }
 
                             $list_html .= "</td>";
