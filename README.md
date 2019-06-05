@@ -212,9 +212,9 @@ Make sure that the plugin is activated **and** that your Gravity Forms version i
 
 Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
 
-<h5>File uploads can't be edited</h5>
+<h5>File uploads can't be edited(Resolved)</h5>
 
-Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.
+~~Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.~~
 
 <h5>Can I display a thumbnail/icon instead of the file name in the list?</h5>
 
