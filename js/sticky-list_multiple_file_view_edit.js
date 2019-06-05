@@ -6,28 +6,30 @@ function validateFilesSizeAfterInitialization(uploadElementId) {
 	var $ = jQuery;
 	var $uploadElement = $("#"+uploadElementId);
 	var settings = $($uploadElement).data('settings');
-	var button = typeof settings.browse_button == "string" ? $("#" + settings.browse_button) : $(settings.browse_button);
+	if(settings){
+		var button = typeof settings.browse_button == "string" ? $("#" + settings.browse_button) : $(settings.browse_button);
 
-	var form_id = settings.multipart_params.form_id;
-	var field_id = settings.multipart_params.field_id;
-	//Count the existing files
-	var totalCount = 0;
-	var filesJson = $('#gform_uploaded_files_' + form_id).val();
-	if(filesJson){
-		filesJson = $.parseJSON(filesJson);
-		var currentFieldArr = filesJson["input_"+field_id];
-		if(currentFieldArr)totalCount=currentFieldArr.length;
-	}
+		var form_id = settings.multipart_params.form_id;
+		var field_id = settings.multipart_params.field_id;
+		//Count the existing files
+		var totalCount = 0;
+		var filesJson = $('#gform_uploaded_files_' + form_id).val();
+		if(filesJson){
+			filesJson = $.parseJSON(filesJson);
+			var currentFieldArr = filesJson["input_"+field_id];
+			if(currentFieldArr)totalCount=currentFieldArr.length;
+		}
 
-	var max = parseInt(settings.gf_vars.max_files,10);
+		var max = parseInt(settings.gf_vars.max_files,10);
 
-	if( max > 0 && totalCount >= max){
-		var gf_strings = typeof gform_gravityforms != 'undefined' ? gform_gravityforms.strings : {};
+		if( max > 0 && totalCount >= max){
+			var gf_strings = typeof gform_gravityforms != 'undefined' ? gform_gravityforms.strings : {};
 
-		var messagesID = settings.gf_vars.message_id;
-		var message = gf_strings.max_reached;
-		button.prop("disabled", true);
-		$("#" + messagesID).prepend("<li>" + $('<div/>').text(message).html() + "</li>");
+			var messagesID = settings.gf_vars.message_id;
+			var message = gf_strings.max_reached;
+			button.prop("disabled", true);
+			$("#" + messagesID).prepend("<li>" + $('<div/>').text(message).html() + "</li>");
+		}
 	}
 }
 
