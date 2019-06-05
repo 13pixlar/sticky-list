@@ -19,7 +19,7 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.5.2";
+        protected $_version = "2.0";
         protected $_min_gravityforms_version = "1.8.19.2";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
@@ -699,7 +699,7 @@ if (class_exists("GFForms")) {
 
                         // If both sort and paignation is enabled
                         if($enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated(); } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
 
                         // If only sort is enabled
                         }elseif($enable_sort && !$enable_pagination) {
@@ -707,7 +707,7 @@ if (class_exists("GFForms")) {
 
                         // If only paignation is enabled
                         }elseif(!$enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated() } userList.on('updated', callback);</script></style>";
+                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated(); } userList.on('updated', callback);</script></style>";
                         }
                     }
 
@@ -770,7 +770,14 @@ if (class_exists("GFForms")) {
                             });
                             </script>
                         ";
-                    }
+                    }else{
+						//  declare global function to fix call to undeclared function window.listUpdated()
+                        $list_html .= "
+                        <script>
+                            window.listUpdated = function(){}
+                        </script>
+                            ";
+					}
 
                 // If we dont have any entries, show the "Empty list" text to the user
                 }else{
