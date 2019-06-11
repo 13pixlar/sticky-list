@@ -402,7 +402,7 @@ if (class_exists("GFForms")) {
                         $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
                     }
 
-                    $list_html .= "<table class='sticky-list'><thead><tr>";
+                    $list_html .= "<div class='sticky-list-table-wrapper'><table class='sticky-list'><thead><tr>";
 
                     // Get all fields
                     $fields = $form["fields"];
@@ -670,7 +670,7 @@ if (class_exists("GFForms")) {
                         $list_html .= "</tr>";
                     }
 
-                    $list_html .= "</tbody></table>";
+                    $list_html .= "</tbody></table></div>";
 
                     // If paignation is enabled we add the paignation container if there are more entries than what would fit in a page
                     if($enable_pagination && $page_entries < count($entries)) {
