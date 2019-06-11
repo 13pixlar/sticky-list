@@ -93,3 +93,6 @@ div[class^="file_"] + input[type="file"] {
 .remove-entry-for-multi-file-upload:hover{
     cursor: pointer;
 }
+.sticky-list-table-wrapper{
+    overflow-x: auto;
+}
