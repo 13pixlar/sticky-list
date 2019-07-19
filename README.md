@@ -35,6 +35,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Fully localized. You can <a href="https://github.com/13pixlar/sticky-list/tree/master/languages">add your translation</a>
 * Fully supported and maintained
 * Completely free and open source
+* Support for multiple uploads view & update in file field
 
 **Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
 
@@ -44,7 +45,6 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Graphic shortcode builder
 * Export list to .csv from front end
 * Abillity to control ALL settings from within the shortcode
-* Support for multiple uploads in file field
 * Support for full multi page forms
 
 #### Usage
@@ -212,9 +212,9 @@ Make sure that the plugin is activated **and** that your Gravity Forms version i
 
 Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
 
-<h5>File uploads can't be edited</h5>
+<h5>File uploads can't be edited(Resolved)</h5>
 
-Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.
+~~Sticky List does not support multi file uploads (where you can upload multiple files to a single field). Multi file uploads are in the roadmap for a future release. In the meantime you can use single file uploads which are supported.~~
 
 <h5>Can I display a thumbnail/icon instead of the file name in the list?</h5>
 
@@ -280,6 +280,10 @@ function show_only_approved($entries) {
 Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
 
 <h3>Changelog</h3>
+
+**2.0**
+* Fixed some bugs.
+* Added multiple file viewing & editing support
 
 **1.5.2**
 * Fixed an issue that would not show confirmations based on conditional logic
