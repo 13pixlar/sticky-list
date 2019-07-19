@@ -386,6 +386,9 @@ if (class_exists("GFForms")) {
                     $entries = apply_filters( 'filter_entries', $entries );
                 }
 
+		//Allow for entries filtering whenever the entries are empty or not
+                $entries = apply_filters( 'filter_entries_for_all', $entries,$form_id);
+		    
                 // If we have some entries, lets loop trough them and start building the output html
                 if(!empty($entries)) {
 
