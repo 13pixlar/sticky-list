@@ -524,15 +524,35 @@ if (class_exists("GFForms")) {
 
                                 // If the field is a file field we use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
                                 elseif ($field["type"] == "fileupload" || $field["type"] == "post_image" || $custom_file_upload == true ) {
+                                    if (strpos($field_value, '[') !== false && strpos($field_value, ']') !== false) { // It's an array (multiple file upload)
+                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>";
+                                        $field_value = json_decode($field_value); // Convert a string containing an array of files into an actual array type
+                                        $file_count = 0;
+                                        foreach($field_value as $file){
+                                            if($file_count>0){
+                                                $list_html .= ' + ';
+                                            }
+                                            $field_value = strtok($file, "|");
+                                            $file_name = basename($file);
+                                            // Make file clickable or not
+                                            if($enable_clickable && $field_value != "") {
+                                                $list_html .= "<a href='$field_value'>$file_name</a>";
+                                            }else{
+                                                $list_html .= "$file_name";
+                                            }
+                                            $file_count++;
+                                        }
+                                        $list_html .= "</td>";
+                                    }else{ // It's a single file upload field
+                                        $field_value = strtok($field_value, "|");
+                                        $file_name = basename($field_value);
 
-                                    $field_value = strtok($field_value, "|");
-                                    $file_name = basename($field_value);
-
-                                    // Make file clickable or not
-                                    if($enable_clickable && $field_value != "") {
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
-                                    }else{
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$file_name</td>";
+                                        // Make file clickable or not
+                                        if($enable_clickable && $field_value != "") {
+                                            $list_html .= "<td class='column-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
+                                        }else{
+                                            $list_html .= "<td class='column-$i $nowrap $tdClass'>$file_name</td>";
+                                        }
                                     }
                                 }
 
