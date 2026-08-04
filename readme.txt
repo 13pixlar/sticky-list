@@ -2,9 +2,10 @@
 Contributors: fried_eggz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6
 Tags: gravity forms, edit, list, delete
-Requires at least: 3.0.1
-Tested up to: 5.5.3
-Stable tag: 1.5.2
+Requires at least: 5.0
+Tested up to: 6.9
+Requires PHP: 7.4
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sticky-list
@@ -184,7 +185,7 @@ function my_entry_deleted_function($old_entry, $new_entry) {
 **Documentation**<br>
 There is a fully documented version of the plugin on the <a href="https://github.com/13pixlar/sticky-list">Github project page</a>. This plugin is Open Source and pull requests are welcome.
 
-**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
+**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 2.5+ and PHP 7.4+ are required for this plugin.
 
 #### Known issues
 
@@ -223,7 +224,7 @@ Sticky List is activated on a per form basis. The settings are located in the in
 
 = I still cant find any sticky list settings =
 
-Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
+Make sure that the plugin is activated **and** that your Gravity Forms version is 2.5 or higher.
 
 Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
 
@@ -305,6 +306,17 @@ Then create a field in your form with a checkbox that says "Approved". Note the 
 5. Front end list
 
 == Changelog ==
+
+= 1.6.0 =
+* Security: escape all front-end list output (fixes a stored XSS vector where submitted field values were printed unescaped)
+* Security: add and verify a CSRF nonce on front-end entry deletion
+* Security: sanitize all request input (entry/form/post IDs, mode, shortcode attributes) and add a capability check before updating a connected WordPress post
+* Removed the bundled Freemius SDK, which was several major versions out of date
+* Rebuilt the per-form settings page using the Gravity Forms 2.5+ Settings API (native sections and live field dependencies), fixing a settings page that no longer grouped or toggled fields
+* Fixed asset URLs so the bundled CSS/JS load regardless of the plugin folder name (fixes the "missing files" 404s reported on the published version)
+* Fixed a broken view/edit/duplicate mode check that compared the result of isset() to a string
+* Fixed several PHP 8 warnings (undefined variables/indexes)
+* Now requires Gravity Forms 2.5 or higher and PHP 7.4 or higher
 
 = 1.5.2 =
 * Fixed an issue that would not show confirmations based on conditional logic

@@ -19,8 +19,8 @@ if (class_exists("GFForms")) {
 
     class StickyList extends GFAddOn {
 
-        protected $_version = "1.5.2";
-        protected $_min_gravityforms_version = "1.8.19.2";
+        protected $_version = "1.6.0";
+        protected $_min_gravityforms_version = "2.5";
         protected $_slug = "sticky-list";
         protected $_path = "gravity-forms-sticky-list/sticky-list.php";
         protected $_full_path = __FILE__;
@@ -248,19 +248,19 @@ if (class_exists("GFForms")) {
             ), $atts );
 
             // Get the form ID from shortcode
-            $form_id = $shortcode_id['id'];
+            $form_id = absint( $shortcode_id['id'] );
 
             // Get the user ID from shortcode
-            $user_id = $shortcode_id['user'];
+            $user_id = ( $shortcode_id['user'] !== '' ) ? absint( $shortcode_id['user'] ) : '';
 
-            // Get the user ID from shortcode
-            $showto = $shortcode_id['showto'];
+            // Get who the list should be shown to from shortcode
+            $showto = sanitize_text_field( $shortcode_id['showto'] );
 
             // Get the filter field from shortcode
-            $filterField = $shortcode_id['field'];
+            $filterField = sanitize_text_field( $shortcode_id['field'] );
 
             // Get the filter value from shortcode
-            $filterValue = $shortcode_id['value'];
+            $filterValue = sanitize_text_field( $shortcode_id['value'] );
 
             // Get the form
             $form = GFAPI::get_form($form_id);
@@ -333,6 +333,10 @@ if (class_exists("GFForms")) {
                 // Set paging variables
                 $paging = array('offset' => 0, 'page_size' => $max_entries );
 
+                // Initialise search criteria so we never index an undefined variable
+                $search_criteria = array( "field_filters" => array() );
+                $entries = array();
+
                 // Get entries to show depending on settings
                 // Show only to creator
                 if($show_entries_to === "creator" || isset($show_only_to_specific_user)){
@@ -340,7 +344,7 @@ if (class_exists("GFForms")) {
                     $search_criteria["field_filters"][] = array("key" => "status", "value" => "active");
 
                     // Admin can allways see all entries
-                    if (!current_user_can('administrator')) {
+                    if (!current_user_can('manage_options')) {
                         $search_criteria["field_filters"][] = array("key" => "created_by", "value" => $current_user_id);
                     }
 
@@ -393,11 +397,11 @@ if (class_exists("GFForms")) {
                     }
 
                     // This vaiable will hold all html for the form
-                    $list_html = "<div id='sticky-list-wrapper_$form_id' class='sticky-list-wrapper'>";
+                    $list_html = "<div id='sticky-list-wrapper_" . esc_attr( $form_id ) . "' class='sticky-list-wrapper'>";
 
                     // If sorting and searching is enabled, show search box
                     if($enable_sort && $enable_search) {
-                        $list_html .= "<input class='search' placeholder='" . __("Search", "sticky-list") . "' />";
+                        $list_html .= "<input class='search' placeholder='" . esc_attr__("Search", "sticky-list") . "' />";
                     }
 
                     $list_html .= "<table class='sticky-list'><thead><tr>";
@@ -420,9 +424,9 @@ if (class_exists("GFForms")) {
                                 $label = $field["label"];
                             }
 
-                            $class_label = "header-" . str_replace(" ", "-", strtolower($label));
+                            $class_label = "header-" . sanitize_html_class( str_replace(" ", "-", strtolower($label)) );
 
-                            $list_html .= "<th class='sort $class_label' data-sort='column-$i'>$label</th>";
+                            $list_html .= "<th class='sort " . esc_attr( $class_label ) . "' data-sort='column-" . esc_attr( $i ) . "'>" . esc_html( $label ) . "</th>";
 
                             // Increment sorting counter
                             $i++;
@@ -432,20 +436,30 @@ if (class_exists("GFForms")) {
                     // If view, edit, delete, postlink, duplicate or pdf is enabled we need an extra column
                     if($enable_view || $enable_edit || $enable_delete || $enable_postlink || $enable_duplicate || $enable_pdf) {
 
-                        $list_html .= "<th class='sticky-action'>$action_column_header</th>";
+                        $list_html .= "<th class='sticky-action'>" . esc_html( $action_column_header ) . "</th>";
                     }
 
                     $list_html .= "</tr></thead><tbody class='list'>";
 
+                    // Escape reusable, user facing labels/urls once per list render
+                    $embedd_page_url        = esc_url( $embedd_page );
+                    $safe_view_label        = esc_html( $enable_view_label );
+                    $safe_edit_label        = esc_html( $enable_edit_label );
+                    $safe_delete_label      = esc_html( $enable_delete_label );
+                    $safe_duplicate_label   = esc_html( $enable_duplicate_label );
+                    $safe_link_label        = esc_html( $link_label );
+                    $safe_pdf_label         = esc_html( $pdf_label );
+                    $delete_nonce           = wp_create_nonce( 'stickylist_delete_' . $form_id );
+
                     // Make table rows
                     foreach ($entries as $entry) {
 
-                        $entry_id = $entry["id"];
+                        $entry_id = absint( $entry["id"] );
 
                         // Make is_read class
                         $is_read = ($entry["is_read"]) ? "is_read" : "not_read" ;
 
-                        $list_html .= "<tr class='" . $is_read . "'>";
+                        $list_html .= "<tr class='" . esc_attr( $is_read ) . "'>";
 
                         // Recycle the sorting counter we used above
                         $i=0;
@@ -460,13 +474,16 @@ if (class_exists("GFForms")) {
                                 $field_value = RGFormsModel::get_lead_field_value( $entry, $field );
 
                                 // Set a class variable to use in list table
-                                $tdClass = "stickylist-" . $field["type"];
+                                $tdClass = "stickylist-" . sanitize_html_class( $field["type"] );
 
                                 // If nowrap is set for this field we add a class to it
                                 $nowrap = "";
                                 if(isset($field["stickylistFieldNoWrap"]) && $field["stickylistFieldNoWrap"] != "") {
                                     $nowrap = " sticky-nowrap";
                                 }
+
+                                // Build the (escaped) attribute for the cell class
+                                $cell_class = esc_attr( "column-$i$nowrap $tdClass" );
 
                                 // Set $custom_file_upload to true if this is a custom field file upload
                                 if($field["type"] == "post_custom_field" && $field["inputType"] == "fileupload") { $custom_file_upload = true; }else{ $custom_file_upload = false; }
@@ -495,13 +512,13 @@ if (class_exists("GFForms")) {
                                             $field_value = end($field_value);
                                         }
 
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                        $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
 
                                     }else{
 
                                         // Remove the price from the string
                                         $field_value = substr($field_value, 0, strpos($field_value, "|"));
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                        $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
                                     }
                                 }
 
@@ -515,11 +532,11 @@ if (class_exists("GFForms")) {
                                     if($value_separator == "") $value_separator = " ";
 
                                     // Concatenate field values into string separated by a space
-                                    foreach ($field_value as $field => $value) {
+                                    foreach ($field_value as $sub_key => $value) {
                                         if(!empty($value)) $field_values .= $value . $value_separator;
                                     }
                                     $field_values = trim($field_values, $value_separator);
-                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_values</td>";
+                                    $list_html .= "<td class='$cell_class'>" . esc_html( $field_values ) . "</td>";
                                 }
 
                                 // If the field is a file field we use strtok to remove any metadata used by post_image filed (meta data is stored after "|" in string)
@@ -530,45 +547,45 @@ if (class_exists("GFForms")) {
 
                                     // Make file clickable or not
                                     if($enable_clickable && $field_value != "") {
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'><a href='$field_value'>$file_name</a></td>";
+                                        $list_html .= "<td class='$cell_class'><a href='" . esc_url( $field_value ) . "'>" . esc_html( $file_name ) . "</a></td>";
                                     }else{
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$file_name</td>";
+                                        $list_html .= "<td class='$cell_class'>" . esc_html( $file_name ) . "</td>";
                                     }
                                 }
 
                                 // If the field is a date field we need to format it
                                 elseif ($field["type"] == "date" && $field_value != "") {
                                     $field_value = $this->format_the_date($field_value,$field["dateFormat"]);
-                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
                                 }
 
                                 // If the field is an URL we need to format it
                                 elseif ($field["type"] == "website" && $field_value != "") {
-                                    $tdClass = "stickylist-url";
-                                    $list_html .= "<td class='column-$i $nowrap $tdClass'><a href='$field_value'>$field_value</a></td>";
+                                    $cell_class = esc_attr( "column-$i$nowrap stickylist-url" );
+                                    $list_html .= "<td class='$cell_class'><a href='" . esc_url( $field_value ) . "'>" . esc_html( $field_value ) . "</a></td>";
                                 }
 
                                 // If the field is an number field we need to format it
                                 elseif ($field["type"] == "number" && $field_value != "") {
-                                    $tdClass = "stickylist-number";
+                                    $cell_class = esc_attr( "column-$i$nowrap stickylist-number" );
                                     if ($field["numberFormat"] == "decimal_comma") {
                                         $field_value = number_format($field_value,2,",",".");
                                         $field_value = str_replace(",00", "", $field_value);
                                     }elseif ($field["numberFormat"] == "decimal_dot") {
                                         $field_value = number_format($field_value,2,".",",");
                                         $field_value = str_replace(".00", "", $field_value);
-                                    }elseif ($field->numberFormat == "currency") {
+                                    }elseif ($field["numberFormat"] == "currency") {
                                         $currency = new RGCurrency( GFCommon::get_currency() );
                                         $field_value   = $currency->to_money( $field_value );
                                     }
-                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
                                 }
 
                                 // If the field is a post category we need to remove the ID from the string
                                 elseif ($field["type"] == "post_category" && $field_value != "") {
-                                    $tdClass = "stickylist-category";
+                                    $cell_class = esc_attr( "column-$i$nowrap stickylist-category" );
                                     $field_value = strtok($field_value, ":");
-                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
                                 }
 
                                 // If the field is a list field we need to unserialize it, flatten the array and implode it into a string
@@ -577,13 +594,13 @@ if (class_exists("GFForms")) {
                                         $list = maybe_unserialize($field_value);
                                         $field_value = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($list)), FALSE);
                                         $field_value = implode(", ", $field_value);
-                                        $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                        $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
                                     }
                                 }
 
                                 // All other fields
                                 else{
-                                    $list_html .= "<td class='column-$i $nowrap $tdClass'>$field_value</td>";
+                                    $list_html .= "<td class='$cell_class'>" . esc_html( $field_value ) . "</td>";
                                 }
 
                                 // Increment sorting counter
@@ -599,8 +616,8 @@ if (class_exists("GFForms")) {
                                 // Only show view link if view is enabled
                                 if($enable_view) {
                                     $list_html .= "
-                                        <form action='$embedd_page' method='post'>
-                                            <button class='sticky-list-view submit'>$enable_view_label</button>
+                                        <form action='$embedd_page_url' method='post'>
+                                            <button class='sticky-list-view submit'>$safe_view_label</button>
                                             <input type='hidden' name='mode' value='view'>
                                             <input type='hidden' name='view_id' value='$entry_id'>
                                         </form>";
@@ -612,8 +629,8 @@ if (class_exists("GFForms")) {
                                     // ...and current user is the creator OR has the capability to edit others posts
                                     if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries')) {
                                         $list_html .= "
-                                            <form action='$embedd_page' method='post'>
-                                                <button class='sticky-list-edit submit'>$enable_edit_label</button>
+                                            <form action='$embedd_page_url' method='post'>
+                                                <button class='sticky-list-edit submit'>$safe_edit_label</button>
                                                 <input type='hidden' name='mode' value='edit'>
                                                 <input type='hidden' name='edit_id' value='$entry_id'>
                                             </form>";
@@ -627,13 +644,14 @@ if (class_exists("GFForms")) {
                                     if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts') || current_user_can('stickylist_delete_entries')) {
 
                                         $list_html .= "
-                                            <button class='sticky-list-delete submit'>$enable_delete_label</button>
+                                            <button class='sticky-list-delete submit'>$safe_delete_label</button>
                                             <input type='hidden' name='delete_id' class='sticky-list-delete-id' value='$entry_id'>
+                                            <input type='hidden' name='stickylist_delete_nonce' class='sticky-list-delete-nonce' value='" . esc_attr( $delete_nonce ) . "'>
                                         ";
 
                                         // If the entry is connected to a post we add a hidden field with the post ID
                                         if($entry["post_id"] != null ) {
-                                            $delete_post_id = $entry["post_id"];
+                                            $delete_post_id = absint( $entry["post_id"] );
                                             $list_html .= "<input type='hidden' name='delete_post_id' class='sticky-list-delete-post-id' value='$delete_post_id'>";
                                         }
                                     }
@@ -643,23 +661,24 @@ if (class_exists("GFForms")) {
                                 if($enable_postlink && $entry["post_id"] != NULL) {
 
                                     $permalink = get_permalink($entry["post_id"]);
-                                    $list_html .= "<button class='sticky-list-postlink submit' onclick='document.location.href=\"$permalink\"'>$link_label</button>";
+                                    $list_html .= "<button class='sticky-list-postlink submit' onclick='document.location.href=\"" . esc_url( $permalink ) . "\"'>$safe_link_label</button>";
                                 }
 
                                 // Only show duplicate link if duplicate is enabled
                                 if($enable_duplicate) {
 
                                     $list_html .= "
-                                        <form action='$embedd_page' method='post'>
-                                            <button class='sticky-list-duplicate submit'>$enable_duplicate_label</button>
+                                        <form action='$embedd_page_url' method='post'>
+                                            <button class='sticky-list-duplicate submit'>$safe_duplicate_label</button>
                                             <input type='hidden' name='mode' value='duplicate'>
                                             <input type='hidden' name='duplicate_id' value='$entry_id'>
                                         </form>";
                                 }
 
                                 if($enable_pdf) {
+                                    $pdf_url = esc_url( home_url( '/pdf/' . rawurlencode( $pdf_id ) . '/' . $entry_id . '/' ) );
                                     $list_html .= "
-                                        <a href='". get_bloginfo('url') ."/pdf/$pdf_id/$entry_id/' target='_blank'><button type='button' class='sticky-list-view submit'>$pdf_label</button></a>";
+                                        <a href='$pdf_url' target='_blank' rel='noopener noreferrer'><button type='button' class='sticky-list-view submit'>$safe_pdf_label</button></a>";
                                 }
 
                             $list_html .= "</td>";
@@ -687,25 +706,30 @@ if (class_exists("GFForms")) {
                             $sort_fileds .= "'column-$a',";
                         }
 
+                        $safe_form_id  = absint( $form_id );
+                        $safe_page     = absint( $page_entries );
+                        $list_js       = esc_url( plugins_url( 'js/list.min.js', __FILE__ ) );
+                        $list_page_js  = esc_url( plugins_url( 'js/list.pagination.min.js', __FILE__ ) );
+
                         // Include list.js
-                        $list_html .= "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/list.min.js' ) . "'></script>";
+                        $list_html .= "<script src='$list_js'></script>";
 
                         // Include list.js pagination plugin
                         if($enable_pagination) {
-                            $list_html .= "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/list.pagination.min.js' ) . "'></script>";
+                            $list_html .= "<script src='$list_page_js'></script>";
                         }
 
                         // If both sort and paignation is enabled
                         if($enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated(); } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds], page: $safe_page, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$safe_form_id', options); function callback() { window.listUpdated(); } userList.on('updated', callback);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
 
                         // If only sort is enabled
                         }elseif($enable_sort && !$enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper_$form_id', options);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
+                            $list_html .= "<script>var options = { valueNames: [$sort_fileds] };var userList = new List('sticky-list-wrapper_$safe_form_id', options);</script><style>table.sticky-list th:not(.sticky-action) {cursor: pointer;}</style>";
 
                         // If only paignation is enabled
                         }elseif(!$enable_sort && $enable_pagination) {
-                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $page_entries, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$form_id', options); function callback() { window.listUpdated(); } userList.on('updated', callback);</script></style>";
+                            $list_html .= "<script>var options = { valueNames: ['xxx'], page: $safe_page, plugins: [ ListPagination({ outerWindow: 1 }) ] };var userList = new List('sticky-list-wrapper_$safe_form_id', options); function callback() { window.listUpdated(); } userList.on('updated', callback);</script></style>";
                         }
                     }
 
@@ -713,9 +737,12 @@ if (class_exists("GFForms")) {
                     if($enable_delete) {
 
                         // Set som variables to use in the ajax function
-                        $ajax_delete = plugin_dir_url( __FILE__ ) . 'ajax-delete.php';
-                        $ajax_spinner = plugin_dir_url( __FILE__ ) . 'img/ajax-spinner.gif';
-                        $delete_failed = __('Delete failed','sticky-list');
+                        $safe_form_id     = absint( $form_id );
+                        $ajax_spinner     = esc_url( plugins_url( 'img/ajax-spinner.gif', __FILE__ ) );
+                        $delete_failed    = esc_js( __('Delete failed','sticky-list') );
+                        $confirm_delete_js = $confirm_delete ? 1 : 0;
+                        $confirm_text_js  = esc_js( $confirm_delete_text );
+                        $empty_list_js    = esc_js( wp_kses_post( $settings["empty_list_text"] ) );
 
                         $list_html .= "
                             <img src='$ajax_spinner' style='display: none;'>
@@ -724,25 +751,27 @@ if (class_exists("GFForms")) {
 
                                 window.listUpdated = function(){
 
-                                   $('#sticky-list-wrapper_$form_id').on('click', '.sticky-list-delete', function(){
+                                   $('#sticky-list-wrapper_$safe_form_id').on('click', '.sticky-list-delete', function(event){
 
-                                        event.stopImmediatePropagation()
+                                        event.stopImmediatePropagation();
 
                                         var delete_id       = $(this).siblings('.sticky-list-delete-id').val();
                                         var delete_post_id  = $(this).siblings('.sticky-list-delete-post-id').val();
+                                        var delete_nonce    = $(this).siblings('.sticky-list-delete-nonce').val();
                                         var current_button  = $(this);
                                         var current_row     = current_button.parent().parent();
-                                        var confirm_delete  = $confirm_delete;
+                                        var confirm_delete  = $confirm_delete_js;
+                                        var confirm_dialog  = true;
 
                                         if(confirm_delete == 1) {
-                                            var confirm_dialog = confirm('$confirm_delete_text');
+                                            confirm_dialog = confirm('$confirm_text_js');
                                         }
 
-                                        if (confirm_dialog == true || confirm_delete != 1) {
+                                        if (confirm_dialog == true) {
 
                                             current_button.html('<img src=\'$ajax_spinner\'>');
 
-                                            $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$form_id' })
+                                            $.post( '', { mode: 'delete', delete_id: delete_id, delete_post_id: delete_post_id, form_id: '$safe_form_id', stickylist_delete_nonce: delete_nonce })
                                             .done(function() {
                                                 current_button.html('');
                                                 current_row.css({
@@ -751,9 +780,9 @@ if (class_exists("GFForms")) {
                                                 });
                                                 current_row.hide('slow', function() {
                                                     current_row.remove();
-                                                    remaining_rows = $('#sticky-list-wrapper_$form_id tbody tr');
+                                                    remaining_rows = $('#sticky-list-wrapper_$safe_form_id tbody tr');
                                                     if(remaining_rows.length === 0) {
-                                                        $('#sticky-list-wrapper_$form_id table').html('" . esc_js($settings["empty_list_text"]) . "');
+                                                        $('#sticky-list-wrapper_$safe_form_id table').html('$empty_list_js');
                                                     }
                                                 });
                                             })
@@ -781,7 +810,7 @@ if (class_exists("GFForms")) {
 
                 // If we dont have any entries, show the "Empty list" text to the user
                 }else{
-                    $list_html = $settings["empty_list_text"] . "<br>";
+                    $list_html = wp_kses_post( $settings["empty_list_text"] ) . "<br>";
                 }
 
                 return $list_html;
@@ -794,9 +823,9 @@ if (class_exists("GFForms")) {
          *
          */
         public function register_plugin_styles() {
-            wp_register_style( 'stickylist', plugins_url( 'gravity-forms-sticky-list/css/sticky-list_styles.css' ) );
+            wp_register_style( 'stickylist', plugins_url( 'css/sticky-list_styles.css', __FILE__ ), array(), $this->_version );
             wp_enqueue_style( 'stickylist' );
-            wp_register_script( 'stickylist_js', plugins_url( 'gravity-forms-sticky-list/js/sticky-list_responsive.js' ), array( 'jquery' ) );
+            wp_register_script( 'stickylist_js', plugins_url( 'js/sticky-list_responsive.js', __FILE__ ), array( 'jquery' ), $this->_version, true );
             wp_enqueue_script( 'stickylist_js' );
         }
 
@@ -813,34 +842,41 @@ if (class_exists("GFForms")) {
                 $_POST = array_merge($_POST, $_GET);
             }
 
-            if( isset($_POST["mode"]) == "edit" || isset($_POST["mode"]) == "view" || isset($_POST["mode"]) == "duplicate") {
+            // Determine the requested mode (sanitised). The original code compared the
+            // boolean result of isset() to a string, which was always truthy.
+            $mode = isset($_POST["mode"]) ? sanitize_key($_POST["mode"]) : "";
+            $_POST["mode"] = $mode;
+
+            if( in_array( $mode, array("edit", "view", "duplicate"), true ) ) {
 
                 // No limits on edit/views
                 $form["limitEntries"] = false;
 
                 // Add lib to help with ajax in multi page forms
-                echo "<script src='" . plugins_url( 'gravity-forms-sticky-list/js/arrive.min.js' ) . "'></script>";
+                echo "<script src='" . esc_url( plugins_url( 'js/arrive.min.js', __FILE__ ) ) . "'></script>";
 
-                if($_POST["mode"] == "edit") {
-                    $edit_id = $_POST["edit_id"];
+                $form_fields = false;
+
+                if($mode == "edit") {
+                    $edit_id = absint( rgpost("edit_id") );
                     $form_fields = GFAPI::get_entry($edit_id);
                 }
 
-                if($_POST["mode"] == "view") {
-                    $view_id = $_POST["view_id"];
+                if($mode == "view") {
+                    $view_id = absint( rgpost("view_id") );
                     $form_fields = GFAPI::get_entry($view_id);
                 }
 
-                if($_POST["mode"] == "duplicate") {
-                    $duplicate_id = $_POST["duplicate_id"];
+                if($mode == "duplicate") {
+                    $duplicate_id = absint( rgpost("duplicate_id") );
                     $form_fields = GFAPI::get_entry($duplicate_id);
                 }
 
                 // If we have an entry that is active
-                if(!is_wp_error($form_fields) && $form_fields["status"] == "active") {
+                if(!is_wp_error($form_fields) && is_array($form_fields) && $form_fields["status"] == "active") {
 
                     // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry OR is duplicating the entry
-                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view" || $_POST["mode"] == "duplicate") {
+                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $mode == "view" || $mode == "duplicate") {
 
                         // Loop trough the form fields and check for upload- and category fields. If found, store ID in array
                         foreach ($form["fields"] as $fkey => &$fvalue) {
@@ -911,23 +947,30 @@ if (class_exists("GFForms")) {
                                         // Use strtok to remove any metadata used by post_image field (meta data is stored after "|" in string)
                                         $path = strtok($value, "|");
                                         $file = basename($path);
-                                        $delete_icon = plugin_dir_url( __FILE__ ) . 'img/delete.png';
+                                        $delete_icon = esc_url( plugins_url( 'img/delete.png', __FILE__ ) );
 
                                         // Only show the remove icon if we are in edit mode
-                                        if ($_POST["mode"] == "edit") {
-                                            $show_delete = " <a title=\"" . __("Remove","sticky-list") . "\" class=\"remove-entry\"><img alt=\"" . __("Remove","sticky-list") . "\" src=\"$delete_icon\"></a>";
+                                        if ($mode == "edit") {
+                                            $show_delete = " <a title=\"" . esc_attr__("Remove","sticky-list") . "\" class=\"remove-entry\"><img alt=\"" . esc_attr__("Remove","sticky-list") . "\" src=\"$delete_icon\"></a>";
                                         }else{
                                             $show_delete = "";
                                         }
 
                                         $upload_inputs = true;
 
+                                        // Escape the pieces that are interpolated into the JS-built markup
+                                        $js_new_key     = esc_js( $new_key );
+                                        $js_key         = esc_js( $key );
+                                        $js_path        = esc_url( $path );
+                                        $js_file        = esc_js( $file );
+                                        $js_show_delete = esc_js( $show_delete );
+                                        $js_value       = esc_js( $value );
                                         ?>
                                         <script>
                                         jQuery(document).ready(function($) {
-                                            $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
+                                            $('input[name="<?php echo $js_new_key ?>"]').before('<div class="file_<?php echo $js_key?>"><a href="<?php echo $js_path?>"><?php echo $js_file?></a><?php echo $js_show_delete?><input name="file_<?php echo $js_key?>" type="hidden" value="<?php echo $js_value?>"></div>');
                                             $(document).arrive("form", function(el) {
-                                                $('input[name="<?php echo $new_key ?>"]').before('<div class="file_<?php echo $key?>"><a href="<?php echo $path?>"><?php echo $file?></a><?php echo $show_delete?><input name="file_<?php echo $key?>" type="hidden" value="<?php echo $value?>"></div>');
+                                                $('input[name="<?php echo $js_new_key ?>"]').before('<div class="file_<?php echo $js_key?>"><a href="<?php echo $js_path?>"><?php echo $js_file?></a><?php echo $js_show_delete?><input name="file_<?php echo $js_key?>" type="hidden" value="<?php echo $js_value?>"></div>');
                                             });
                                         });
                                         </script>
@@ -941,10 +984,10 @@ if (class_exists("GFForms")) {
                         }
 
                         // Add is_submit_id field
-                        $form_id = $form['id'];
+                        $form_id = absint( $form['id'] );
 
                         // ...only for the form that was acutally submitted
-                        if (isset($_POST["mode"])) $form_fields["is_submit_$form_id"] = "1";
+                        if ($mode != "") $form_fields["is_submit_$form_id"] = "1";
                         if (isset($_POST["gform_submit"]) && $_POST["gform_submit"] == $form_id) $form_fields["is_submit_$form_id"] = "1";
 
                         // Get current form settings
@@ -953,11 +996,18 @@ if (class_exists("GFForms")) {
                         // Maybe mark as read
                         $mark_read_view = $this->get_sticky_setting("mark_read_view", $settings);
                         $mark_read_edit = $this->get_sticky_setting("mark_read_edit", $settings);
-                        if($_POST["mode"] == "edit") if($mark_read_edit) GFAPI::update_entry_property( $form_fields["id"], "is_read", 1);
-                        if($_POST["mode"] == "view") if($mark_read_view) GFAPI::update_entry_property( $form_fields["id"], "is_read", 1);
+                        if($mode == "edit") if($mark_read_edit) GFAPI::update_entry_property( $form_fields["id"], "is_read", 1);
+                        if($mode == "view") if($mark_read_view) GFAPI::update_entry_property( $form_fields["id"], "is_read", 1);
 
                         // Get update text
-                        if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = ""; ?>
+                        if(isset($settings["update_text"])) $update_text = $settings["update_text"]; else $update_text = "";
+
+                        // Pre-escape values that are interpolated into the inline script
+                        $js_update_text = esc_js( $update_text );
+                        $js_post_id     = isset($form_fields["post_id"]) ? absint( $form_fields["post_id"] ) : 0;
+                        $js_edit_id     = isset($edit_id) ? absint( $edit_id ) : 0;
+                        $js_view_id     = isset($view_id) ? absint( $view_id ) : 0;
+                        ?>
 
                         <!-- Add JQuery to help with view/update/delete -->
                         <script>
@@ -965,22 +1015,22 @@ if (class_exists("GFForms")) {
                             var thisForm = $('#gform_<?php echo $form_id;?>');
 
                 <?php   // If we are in edit mode we insert two hidden fields with entry id and mode = edit
-                        if($_POST["mode"] == "edit") { ?>
+                        if($mode == "edit") { ?>
 
                             var edit = '<input type="hidden" name="action" value="edit" />';
-                            var edit_id = '<input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>" />';
+                            var edit_id = '<input type="hidden" name="edit_id" value="<?php echo $js_edit_id; ?>" />';
                             var mode = '<input type="hidden" name="mode" value="edit" />';
                             thisForm.append(edit, edit_id, mode);
-                            $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
+                            $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $js_update_text; ?>');
                             $(document).arrive("form", function(el) {
                                 $(el).append(edit, edit_id, mode);
-                                $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $update_text; ?>');
+                                $("#gform_submit_button_<?php echo $form_id;?>").val('<?php echo $js_update_text; ?>');
                             });
                 <?php
                         }
                         // If we are in view mode we insert two hidden fields with entry id and mode = view
-                        if($_POST["mode"] == "view") { ?>
-                            var view_id = '<input type="hidden" name="view_id" value="<?php echo $view_id; ?>" />';
+                        if($mode == "view") { ?>
+                            var view_id = '<input type="hidden" name="view_id" value="<?php echo $js_view_id; ?>" />';
                             var mode = '<input type="hidden" name="mode" value="view" />';
                             thisForm.append(view_id, mode);
                             formFieldsWrapper = $("#gform_wrapper_<?php echo $form_id;?> .gform_fields");
@@ -994,11 +1044,11 @@ if (class_exists("GFForms")) {
                         }
 
                         // If we have a post ID it means that there is a post field present. We then insert a hidden field with the post ID for use later
-                        if($form_fields["post_id"] != null ) { ?>
+                        if(isset($form_fields["post_id"]) && $form_fields["post_id"] != null ) { ?>
 
-                            thisForm.append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
+                            thisForm.append('<input type="hidden" name="post_id" value="<?php echo $js_post_id;?>" />');
                             $(document).arrive("form", function(el) {
-                                $(el).append('<input type="hidden" name="post_id" value="<?php echo $form_fields["post_id"];?>" />');
+                                $(el).append('<input type="hidden" name="post_id" value="<?php echo $js_post_id;?>" />');
                             });
                 <?php   }
 
@@ -1032,10 +1082,10 @@ if (class_exists("GFForms")) {
         public function post_edit_entry($entry, $form) {
 
             // If we are in edit mode
-            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+            if(rgpost("action") == "edit") {
 
                 // Get original entry id
-                $original_entry_id = $_POST["edit_id"];
+                $original_entry_id = absint( rgpost("edit_id") );
 
                 // Get original entry
                 $original_entry =  GFAPI::get_entry($original_entry_id);
@@ -1145,10 +1195,10 @@ if (class_exists("GFForms")) {
          */
         function stickylist_validate_duplicate($count, $form_id, $field, $value) {
 
-            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+            if(rgpost("action") == "edit") {
 
                 // Temporarily remove no duplicate restriction
-                $entry = GFAPI::get_entry( $_POST["edit_id"] );
+                $entry = GFAPI::get_entry( absint( rgpost("edit_id") ) );
                 $old_value = $entry[$field["id"]];
                 $new_value = $value;
 
@@ -1165,7 +1215,7 @@ if (class_exists("GFForms")) {
          *
          */
         function stickylist_validate_limit($form) {
-            if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+            if(rgpost("action") == "edit") {
                 // Temporarily remove entry limit
                 $form["limitEntries"] = false;
             }
@@ -1225,7 +1275,19 @@ if (class_exists("GFForms")) {
 
             // If post ID is set we need to update the post
             if (isset($_POST["post_id"])) {
-                $post_id = $_POST["post_id"];
+                $post_id = absint( $_POST["post_id"] );
+
+                // Only allow updating a post that is genuinely connected to the
+                // entry currently being edited. This prevents a forged post_id
+                // from being pointed at an arbitrary post while still allowing
+                // front-end users to edit their own submissions.
+                $edit_id      = absint( rgpost("edit_id") );
+                $edited_entry = $edit_id ? GFAPI::get_entry( $edit_id ) : false;
+
+                if ( ! $post_id || ! $edited_entry || is_wp_error( $edited_entry ) || absint( rgar( $edited_entry, "post_id" ) ) !== $post_id ) {
+                    return $post_data;
+                }
+
                 $post_data['ID'] = $post_id;
 
                 // To prevent duplicate post meta when a form has custom field fields we need to remove the previous meta prior to saving.
@@ -1259,20 +1321,25 @@ if (class_exists("GFForms")) {
             if(isset($_POST["mode"]) && $_POST["mode"] == "delete" && isset($_POST["delete_id"]) && isset($_POST["form_id"])) {
 
                 // Get form id
-                $form_id = $_POST["form_id"];
+                $form_id = absint( $_POST["form_id"] );
+
+                // Verify the CSRF nonce before doing anything destructive
+                if ( ! wp_verify_nonce( rgpost("stickylist_delete_nonce"), 'stickylist_delete_' . $form_id ) ) {
+                    return;
+                }
 
                 // Get the form
                 $form = GFAPI::get_form($form_id);
 
                 // Get delete settings
                 $settings = $this->get_form_settings($form);
-                $enable_delete = $settings["enable_delete"];
-                $delete_type = $settings["delete_type"];
+                $enable_delete = rgar( $settings, "enable_delete" );
+                $delete_type = rgar( $settings, "delete_type" );
 
                 // Make sure that delete is enabled
                 if($enable_delete) {
 
-                    $delete_id = $_POST["delete_id"];
+                    $delete_id = absint( $_POST["delete_id"] );
                     $entry = GFAPI::get_entry($delete_id);
 
                     // If we were able to retrieve the entry
@@ -1281,9 +1348,11 @@ if (class_exists("GFForms")) {
                         // ...and the current user is the creator OR has the capability to delete others posts
                         if($entry["created_by"] == $this->stickylist_get_current_user() || current_user_can('delete_others_posts') || current_user_can('stickylist_delete_entries')) {
 
+                            $success = false;
+
                             // If we have a connected post, we get the post ID
-                            if($_POST["delete_post_id"] != null) {
-                                $delete_post_id = $_POST["delete_post_id"];
+                            if(isset($_POST["delete_post_id"]) && $_POST["delete_post_id"] != null) {
+                                $delete_post_id = absint( $_POST["delete_post_id"] );
                             }else{
                                 $delete_post_id = "";
                             }
@@ -1313,14 +1382,14 @@ if (class_exists("GFForms")) {
                             if($success) {
 
                                 // Get all notifications for current form
-                                $notifications = $form["notifications"];
+                                $notifications = rgar( $form, "notifications", array() );
                                 $notification_ids = array();
 
                                 // Loop trough the notifications
                                 foreach ($notifications as $notification) {
 
                                     // Gett current notification type
-                                    $notification_type = $notification["stickylist_notification_type"];
+                                    $notification_type = rgar( $notification, "stickylist_notification_type" );
 
                                     // Collect ids from notifications that are set to "all" or "delete"
                                     if($notification_type == "delete" || $notification_type == "all") {
@@ -1345,20 +1414,6 @@ if (class_exists("GFForms")) {
          *
          */
         public function form_settings_fields($form) {
-            ?>
-            <script>
-            // Instert headers into the settings page. Since we need the headers to be translatable we set them here
-            jQuery(document).ready(function($) {
-                $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete, duplicate & pdf","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-5 h4').html('<?php _e("Donate","sticky-list"); ?>')
-                $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
-             });
-            </script>
-            <?php
 
             // Build an array of all post to allow for selection in "embedd page" dropdown
             $args = array( 'posts_per_page' => 1001, 'post_type' => 'any', 'post_status' => 'any', 'orderby' => 'date', 'order' => 'DESC');
@@ -1484,9 +1539,13 @@ if (class_exists("GFForms")) {
             $roles_array = array_reverse($roles_array);
 
 
+            // Dependency helper: show something only when Sticky List is enabled for the form
+            $enabled_dependency = array( 'field' => 'enable_list', 'values' => array( '1' ), 'live' => true );
+
             return array(
                 array(
                     "title"  => __('Sticky List Settings','sticky-list'),
+                    "description" => __('Enable Sticky List for this form to reveal the rest of the settings below.','sticky-list'),
                     "fields" => array(
                         array(
                             "label"   => __('Enable for this form','sticky-list'),
@@ -1495,11 +1554,17 @@ if (class_exists("GFForms")) {
                             "tooltip" => __('Check this box to enable Sticky List for this form','sticky-list'),
                             "choices" => array(
                                 array(
-                                    "label" => "",
+                                    "label" => __('Enabled','sticky-list'),
                                     "name"  => "enable_list"
                                 )
                             )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('General settings','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('Show entries in list to','sticky-list'),
                             "type"    => "select",
@@ -1586,8 +1651,15 @@ if (class_exists("GFForms")) {
                             "name"    => "link_label",
                             "tooltip" => __('Label for the post link.','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Post','sticky-list')
+                            "default_value" => __('Post','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_postlink', 'values' => array( '1' ), 'live' => true )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('View, edit, delete, duplicate & PDF','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('View entries','sticky-list'),
                             "type"    => "checkbox",
@@ -1606,8 +1678,8 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_view_label",
                             "tooltip" => __('Label for the view button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('View','sticky-list')
-
+                            "default_value" => __('View','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_view', 'values' => array( '1' ), 'live' => true )
                         ),
                         array(
                             "label"   => __('Edit entries','sticky-list'),
@@ -1627,8 +1699,8 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_edit_label",
                             "tooltip" => __('Label for the edit button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Edit','sticky-list')
-
+                            "default_value" => __('Edit','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_edit', 'values' => array( '1' ), 'live' => true )
                         ),
                          array(
                             "label"   => __('Update button text','sticky-list'),
@@ -1636,13 +1708,15 @@ if (class_exists("GFForms")) {
                             "name"    => "update_text",
                             "tooltip" => __('Text for the submit button that is displayed when editing an entry','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Update','sticky-list')
+                            "default_value" => __('Update','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_edit', 'values' => array( '1' ), 'live' => true )
                         ),
                          array(
                             "label"   => __('New entry ID','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "new_entry_id",
                             "tooltip" => __('Check this box to give an edited entry a new ID every time it is updated.','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_edit', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1668,13 +1742,15 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_delete_label",
                             "tooltip" => __('Label for the delete button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Delete','sticky-list')
+                            "default_value" => __('Delete','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_delete', 'values' => array( '1' ), 'live' => true )
                         ),
                         array(
                             "label"   => __('Confirm delete','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "confirm_delete",
                             "tooltip" => __('Check this box to require deletions to be confirmed by clicking OK in a dialog box','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_delete', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1688,13 +1764,15 @@ if (class_exists("GFForms")) {
                             "name"    => "confirm_delete_text",
                             "tooltip" => __('Text for the confirm delete dialog box','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Really delete this entry?','sticky-list')
+                            "default_value" => __('Really delete this entry?','sticky-list'),
+                            "dependency" => array( 'field' => 'confirm_delete', 'values' => array( '1' ), 'live' => true )
                         ),
                         array(
                             "label"   => __('On delete','sticky-list'),
                             "type"    => "select",
                             "name"    => "delete_type",
                             "tooltip" => __('Move deleted entries to trash or delete permanently?','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_delete', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Move to trash','sticky-list'),
@@ -1724,7 +1802,8 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_duplicate_label",
                             "tooltip" => __('Label for the duplicate button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Duplicate','sticky-list')
+                            "default_value" => __('Duplicate','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_duplicate', 'values' => array( '1' ), 'live' => true )
                         ),
                          array(
                             "label"   => __('Mark entries as read','sticky-list'),
@@ -1760,7 +1839,8 @@ if (class_exists("GFForms")) {
                             "name"    => "pdf_label",
                             "tooltip" => __('Label for the PDF button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('PDF','sticky-list')
+                            "default_value" => __('PDF','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_pdf', 'values' => array( '1' ), 'live' => true )
                        ),
                         array(
                             "label"   => __('Gravity PDF ID','sticky-list'),
@@ -1768,7 +1848,14 @@ if (class_exists("GFForms")) {
                             "name"    => "pdf_id",
                             "tooltip" => __('The Gravity PDF id, found in the settings for each PDF created, without any slashes, dashes, etc. Example = 579e892aaf1b5','sticky-list'),
                             "class"   => "small",
+                            "dependency" => array( 'field' => 'enable_pdf', 'values' => array( '1' ), 'live' => true )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('Labels','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('Action column header','sticky-list'),
                             "type"    => "text",
@@ -1784,6 +1871,12 @@ if (class_exists("GFForms")) {
                             "class"   => "medium",
                             "default_value" => __('The list is empty. You can edit or remove this text in settings','sticky-list')
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('Sort & search','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('List sort','sticky-list'),
                             "type"    => "checkbox",
@@ -1801,6 +1894,7 @@ if (class_exists("GFForms")) {
                             "type"    => "select",
                             "name"    => "initial_sort",
                             "tooltip" => __('Initially sort the list by a specific field or by date added. ','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_sort', 'values' => array( '1' ), 'live' => true ),
                             "choices" => $fields_array
                         ),
                         array(
@@ -1810,6 +1904,7 @@ if (class_exists("GFForms")) {
                             "name" => "initial_sort_direction",
                             "default_value" => "DESC",
                             "tooltip" => __('Select the direction in which the list should be sorted when first rendered','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_sort', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Descending','sticky-list'),
@@ -1826,6 +1921,7 @@ if (class_exists("GFForms")) {
                             "type"    => "checkbox",
                             "name"    => "enable_search",
                             "tooltip" => __('Check this box to enable search for the list','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_sort', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1833,6 +1929,12 @@ if (class_exists("GFForms")) {
                                 )
                             )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('Pagination','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('List pagination','sticky-list'),
                             "type"    => "checkbox",
@@ -1851,7 +1953,8 @@ if (class_exists("GFForms")) {
                             "name"    => "page_entries",
                             "tooltip" => __('Number of entries to be shown on each page.','sticky-list'),
                             "class"   => "small",
-                            "default_value" => "10"
+                            "default_value" => "10",
+                            "dependency" => array( 'field' => 'enable_pagination', 'values' => array( '1' ), 'live' => true )
                         )
                     )
                 )
@@ -1864,20 +1967,11 @@ if (class_exists("GFForms")) {
          *
          */
         public function scripts() {
-        $scripts = array(
-            array("handle" => "sticky_list_js",
-                "src" => $this->get_base_url() . "/js/sticky-list_scripts.js",
-                "version" => $this->_version,
-                "deps" => array("jquery"),
-                "enqueue" => array(
-                    array(
-                        "admin_page" => array("form_settings"),
-                        "tab" => "sticky-list"
-                        )
-                    )
-                ),
-            );
-            return array_merge(parent::scripts(), $scripts);
+            // The legacy sticky-list_scripts.js only injected section headers and
+            // toggled setting rows. That is now handled natively by the Gravity
+            // Forms 2.5+ Settings API (sections + field "dependency"), so no
+            // custom admin script is required.
+            return parent::scripts();
         }
 
 
@@ -1971,7 +2065,7 @@ if (class_exists("GFForms")) {
                     $is_disabled = true;
 
                     // If we are in edit mode
-                    if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+                    if(rgpost("action") == "edit") {
 
                         // ...and the current notification has the "edit" or "all" setting
                         if($notification["stickylist_notification_type"] == "edit" || $notification["stickylist_notification_type"] == "all") {
@@ -2000,9 +2094,9 @@ if (class_exists("GFForms")) {
         function stickylist_modify_notification($notification, $form, $entry) {
 
             $settings = $this->get_form_settings($form);
-            if(isset($_POST["edit_id"]) && $_POST["edit_id"] != "") {
-                if(true != $settings["new_entry_id"]){
-                    $entry["id"] = $_POST["edit_id"];
+            if(rgpost("edit_id") != "") {
+                if(true != rgar($settings, "new_entry_id")){
+                    $entry["id"] = absint( rgpost("edit_id") );
                 }
             }
             return $notification;
@@ -2075,18 +2169,16 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
 
                 // Get all confirmations for the current form
-                $confirmations = $form["confirmations"];
+                $confirmations = rgar( $form, "confirmations", array() );
                 $new_confirmation = "";
 
-                // If action is not set we assume its a new entry
-                if(!isset($_POST["action"])) {
-                    $_POST["action"] = "new";
-                }
+                // Determine the current action (sanitised); assume a new entry if none set
+                $current_action = ( rgpost("action") != "" ) ? sanitize_key( rgpost("action") ) : "new";
 
                 // Make sure that the conformation has the correct ID
-                if(isset($_POST["edit_id"]) && $_POST["edit_id"] != "") {
-                    if(true != $settings["new_entry_id"]){
-                        $lead["id"] = $_POST["edit_id"];
+                if(rgpost("edit_id") != "") {
+                    if(true != rgar($settings, "new_entry_id")){
+                        $lead["id"] = absint( rgpost("edit_id") );
                     }
                 }
 
@@ -2101,7 +2193,7 @@ if (class_exists("GFForms")) {
                     }
 
                     // Show matching confirmations
-                    if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
+                    if( $confirmation_type == $current_action || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
 
                         // If this is not a "save & continue" confirmation
                         if (!isset($confirmation["event"]) && GFCommon::evaluate_conditional_logic( rgar($confirmation, 'conditionalLogic'), $form, $lead )) {

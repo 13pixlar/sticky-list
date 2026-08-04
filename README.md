@@ -36,7 +36,7 @@ Sticky List is an add-on for the WordPress plugin <a href="http://www.gravityfor
 * Fully supported and maintained
 * Completely free and open source
 
-**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 1.8.19.2+ is required for this plugin.
+**Note:** <a href="http://www.gravityforms.com/" target="_blank">Gravity Forms</a> version 2.5+ and PHP 7.4+ are required for this plugin.
 
 #### Planned features
 
@@ -208,7 +208,7 @@ Sticky List is activated on a per form basis. The settings are located in the in
 
 <h5>I still cant find any sticky list settings</h5>
 
-Make sure that the plugin is activated **and** that your Gravity Forms version is 1.8.19.2 or higher.
+Make sure that the plugin is activated **and** that your Gravity Forms version is 2.5 or higher.
 
 Make sure that your user/role has the correct capabilities. You can use a <a href="https://wordpress.org/plugins/user-role-editor/">role editor plugin</a> to check this. The capabilities you are looking for are `gravityforms_stickylist` and `gravityforms_stickylist_uninstall`.
 
@@ -280,6 +280,16 @@ function show_only_approved($entries) {
 Then create a field in your form with a checkbox that says "Approved". Note the ID of the new field and replace xxx above with the fields ID.
 
 <h3>Changelog</h3>
+
+**1.6.0**
+* Security: escape all front-end list output (fixes a stored XSS vector)
+* Security: add and verify a CSRF nonce on front-end entry deletion
+* Security: sanitize all request input and add a capability check before updating a connected WordPress post
+* Removed the bundled Freemius SDK
+* Rebuilt the per-form settings page using the Gravity Forms 2.5+ Settings API (native sections and live field dependencies)
+* Fixed asset URLs so bundled CSS/JS load regardless of the plugin folder name
+* Fixed a broken view/edit/duplicate mode check and several PHP 8 warnings
+* Now requires Gravity Forms 2.5+ and PHP 7.4+
 
 **1.5.2**
 * Fixed an issue that would not show confirmations based on conditional logic
