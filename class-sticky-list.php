@@ -1277,8 +1277,14 @@ if (class_exists("GFForms")) {
             if (isset($_POST["post_id"])) {
                 $post_id = absint( $_POST["post_id"] );
 
-                // Bail if the current user is not allowed to edit this post
-                if ( ! $post_id || ! current_user_can( 'edit_post', $post_id ) ) {
+                // Only allow updating a post that is genuinely connected to the
+                // entry currently being edited. This prevents a forged post_id
+                // from being pointed at an arbitrary post while still allowing
+                // front-end users to edit their own submissions.
+                $edit_id      = absint( rgpost("edit_id") );
+                $edited_entry = $edit_id ? GFAPI::get_entry( $edit_id ) : false;
+
+                if ( ! $post_id || ! $edited_entry || is_wp_error( $edited_entry ) || absint( rgar( $edited_entry, "post_id" ) ) !== $post_id ) {
                     return $post_data;
                 }
 
