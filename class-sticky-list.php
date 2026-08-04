@@ -876,7 +876,7 @@ if (class_exists("GFForms")) {
                 if(!is_wp_error($form_fields) && is_array($form_fields) && $form_fields["status"] == "active") {
 
                     // ...and the current user is the creator OR has the capability to edit others posts OR is viewing the entry OR is duplicating the entry
-                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $_POST["mode"] == "view" || $_POST["mode"] == "duplicate") {
+                    if($form_fields["created_by"] == $this->stickylist_get_current_user() || current_user_can('edit_others_posts') || current_user_can('stickylist_edit_entries') || $mode == "view" || $mode == "duplicate") {
 
                         // Loop trough the form fields and check for upload- and category fields. If found, store ID in array
                         foreach ($form["fields"] as $fkey => &$fvalue) {
@@ -1408,20 +1408,6 @@ if (class_exists("GFForms")) {
          *
          */
         public function form_settings_fields($form) {
-            ?>
-            <script>
-            // Instert headers into the settings page. Since we need the headers to be translatable we set them here
-            jQuery(document).ready(function($) {
-                $('#gaddon-setting-row-header-0 h4').html('<?php _e("General settings","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-1 h4').html('<?php _e("View, edit, delete, duplicate & pdf","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-2 h4').html('<?php _e("Labels","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-3 h4').html('<?php _e("Sort & search","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-4 h4').html('<?php _e("Pagination","sticky-list"); ?>')
-                $('#gaddon-setting-row-header-5 h4').html('<?php _e("Donate","sticky-list"); ?>')
-                $('#gaddon-setting-row-donate .donate-text').html('<?php _e("Sticky List is completely free. But if you like, you can always <a target=\"_blank\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8R393YVXREFN6\">donate</a> a few bucks.","sticky-list"); ?>')
-             });
-            </script>
-            <?php
 
             // Build an array of all post to allow for selection in "embedd page" dropdown
             $args = array( 'posts_per_page' => 1001, 'post_type' => 'any', 'post_status' => 'any', 'orderby' => 'date', 'order' => 'DESC');
@@ -1547,9 +1533,13 @@ if (class_exists("GFForms")) {
             $roles_array = array_reverse($roles_array);
 
 
+            // Dependency helper: show something only when Sticky List is enabled for the form
+            $enabled_dependency = array( 'field' => 'enable_list', 'values' => array( '1' ), 'live' => true );
+
             return array(
                 array(
                     "title"  => __('Sticky List Settings','sticky-list'),
+                    "description" => __('Enable Sticky List for this form to reveal the rest of the settings below.','sticky-list'),
                     "fields" => array(
                         array(
                             "label"   => __('Enable for this form','sticky-list'),
@@ -1558,11 +1548,17 @@ if (class_exists("GFForms")) {
                             "tooltip" => __('Check this box to enable Sticky List for this form','sticky-list'),
                             "choices" => array(
                                 array(
-                                    "label" => "",
+                                    "label" => __('Enabled','sticky-list'),
                                     "name"  => "enable_list"
                                 )
                             )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('General settings','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('Show entries in list to','sticky-list'),
                             "type"    => "select",
@@ -1649,8 +1645,15 @@ if (class_exists("GFForms")) {
                             "name"    => "link_label",
                             "tooltip" => __('Label for the post link.','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Post','sticky-list')
+                            "default_value" => __('Post','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_postlink', 'values' => array( '1' ), 'live' => true )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('View, edit, delete, duplicate & PDF','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('View entries','sticky-list'),
                             "type"    => "checkbox",
@@ -1669,8 +1672,8 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_view_label",
                             "tooltip" => __('Label for the view button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('View','sticky-list')
-
+                            "default_value" => __('View','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_view', 'values' => array( '1' ), 'live' => true )
                         ),
                         array(
                             "label"   => __('Edit entries','sticky-list'),
@@ -1690,8 +1693,8 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_edit_label",
                             "tooltip" => __('Label for the edit button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Edit','sticky-list')
-
+                            "default_value" => __('Edit','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_edit', 'values' => array( '1' ), 'live' => true )
                         ),
                          array(
                             "label"   => __('Update button text','sticky-list'),
@@ -1699,13 +1702,15 @@ if (class_exists("GFForms")) {
                             "name"    => "update_text",
                             "tooltip" => __('Text for the submit button that is displayed when editing an entry','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Update','sticky-list')
+                            "default_value" => __('Update','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_edit', 'values' => array( '1' ), 'live' => true )
                         ),
                          array(
                             "label"   => __('New entry ID','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "new_entry_id",
                             "tooltip" => __('Check this box to give an edited entry a new ID every time it is updated.','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_edit', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1731,13 +1736,15 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_delete_label",
                             "tooltip" => __('Label for the delete button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Delete','sticky-list')
+                            "default_value" => __('Delete','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_delete', 'values' => array( '1' ), 'live' => true )
                         ),
                         array(
                             "label"   => __('Confirm delete','sticky-list'),
                             "type"    => "checkbox",
                             "name"    => "confirm_delete",
                             "tooltip" => __('Check this box to require deletions to be confirmed by clicking OK in a dialog box','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_delete', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1751,13 +1758,15 @@ if (class_exists("GFForms")) {
                             "name"    => "confirm_delete_text",
                             "tooltip" => __('Text for the confirm delete dialog box','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Really delete this entry?','sticky-list')
+                            "default_value" => __('Really delete this entry?','sticky-list'),
+                            "dependency" => array( 'field' => 'confirm_delete', 'values' => array( '1' ), 'live' => true )
                         ),
                         array(
                             "label"   => __('On delete','sticky-list'),
                             "type"    => "select",
                             "name"    => "delete_type",
                             "tooltip" => __('Move deleted entries to trash or delete permanently?','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_delete', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Move to trash','sticky-list'),
@@ -1787,7 +1796,8 @@ if (class_exists("GFForms")) {
                             "name"    => "enable_duplicate_label",
                             "tooltip" => __('Label for the duplicate button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('Duplicate','sticky-list')
+                            "default_value" => __('Duplicate','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_duplicate', 'values' => array( '1' ), 'live' => true )
                         ),
                          array(
                             "label"   => __('Mark entries as read','sticky-list'),
@@ -1823,7 +1833,8 @@ if (class_exists("GFForms")) {
                             "name"    => "pdf_label",
                             "tooltip" => __('Label for the PDF button','sticky-list'),
                             "class"   => "small",
-                            "default_value" => __('PDF','sticky-list')
+                            "default_value" => __('PDF','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_pdf', 'values' => array( '1' ), 'live' => true )
                        ),
                         array(
                             "label"   => __('Gravity PDF ID','sticky-list'),
@@ -1831,7 +1842,14 @@ if (class_exists("GFForms")) {
                             "name"    => "pdf_id",
                             "tooltip" => __('The Gravity PDF id, found in the settings for each PDF created, without any slashes, dashes, etc. Example = 579e892aaf1b5','sticky-list'),
                             "class"   => "small",
+                            "dependency" => array( 'field' => 'enable_pdf', 'values' => array( '1' ), 'live' => true )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('Labels','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('Action column header','sticky-list'),
                             "type"    => "text",
@@ -1847,6 +1865,12 @@ if (class_exists("GFForms")) {
                             "class"   => "medium",
                             "default_value" => __('The list is empty. You can edit or remove this text in settings','sticky-list')
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('Sort & search','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('List sort','sticky-list'),
                             "type"    => "checkbox",
@@ -1864,6 +1888,7 @@ if (class_exists("GFForms")) {
                             "type"    => "select",
                             "name"    => "initial_sort",
                             "tooltip" => __('Initially sort the list by a specific field or by date added. ','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_sort', 'values' => array( '1' ), 'live' => true ),
                             "choices" => $fields_array
                         ),
                         array(
@@ -1873,6 +1898,7 @@ if (class_exists("GFForms")) {
                             "name" => "initial_sort_direction",
                             "default_value" => "DESC",
                             "tooltip" => __('Select the direction in which the list should be sorted when first rendered','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_sort', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Descending','sticky-list'),
@@ -1889,6 +1915,7 @@ if (class_exists("GFForms")) {
                             "type"    => "checkbox",
                             "name"    => "enable_search",
                             "tooltip" => __('Check this box to enable search for the list','sticky-list'),
+                            "dependency" => array( 'field' => 'enable_sort', 'values' => array( '1' ), 'live' => true ),
                             "choices" => array(
                                 array(
                                     "label" => __('Enabled','sticky-list'),
@@ -1896,6 +1923,12 @@ if (class_exists("GFForms")) {
                                 )
                             )
                         ),
+                    )
+                ),
+                array(
+                    "title"  => __('Pagination','sticky-list'),
+                    "dependency" => $enabled_dependency,
+                    "fields" => array(
                         array(
                             "label"   => __('List pagination','sticky-list'),
                             "type"    => "checkbox",
@@ -1914,7 +1947,8 @@ if (class_exists("GFForms")) {
                             "name"    => "page_entries",
                             "tooltip" => __('Number of entries to be shown on each page.','sticky-list'),
                             "class"   => "small",
-                            "default_value" => "10"
+                            "default_value" => "10",
+                            "dependency" => array( 'field' => 'enable_pagination', 'values' => array( '1' ), 'live' => true )
                         )
                     )
                 )
@@ -1927,20 +1961,11 @@ if (class_exists("GFForms")) {
          *
          */
         public function scripts() {
-        $scripts = array(
-            array("handle" => "sticky_list_js",
-                "src" => $this->get_base_url() . "/js/sticky-list_scripts.js",
-                "version" => $this->_version,
-                "deps" => array("jquery"),
-                "enqueue" => array(
-                    array(
-                        "admin_page" => array("form_settings"),
-                        "tab" => "sticky-list"
-                        )
-                    )
-                ),
-            );
-            return array_merge(parent::scripts(), $scripts);
+            // The legacy sticky-list_scripts.js only injected section headers and
+            // toggled setting rows. That is now handled natively by the Gravity
+            // Forms 2.5+ Settings API (sections + field "dependency"), so no
+            // custom admin script is required.
+            return parent::scripts();
         }
 
 
@@ -2034,7 +2059,7 @@ if (class_exists("GFForms")) {
                     $is_disabled = true;
 
                     // If we are in edit mode
-                    if(isset($_POST["action"]) && $_POST["action"] == "edit") {
+                    if(rgpost("action") == "edit") {
 
                         // ...and the current notification has the "edit" or "all" setting
                         if($notification["stickylist_notification_type"] == "edit" || $notification["stickylist_notification_type"] == "all") {
@@ -2063,9 +2088,9 @@ if (class_exists("GFForms")) {
         function stickylist_modify_notification($notification, $form, $entry) {
 
             $settings = $this->get_form_settings($form);
-            if(isset($_POST["edit_id"]) && $_POST["edit_id"] != "") {
-                if(true != $settings["new_entry_id"]){
-                    $entry["id"] = $_POST["edit_id"];
+            if(rgpost("edit_id") != "") {
+                if(true != rgar($settings, "new_entry_id")){
+                    $entry["id"] = absint( rgpost("edit_id") );
                 }
             }
             return $notification;
@@ -2138,18 +2163,16 @@ if (class_exists("GFForms")) {
             if(isset($settings["enable_list"]) && true == $settings["enable_list"]){
 
                 // Get all confirmations for the current form
-                $confirmations = $form["confirmations"];
+                $confirmations = rgar( $form, "confirmations", array() );
                 $new_confirmation = "";
 
-                // If action is not set we assume its a new entry
-                if(!isset($_POST["action"])) {
-                    $_POST["action"] = "new";
-                }
+                // Determine the current action (sanitised); assume a new entry if none set
+                $current_action = ( rgpost("action") != "" ) ? sanitize_key( rgpost("action") ) : "new";
 
                 // Make sure that the conformation has the correct ID
-                if(isset($_POST["edit_id"]) && $_POST["edit_id"] != "") {
-                    if(true != $settings["new_entry_id"]){
-                        $lead["id"] = $_POST["edit_id"];
+                if(rgpost("edit_id") != "") {
+                    if(true != rgar($settings, "new_entry_id")){
+                        $lead["id"] = absint( rgpost("edit_id") );
                     }
                 }
 
@@ -2164,7 +2187,7 @@ if (class_exists("GFForms")) {
                     }
 
                     // Show matching confirmations
-                    if( $confirmation_type == $_POST["action"] || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
+                    if( $confirmation_type == $current_action || $confirmation_type == "all" || !isset($confirmation["stickylist_confirmation_type"])) {
 
                         // If this is not a "save & continue" confirmation
                         if (!isset($confirmation["event"]) && GFCommon::evaluate_conditional_logic( rgar($confirmation, 'conditionalLogic'), $form, $lead )) {
